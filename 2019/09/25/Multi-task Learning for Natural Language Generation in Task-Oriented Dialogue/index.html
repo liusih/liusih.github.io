@@ -4,10 +4,9 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models, Sih Blog">
-    <meta name="description" content="Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models
-
-Naacl 2019 ">
+    <meta name="keywords" content="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue, Sih Blog">
+    <meta name="description" content="EMNLP 2019 任务型对话整理
+Multi-task Learning for Natural Language Generation in Task-Oriented DialogueAbstract在面向任务的对话中，自然语言生成">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +14,7 @@ Naacl 2019 ">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models | Sih Blog</title>
+    <title>Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue | Sih Blog</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -244,13 +243,13 @@ Naacl 2019 ">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models
+                        Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue
                     </div>
                 </div>
             </div>
@@ -361,8 +360,8 @@ Naacl 2019 ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/RL/" target="_blank">
-                                <span class="chip bg-color">RL</span>
+                            <a href="/tags/NLG-Multi-task/" target="_blank">
+                                <span class="chip bg-color">NLG Multi-task</span>
                             </a>
                         
                     </div>
@@ -373,8 +372,8 @@ Naacl 2019 ">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Dialogue-system/" class="post-category" target="_blank">
-                                Dialogue system
+                            <a href="/categories/NLG/" class="post-category" target="_blank">
+                                NLG
                             </a>
                         
                     </div>
@@ -385,7 +384,7 @@ Naacl 2019 ">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-05-21
+                    2019-09-25
                 </div>
 
                 
@@ -401,51 +400,72 @@ Naacl 2019 ">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models</strong></p>
+                <p>EMNLP 2019 任务型对话整理</p>
+<h4 id="Multi-task-Learning-for-Natural-Language-Generation-in-Task-Oriented-Dialogue"><a href="#Multi-task-Learning-for-Natural-Language-Generation-in-Task-Oriented-Dialogue" class="headerlink" title="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue"></a>Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</h4><h5 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h5><p>在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中，我们提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语言模型明确地针对生成响应的自然相关性。这对提高人类语言的风格和多样性有重要意义。实验结果表明，该多任务学习框架在多数据集的学习效果优于已有的多任务学习框架。例如，它将以前E2E-NLG数据集上的最佳BLEU评分提高了2.2%，将笔记本数据集上的最佳BLEU评分提高了6.1%。</p>
+<h5 id="Intro"><a href="#Intro" class="headerlink" title="Intro:"></a>Intro:</h5><p>Challenge: 由于NLG直接面向用户，其可读性和信息量直接影响用户对整个对话系统的感知。一方面，为了提供或请求用户的信息，响应必须包含所需的信息，即meaning representation(MR)。另一方面，系统响应需要模仿人类语言的流动性和变异性来提高用户体验。早期的工作主要采用预定义的规则语法，尽管这些框架可以提供足够的信息，但是它们缺乏语言的自然性和变化性，使得响应非常僵化。此外，这些方法通常需要费力气的手工工作来创建模板，从而使它们无法跨域扩展。</p>
+<p>Method: 由于面向任务的对话数据通常包含丰富的人类响应，因此利用语言建模技术提高NLG模型模拟人类语言的能力具有很大的潜力。</p>
 <blockquote>
-<p><a href="https://arxiv.org/pdf/1902.08858.pdf" target="_blank" rel="noopener">Naacl 2019</a> </p>
+<p>meaning representation(MR)</p>
 </blockquote>
-<p><strong>Abstract</strong></p>
-<p>为对话定义action space并通过强化学习来优化其决策的过程是一个长期以来的挑战。通常的做法是使用手工来定义对话动作或者词表作为动作空间，两者都有各自的局限性。本文提出了一种潜在动作框架，将端到端agent的动作空间作为潜在变量，并应用非监督方法，从数据中归纳出自己的动作空间。</p>
-<p>综合实验研究了连续型和离散型的动作类型以及两种基于随机变分推理的优化方法。结果表明，在DealOrNoDeal和MultiWoz对话框上，所提出的潜在动作比以往的词级策略梯度方法取得了更好的性能改进。</p>
-<p><strong>Introduction</strong></p>
-<p>本文提出的模型 Latent Action Reinforcement Learning (LaRL)，克服了端到端对话模型中基于word-level RL的限制，以无监督的方式结合了传统模块化方法的优点。<br>关键的想法是开发一种可以自己发现对话动作的E2E模型。这些动作必须具有足够的表达能力，以捕获复杂领域中的回复 (即具有表示大量动作的能力)，从而将话语层面的决策过程与自然语言生成分离开来。然后，任何RL方法都可以应用到这个诱导的动作空间中来代替词级别的输出。所以本文提出了一种提供潜在变量的对话框架，研究了从对话数据中诱导潜在动作空间的几种方法。</p>
-<p>本文还进一步提出  (1)一种新的训练目标，其性能优于对话生成中使用的典型证据下界;(2)在解码器中集成离散潜在变量的注意机制，以更好地对长响应建模。</p>
-<p>本文在DealOrNoDeal (Lewis et al.， 2017)和MultiWoz (Budzianowski et al.， 2018)两个数据集进行了实验。<br>结果表明，在学习对话策略时，LaRL明显比word level RL更有效，而且不会产生不可理解的语言。<br>本文的模型在MultiWoz上实现了18.2%的改进，并在DealOrNoDeal上发现了新颖多样的谈判策略。</p>
-<p>除了较强的实证改进外，本文的模型分析还展示了一些新的见解，例如减少潜在动作空间中的暴露偏差至关重要，离散的潜在动作比连续的更适合作为RL agent的动作空间。</p>
-<p>本文的工作不同于以往的工作有两个原因:<br>(1)以前的工作中潜在的动作只是辅助的，小规模的，大多是在监督或半监督的环境中学习的。本文研究的是潜在变量的无监督学习，学习的变量具有足够的表达能力，能够独立捕捉整个动作空间。<br>(2)据本文所知，本文的工作是对对话系统中使用潜在变量进行RL策略优化的首次全面研究。</p>
-<p><strong>Baseline</strong><br>端到端的系统响应生成可视为一个基于条件的生成任务，该任务使用神经网络的编解码器对条件分布$p(x|c)$进行建模，其中$c$为观察到的对话上下文，$x$为系统对上下文的响应。对话上下文可以是原始对话历史或者文本上下文. RL训练通常分为2步: 基于监督学习的预训练，和基于强化学习策略梯度算法.<br>具体来说,监督学习这一步来最大化对数似然值 ($\theta$是模型参数):<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36tp6jbx2j309l012wed.jpg" alt=""><br>然后接下来的RL这一步使用策略梯度算法，更新与任务目标相关的模型参数。假设有一个agent可以与之交互的环境，并且在对话的每个轮次$t$处都有一个轮次奖励$r_t$。本文得到在模型参数$\theta$下，预期的折扣回报$J(θ)= E[\sum^T_0 \gamma ^t r_t]$, 折现因子$\gamma$在[0,1]之间，$T$为对话的长度(总轮数)。 通常在奖励r上减去参数b来降低策略梯度的方差<br>$$Rt=E[\sum^{T-t}<em>{k = 0} \gamma ^t (r</em>{t+k}-b)]$$.</p>
-<p>Word-level Reinforcement Learning<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s5tp2wxj30cx04vmxd.jpg" alt="fg 1"><br>如图1所示，world-level RL将每个输出单词视为一个action step，其策略梯度为<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sgi3p1aj30cf02wmx7.jpg" alt=""><br>其中$U_t$为第t轮回复中的token数量，j为回复中的单词index。显然Eq 2的动作空间非常大，即|V| (词表size)，学习视野较长，即$TU$。之前的工作发现直接应用该式会导致解码器不收敛。常用的解决方法是按一定比例交替使用带监督学习的Eq 2。将这个比率表示为RL:SL=A:B，这意味着, 对于每A次策略梯度更新，运行B次监督学习进行更新。对于只使用策略梯度而不涉及监督学习的情况，则RL:SL=off。</p>
-<p><strong>Model</strong></p>
-<ol>
-<li>Latent Action Reinforcement Learning<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg" alt="fg 2"><br>本文提出的LARL框架如图2所示，在回复生成过程中引入了一个潜在变量$z$。则现在的条件分布$p (x|c) = p (x|z) p (z|c)$<br>生成的过程为:<br>(1) 给定一个对话上下文 $c$, 首先依照$p_{θ<em>e}(z|c)$抽样一个潜在动作 $z$<br>(2) 基于$p</em>{θ<em>d} (x|z)$，即基于z抽样生成的响应x, 其中$p</em>{θ<em>e}$是对话编码器网络, $p</em>{θ_d}$是响应的解码器网络。在上述设置下，LaRL将潜在变量$z$作为其动作空间，而不是响应 $x$中输出单词。之后可以在潜在动作空间中应用reinforce:<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36tpjg4x7j30al01x748.jpg" alt=""><br>与Eq 2相比，LaRL的不同之处在于:  </li>
-</ol>
-<ul>
-<li>将范围从$TU$缩短到$T$。  </li>
-<li>潜在动作空间设计为低维，比V小得多。  </li>
-<li>策略梯度只更新编码器$θ_e$, 而解码器$θ<em>d$保持不变。<br>这些属性减少了对话策略优化的难度，并将高层决策与自然语言生成分离开。$给定上下文$c$, $p</em>{θ<em>e}$ 负责选择最好的潜在动作, 而$p</em>{θ_d}$仅负责将$z$转换为表层形式的单词。本文的公式也为实验各种类型的模型学习方法提供了一个灵活的框架。<br>在本文中，本文主要关注两个关键方面:潜在变量$z$的类型, 以及在有监督的预训练阶段, 优化学习$z$的方法。</li>
-</ul>
-<ol start="2">
-<li>Types of Latent Actions<br>以往的研究中使用了两类潜在变量:<br>连续各向同性高斯分布(Serban et al.， 2017b)和多元分类分布(Zhao et al.， 2018)。这两种类型都与本文的LaRL框架兼容，定义如下：</li>
-</ol>
-<ul>
-<li>Gaussian Latent Actions<br>高斯潜在动作遵循$M$维多元对角协方差矩阵的高斯分布, 即$z\sim N(\mu ,\sigma^2I )$。<br>编码器$p_{θ<em>e}$由两部分构成:一个上下文编码器$F$,  用神经网络编码对话上下文$c$为一个向量表示$h$, 用一个前馈网络$pai$将$h$映射为$\mu$和$\sigma$ 。流程定义如下：<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s82qosfj30bx03y0st.jpg" alt=""><br>然后将得到的$z$作为解码器的初始状态用于最后响应的生成。<br>使用$p</em>\theta(z|c) =  N(z; \mu ,\sigma^2I)$来计算Eq 3中的策略梯度更新.</li>
-<li>Categorical Latent Actions<br>分类潜在动作是$M$个独立的$k$向分类随机变量。每个$z_m$都有自己的token embedding，将潜在的符号映射到向量空间$E_m \epsilon R^{K×D}$，其中$m \ epsilon [1,M]$， D为embedding size。因此 M个潜在动作可以表示指数级的，$K^M$个，不同且唯一的组合， 这使得它具有足够的表现力，可以在复杂的领域中建模对话动作。类似于高斯潜在动作，我们有<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s9ntf37j30bf03ot8v.jpg" alt=""><br>与高斯潜在动作不同, 分类潜在动作矩阵编码后得到大小为  $R^{M×D}$  的矩阵, 而解码器的初始状态是一个大小为 $R^D$  的向量。以前的工作将潜在的emdedding相加，来集成这个矩阵和编码器, 表示作为求和融合。<br>这种方法的一个限制是，它可能会丢失每个潜在维度中的细粒度顺序信息，并且在涉及多个对话动作的长响应方面存在问题。因此，本文提出一种新的方法，<strong>Attention Fusion</strong>，来结合分类潜在的动作与解码器。 将注意力机制(Luong et al.， 2015)应用于潜在的动作。设i为解码时的步长索引。然后有:<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s88idqvj30ce061mxj.jpg" alt=""></li>
-</ul>
-<p><strong>Optimization Approaches</strong></p>
-<p>现在给定一个训练数据集{x, c}, 常规的优化方法是通过最大化其变分下界的随机变分推理（Full ELBO）</p>
-<p><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sa32ec1j30c8022t8p.jpg" alt=""></p>
+<p>本文方法： 本文提出了一个多任务方案来解决面向任务的对话中的自然语言生成问题。对于NLG任务，我们使用了一个equence-to-sequence的框架。解码器使用一种attention机制传送信息，从编码器处编码的一个MR序列。因此，NLG任务生成响应的条件是输入MR。</p>
+<p>我们工作的主要贡献是将语言建模任务整合到人为生成的响应中，作为无条件的补充过程，引入更多与语言相关的元素，而无需干预MR信息。此外，语言建模的非监督性质意味着我们不需要额外的标记数据。因此，在多任务学习框架下，我们同时训练NLG和语言建模任务。为了促进多任务学习，我们在解码器中执行语言建模任务，并且部分共享来自NLG任务的参数。</p>
+<p>为了评估模型NLG-LM的有效性，本文对5个任务导向的对话任务进行了评估: E2E-NLG、电视、笔记本电脑、酒店和餐厅数据集。NLG-LM在所有5个数据集上达到了新的SOTA。例如，它超过了最优秀的E2E-NLG竞争对手Slug，在BLEUscore的成绩为2.2%。消融研究表明，在训练过程中引入语言建模任务可以使BLEU分数平均提高2.4%。</p>
+<h5 id="Problem-setting"><a href="#Problem-setting" class="headerlink" title="Problem setting"></a>Problem setting</h5><blockquote>
+<p>Pipeline 模型，根据DM生成的action（槽值对），本文叫MR（。Q_Q。），来生成自然语言。</p>
+</blockquote>
+<p>在面向任务的对话中，自然语言生成(NLG)过程是将系统话语作为自然语言生成，给定系统生成的意义表示MR，这些表示来自pipeline模型之前的步骤。每个MR是一个槽值对，槽表示要传递的信息的类别，值表示内容。</p>
+<p>Dialogue acts被用来区分不同类型的系统动作。典型的对话行为包括inform, request, confirm。对于给定的意义表示，NLG过程应该为不同的对话行为生成不同的话语。例如，confirm dialogue act通常会导致系统以“Let me confirm” or “Correct me if I’m wrong” 开始。</p>
+<p><img src="http://image.sherlocknlp.com//20191107113957_j21Olk_WechatIMG1.jpeg" alt=""></p>
+<p>给定训练数据${（di，ri，ui）}$，其中di是对话行为，$ri = {（s1，v1），（s2，v2），…，（sk，vk）}$是含义表示的集合，ui是样本是由人类标记者产生的话语，目的是通过一对新的对话行为d和意义表示r来产生话语u。</p>
+<p>地点等实体用特殊token代替。</p>
+<h5 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h5><p>先将对话动作d和意义表示r连接在一起作为单个输入序列I，有m个token。从给定的话语u中获得输出序列O，有n个token。两个序列都被去词化。在每个序列周围放置特殊的句子标记<bos>和<eos>。</eos></bos></p>
+<p>模型训练的目标是在给定先前预测的token和输入序列的前提下，一次生成一个输出token。</p>
+<p>可以将其建模为最大化条件概率分布：</p>
+<p><img src="http://image.sherlocknlp.com//20191107154819_LdQqnB_Screenshot.png" style="zoom:50%;"></p>
+<h6 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder:"></a>Encoder:</h6><p>我们训练一个dictionary D来将每个token映射到一维定长向量。</p>
+<p>输入的embedding序列然后进入双向RNN层以生成contextualized embedding。</p>
+<p>我们使用GRU作为RNN单元，并汇总前向和后向RNN输出。</p>
+<p>编码器的输出用$（u1，…，um）∈R^{d_h×m}$表示，其中$d_h$是RNN的输出尺寸，m是输入序列长度。</p>
+<h6 id="Decoder："><a href="#Decoder：" class="headerlink" title="Decoder："></a>Decoder：</h6><p>解码器采用具有注意力机制的RNN，一次生成一个令牌。它从 beginning-of-sentence 的 token开始，并使用encoder RNN的最终隐藏状态作为初始隐藏状态。</p>
+<p>在第t步中，我们使用编码器中相同的字典D，将第t个输出token映射到向量$s_t$, 并且dropout。</p>
+<p>然后，给定先前的隐藏状态$h_{t-1}$，解码器首先计算编码器输出的注意力权重：</p>
+<p><img src="http://image.sherlocknlp.com//20191107160354_4TP5CM_Screenshot.png" style="zoom:50%;"></p>
+<p>然后将权重$α$应用于编码器的输出,以获得上下文向量 $c ＝ α_iu_i$。</p>
+<p>然后将上下文向量 c 和嵌入向量 $s_t$连接起来，并发送到解码器GRU中，输出为g和新的隐藏状态ht.</p>
+<p>为了生成下一个token，我们重用了dictionary D及其转置的权重 $W_{D^1}$。我们再次集成上下文向量来融合上下文信息：</p>
+<p><img src="http://image.sherlocknlp.com//20191107161355_MDZ5z9_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.13.36.png" style="zoom:50%;"></p>
+<p>其中$W_2$是参数化矩阵。$p_t$下一个token在字典中所有token上的概率分布。</p>
+<p>损失函数是交叉熵。假设第t步的one-hot向量是 $y_t$ (谁的one-hot向量？？), 那么每个训练样本序列对的损失函数是:</p>
+<p><img src="http://image.sherlocknlp.com//20191107161747_KdgeTP_Screenshot.png" style="zoom:50%;"></p>
+<h5 id="与语言模型耦合"><a href="#与语言模型耦合" class="headerlink" title="与语言模型耦合"></a>与语言模型耦合</h5><blockquote>
+<p>上面介绍了在NLG中如何在字典中选token，下面介绍如何融入语言模型。</p>
+</blockquote>
+<p>上面的编码器-解码器方法通过attention机制，在每个步骤中将对话动作d和含义表示r的信息合并在一起。</p>
+<p>但是，由于这种机制，所产生的话语在很大程度上不可避免地依赖于输入顺序，而较少地关注人类语言的流畅性和变化性，但是这一点与在面向任务的对话中传达所需信息一样重要。另一方面，语言建模通常用于刻画单词，短语和句子的自然性。</p>
+<p>一个训练有素的语言模型可以在自然和语义上比僵硬和不自然的句子获得更高的分数。</p>
+<p>在深度学习中，语言模型任务通常由递归神经网络解决，但是，与(1)式不同的是，语言模型中出现下一个token的概率只依赖于前面的单词，而不依赖于输入序列：</p>
+<p><img src="http://image.sherlocknlp.com//20191107162515_AUF1wL_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.24.57.png" style="zoom:50%;"></p>
+<p>我们认为，通过将语言建模作为一个额外的目标集成到NLG过程中，生成的句子将更好地接近人类反应的风格和变化。为此，我们将另一个GRU单元$GRU^{LM}$添加到解码器中，该解码器具有自己的隐藏状态 $h^{LM}_{t-1}$， 并接受嵌入向量$s_t$作为输入。输出是 $g^{LM}$和新的隐藏状态 $h^{LM}_{t}$。在语言模型中，下一个token的概率分布为:</p>
+<p><img src="http://image.sherlocknlp.com//20191107163119_mN2eYz_Screenshot.png" style="zoom:50%;"></p>
+<p>其中W2[:dh]为W2的第dh列。可以看出，上下文c并不影响语言建模的概率计算。语言模型的损失函数为:</p>
+<p><img src="http://image.sherlocknlp.com//20191107163254_V30BS5_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.32.33.png" style="zoom:50%;"></p>
+<p>最后，我们将这两个损失函数线性地合并成一个单一的多任务损失函数:</p>
+<p>$$L(θ) =L^{NLG}(θ) +αL^{LM}(θ)$$</p>
+<p>图1中描述了模型结构。如图所示，词典D在NLG任务和语言建模任务之间共享。</p>
+<p><img src="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png" style="zoom:50%;"></p>
+<h5 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h5><p>本文评估了来自不同领域的五个数据集的模型，包括了餐厅预订，酒店预订和零售。最大的数据集来自E2E-NLG任务，由餐厅区域内的51.2K个MR话语对组成。还使用RNN-LG的四个数据集，包括电视零售，笔记本电脑零售，酒店预订和餐厅预订领域中的对话场景，分别为14.1K，26.5K，8.7K和8.5K个样本。</p>
 <blockquote>
-<p>补充：在ELBO其中q是关于z的一个任意概率分布。<br> 对任意分布q的选择来说，L提供了似然函数的一个下界。<br> 越好地近似p(z∣x,c)的分布q(z∣x，c)，得到的下界就越紧。<br> <strong>将推断问题看作是找一个分布q使得L最大的过程。</strong></p>
+<p>Baseline：TGen,  SC-LSTM, RALSTM, Slug</p>
+<p>Use the multi-taskcoefficient α= 0.5 in all experiments</p>
+<p>Use the BLEU-4  and  NIST metrics.</p>
 </blockquote>
-<p>$q_{\gamma }(z|x, c)$  为需要训练的神经网络，来逼近  $q(z|x, c)$ 和$q(z|c)$  和  $p (x|z)$  的后验分布。<br>本文认为上式有局限性，解码器只看到  $z$  从  $q(z|x, c)$  采样，但未经历过从 $p_\theta(z|c)$ 采样, 所以提出了以下优化函数（Lite ELBO）：<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sa8mpvwj30c101ydfs.jpg" alt=""><br>本质上，简化目标将后验网络设置为与编码器相同，即  $q_\gamma(z|x, c) = p_{θ<em>e} (z|c)$, 但是这也使得潜在空间缺少正则化，实验中表明，如果只最大化$p</em>{p_{(z|c})}(x|z)$ 会存在过拟合。因此添加了额外的正则化项, 鼓励后验与先验分布能够相似, β是一介于0和1之间的超参数。将分类潜在动作的  $p(z)$  设为平均值，即 $p(z) = 1/K$  ；将高斯潜在动作的先验设为 $N(0,I)$ .</p>
-<p>Experiment</p>
-<p>Dataset</p>
-<ol>
-<li>DealOrNoDeal是一个谈判数据集，包含基于2236个不同场景的5805个对话。本文提出252个测试环境场景，并从训练集中随机抽取400个场景进行验证。从混乱度(PPL)、奖励、一致性和多样性四个方面对研究结果进行了评价。PPL帮助确定哪个模型产生的与人更相似的响应，同时奖励和一致性评估模型的谈判强度。多样性表示该模型是发现了一种新的语篇级策略，还是只是重复了单调响应。<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sagj6ubj30cr08ggmk.jpg" alt=""></li>
-<li>Multiwoz是一个插槽填充数据集，它包含10438个对话, 涉及6个不同的域中。8438个对话用于训练，各1000个用于验证和测试。由于该数据集之前没有用户模拟器，为了与之前的技术水平进行公平的比较，本文将重点放在中提出的对话-上下文-文本生成任务上。该任务要求在对话中的每个系统轮次生成响应对话。结果从三个方面进行评估:BLEU，Inform Rate和成功率。BLEU score检查响应层次词汇相似性，而Inform rate 和成功率度量模型是否在dialog级别是否回答问题并提供所有请求的信息。<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sasng82j30c907zwfj.jpg" alt=""></li>
-</ol>
-<p>Conclusion<br>最后，本文为E2E dialogue agent中的RL提出了一个潜在变量的动作空间。 并对两种对话任务进行了评估，结果表明，本文的模型取得了优异的性能，并创造了一个MultiWoz最新的成功率。广泛的分析使我们能够深入了解如何正确地训练潜在变量，这些变量可以作为agent的动作空间，能够以无监督的方式创建抽象的动作。</p>
+<p><img src="http://image.sherlocknlp.com//20191108094718_UjN2X6_Screenshot.png" style="zoom:50%;"></p>
+<p>Conclusion</p>
+<blockquote>
+<p>本文提出了一种新的多任务学习方法 NLG-LM。它将语言模型任务作为无条件的补充过程整合到响应生成过程中，以提高生成话语的自然度。在多任务学习模式下，将这两个任务都安排在一个序列到序列的结构中。实验结果表明，该算法在5个大规模数据集上都有较好的性能，计算效率较高。消融实验显示了在多任务模式下使用语言建模任务的有效性。</p>
+</blockquote>
+<p>Sih: 将NLG的响应生成与语言模型结合，一起学习，共享decoder，作为多任务学习（Multi task）， NLG-LM的输入用的是pipeline模型的DM的输出，是one-hot编码（竟然！我们pipeline还是有未来的…）。</p>
+<p>和传统多任务学习相似，但和我看到abstract时的想法不太一致， 以为是Multi task learning的应用，呜呜…。</p>
 
             </div>
             <hr/>
@@ -469,7 +489,7 @@ Naacl 2019 ">
                     </span>
                     <a href="https://liusih.github.io" class="b-link-green">Sih Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/" class="b-link-green">Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models</a>
+                    <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="b-link-green">Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</a>
                 </p>
             </div>
         </div>
@@ -490,9 +510,9 @@ Naacl 2019 ">
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://liusih.github.io/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/';
-        this.page.identifier = '/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/';
-        this.page.title = 'Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models';
+        this.page.url = 'https://liusih.github.io/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/';
+        this.page.identifier = '/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/';
+        this.page.title = 'Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue';
     };
     let disqus_shortname = '';
 
@@ -515,45 +535,45 @@ Naacl 2019 ">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2019/06/09/Visual Dialog 总结/">
+                <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Visual Dialogue 总结">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
                         
-                        <span class="card-title">Visual Dialogue 总结</span>
+                        <span class="card-title">Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">
-CLEVR-Dialog: A Diagnostic Dataset for Multi-Round Reasoning in Visual Dialog
- NAACL 2019
- 链接： https://arxiv.org/pdf/19</div>
+                    <div class="summary block-with-text">EMNLP 2019 任务型对话整理
+Multi-task Learning for Natural Language Generation in Task-Oriented DialogueAbstract在面向任务的对话中，自然语言生成</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Visual-Dialog/" class="post-category" target="_blank">
-                                    Visual Dialog
+                            <a href="/categories/NLG/" class="post-category" target="_blank">
+                                    NLG
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Visual-Dialog/" target="_blank">
-                        <span class="chip bg-color">Visual Dialog</span>
+                    <a href="/tags/NLG-Multi-task/" target="_blank">
+                        <span class="chip bg-color">NLG Multi-task</span>
                     </a>
                     
                 </div>
@@ -567,29 +587,32 @@ CLEVR-Dialog: A Diagnostic Dataset for Multi-Round Reasoning in Visual Dialog
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/12/医疗对话系统/">
+                <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="医疗对话系统总结">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Domain Adaptive Dialog Generation via Meta Learning">
                         
-                        <span class="card-title">医疗对话系统总结</span>
+                        <span class="card-title">Domain Adaptive Dialog Generation via Meta Learning</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
-End-to-End Knowledge-Routed Relational Dialogue System for  Automatic Diagnosis
-2019 AAAI https://arxiv.org/abs/1901.10</div>
+
+题目：Domain Adaptive Dialog Generation via Meta Learning  
+
+ 来源： ACL 2019 原文链接：  https://  arxiv.org/abs/1906.0352  0
+  </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-12
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Dialogue-system/" class="post-category" target="_blank">
-                                    Dialogue system
+                            <a href="/categories/Dialogue-system-meta-learning/" class="post-category" target="_blank">
+                                    Dialogue system, meta-learning
                                 </a>
                             
                             
@@ -599,8 +622,8 @@ End-to-End Knowledge-Routed Relational Dialogue System for  Automatic Diagnosis
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Dialogue-system/" target="_blank">
-                        <span class="chip bg-color">Dialogue system</span>
+                    <a href="/tags/Dialogue-system-meta-learning/" target="_blank">
+                        <span class="chip bg-color">Dialogue system, meta-learning</span>
                     </a>
                     
                 </div>
@@ -748,13 +771,6 @@ End-to-End Knowledge-Routed Relational Dialogue System for  Automatic Diagnosis
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 <footer class="page-footer bg-color">
     <div class="container row center-align">
