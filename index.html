@@ -74,7 +74,7 @@
 
 
 <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 <body class="is-3-column">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
     <div class="container">
@@ -952,9 +952,11 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
         </h1>
         <div class="content">
             <p>1.安装jupyter </p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter</span><br></pre></td></tr></table></figure>
+<pre><code class="python">pip install jupyter
+</code></pre>
 <p>如果安装报错，则安装</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libsqlite3-dev</span><br></pre></td></tr></table></figure>
+<pre><code class="python">sudo apt-get install libsqlite3-dev
+</code></pre>
         </div>
         
         
@@ -1006,7 +1008,8 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
 <li>下载opencc把繁体中文转化为简体中文<br>opencc(windows版本)下载地址：<a href="http://download.csdn.net/download/adam_zs/10213686" target="_blank" rel="noopener">http://download.csdn.net/download/adam_zs/10213686</a></li>
 <li>运行命令：</li>
 </ul>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opencc -i wiki.zh.fanti.text -o wiki.zh.jianti.text -c t2s.json</span><br></pre></td></tr></table></figure>
+<pre><code class="python">    opencc -i wiki.zh.fanti.text -o wiki.zh.jianti.text -c t2s.json
+</code></pre>
         </div>
         
         
