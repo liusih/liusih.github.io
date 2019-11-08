@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.7.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Today&#39;s RL algorithm - Sih Blog</title>
+
+
+    <meta name="description" content="Double DQN :   Deep Reinforcement Learning with Double Q-learning  Deep Deterministic Policy Gradient (DDPG):    Continuous control with deep reinforcement learning  Continuous DQN (CDQN or NAF):  Co">
+<meta name="keywords" content="RL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Today&#39;s RL algorithm">
+<meta property="og:url" content="https://liusih.github.io/2018/11/23/RL-algrithm/index.html">
+<meta property="og:site_name" content="Sih Blog">
+<meta property="og:description" content="Double DQN :   Deep Reinforcement Learning with Double Q-learning  Deep Deterministic Policy Gradient (DDPG):    Continuous control with deep reinforcement learning  Continuous DQN (CDQN or NAF):  Co">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://liusih.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-06T03:34:41.025Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Today&#39;s RL algorithm">
+<meta name="twitter:description" content="Double DQN :   Deep Reinforcement Learning with Double Q-learning  Deep Deterministic Policy Gradient (DDPG):    Continuous control with deep reinforcement learning  Continuous DQN (CDQN or NAF):  Co">
+<meta name="twitter:image" content="https://liusih.github.io/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/images/rss2.png" title="Today&#39;s RL algorithm" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/photo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body class="is-2-column">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/rss2.png" alt="Today&#39;s RL algorithm" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/liusih">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-23T03:16:12.000Z">2018-11-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/RL-Algorithm/">RL Algorithm</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Today&#39;s RL algorithm
+            
+        </h1>
+        <div class="content">
+            <ul>
+<li><p>Double DQN :</p>
+<p>  <a href="http://arxiv.org/abs/1509.06461" target="_blank" rel="noopener">Deep Reinforcement Learning with Double Q-learning</a></p>
+</li>
+<li><p>Deep Deterministic Policy Gradient (DDPG): </p>
+<p>  <a href="http://arxiv.org/abs/1509.02971" target="_blank" rel="noopener">Continuous control with deep reinforcement learning</a></p>
+</li>
+<li><p>Continuous DQN (CDQN or NAF):</p>
+<p> <a href="http://arxiv.org/abs/1603.00748" target="_blank" rel="noopener">Continuous Deep Q-Learning with Model-based Acceleration</a></p>
+</li>
+<li><p>Dueling network DQN (Dueling DQN) ：</p>
+<p> <a href="https://arxiv.org/abs/1511.06581" target="_blank" rel="noopener">Dueling Network Architectures for Deep Reinforcement Learning</a></p>
+</li>
+<li><p>Deep SARSA ： <a href="http://people.inf.elte.hu/lorincz/Files/RL_2006/SuttonBook.pdf" target="_blank" rel="noopener">[10]</a></p>
+<a id="more"></a></li>
+<li><p>Asynchronous Advantage Actor-Critic (A3C) ：</p>
+<p><a href="http://arxiv.org/abs/1602.01783" target="_blank" rel="noopener">Asynchronous Methods for Deep Reinforcement Learning</a></p>
+</li>
+<li><p>Proximal Policy Optimization Algorithms (PPO)：</p>
+<p> <a href="https://arxiv.org/abs/1707.06347" target="_blank" rel="noopener">Proximal Policy Optimization Algorithms</a></p>
+</li>
+<li><p>Cross-Entropy Method（CEM）:</p>
+<p><a href="https://www.mitpressjournals.org/doi/abs/10.1162/neco.2006.18.12.2936?journalCode=neco" target="_blank" rel="noopener">Learning Tetris Using the Noisy Cross-Entropy Method</a></p>
+</li>
+</ul>
+<h2 id="1-Double-DQN"><a href="#1-Double-DQN" class="headerlink" title="1. Double DQN"></a>1. Double DQN</h2><h4 id="Q值函数的定义"><a href="#Q值函数的定义" class="headerlink" title="Q值函数的定义:"></a>Q值函数的定义:</h4><p>在策略π下，状态s，采取动作a， 所得到的Q值为：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/42741-fa665dc9b61fe30c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/444/format/webp" alt=""></p>
+<p>最优值就是:</p>
+<p>$$Q^*(s, a) = max_π Q_π(s, a)$$</p>
+<p>最优策略就可以通过在每个状态选择最高值的行动给出。<br>则目标 </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/42741-7408f70632fa8826.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/405/format/webp" alt=""></p>
+<h4 id="DQN-算法"><a href="#DQN-算法" class="headerlink" title="DQN 算法"></a>DQN 算法</h4><p>DQN 算法的两个最重要的特点是目标网络 (target network) 和经验回顾 (experience replay)。目标网络，其参数为 θ^-，和 online的网络一样，除了其参数是从 online network 经过某些steps之后拷贝下来的。<br>$$θ^-_t = θ_t$$</p>
+<p>目标网络是：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/42741-70d50d393f04f561.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/446/format/webp" alt=""></p>
+<h4 id="Double-Q"><a href="#Double-Q" class="headerlink" title="Double Q:"></a>Double Q:</h4><p>在标准的 Q-学习和 DQN 中的 max 操作用相同的值来选择和评价一个 action，这实际上更可能选择过高的估计值，从而导致过于乐观的值估计overestimated values。为了避免这种情况的出现，我们可以对选择selection 和衡量evaluation进行解耦。这就是 Double Q。</p>
+<p>reference: <a href="https://www.jianshu.com/p/193ca0106aa5" target="_blank" rel="noopener">Double DQN</a></p>
+<h4 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h4><p><a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Applications_files/doubledqn.pdf" target="_blank" rel="noopener">论文（Hasselt等人）</a>发现并证明了传统的DQN普遍会过高估计Action的Q值，而且估计误差会随Action的个数增加而增加。如果高估不是均匀的，则会导致某个次优的Action高估的Q值超过了最优Action的Q值，永远无法找到最优的策略。作者在他2010年提出的Double Q-Learning的基础上，将该方法引入了DQN中。具体操作是对要学习的Target Q值生成方式进行修改，原版的DQN中是使用TargetNet产生Target Q值，即</p>
+<p>$$Q_T =r+\gamma\max_{a’} Q (s’,a’;\theta_{i}^-)$$</p>
+<p>其中$θ^-$是TargetNet的参数。</p>
+<h4 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h4><ol>
+<li><p>在DDQN中，先用MainNet找到 $\max_{a’}Q(s’,a’;\theta_{i})$的Action ($θ_i$是MainNet的参数)</p>
+</li>
+<li><p>再去TargetNet中找到这个Action的Q值来去构成Target Q值，这个Q值在TargetNet中不一定是最大的，因此可以避免选到被高估的次优Action。最终要学习的Loss Function为： </p>
+</li>
+</ol>
+<p>$$L(\theta)=E[(Q_T-Q(s,a;\theta_i))^2$$<br>此时的Target Q 变为:</p>
+<p>$$Q_T = r+\gamma Q (s’,\max_{a’} Q(s’,a’;\theta_i);\theta_{i}^-)$$</p>
+<p>除此之外，其他设置与DQN一致。实验表明，DDQN能够估计出更准确出Q值，在一些Atari2600游戏中可获得更稳定有效的策略。</p>
+<p>reference: <a href="https://blog.csdn.net/u013236946/article/details/73161586" target="_blank" rel="noopener">Doule DQN</a></p>
+<h2 id="2-Dueling-DQN"><a href="#2-Dueling-DQN" class="headerlink" title="2. Dueling-DQN"></a>2. Dueling-DQN</h2><ul>
+<li><p>Background</p>
+<p>  <a href="https://arxiv.org/abs/1511.06581" target="_blank" rel="noopener">Wang</a>等人提出了一种竞争网络结构（dueling network）作为DQN的网络模型。</p>
+</li>
+<li><p>Structure<br><img src="https://img-blog.csdn.net/20170613172136926?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzNjk0Ng==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="image"></p>
+<ol>
+<li><p>第一个模型是一般的DQN网络模型，即输入层接三个卷积层后，接两个全连接层，输出为每个动作的Q值。</p>
+</li>
+<li><p>第二个模型–竞争网络（dueling net）将卷积层提取的抽象特征分流到两个支路中：</p>
+<ul>
+<li>上路代表状态值函数 $V(s)$，表示静态的状态环境本身具有的价值</li>
+<li>下路代表依赖状态的动作优势函数$A(a)$（advantage function），表示选择某个Action额外带来的价值。</li>
+<li><p>最后这两路再聚合再一起得到每个动作的Q值。</p>
+<p><code>论文作者认为，V(s)更专注于环境，A(a)更专注与动作本身对结果的影响，以车的游戏做了举例说明</code></p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>公式</p>
+<p>状态价值函数表示为 </p>
+<p>  $$V(s;θ,β)$$</p>
+<p>动作优势函数表示为 </p>
+<p>  $$A(s,a;θ,α)$$</p>
+<p>动作Q值为两者相加 </p>
+<p> $$ Q(s,a;θ,α,β)=V(s;θ,β)+A(s,a;θ,α)$$</p>
+<p>  <code>其中 θ 是卷积层参数，β 和 α 是两支路全连接层参数。</code></p>
+<p>而在实际中，一般要将动作优势流设置为单独动作优势函数减去某状态下所有动作优势函数的平均值</p>
+<p>  $$Q(s,a;\theta,\alpha,\beta) = V(s;\theta,\beta)+(A(s,a;\theta,\alpha)-\frac{1}{|A|}\sum_{a’}A(s,a’;\theta,\alpha))$$</p>
+<p>  <code>这样做可以保证该状态下各动作的优势函数相对排序不变，而且可以缩小 Q 值的范围，去除多余的自由度，提高算法稳定性。</code></p>
+<p>  reference：<a href="https://blog.csdn.net/u013236946/article/details/73161586" target="_blank" rel="noopener">Dueling-DQN</a></p>
+</li>
+</ul>
+<h2 id="3-Prioritized-Experience-Replay"><a href="#3-Prioritized-Experience-Replay" class="headerlink" title="3. Prioritized Experience Replay"></a>3. Prioritized Experience Replay</h2><p>简单来说，经验池中TD误差 $$r+\gamma\max_{a’}Q(s’,a’;\theta^-)-Q(s,a;\theta)$$绝对值越大的样本被抽取出来训练的概率越大，加快了最优策略的学习。</p>
+<h2 id="4-H-DQN"><a href="#4-H-DQN" class="headerlink" title="4. H-DQN"></a>4. H-DQN</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
+<li><p>hierarchical deep reinforcement learning, model-free, value-based</p>
+</li>
+<li><p>当环境反馈是sparse和delayed时，解决方法是构造一个两个层级的算法，将困难问题分解为多个小目标，逐个完成。</p>
+</li>
+</ul>
+<h3 id="Procedure"><a href="#Procedure" class="headerlink" title="Procedure"></a>Procedure</h3><p>以一个两层级的算法为例：</p>
+<ol>
+<li>一个层级叫做meta-controller，它负责获取当前状态$s_t$ ，然后从可能的子任务里面选取一个子任务 g_t \in \mathcal{G} 交代给下一个层级的控制器去完成。它是一个强化学习算法，其目标是最大化实际得到的extrinsic reward之和，$F_t = \sum_{t’=t}^\infty \gamma^{t’-t} f_{t’}$ 。</li>
+</ol>
+<p>在这里，这一层使用的是DQN方法，这一层Q-value的更新目标是:</p>
+<p><img src="https://pic4.zhimg.com/80/v2-e593eb0a1d2ef68d575b39cb28dc21b4_hd.jpg" alt=""><br>ps: 按照sih的理解，通俗来讲就是，状态s和作为该层级的动作-&gt;子任务$g$,以及外置奖励(此处的外置奖励来源于外部环境)进行一次DQN的学习。</p>
+<ol start="2">
+<li>另一个层级叫做controller，它负责接收上一个层级的子任务 $g$ 以及当前的状态 $s_t$ ，然后选择一个可能的行动 $a_t$ 去执行。它也是一个强化学习算法，其目标是最大化一个人为规定的critic给出的intrinsic reward之和，$R_t(g) = \sum_{t’=t}^\infty \gamma^{t’-t} r_{t’}(g)$。这里也使用DQN方法，更新目标为:</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-5de1ecd991d04eecd1e66549d72700fb_hd.jpg" alt=""></p>
+<p>ps: 此步则是以上一层级的子任务g作为先验，将s,a,g,以及内置奖励（此处的内置奖励来源于critic）进行DQN的学习。</p>
+<h3 id="算法框架"><a href="#算法框架" class="headerlink" title="算法框架"></a>算法框架</h3><p><img src="https://pic3.zhimg.com/80/v2-48a774993e684165538235594f724a76_hd.jpg" alt=""></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/RL/">RL</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/04/Switch-based-Active-Deep-Dyna-Q-Efficient-Adaptive-Planning-for-Task-Completion-Dialogue-Policy-LearningLearning/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Switch-based Active Deep Dyna-Q Efficient Adaptive Planning for Task-Completion Dialogue Policy LearningLearning</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/11/08/Today's user simulator/">
+                <span class="level-item">Today&#39;s User simulator</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://liusih.github.io/2018/11/23/RL-algrithm/';
+        this.page.identifier = '2018/11/23/RL-algrithm/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'sih' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/ava.jpeg" alt="Sih Liu">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Sih Liu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        NLP learner
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Beijing</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        8
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        8
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/liusih" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/liusih">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://zhuanlan.zhihu.com/bupt-pris731" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Zhihu</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">zhuanlan.zhihu.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Dialogue-system/">
+            <span class="level-start">
+                <span class="level-item">Dialogue system</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Dialogue-system-meta-learning/">
+            <span class="level-start">
+                <span class="level-item">Dialogue system, meta-learning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/NLG/">
+            <span class="level-start">
+                <span class="level-item">NLG</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/RL-Algorithm/">
+            <span class="level-start">
+                <span class="level-item">RL Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/User-simulator/">
+            <span class="level-start">
+                <span class="level-item">User simulator</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Visual-Dialog/">
+            <span class="level-start">
+                <span class="level-item">Visual Dialog</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/jupyter/">
+            <span class="level-start">
+                <span class="level-item">jupyter</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/word2vec/">
+            <span class="level-start">
+                <span class="level-item">word2vec</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow  ">
+
+        <!-- <div class="column-right-shadow is-hidden-widescreen "> -->
+        
+            
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Dialogue-system-meta-learning/" style="font-size: 10px;">Dialogue system, meta-learning</a> <a href="/tags/NLG-Multi-task/" style="font-size: 10px;">NLG Multi-task</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-24T16:00:00.000Z">2019-09-25</time></div>
+                    <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLG/">NLG</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Domain Adaptive Dialog Generation via Meta Learning">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
+                    <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system-meta-learning/">Dialogue system, meta-learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/09/Visual Dialog 总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Visual Dialogue 总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:20:10.000Z">2019-06-09</time></div>
+                    <a href="/2019/06/09/Visual Dialog 总结/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Visual Dialogue 总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Visual-Dialog/">Visual Dialog</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg" alt="Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-21T02:02:18.000Z">2019-05-21</time></div>
+                    <a href="/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/12/医疗对话系统/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="医疗对话系统总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-12T08:15:10.000Z">2019-05-12</time></div>
+                    <a href="/2019/05/12/医疗对话系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">医疗对话系统总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dialogue/">
+                        <span class="tag">Dialogue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dialogue-system/">
+                        <span class="tag">Dialogue system</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dialogue-system-meta-learning/">
+                        <span class="tag">Dialogue system, meta-learning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NLG-Multi-task/">
+                        <span class="tag">NLG Multi-task</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RL/">
+                        <span class="tag">RL</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Visual-Dialog/">
+                        <span class="tag">Visual Dialog</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jupyter/">
+                        <span class="tag">jupyter</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/word2vec/">
+                        <span class="tag">word2vec</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                <!-- 
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right ">
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Dialogue-system-meta-learning/" style="font-size: 10px;">Dialogue system, meta-learning</a> <a href="/tags/NLG-Multi-task/" style="font-size: 10px;">NLG Multi-task</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-24T16:00:00.000Z">2019-09-25</time></div>
+                    <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLG/">NLG</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Domain Adaptive Dialog Generation via Meta Learning">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
+                    <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system-meta-learning/">Dialogue system, meta-learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/09/Visual Dialog 总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Visual Dialogue 总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:20:10.000Z">2019-06-09</time></div>
+                    <a href="/2019/06/09/Visual Dialog 总结/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Visual Dialogue 总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Visual-Dialog/">Visual Dialog</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg" alt="Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-21T02:02:18.000Z">2019-05-21</time></div>
+                    <a href="/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/12/医疗对话系统/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="医疗对话系统总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-12T08:15:10.000Z">2019-05-12</time></div>
+                    <a href="/2019/05/12/医疗对话系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">医疗对话系统总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dialogue/">
+                        <span class="tag">Dialogue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dialogue-system/">
+                        <span class="tag">Dialogue system</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dialogue-system-meta-learning/">
+                        <span class="tag">Dialogue system, meta-learning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NLG-Multi-task/">
+                        <span class="tag">NLG Multi-task</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RL/">
+                        <span class="tag">RL</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Visual-Dialog/">
+                        <span class="tag">Visual Dialog</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jupyter/">
+                        <span class="tag">jupyter</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/word2vec/">
+                        <span class="tag">word2vec</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+ -->
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/rss2.png" alt="Today&#39;s RL algorithm" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Sih&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'folded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    
+</body>
+</html>
