@@ -7,13 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Tag: Dialogue system, meta-learning - Sih Blog</title>
+<title>Tag: Multi-task - Sih Blog</title>
 
 
     <meta name="description" content="A NLP/RL learner.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sih Blog">
-<meta property="og:url" content="https://liusih.github.io/tags/Dialogue-system-meta-learning/index.html">
+<meta property="og:url" content="https://liusih.github.io/tags/Multi-task/index.html">
 <meta property="og:site_name" content="Sih Blog">
 <meta property="og:description" content="A NLP/RL learner.">
 <meta property="og:locale" content="en">
@@ -135,7 +135,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Dialogue system, meta-learning</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Multi-task</a></li>
         </ul>
         </nav>
     </div>
@@ -148,10 +148,10 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time>
+                <time class="level-item has-text-grey" datetime="2019-09-24T16:00:00.000Z">2019-09-25</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Dialogue-system-meta-learning/">Dialogue system, meta-learning</a>
+                <a class="has-link-grey -link" href="/categories/NLG/">NLG</a>
                 </div>
                 
                 
@@ -161,94 +161,76 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/">Domain Adaptive Dialog Generation via Meta Learning</a>
+                <a class="has-link-black-ter" href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/">Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</a>
             
         </h1>
         <div class="content">
-            <blockquote>
-</blockquote>
-<p>题目：Domain Adaptive Dialog Generation via Meta Learning  </p>
+            <p>EMNLP 2019 任务型对话整理</p>
+<h4 id="Multi-task-Learning-for-Natural-Language-Generation-in-Task-Oriented-Dialogue"><a href="#Multi-task-Learning-for-Natural-Language-Generation-in-Task-Oriented-Dialogue" class="headerlink" title="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue"></a>Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</h4><h5 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h5><p>在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中，我们提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语言模型明确地针对生成响应的自然相关性。这对提高人类语言的风格和多样性有重要意义。实验结果表明，该多任务学习框架在多数据集的学习效果优于已有的多任务学习框架。例如，它将以前E2E-NLG数据集上的最佳BLEU评分提高了2.2%，将笔记本数据集上的最佳BLEU评分提高了6.1%。</p>
+<h5 id="Intro"><a href="#Intro" class="headerlink" title="Intro:"></a>Intro:</h5><p>Challenge: 由于NLG直接面向用户，其可读性和信息量直接影响用户对整个对话系统的感知。一方面，为了提供或请求用户的信息，响应必须包含所需的信息，即meaning representation(MR)。另一方面，系统响应需要模仿人类语言的流动性和变异性来提高用户体验。早期的工作主要采用预定义的规则语法，尽管这些框架可以提供足够的信息，但是它们缺乏语言的自然性和变化性，使得响应非常僵化。此外，这些方法通常需要费力气的手工工作来创建模板，从而使它们无法跨域扩展。</p>
+<p>Method: 由于面向任务的对话数据通常包含丰富的人类响应，因此利用语言建模技术提高NLG模型模拟人类语言的能力具有很大的潜力。</p>
 <blockquote>
-<p> <strong>来源：</strong> ACL 2019<br> <strong>原文链接：</strong> <a href="https://link.zhihu.com/?target=https%3A//arxiv.org/abs/1906.03520" target="_blank" rel="noopener"> https://  arxiv.org/abs/1906.0352  0
-</a>  </p>
+<p>meaning representation(MR)</p>
 </blockquote>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h2><p><strong>问题</strong><br>：领域适配是对话系统中的一项重要任务，因为根据不同的需求，每天都有许多新的对话任务产生，为这些新任务收集和注释训练数据的成本很高，因为它涉及到与真实用户的交互。因此将现有的丰富资源领域的数据适应于资源有限的新领域是对话系统研究中的一项重要任务。</p>
-<p><strong>现有解决方法</strong> ：Transfer learning、few-shot learning、meta-<br>learning等介绍了如何解决机器学习中的数据稀缺问题。由于每个对话域之间的差异很大，因此将信息从富资源域泛化到另一个低资源域非常困难。</p>
-<p><strong>本文的方法</strong> ：所以本文提出了一种基于元学习（meta-learning<br>）的领域自适应对话生成方法DAML。DAML是一个端到端可训练的对话系统模型，它从具有丰富资源的领域任务中学习，然后用最少的训练样本适应到新的领域。通过将模型无关的元学习算法（<br><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1703.03400.pdf" target="_blank" rel="noopener"> model-agnostic meta-learning
-</a><br>MAML）应用于对话域，利用多个单域对话数据和丰富的资源来训练对话系统模型，将训练中的多个对话任务结合起来，学习适用于新领域的通用和可转移信息。使得该模型仅通过少量的训练实例，就能在一个新的领域有效地学习一个具有竞争力的对话系统。</p>
+<p>本文方法： 本文提出了一个多任务方案来解决面向任务的对话中的自然语言生成问题。对于NLG任务，我们使用了一个equence-to-sequence的框架。解码器使用一种attention机制传送信息，从编码器处编码的一个MR序列。因此，NLG任务生成响应的条件是输入MR。</p>
+<p>我们工作的主要贡献是将语言建模任务整合到人为生成的响应中，作为无条件的补充过程，引入更多与语言相关的元素，而无需干预MR信息。此外，语言建模的非监督性质意味着我们不需要额外的标记数据。因此，在多任务学习框架下，我们同时训练NLG和语言建模任务。为了促进多任务学习，我们在解码器中执行语言建模任务，并且部分共享来自NLG任务的参数。</p>
+<p>为了评估模型NLG-LM的有效性，本文对5个任务导向的对话任务进行了评估: E2E-NLG、电视、笔记本电脑、酒店和餐厅数据集。NLG-LM在所有5个数据集上达到了新的SOTA。例如，它超过了最优秀的E2E-NLG竞争对手Slug，在BLEUscore的成绩为2.2%。消融研究表明，在训练过程中引入语言建模任务可以使BLEU分数平均提高2.4%。</p>
+<h5 id="Problem-setting"><a href="#Problem-setting" class="headerlink" title="Problem setting"></a>Problem setting</h5><blockquote>
+<p>Pipeline 模型，根据DM生成的action（槽值对），本文叫MR（。Q_Q。），来生成自然语言。</p>
+</blockquote>
+<p>在面向任务的对话中，自然语言生成(NLG)过程是将系统话语作为自然语言生成，给定系统生成的意义表示MR，这些表示来自pipeline模型之前的步骤。每个MR是一个槽值对，槽表示要传递的信息的类别，值表示内容。</p>
+<p>Dialogue acts被用来区分不同类型的系统动作。典型的对话行为包括inform, request, confirm。对于给定的意义表示，NLG过程应该为不同的对话行为生成不同的话语。例如，confirm dialogue act通常会导致系统以“Let me confirm” or “Correct me if I’m wrong” 开始。</p>
+<p><img src="http://image.sherlocknlp.com//20191107113957_j21Olk_WechatIMG1.jpeg" alt=""></p>
+<p>给定训练数据${（di，ri，ui）}$，其中di是对话行为，$ri = {（s1，v1），（s2，v2），…，（sk，vk）}$是含义表示的集合，ui是样本是由人类标记者产生的话语，目的是通过一对新的对话行为d和意义表示r来产生话语u。</p>
+<p>地点等实体用特殊token代替。</p>
+<h5 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h5><p>先将对话动作d和意义表示r连接在一起作为单个输入序列I，有m个token。从给定的话语u中获得输出序列O，有n个token。两个序列都被去词化。在每个序列周围放置特殊的句子标记<bos>和<eos>。</eos></bos></p>
+<p>模型训练的目标是在给定先前预测的token和输入序列的前提下，一次生成一个输出token。</p>
+<p>可以将其建模为最大化条件概率分布：</p>
+<p><img src="http://image.sherlocknlp.com//20191107154819_LdQqnB_Screenshot.png" style="zoom:50%;"></p>
+<h6 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder:"></a>Encoder:</h6><p>我们训练一个dictionary D来将每个token映射到一维定长向量。</p>
+<p>输入的embedding序列然后进入双向RNN层以生成contextualized embedding。</p>
+<p>我们使用GRU作为RNN单元，并汇总前向和后向RNN输出。</p>
+<p>编码器的输出用$（u1，…，um）∈R^{d_h×m}$表示，其中$d_h$是RNN的输出尺寸，m是输入序列长度。</p>
+<h6 id="Decoder："><a href="#Decoder：" class="headerlink" title="Decoder："></a>Decoder：</h6><p>解码器采用具有注意力机制的RNN，一次生成一个令牌。它从 beginning-of-sentence 的 token开始，并使用encoder RNN的最终隐藏状态作为初始隐藏状态。</p>
+<p>在第t步中，我们使用编码器中相同的字典D，将第t个输出token映射到向量$s_t$, 并且dropout。</p>
+<p>然后，给定先前的隐藏状态$h_{t-1}$，解码器首先计算编码器输出的注意力权重：</p>
+<p><img src="http://image.sherlocknlp.com//20191107160354_4TP5CM_Screenshot.png" style="zoom:50%;"></p>
+<p>然后将权重$α$应用于编码器的输出,以获得上下文向量 $c ＝ α_iu_i$。</p>
+<p>然后将上下文向量 c 和嵌入向量 $s_t$连接起来，并发送到解码器GRU中，输出为g和新的隐藏状态ht.</p>
+<p>为了生成下一个token，我们重用了dictionary D及其转置的权重 $W_{D^1}$。我们再次集成上下文向量来融合上下文信息：</p>
+<p><img src="http://image.sherlocknlp.com//20191107161355_MDZ5z9_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.13.36.png" style="zoom:50%;"></p>
+<p>其中$W_2$是参数化矩阵。$p_t$下一个token在字典中所有token上的概率分布。</p>
+<p>损失函数是交叉熵。假设第t步的one-hot向量是 $y_t$ (谁的one-hot向量？？), 那么每个训练样本序列对的损失函数是:</p>
+<p><img src="http://image.sherlocknlp.com//20191107161747_KdgeTP_Screenshot.png" style="zoom:50%;"></p>
+<h5 id="与语言模型耦合"><a href="#与语言模型耦合" class="headerlink" title="与语言模型耦合"></a>与语言模型耦合</h5><blockquote>
+<p>上面介绍了在NLG中如何在字典中选token，下面介绍如何融入语言模型。</p>
+</blockquote>
+<p>上面的编码器-解码器方法通过attention机制，在每个步骤中将对话动作d和含义表示r的信息合并在一起。</p>
+<p>但是，由于这种机制，所产生的话语在很大程度上不可避免地依赖于输入顺序，而较少地关注人类语言的流畅性和变化性，但是这一点与在面向任务的对话中传达所需信息一样重要。另一方面，语言建模通常用于刻画单词，短语和句子的自然性。</p>
+<p>一个训练有素的语言模型可以在自然和语义上比僵硬和不自然的句子获得更高的分数。</p>
+<p>在深度学习中，语言模型任务通常由递归神经网络解决，但是，与(1)式不同的是，语言模型中出现下一个token的概率只依赖于前面的单词，而不依赖于输入序列：</p>
+<p><img src="http://image.sherlocknlp.com//20191107162515_AUF1wL_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.24.57.png" style="zoom:50%;"></p>
+<p>我们认为，通过将语言建模作为一个额外的目标集成到NLG过程中，生成的句子将更好地接近人类反应的风格和变化。为此，我们将另一个GRU单元$GRU^{LM}$添加到解码器中，该解码器具有自己的隐藏状态 $h^{LM}_{t-1}$， 并接受嵌入向量$s_t$作为输入。输出是 $g^{LM}$和新的隐藏状态 $h^{LM}_{t}$。在语言模型中，下一个token的概率分布为:</p>
+<p><img src="http://image.sherlocknlp.com//20191107163119_mN2eYz_Screenshot.png" style="zoom:50%;"></p>
+<p>其中W2[:dh]为W2的第dh列。可以看出，上下文c并不影响语言建模的概率计算。语言模型的损失函数为:</p>
+<p><img src="http://image.sherlocknlp.com//20191107163254_V30BS5_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.32.33.png" style="zoom:50%;"></p>
+<p>最后，我们将这两个损失函数线性地合并成一个单一的多任务损失函数:</p>
+<p>$$L(θ) =L^{NLG}(θ) +αL^{LM}(θ)$$</p>
+<p>图1中描述了模型结构。如图所示，词典D在NLG任务和语言建模任务之间共享。</p>
+<p><img src="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png" style="zoom:50%;"></p>
+<h5 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h5><p>本文评估了来自不同领域的五个数据集的模型，包括了餐厅预订，酒店预订和零售。最大的数据集来自E2E-NLG任务，由餐厅区域内的51.2K个MR话语对组成。还使用RNN-LG的四个数据集，包括电视零售，笔记本电脑零售，酒店预订和餐厅预订领域中的对话场景，分别为14.1K，26.5K，8.7K和8.5K个样本。</p>
 <blockquote>
-<p><strong>meta-learning</strong> 即元学习，也可以称为“ <strong>learning to learn</strong><br>”。常见的深度学习模型，目的是学习一个用于预测的数学模型。而元学习面向的不是学习的结果，而是学习的过程。其学习的不是一个直接用于预测的数学模型，而是学习“如何更快更好地学习一个数学模型”。<br> <strong>MAML</strong> （ <a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1703.03400.pdf" target="_blank" rel="noopener"> model-agnostic meta-learning
-</a><br>）的思想在于学习一个好的初始化权重，从而在新任务上实现fast adaptation，即训练好的模型能够在小规模的训练样本上迅速收敛并完成fine-<br>tune。MAML算法试图建立多任务的通用内部表示，并在应用于新任务时最大限度地提高损失函数的灵敏度，从而当参数有微小的更新能够极大地提高新任务的损失值。这也使得对话系统不仅是只需要较少的目标域数据，而且能够以更有效的方式成功地适应新的领域。<br> <a href="https://zhuanlan.zhihu.com/p/57864886" target="_blank" rel="noopener"> 徐安言：Model-Agnostic Meta-Learning （MAML）模型介绍及算法详解
-</a></p>
+<p>Baseline：TGen,  SC-LSTM, RALSTM, Slug</p>
+<p>Use the multi-taskcoefficient α= 0.5 in all experiments</p>
+<p>Use the BLEU-4  and  NIST metrics.</p>
 </blockquote>
-<p>具体来说，本文使用三个域: <em>餐馆、天气和公共汽车信息搜索</em> 作为源数据，目标域则为 <em>电影信息搜索</em> 。通过更改seq2seq编解码器网络模型 <a href="https://link.zhihu.com/?target=https%3A//www.comp.nus.edu.sg/~kanmy/papers/acl18-sequicity.pdf" target="_blank" rel="noopener"><br>Sequicity
-</a><br>，对其两阶段的CopyNet进行改进，通过实现MAML算法，使用源域的对话数据来实现最优初始化。然后使用常规梯度下降，用最少的对话框数据对目标域的初始化进行微调。最后，利用目标域的测试数据对自适应模型进行了评价。本文超越了最先进的zero<br>shot的基线， <a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1805.04803" target="_blank" rel="noopener"> ZSDG
-</a> (Zhao and<br>Eskenazi, 2018)，以及其他迁移学习方法。</p>
-<h2 id="Problem-Formulation"><a href="#Problem-Formulation" class="headerlink" title="Problem Formulation"></a>Problem Formulation</h2><p>本文基于seq2seq的对话模型将对话上下文  $\displaystyle c$  作为输入，并生成一个句子  $\displaystyle r$<br>作为响应。</p>
-<p>K个不同的source domain有丰富的数据, 则我们在每个源域  $\displaystyle S_k$  中都有训练数据，记作：</p>
-<p><img src=".\\81715745_assets\\v2-a239c7a06e5a77ab1853a679486af060_b.png" alt=""></p>
-<p>我们也将target domain T中的数据表示为：</p>
-<p><img src=".\\81715745_assets\\v2-6adf0928a095e2c80d22289e3b2e0be3_b.png" alt=""></p>
-<p>在训练过程中，生成模型：</p>
-<p><img src=".\\81715745_assets\\v2-cf88680adf06238be34ea45314eb6d34_b.png" alt=""></p>
-<p>其中  $\displaystyle C$  是上下文，  $\displaystyle R$  是系统响应。</p>
-<p>为了进行领域的适应，对模型  $\displaystyle M_{source}$  进行微调 ,利用的是目标域训练数据  $\displaystyle<br>D_{train}^{T}$  ，得到一个新的模型  $\displaystyle M_{target}$<br>。目标是学习到一个模型，可以在新的目标领域表现良好:</p>
-<h2 id="Proposed-Methods"><a href="#Proposed-Methods" class="headerlink" title="Proposed Methods"></a>Proposed Methods</h2><p><img src=".\\81715745_assets\\v2-555a4b0049cdc61ac7629f91d41817c7_b.jpg" alt=""></p>
-<p>首先介绍如何将MAML算法与序列模型相结合。如图1所示，典型的梯度下降包括 :</p>
-<p>(1)初始化模型上训练更多的数据 (2)计算目标损失函数 (3)利用损失更新模型参数。</p>
-<p>然而，对于MAML，有两个梯度更新步骤。</p>
-<p>图中的序号表示执行的先后顺序，  $\displaystyle M$  为初始化模型，k=1，2，3分别代表不同的source<br>domain，可以看到MAML采用了两次梯度更新（local和global）：</p>
-<p>1）先结合源域训练数据和初始模型，更新一步，计算loss, 得到一个临时model  $\displaystyle M_{k}^{‘}$  ；</p>
-<p>2）再从每个域及其对应的临时更新的域模型  $\displaystyle M_{k}^{‘}$  中计算出每个域新的meta-learning loss</p>
-<p>3）然后将所有的新域损失求和得到最终的损失；</p>
-<p>4）最后，使用final loss来更新原始模型M。</p>
-<p>不同于常见的梯度,在MAML中,用来更新模型的目标损失函数并不直接从当前模型  $\displaystyle M$  计算, 而是从临时<br>$\displaystyle M_{k}^{‘}$  模型计算。此操作背后的idea是,<br>从更新的模型计算损失函数对原始域的变化更敏感,可以了解更多关于源域的常见的内部表示，而不是每个领域的独有的特征。然后在自适应阶段，由于基本的内部表示已经被捕获，模型对新域的独特特征就会非常敏感。因此，只需要一个或几个梯度步骤和最少的数据量来优化模型到新的领域。</p>
-<p>接下来具体描述MAML算法和Sequicity模型结合的实现细节。如算法1所示，Sequicity模型以seq2seq的方式将自然语言理解、对话管理和响应生成结合起来，而元学习是一种调整损失函数值以实现更好优化的方法。</p>
-<p><img src=".\\81715745_assets\\v2-99b8fd6775962a0865093f9c67488e6f_b.jpg" alt=""></p>
-<p><a href="https://link.zhihu.com/?target=https%3A//www.comp.nus.edu.sg/~kanmy/papers/acl18-sequicity.pdf" target="_blank" rel="noopener"> Sequcity模型
-</a><br>是在单一的seq2seq模型的基础上构造的，该模型结合了copying mechanism和 belief span 来记录对话状态。<br>为了使用Sequcity模型，在  $\displaystyle t$  时刻将  $\displaystyle c$  用  $\displaystyle<br>\{B_{t - 1},R_{t - 1},U_t\}$  来表示，其中  $\displaystyle B_{t - 1}$  为在<br>$\displaystyle t - 1$  时刻的belief span，  $\displaystyle R_{t - 1}$  为上一次的系统响应，<br>$\displaystyle U_t$  是当前用户的话语。Sequicity模型引入了belief span来存储所有inform<br>slot的值，并在历史中记录request<br>slot的名称。通过这种方式，不需要将所有的历史语句放入一个RNN中来提取上下文特征，而是直接将存储在belief<br>span中的slot作为所有历史上下文的表示。belief span更准确、更简单地代表历史语境，需要在每一个环节进行更新。</p>
-<p>Sequcity模型的具体过程是,给定上下文  $\displaystyle c- &gt;\{B_{t - 1},R_{t - 1},U_t\}$  ,<br>$\displaystyle t$  时刻的belief span  $\displaystyle B_t$  则是根据在  $\displaystyle<br>t - 1$  时刻的  $\displaystyle B_{t - 1}$  ,  $\displaystyle R_{t - 1}$  ，以及<br>$\displaystyle t$  时刻的用户话语  $\displaystyle U_t$  提取的：</p>
-<p><img src=".\\81715745_assets\\v2-0cdb0b6fd3c8e811c9ec5963b5b38141_b.png" alt=""></p>
-<p>然后，根据之前提取的上下文和  $\displaystyle t$  时刻belief span生成系统响应  $\displaystyle R_t$  :</p>
-<p><img src=".\\81715745_assets\\v2-eaf1153591120fd754b7473e9b61f0ea_b.png" alt=""></p>
-<p>$\displaystyle m_t$  是一个帮助生成响应的简单标签。它检查存储在Bt是否有在数据库中有可用的信息。</p>
-<p><strong>将Sequcity模型与MAML算法结合：</strong></p>
-<p>由于MAML与任何基于梯度下降的模型兼容，所以将当前生成对话模型表示为  $\displaystyle M$  , 可以随机初始化。根据该算法，对每个源域<br>$\displaystyle S_k$  进行一定大小的训练数据采样  $\displaystyle (c^{(k)}, r^{(k)}) $<br>。在Sequicity模型中，输入训练数据  $\displaystyle (c^{(k)}, r^{(k)})$  ，得到生成的系统响应,<br>采用交叉熵作为所有域的损失函数：</p>
-<p><img src=".\\81715745_assets\\v2-e967aefa4b1a9b36df18903ef1142b9b_b.jpg" alt=""></p>
-<p>对于每个源域  $\displaystyle S_k$  ，使用梯度下降来更新并得到一个临时模型  $\displaystyle M_{k}^{‘}$  ：</p>
-<p><img src=".\\81715745_assets\\v2-a04a9b86688e43e76056aa614087bbaa_b.png" alt=""></p>
-<p>为了与(Finn et al.， 2017)文章保持一致，本文只更新了一步，这样在每个源域中都有一个更新的模型，且距离  $\displaystyle M$<br>只有一步。在以后的工作中，可以考虑多个步骤 的梯度更新。然后，根据更新的模型计算损失函数（其中每个源域中训练数据相同）:</p>
-<p><img src=".\\81715745_assets\\v2-47ed8f00b53e75ee8b09013a997206b0_b.png" alt=""></p>
-<p>在这一步之后，在每个域中都有元损失值。将所有源域的更新损失值汇总为meta learning的目标函数:</p>
-<p><img src=".\\81715745_assets\\v2-f499b1011d56465d1152fbfe4b6420fa_b.png" alt=""></p>
-<p>最后对模型进行更新，使元目标函数最小化：</p>
-<p><img src=".\\81715745_assets\\v2-e8c1cf73cf2817fb5a057a946f8a9d35_b.jpg" alt=""></p>
-<h2 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a><strong>Experiment</strong></h2><p>为了与最先进的领域自适应算法ZSDG (Zhao和 Eskenazi ,2018)相比较，本文使用SimDial数据集，该数据集首次用于评估ZSDG。</p>
-<p>SimDial中总共有6个对话域:restaurant、weather、bus、movie、restaurant-slot和restaurant-<br>style，本文选择restaurant、weather、bus作为源域，对于每个源域，有900、100、500个对话分别对应训练、验证和测试，每个会话有9个回合。其余三个域用于评估，它们被视为目标域。生成9个对话(占源域的1%)对每个域进行适应训练(fine<br>tune)，平均每个域包含约8.4轮。对于测试，为每个目标模型使用500个对话,<br>其中选择Movie作为新的评价目标域，是因为电影有完全不同的NLG模板和对话结构，几乎没有共同的特点。</p>
-<p><strong>Metrics</strong></p>
-<p>实验中有三个主要指标: BLEU分数，entity F1 score和adapting time。</p>
-<p>前两个指标是Finn等人(2017)使用的具有说服力的指标，证明了MAML对新任务的快速适应速度。</p>
-<ul>
-<li>使用BLEU评分, 是因为生成自然语言也是任务的一部分，因此评估生成的反应句的质量。 </li>
-<li>每个对话的实体F1得分为，比较生成的belief span，因为belief span包含所有限制响应的槽，所以这个分数也会检查任务的完整性。 </li>
-<li>领域适应时间，在适应训练过程中，计算epochs的数量。 </li>
-</ul>
-<p><img src=".\\81715745_assets\\v2-4077afafbf8b20179ce96b3479ec48d3_b.png" alt=""><br><img src=".\\81715745_assets\\v2-cee83628e5494c3a1bb5953e3fd5df9a_b.png" alt=""><br><img src=".\\81715745_assets\\v2-45b2319d7ac14570bf283aa391d4fc09_b.jpg" alt=""></p>
-<p>表1: 该模型在训练中对餐厅领域进行了额外的微调。“In Domain”使用所有三个源域 (餐厅、天气、公交车)，而“New<br>Domain”指的是电影领域。当给定相似的目标域数据时，DAML的性能优于ZSDG和迁移学习。</p>
-<h2 id="Conclusion-and-Future-Work"><a href="#Conclusion-and-Future-Work" class="headerlink" title="Conclusion and Future Work"></a>Conclusion and Future Work</h2><p>本文提出了一种基于元学习的领域自适应对话生成方法。构建了一个端到端可训练的对话系统，该系统利用两步梯度更新来获得对新领域更敏感的模型。在一个具有多个独立域的模拟数据集上评估模型。与zero-<br>shot学习方法和迁移学习方法相比，DAML在实体F1中达到了最先进的性能。因此认为DAML是一种有效的、鲁棒的低资源对话系统训练方法。</p>
-<p>DAML还提供了很有潜力的扩展，例如将DAML应用于基于增强学习的对话系统。文中还计划使DAML适应多域对话任务。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li>Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks </li>
-</ol>
-<p><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1703.03400.pdf" target="_blank" rel="noopener"> https://  arxiv.org/pdf/1703.0340  0.pdf
-</a></p>
-<p>2. Zero-Shot Dialog Generation with Cross-Domain Latent Actions</p>
-<p><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1805.04803" target="_blank" rel="noopener"> https://  arxiv.org/pdf/1805.0480  3
-</a></p>
-<p>3. Sequicity: Simplifying Task-oriented Dialogue Systems with Single<br>Sequence-to-Sequence Architectures</p>
-<p><a href="https://link.zhihu.com/?target=https%3A//www.comp.nus.edu.sg/~kanmy/papers/acl18-sequicity.pdf" target="_blank" rel="noopener"> https://www.  comp.nus.edu.sg/~kanmy/  papers/acl18-sequicity.pdf
-</a></p>
-<p>再次post一下我滴某乎~<br><a href="https://zhuanlan.zhihu.com/p/81715745" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/81715745</a></p>
+<p><img src="http://image.sherlocknlp.com//20191108094718_UjN2X6_Screenshot.png" style="zoom:50%;"></p>
+<p>Conclusion</p>
+<blockquote>
+<p>本文提出了一种新的多任务学习方法 NLG-LM。它将语言模型任务作为无条件的补充过程整合到响应生成过程中，以提高生成话语的自然度。在多任务学习模式下，将这两个任务都安排在一个序列到序列的结构中。实验结果表明，该算法在5个大规模数据集上都有较好的性能，计算效率较高。消融实验显示了在多任务模式下使用语言建模任务的有效性。</p>
+</blockquote>
+<p>Sih: 将NLG的响应生成与语言模型结合，一起学习，共享decoder，作为多任务学习（Multi task）， NLG-LM的输入用的是pipeline模型的DM的输出，是one-hot编码（竟然！我们pipeline还是有未来的…）。</p>
+<p>和传统多任务学习相似，但和我看到abstract时的想法不太一致， 以为是Multi task learning的应用，呜呜…。</p>
 
         </div>
         
@@ -328,7 +310,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        9
                     </p>
                 </div>
             </div>
@@ -394,17 +376,17 @@
                 <span class="level-item">Dialogue system</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">5</span>
             </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Dialogue-system-meta-learning/">
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Dialogue-system/meta-learning/">
             <span class="level-start">
-                <span class="level-item">Dialogue system, meta-learning</span>
+                <span class="level-item">meta-learning</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li><li>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/NLG/">
             <span class="level-start">
                 <span class="level-item">NLG</span>
@@ -470,7 +452,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Dialogue-system-meta-learning/" style="font-size: 10px;">Dialogue system, meta-learning</a> <a href="/tags/NLG-Multi-task/" style="font-size: 10px;">NLG Multi-task</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
         
@@ -512,7 +494,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
                     <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system-meta-learning/">Dialogue system, meta-learning</a>
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a> / <a class="has-link-grey -link" href="/categories/Dialogue-system/meta-learning/">meta-learning</a>
                     </p>
                 </div>
             </div>
@@ -686,20 +668,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Dialogue-system/">
                         <span class="tag">Dialogue system</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Dialogue-system-meta-learning/">
-                        <span class="tag">Dialogue system, meta-learning</span>
+                    <a class="tags has-addons" href="/tags/Multi-task/">
+                        <span class="tag">Multi-task</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/NLG-Multi-task/">
-                        <span class="tag">NLG Multi-task</span>
+                    <a class="tags has-addons" href="/tags/NLG/">
+                        <span class="tag">NLG</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -721,6 +703,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/jupyter/">
                         <span class="tag">jupyter</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/meta-learning/">
+                        <span class="tag">meta-learning</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -755,7 +744,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Dialogue-system-meta-learning/" style="font-size: 10px;">Dialogue system, meta-learning</a> <a href="/tags/NLG-Multi-task/" style="font-size: 10px;">NLG Multi-task</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
     
@@ -797,7 +786,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
                     <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system-meta-learning/">Dialogue system, meta-learning</a>
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a> / <a class="has-link-grey -link" href="/categories/Dialogue-system/meta-learning/">meta-learning</a>
                     </p>
                 </div>
             </div>
@@ -971,20 +960,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Dialogue-system/">
                         <span class="tag">Dialogue system</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Dialogue-system-meta-learning/">
-                        <span class="tag">Dialogue system, meta-learning</span>
+                    <a class="tags has-addons" href="/tags/Multi-task/">
+                        <span class="tag">Multi-task</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/NLG-Multi-task/">
-                        <span class="tag">NLG Multi-task</span>
+                    <a class="tags has-addons" href="/tags/NLG/">
+                        <span class="tag">NLG</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1006,6 +995,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/jupyter/">
                         <span class="tag">jupyter</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/meta-learning/">
+                        <span class="tag">meta-learning</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1040,7 +1036,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Dialogue-system-meta-learning/" style="font-size: 10px;">Dialogue system, meta-learning</a> <a href="/tags/NLG-Multi-task/" style="font-size: 10px;">NLG Multi-task</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
     
@@ -1082,7 +1078,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
                     <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system-meta-learning/">Dialogue system, meta-learning</a>
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a> / <a class="has-link-grey -link" href="/categories/Dialogue-system/meta-learning/">meta-learning</a>
                     </p>
                 </div>
             </div>
@@ -1256,20 +1252,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Dialogue-system/">
                         <span class="tag">Dialogue system</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Dialogue-system-meta-learning/">
-                        <span class="tag">Dialogue system, meta-learning</span>
+                    <a class="tags has-addons" href="/tags/Multi-task/">
+                        <span class="tag">Multi-task</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/NLG-Multi-task/">
-                        <span class="tag">NLG Multi-task</span>
+                    <a class="tags has-addons" href="/tags/NLG/">
+                        <span class="tag">NLG</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1291,6 +1287,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/jupyter/">
                         <span class="tag">jupyter</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/meta-learning/">
+                        <span class="tag">meta-learning</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
