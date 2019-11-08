@@ -9,93 +9,93 @@
   </url>
   
   <url>
-    <loc>https://liusih.github.io/2019/09/09/Domain%20Adaptive%20Dialog%20Generation%20via%20Meta%20Learning/</loc>
-    
-    <lastmod>2019-09-10T03:09:59.772Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2019/06/09/Visual%20Dialog%20%E6%80%BB%E7%BB%93/</loc>
-    
-    <lastmod>2019-06-09T05:34:18.409Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2019/05/12/%E5%8C%BB%E7%96%97%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F/</loc>
-    
-    <lastmod>2019-06-05T09:12:05.354Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2019/05/21/naacl2019%20Rethinking%20Action%20Spaces%20for%20Reinforcement%20Learning%20in%20End-to-end%20Dialog%20Agents%20with%20Latent%20Variable%20Models/</loc>
-    
-    <lastmod>2019-05-21T07:22:33.357Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2018/09/25/jupyter%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2019-05-21T06:52:55.332Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2018/11/23/RL-algrithm/</loc>
-    
-    <lastmod>2019-05-21T06:52:31.541Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2018/09/25/w2v%E8%AF%8D%E5%90%91%E9%87%8F%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AE%AD%E7%BB%83%E5%92%8C%E4%BD%BF%E7%94%A8/</loc>
-    
-    <lastmod>2019-05-21T06:51:00.696Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2019/03/04/Switch-based-Active-Deep-Dyna-Q-Efficient-Adaptive-Planning-for-Task-Completion-Dialogue-Policy-LearningLearning/</loc>
-    
-    <lastmod>2019-05-13T02:28:47.678Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2019/04/25/ConvLab/</loc>
-    
-    <lastmod>2019-05-13T01:43:21.208Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/about/index.html</loc>
-    
-    <lastmod>2019-04-23T14:36:55.670Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://liusih.github.io/tags/index.html</loc>
     
-    <lastmod>2019-04-23T14:35:54.511Z</lastmod>
+    <lastmod>2019-11-06T03:34:50.157Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://liusih.github.io/categories/index.html</loc>
     
-    <lastmod>2019-04-23T14:35:23.358Z</lastmod>
+    <lastmod>2019-11-06T03:34:49.289Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/about/index.html</loc>
+    
+    <lastmod>2019-11-06T03:34:48.251Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2019/05/12/%E5%8C%BB%E7%96%97%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F/</loc>
+    
+    <lastmod>2019-11-06T03:34:47.427Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2018/09/25/w2v%E8%AF%8D%E5%90%91%E9%87%8F%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AE%AD%E7%BB%83%E5%92%8C%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2019-11-06T03:34:46.214Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2019/05/21/naacl2019%20Rethinking%20Action%20Spaces%20for%20Reinforcement%20Learning%20in%20End-to-end%20Dialog%20Agents%20with%20Latent%20Variable%20Models/</loc>
+    
+    <lastmod>2019-11-06T03:34:45.143Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2018/09/25/jupyter%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2019-11-06T03:34:44.256Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2019/06/09/Visual%20Dialog%20%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2019-11-06T03:34:43.047Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2019/03/04/Switch-based-Active-Deep-Dyna-Q-Efficient-Adaptive-Planning-for-Task-Completion-Dialogue-Policy-LearningLearning/</loc>
+    
+    <lastmod>2019-11-06T03:34:42.439Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://liusih.github.io/2018/11/08/Today's%20user%20simulator/</loc>
     
-    <lastmod>2018-11-24T07:15:57.797Z</lastmod>
+    <lastmod>2019-11-06T03:34:41.961Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2019/09/09/Domain%20Adaptive%20Dialog%20Generation%20via%20Meta%20Learning/</loc>
+    
+    <lastmod>2019-11-06T03:34:41.112Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2018/11/23/RL-algrithm/</loc>
+    
+    <lastmod>2019-11-06T03:34:41.025Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2019/04/25/ConvLab/</loc>
+    
+    <lastmod>2019-11-06T03:34:40.065Z</lastmod>
     
   </url>
   
