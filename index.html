@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.7.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Sih Blog</title>
+
+
+    <meta name="description" content="A NLP/RL learner.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sih Blog">
+<meta property="og:url" content="https://liusih.github.io/index.html">
+<meta property="og:site_name" content="Sih Blog">
+<meta property="og:description" content="A NLP/RL learner.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://liusih.github.io/images/og_image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sih Blog">
+<meta name="twitter:description" content="A NLP/RL learner.">
+<meta name="twitter:image" content="https://liusih.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body class="is-3-column">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Sih Blog" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item is-active"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-24T16:00:00.000Z">2019-09-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/NLG/">NLG</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    19 minutes read (About 2834 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/">Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</a>
+            
+        </h1>
+        <div class="content">
+            <p>EMNLP 2019 任务型对话整理</p>
+<h4 id="Multi-task-Learning-for-Natural-Language-Generation-in-Task-Oriented-Dialogue"><a href="#Multi-task-Learning-for-Natural-Language-Generation-in-Task-Oriented-Dialogue" class="headerlink" title="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue"></a>Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</h4><h5 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h5><p>在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中，我们提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语言模型明确地针对生成响应的自然相关性。这对提高人类语言的风格和多样性有重要意义。实验结果表明，该多任务学习框架在多数据集的学习效果优于已有的多任务学习框架。例如，它将以前E2E-NLG数据集上的最佳BLEU评分提高了2.2%，将笔记本数据集上的最佳BLEU评分提高了6.1%。</p>
+<h5 id="Intro"><a href="#Intro" class="headerlink" title="Intro:"></a>Intro:</h5><p>Challenge: 由于NLG直接面向用户，其可读性和信息量直接影响用户对整个对话系统的感知。一方面，为了提供或请求用户的信息，响应必须包含所需的信息，即meaning representation(MR)。另一方面，系统响应需要模仿人类语言的流动性和变异性来提高用户体验。早期的工作主要采用预定义的规则语法，尽管这些框架可以提供足够的信息，但是它们缺乏语言的自然性和变化性，使得响应非常僵化。此外，这些方法通常需要费力气的手工工作来创建模板，从而使它们无法跨域扩展。</p>
+<p>Method: 由于面向任务的对话数据通常包含丰富的人类响应，因此利用语言建模技术提高NLG模型模拟人类语言的能力具有很大的潜力。</p>
+<blockquote>
+<p>meaning representation(MR)</p>
+</blockquote>
+<p>本文方法： 本文提出了一个多任务方案来解决面向任务的对话中的自然语言生成问题。对于NLG任务，我们使用了一个equence-to-sequence的框架。解码器使用一种attention机制传送信息，从编码器处编码的一个MR序列。因此，NLG任务生成响应的条件是输入MR。</p>
+<p>我们工作的主要贡献是将语言建模任务整合到人为生成的响应中，作为无条件的补充过程，引入更多与语言相关的元素，而无需干预MR信息。此外，语言建模的非监督性质意味着我们不需要额外的标记数据。因此，在多任务学习框架下，我们同时训练NLG和语言建模任务。为了促进多任务学习，我们在解码器中执行语言建模任务，并且部分共享来自NLG任务的参数。</p>
+<p>为了评估模型NLG-LM的有效性，本文对5个任务导向的对话任务进行了评估: E2E-NLG、电视、笔记本电脑、酒店和餐厅数据集。NLG-LM在所有5个数据集上达到了新的SOTA。例如，它超过了最优秀的E2E-NLG竞争对手Slug，在BLEUscore的成绩为2.2%。消融研究表明，在训练过程中引入语言建模任务可以使BLEU分数平均提高2.4%。</p>
+<h5 id="Problem-setting"><a href="#Problem-setting" class="headerlink" title="Problem setting"></a>Problem setting</h5><blockquote>
+<p>Pipeline 模型，根据DM生成的action（槽值对），本文叫MR（。Q_Q。），来生成自然语言。</p>
+</blockquote>
+<p>在面向任务的对话中，自然语言生成(NLG)过程是将系统话语作为自然语言生成，给定系统生成的意义表示MR，这些表示来自pipeline模型之前的步骤。每个MR是一个槽值对，槽表示要传递的信息的类别，值表示内容。</p>
+<p>Dialogue acts被用来区分不同类型的系统动作。典型的对话行为包括inform, request, confirm。对于给定的意义表示，NLG过程应该为不同的对话行为生成不同的话语。例如，confirm dialogue act通常会导致系统以“Let me confirm” or “Correct me if I’m wrong” 开始。</p>
+<p><img src="http://image.sherlocknlp.com//20191107113957_j21Olk_WechatIMG1.jpeg" alt=""></p>
+<p>给定训练数据${（di，ri，ui）}$，其中di是对话行为，$ri = {（s1，v1），（s2，v2），…，（sk，vk）}$是含义表示的集合，ui是样本是由人类标记者产生的话语，目的是通过一对新的对话行为d和意义表示r来产生话语u。</p>
+<p>地点等实体用特殊token代替。</p>
+<h5 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h5><p>先将对话动作d和意义表示r连接在一起作为单个输入序列I，有m个token。从给定的话语u中获得输出序列O，有n个token。两个序列都被去词化。在每个序列周围放置特殊的句子标记<bos>和<eos>。</eos></bos></p>
+<p>模型训练的目标是在给定先前预测的token和输入序列的前提下，一次生成一个输出token。</p>
+<p>可以将其建模为最大化条件概率分布：</p>
+<p><img src="http://image.sherlocknlp.com//20191107154819_LdQqnB_Screenshot.png" style="zoom:50%;"></p>
+<h6 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder:"></a>Encoder:</h6><p>我们训练一个dictionary D来将每个token映射到一维定长向量。</p>
+<p>输入的embedding序列然后进入双向RNN层以生成contextualized embedding。</p>
+<p>我们使用GRU作为RNN单元，并汇总前向和后向RNN输出。</p>
+<p>编码器的输出用$（u1，…，um）∈R^{d_h×m}$表示，其中$d_h$是RNN的输出尺寸，m是输入序列长度。</p>
+<h6 id="Decoder："><a href="#Decoder：" class="headerlink" title="Decoder："></a>Decoder：</h6><p>解码器采用具有注意力机制的RNN，一次生成一个令牌。它从 beginning-of-sentence 的 token开始，并使用encoder RNN的最终隐藏状态作为初始隐藏状态。</p>
+<p>在第t步中，我们使用编码器中相同的字典D，将第t个输出token映射到向量$s_t$, 并且dropout。</p>
+<p>然后，给定先前的隐藏状态$h_{t-1}$，解码器首先计算编码器输出的注意力权重：</p>
+<p><img src="http://image.sherlocknlp.com//20191107160354_4TP5CM_Screenshot.png" style="zoom:50%;"></p>
+<p>然后将权重$α$应用于编码器的输出,以获得上下文向量 $c ＝ α_iu_i$。</p>
+<p>然后将上下文向量 c 和嵌入向量 $s_t$连接起来，并发送到解码器GRU中，输出为g和新的隐藏状态ht.</p>
+<p>为了生成下一个token，我们重用了dictionary D及其转置的权重 $W_{D^1}$。我们再次集成上下文向量来融合上下文信息：</p>
+<p><img src="http://image.sherlocknlp.com//20191107161355_MDZ5z9_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.13.36.png" style="zoom:50%;"></p>
+<p>其中$W_2$是参数化矩阵。$p_t$下一个token在字典中所有token上的概率分布。</p>
+<p>损失函数是交叉熵。假设第t步的one-hot向量是 $y_t$ (谁的one-hot向量？？), 那么每个训练样本序列对的损失函数是:</p>
+<p><img src="http://image.sherlocknlp.com//20191107161747_KdgeTP_Screenshot.png" style="zoom:50%;"></p>
+<h5 id="与语言模型耦合"><a href="#与语言模型耦合" class="headerlink" title="与语言模型耦合"></a>与语言模型耦合</h5><blockquote>
+<p>上面介绍了在NLG中如何在字典中选token，下面介绍如何融入语言模型。</p>
+</blockquote>
+<p>上面的编码器-解码器方法通过attention机制，在每个步骤中将对话动作d和含义表示r的信息合并在一起。</p>
+<p>但是，由于这种机制，所产生的话语在很大程度上不可避免地依赖于输入顺序，而较少地关注人类语言的流畅性和变化性，但是这一点与在面向任务的对话中传达所需信息一样重要。另一方面，语言建模通常用于刻画单词，短语和句子的自然性。</p>
+<p>一个训练有素的语言模型可以在自然和语义上比僵硬和不自然的句子获得更高的分数。</p>
+<p>在深度学习中，语言模型任务通常由递归神经网络解决，但是，与(1)式不同的是，语言模型中出现下一个token的概率只依赖于前面的单词，而不依赖于输入序列：</p>
+<p><img src="http://image.sherlocknlp.com//20191107162515_AUF1wL_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.24.57.png" style="zoom:50%;"></p>
+<p>我们认为，通过将语言建模作为一个额外的目标集成到NLG过程中，生成的句子将更好地接近人类反应的风格和变化。为此，我们将另一个GRU单元$GRU^{LM}$添加到解码器中，该解码器具有自己的隐藏状态 $h^{LM}_{t-1}$， 并接受嵌入向量$s_t$作为输入。输出是 $g^{LM}$和新的隐藏状态 $h^{LM}_{t}$。在语言模型中，下一个token的概率分布为:</p>
+<p><img src="http://image.sherlocknlp.com//20191107163119_mN2eYz_Screenshot.png" style="zoom:50%;"></p>
+<p>其中W2[:dh]为W2的第dh列。可以看出，上下文c并不影响语言建模的概率计算。语言模型的损失函数为:</p>
+<p><img src="http://image.sherlocknlp.com//20191107163254_V30BS5_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.32.33.png" style="zoom:50%;"></p>
+<p>最后，我们将这两个损失函数线性地合并成一个单一的多任务损失函数:</p>
+<p>$$L(θ) =L^{NLG}(θ) +αL^{LM}(θ)$$</p>
+<p>图1中描述了模型结构。如图所示，词典D在NLG任务和语言建模任务之间共享。</p>
+<p><img src="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png" style="zoom:50%;"></p>
+<h5 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h5><p>本文评估了来自不同领域的五个数据集的模型，包括了餐厅预订，酒店预订和零售。最大的数据集来自E2E-NLG任务，由餐厅区域内的51.2K个MR话语对组成。还使用RNN-LG的四个数据集，包括电视零售，笔记本电脑零售，酒店预订和餐厅预订领域中的对话场景，分别为14.1K，26.5K，8.7K和8.5K个样本。</p>
+<blockquote>
+<p>Baseline：TGen,  SC-LSTM, RALSTM, Slug</p>
+<p>Use the multi-taskcoefficient α= 0.5 in all experiments</p>
+<p>Use the BLEU-4  and  NIST metrics.</p>
+</blockquote>
+<p><img src="http://image.sherlocknlp.com//20191108094718_UjN2X6_Screenshot.png" style="zoom:50%;"></p>
+<p>Conclusion</p>
+<blockquote>
+<p>本文提出了一种新的多任务学习方法 NLG-LM。它将语言模型任务作为无条件的补充过程整合到响应生成过程中，以提高生成话语的自然度。在多任务学习模式下，将这两个任务都安排在一个序列到序列的结构中。实验结果表明，该算法在5个大规模数据集上都有较好的性能，计算效率较高。消融实验显示了在多任务模式下使用语言建模任务的有效性。</p>
+</blockquote>
+<p>Sih: 将NLG的响应生成与语言模型结合，一起学习，共享decoder，作为多任务学习（Multi task）， NLG-LM的输入用的是pipeline模型的DM的输出，是one-hot编码（竟然！我们pipeline还是有未来的…）。</p>
+<p>和传统多任务学习相似，但和我看到abstract时的想法不太一致， 以为是Multi task learning的应用，呜呜…。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Dialogue-system-meta-learning/">Dialogue system, meta-learning</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    23 minutes read (About 3384 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/">Domain Adaptive Dialog Generation via Meta Learning</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+</blockquote>
+<p>题目：Domain Adaptive Dialog Generation via Meta Learning  </p>
+<blockquote>
+<p> <strong>来源：</strong> ACL 2019<br> <strong>原文链接：</strong> <a href="https://link.zhihu.com/?target=https%3A//arxiv.org/abs/1906.03520" target="_blank" rel="noopener"> https://  arxiv.org/abs/1906.0352  0
+</a>  </p>
+</blockquote>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h2><p><strong>问题</strong><br>：领域适配是对话系统中的一项重要任务，因为根据不同的需求，每天都有许多新的对话任务产生，为这些新任务收集和注释训练数据的成本很高，因为它涉及到与真实用户的交互。因此将现有的丰富资源领域的数据适应于资源有限的新领域是对话系统研究中的一项重要任务。</p>
+<p><strong>现有解决方法</strong> ：Transfer learning、few-shot learning、meta-<br>learning等介绍了如何解决机器学习中的数据稀缺问题。由于每个对话域之间的差异很大，因此将信息从富资源域泛化到另一个低资源域非常困难。</p>
+<p><strong>本文的方法</strong> ：所以本文提出了一种基于元学习（meta-learning<br>）的领域自适应对话生成方法DAML。DAML是一个端到端可训练的对话系统模型，它从具有丰富资源的领域任务中学习，然后用最少的训练样本适应到新的领域。通过将模型无关的元学习算法（<br><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1703.03400.pdf" target="_blank" rel="noopener"> model-agnostic meta-learning
+</a><br>MAML）应用于对话域，利用多个单域对话数据和丰富的资源来训练对话系统模型，将训练中的多个对话任务结合起来，学习适用于新领域的通用和可转移信息。使得该模型仅通过少量的训练实例，就能在一个新的领域有效地学习一个具有竞争力的对话系统。</p>
+<blockquote>
+<p><strong>meta-learning</strong> 即元学习，也可以称为“ <strong>learning to learn</strong><br>”。常见的深度学习模型，目的是学习一个用于预测的数学模型。而元学习面向的不是学习的结果，而是学习的过程。其学习的不是一个直接用于预测的数学模型，而是学习“如何更快更好地学习一个数学模型”。<br> <strong>MAML</strong> （ <a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1703.03400.pdf" target="_blank" rel="noopener"> model-agnostic meta-learning
+</a><br>）的思想在于学习一个好的初始化权重，从而在新任务上实现fast adaptation，即训练好的模型能够在小规模的训练样本上迅速收敛并完成fine-<br>tune。MAML算法试图建立多任务的通用内部表示，并在应用于新任务时最大限度地提高损失函数的灵敏度，从而当参数有微小的更新能够极大地提高新任务的损失值。这也使得对话系统不仅是只需要较少的目标域数据，而且能够以更有效的方式成功地适应新的领域。<br> <a href="https://zhuanlan.zhihu.com/p/57864886" target="_blank" rel="noopener"> 徐安言：Model-Agnostic Meta-Learning （MAML）模型介绍及算法详解
+</a></p>
+</blockquote>
+<p>具体来说，本文使用三个域: <em>餐馆、天气和公共汽车信息搜索</em> 作为源数据，目标域则为 <em>电影信息搜索</em> 。通过更改seq2seq编解码器网络模型 <a href="https://link.zhihu.com/?target=https%3A//www.comp.nus.edu.sg/~kanmy/papers/acl18-sequicity.pdf" target="_blank" rel="noopener"><br>Sequicity
+</a><br>，对其两阶段的CopyNet进行改进，通过实现MAML算法，使用源域的对话数据来实现最优初始化。然后使用常规梯度下降，用最少的对话框数据对目标域的初始化进行微调。最后，利用目标域的测试数据对自适应模型进行了评价。本文超越了最先进的zero<br>shot的基线， <a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1805.04803" target="_blank" rel="noopener"> ZSDG
+</a> (Zhao and<br>Eskenazi, 2018)，以及其他迁移学习方法。</p>
+<h2 id="Problem-Formulation"><a href="#Problem-Formulation" class="headerlink" title="Problem Formulation"></a>Problem Formulation</h2><p>本文基于seq2seq的对话模型将对话上下文  $\displaystyle c$  作为输入，并生成一个句子  $\displaystyle r$<br>作为响应。</p>
+<p>K个不同的source domain有丰富的数据, 则我们在每个源域  $\displaystyle S_k$  中都有训练数据，记作：</p>
+<p><img src=".\\81715745_assets\\v2-a239c7a06e5a77ab1853a679486af060_b.png" alt=""></p>
+<p>我们也将target domain T中的数据表示为：</p>
+<p><img src=".\\81715745_assets\\v2-6adf0928a095e2c80d22289e3b2e0be3_b.png" alt=""></p>
+<p>在训练过程中，生成模型：</p>
+<p><img src=".\\81715745_assets\\v2-cf88680adf06238be34ea45314eb6d34_b.png" alt=""></p>
+<p>其中  $\displaystyle C$  是上下文，  $\displaystyle R$  是系统响应。</p>
+<p>为了进行领域的适应，对模型  $\displaystyle M_{source}$  进行微调 ,利用的是目标域训练数据  $\displaystyle<br>D_{train}^{T}$  ，得到一个新的模型  $\displaystyle M_{target}$<br>。目标是学习到一个模型，可以在新的目标领域表现良好:</p>
+<h2 id="Proposed-Methods"><a href="#Proposed-Methods" class="headerlink" title="Proposed Methods"></a>Proposed Methods</h2><p><img src=".\\81715745_assets\\v2-555a4b0049cdc61ac7629f91d41817c7_b.jpg" alt=""></p>
+<p>首先介绍如何将MAML算法与序列模型相结合。如图1所示，典型的梯度下降包括 :</p>
+<p>(1)初始化模型上训练更多的数据 (2)计算目标损失函数 (3)利用损失更新模型参数。</p>
+<p>然而，对于MAML，有两个梯度更新步骤。</p>
+<p>图中的序号表示执行的先后顺序，  $\displaystyle M$  为初始化模型，k=1，2，3分别代表不同的source<br>domain，可以看到MAML采用了两次梯度更新（local和global）：</p>
+<p>1）先结合源域训练数据和初始模型，更新一步，计算loss, 得到一个临时model  $\displaystyle M_{k}^{‘}$  ；</p>
+<p>2）再从每个域及其对应的临时更新的域模型  $\displaystyle M_{k}^{‘}$  中计算出每个域新的meta-learning loss</p>
+<p>3）然后将所有的新域损失求和得到最终的损失；</p>
+<p>4）最后，使用final loss来更新原始模型M。</p>
+<p>不同于常见的梯度,在MAML中,用来更新模型的目标损失函数并不直接从当前模型  $\displaystyle M$  计算, 而是从临时<br>$\displaystyle M_{k}^{‘}$  模型计算。此操作背后的idea是,<br>从更新的模型计算损失函数对原始域的变化更敏感,可以了解更多关于源域的常见的内部表示，而不是每个领域的独有的特征。然后在自适应阶段，由于基本的内部表示已经被捕获，模型对新域的独特特征就会非常敏感。因此，只需要一个或几个梯度步骤和最少的数据量来优化模型到新的领域。</p>
+<p>接下来具体描述MAML算法和Sequicity模型结合的实现细节。如算法1所示，Sequicity模型以seq2seq的方式将自然语言理解、对话管理和响应生成结合起来，而元学习是一种调整损失函数值以实现更好优化的方法。</p>
+<p><img src=".\\81715745_assets\\v2-99b8fd6775962a0865093f9c67488e6f_b.jpg" alt=""></p>
+<p><a href="https://link.zhihu.com/?target=https%3A//www.comp.nus.edu.sg/~kanmy/papers/acl18-sequicity.pdf" target="_blank" rel="noopener"> Sequcity模型
+</a><br>是在单一的seq2seq模型的基础上构造的，该模型结合了copying mechanism和 belief span 来记录对话状态。<br>为了使用Sequcity模型，在  $\displaystyle t$  时刻将  $\displaystyle c$  用  $\displaystyle<br>\{B_{t - 1},R_{t - 1},U_t\}$  来表示，其中  $\displaystyle B_{t - 1}$  为在<br>$\displaystyle t - 1$  时刻的belief span，  $\displaystyle R_{t - 1}$  为上一次的系统响应，<br>$\displaystyle U_t$  是当前用户的话语。Sequicity模型引入了belief span来存储所有inform<br>slot的值，并在历史中记录request<br>slot的名称。通过这种方式，不需要将所有的历史语句放入一个RNN中来提取上下文特征，而是直接将存储在belief<br>span中的slot作为所有历史上下文的表示。belief span更准确、更简单地代表历史语境，需要在每一个环节进行更新。</p>
+<p>Sequcity模型的具体过程是,给定上下文  $\displaystyle c- &gt;\{B_{t - 1},R_{t - 1},U_t\}$  ,<br>$\displaystyle t$  时刻的belief span  $\displaystyle B_t$  则是根据在  $\displaystyle<br>t - 1$  时刻的  $\displaystyle B_{t - 1}$  ,  $\displaystyle R_{t - 1}$  ，以及<br>$\displaystyle t$  时刻的用户话语  $\displaystyle U_t$  提取的：</p>
+<p><img src=".\\81715745_assets\\v2-0cdb0b6fd3c8e811c9ec5963b5b38141_b.png" alt=""></p>
+<p>然后，根据之前提取的上下文和  $\displaystyle t$  时刻belief span生成系统响应  $\displaystyle R_t$  :</p>
+<p><img src=".\\81715745_assets\\v2-eaf1153591120fd754b7473e9b61f0ea_b.png" alt=""></p>
+<p>$\displaystyle m_t$  是一个帮助生成响应的简单标签。它检查存储在Bt是否有在数据库中有可用的信息。</p>
+<p><strong>将Sequcity模型与MAML算法结合：</strong></p>
+<p>由于MAML与任何基于梯度下降的模型兼容，所以将当前生成对话模型表示为  $\displaystyle M$  , 可以随机初始化。根据该算法，对每个源域<br>$\displaystyle S_k$  进行一定大小的训练数据采样  $\displaystyle (c^{(k)}, r^{(k)}) $<br>。在Sequicity模型中，输入训练数据  $\displaystyle (c^{(k)}, r^{(k)})$  ，得到生成的系统响应,<br>采用交叉熵作为所有域的损失函数：</p>
+<p><img src=".\\81715745_assets\\v2-e967aefa4b1a9b36df18903ef1142b9b_b.jpg" alt=""></p>
+<p>对于每个源域  $\displaystyle S_k$  ，使用梯度下降来更新并得到一个临时模型  $\displaystyle M_{k}^{‘}$  ：</p>
+<p><img src=".\\81715745_assets\\v2-a04a9b86688e43e76056aa614087bbaa_b.png" alt=""></p>
+<p>为了与(Finn et al.， 2017)文章保持一致，本文只更新了一步，这样在每个源域中都有一个更新的模型，且距离  $\displaystyle M$<br>只有一步。在以后的工作中，可以考虑多个步骤 的梯度更新。然后，根据更新的模型计算损失函数（其中每个源域中训练数据相同）:</p>
+<p><img src=".\\81715745_assets\\v2-47ed8f00b53e75ee8b09013a997206b0_b.png" alt=""></p>
+<p>在这一步之后，在每个域中都有元损失值。将所有源域的更新损失值汇总为meta learning的目标函数:</p>
+<p><img src=".\\81715745_assets\\v2-f499b1011d56465d1152fbfe4b6420fa_b.png" alt=""></p>
+<p>最后对模型进行更新，使元目标函数最小化：</p>
+<p><img src=".\\81715745_assets\\v2-e8c1cf73cf2817fb5a057a946f8a9d35_b.jpg" alt=""></p>
+<h2 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a><strong>Experiment</strong></h2><p>为了与最先进的领域自适应算法ZSDG (Zhao和 Eskenazi ,2018)相比较，本文使用SimDial数据集，该数据集首次用于评估ZSDG。</p>
+<p>SimDial中总共有6个对话域:restaurant、weather、bus、movie、restaurant-slot和restaurant-<br>style，本文选择restaurant、weather、bus作为源域，对于每个源域，有900、100、500个对话分别对应训练、验证和测试，每个会话有9个回合。其余三个域用于评估，它们被视为目标域。生成9个对话(占源域的1%)对每个域进行适应训练(fine<br>tune)，平均每个域包含约8.4轮。对于测试，为每个目标模型使用500个对话,<br>其中选择Movie作为新的评价目标域，是因为电影有完全不同的NLG模板和对话结构，几乎没有共同的特点。</p>
+<p><strong>Metrics</strong></p>
+<p>实验中有三个主要指标: BLEU分数，entity F1 score和adapting time。</p>
+<p>前两个指标是Finn等人(2017)使用的具有说服力的指标，证明了MAML对新任务的快速适应速度。</p>
+<ul>
+<li>使用BLEU评分, 是因为生成自然语言也是任务的一部分，因此评估生成的反应句的质量。 </li>
+<li>每个对话的实体F1得分为，比较生成的belief span，因为belief span包含所有限制响应的槽，所以这个分数也会检查任务的完整性。 </li>
+<li>领域适应时间，在适应训练过程中，计算epochs的数量。 </li>
+</ul>
+<p><img src=".\\81715745_assets\\v2-4077afafbf8b20179ce96b3479ec48d3_b.png" alt=""><br><img src=".\\81715745_assets\\v2-cee83628e5494c3a1bb5953e3fd5df9a_b.png" alt=""><br><img src=".\\81715745_assets\\v2-45b2319d7ac14570bf283aa391d4fc09_b.jpg" alt=""></p>
+<p>表1: 该模型在训练中对餐厅领域进行了额外的微调。“In Domain”使用所有三个源域 (餐厅、天气、公交车)，而“New<br>Domain”指的是电影领域。当给定相似的目标域数据时，DAML的性能优于ZSDG和迁移学习。</p>
+<h2 id="Conclusion-and-Future-Work"><a href="#Conclusion-and-Future-Work" class="headerlink" title="Conclusion and Future Work"></a>Conclusion and Future Work</h2><p>本文提出了一种基于元学习的领域自适应对话生成方法。构建了一个端到端可训练的对话系统，该系统利用两步梯度更新来获得对新领域更敏感的模型。在一个具有多个独立域的模拟数据集上评估模型。与zero-<br>shot学习方法和迁移学习方法相比，DAML在实体F1中达到了最先进的性能。因此认为DAML是一种有效的、鲁棒的低资源对话系统训练方法。</p>
+<p>DAML还提供了很有潜力的扩展，例如将DAML应用于基于增强学习的对话系统。文中还计划使DAML适应多域对话任务。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li>Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks </li>
+</ol>
+<p><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1703.03400.pdf" target="_blank" rel="noopener"> https://  arxiv.org/pdf/1703.0340  0.pdf
+</a></p>
+<p>2. Zero-Shot Dialog Generation with Cross-Domain Latent Actions</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1805.04803" target="_blank" rel="noopener"> https://  arxiv.org/pdf/1805.0480  3
+</a></p>
+<p>3. Sequicity: Simplifying Task-oriented Dialogue Systems with Single<br>Sequence-to-Sequence Architectures</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//www.comp.nus.edu.sg/~kanmy/papers/acl18-sequicity.pdf" target="_blank" rel="noopener"> https://www.  comp.nus.edu.sg/~kanmy/  papers/acl18-sequicity.pdf
+</a></p>
+<p>再次post一下我滴某乎~<br><a href="https://zhuanlan.zhihu.com/p/81715745" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/81715745</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-09T05:20:10.000Z">2019-06-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Visual-Dialog/">Visual Dialog</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    20 minutes read (About 3071 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/09/Visual Dialog 总结/">Visual Dialogue 总结</a>
+            
+        </h1>
+        <div class="content">
+            <ol>
+<li><p>CLEVR-Dialog: A Diagnostic Dataset for Multi-Round Reasoning in Visual Dialog</p>
+<p> NAACL 2019</p>
+<p> 链接： <a href="https://arxiv.org/pdf/1903.03166.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1903.03166.pdf</a></p>
+<p> 摘要：可视对话是一种多模态任务，使用对话历史作为上下文，以图像为基础回答一系列问题。它是视觉、语言、推理和基础方面的挑战。然而，在大型真实数据集上单独研究这些子任务是不可行的，因为它需要对所有图像和对话框的“状态”进行代价高昂的完整注释。我们开发了一个大型诊断数据集，用于研究可视化对话框中的多轮推理。具体地说，我们构建了一个基于CLEVR dataset 图像的场景图的对话语法。 其中可视对话的所有方面都得到了完整的标注。  总共包含了5个10轮对话框的实例，用于大约85k个cleveland图像，总共有425万对问答对。我们使用CLEVR-Dialog来测试标准可视对话模型的性能; 特别是视觉上的共参考分辨率(作为共参考距离的函数)。这是对可视对话模型的第一次分析，没有这个数据集是不可能的。我们希望CLEVR-Dialog的发现将有助于开发未来的可视化对话模型。我们的数据集和代码将公开。</p>
+</li>
+<li><p>Image-Question-Answer Synergistic Network for Visual Dialog </p>
+<p> CVPR2019</p>
+<p> 链接： <a href="https://arxiv.org/abs/1902.09774" target="_blank" rel="noopener">https://arxiv.org/abs/1902.09774</a> </p>
+<p> 摘要: 图像、问题(结合对话历史)和相应的答案是可视化对话的三个重要组成部分。经典的可视对话系统集成了图像、问题和对话历史搜索或生成最佳匹配的答案，因此，这种方法明显忽略了答案的作用。本文设计了一种新颖的图像-问答协同网络来评价问答在精确的视觉对话中的作用。我们将传统的单阶段解决方案扩展为两阶段解决方案。在第一个阶段，根据候选答案与图像和问题对的相关性对它们进行粗略的评分。然后，在第二阶段，通过与图像和问题的协同作用，对正确率较高的答案进行重新排序。在可视化对话v1.0数据集上，提出的协同网络增强了判别式可视化对话模型，实现了57.88% \%的归一化折现累积增益。一个生成的可视化对话模型也显示了很好的改进。</p>
+</li>
+<li><p>Multi-step Reasoning via Recurrent Dual Attention for Visual Dialog </p>
+<p> ACL 2019 <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gan%2C+Z" target="_blank" rel="noopener">Zhe Gan</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Cheng%2C+Y" target="_blank" rel="noopener">Yu Cheng</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Kholy%2C+A+E" target="_blank" rel="noopener">Ahmed El Kholy</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Li%2C+L" target="_blank" rel="noopener">Linjie Li</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Liu%2C+J" target="_blank" rel="noopener">Jingjing Liu</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gao%2C+J" target="_blank" rel="noopener">Jianfeng Gao</a></p>
+<p> 链接： <a href="https://arxiv.org/abs/1902.00579" target="_blank" rel="noopener">https://arxiv.org/abs/1902.00579</a></p>
+<p> 摘要：本文提出了一种新的视觉对话模型——递归双注意网络(ReDAN)，利用多步推理的方法来解决图像的一系列问题。在对话的每个问答环节中，ReDAN通过多个推理步骤逐步推断出答案。在推理过程的每一步中，根据图像和之前的对话历史，对问题的语义表示进行更新，并在后续的步骤中使用递归细化的表示进行进一步的推理。在VisDial v1.0数据集上，提出的ReDAN模型获得了64.47%的NDCG评分。推理过程的可视化进一步证明了ReDAN可以通过迭代细化找到上下文相关的视觉线索和文本线索，从而一步一步地得到正确的答案。</p>
+</li>
+<li><p>Sequential Attention GAN for Interactive Image Editing via Dialogue </p>
+<p> CVPR2019 <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Cheng%2C+Y" target="_blank" rel="noopener">Yu Cheng</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gan%2C+Z" target="_blank" rel="noopener">Zhe Gan</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Li%2C+Y" target="_blank" rel="noopener">Yitong Li</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Liu%2C+J" target="_blank" rel="noopener">Jingjing Liu</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gao%2C+J" target="_blank" rel="noopener">Jianfeng Gao</a></p>
+<p> 链接：<a href="https://arxiv.org/abs/1812.08352" target="_blank" rel="noopener">https://arxiv.org/abs/1812.08352</a></p>
+<p> 摘要：在本文中，我们介绍了一种新的任务——通过会话语言进行交互式图像编辑，用户可以通过多回合的自然语言对话引导agent对图像进行编辑。在每个对话轮中，代理接受来自用户的源图像和自然语言描述作为输入，并在文本描述之后生成一个新图像。为此任务引入了两个新数据集，Zap-Seq和DeepFashion-Seq。本文提出了一种新的顺序注意生成对抗网络(SeqAttnGAN)框架，该框架利用神经状态跟踪器对每个对话轮中的源图像和文本描述进行编码，生成与前面图像和对话上下文一致的高质量新图像。为了更好地实现区域特定的文本到图像的生成，我们还在模型中引入了注意机制。在这两个新的数据集上的实验表明，所提出的SeqAttnGAN模型在基于对话框的图像编辑任务上优于现有的SOTA方法。详细的定量评估和用户研究也表明，我们的模型在图像生成方面比SOTA基线更有效，无论是在视觉质量还是文本到图像的一致性方面。</p>
+</li>
+<li><p>StoryGAN: A Sequential Conditional GAN for Story Visualization</p>
+<p> CVPR2019 <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Li%2C+Y" target="_blank" rel="noopener">Yitong Li</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gan%2C+Z" target="_blank" rel="noopener">Zhe Gan</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Shen%2C+Y" target="_blank" rel="noopener">Yelong Shen</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Liu%2C+J" target="_blank" rel="noopener">Jingjing Liu</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Cheng%2C+Y" target="_blank" rel="noopener">Yu Cheng</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Wu%2C+Y" target="_blank" rel="noopener">Yuexin Wu</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Carin%2C+L" target="_blank" rel="noopener">Lawrence Carin</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Carlson%2C+D" target="_blank" rel="noopener">David Carlson</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gao%2C+J" target="_blank" rel="noopener">Jianfeng Gao</a></p>
+<p> 链接： <a href="https://arxiv.org/abs/1812.02784" target="_blank" rel="noopener">https://arxiv.org/abs/1812.02784</a></p>
+<p> 摘要：我们提出了一个新的任务，叫做故事可视化。给定一个多句的段落，通过为每个句子生成一个图像序列来可视化故事。与视频生成不同，故事可视化不太关注生成图像(帧)中的连续性，而是更关注动态场景和角色之间的全局一致性——这是任何单一图像或视频生成方法都无法解决的挑战。因此，我们提出了一个新的基于顺序条件GAN框架的故事到图像序列生成模型StoryGAN。我们的模型是独特的，因为它由一个动态跟踪故事流的深层上下文编码器和两个在故事和图像级别的鉴别器组成，以增强图像质量和生成序列的一致性。为了评估模型，我们修改了现有的数据集，以创建CLEVR-SV和Pororo-SV数据集。从经验上看，StoryGAN在图像质量、上下文一致性度量和人类评估方面都优于最先进的模型。</p>
+</li>
+<li><p>Tactical Rewind: Self-Correction via Backtracking in Vision-and-Language Navigation</p>
+<p> CVPR2019  <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Ke%2C+L" target="_blank" rel="noopener">Liyiming Ke</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Li%2C+X" target="_blank" rel="noopener">Xiujun Li</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Bisk%2C+Y" target="_blank" rel="noopener">Yonatan Bisk</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Holtzman%2C+A" target="_blank" rel="noopener">Ari Holtzman</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gan%2C+Z" target="_blank" rel="noopener">Zhe Gan</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Liu%2C+J" target="_blank" rel="noopener">Jingjing Liu</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gao%2C+J" target="_blank" rel="noopener">Jianfeng Gao</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Choi%2C+Y" target="_blank" rel="noopener">Yejin Choi</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Srinivasa%2C+S" target="_blank" rel="noopener">Siddhartha Srinivasa</a></p>
+<p> 链接: <a href="https://arxiv.org/abs/1903.02547" target="_blank" rel="noopener">https://arxiv.org/abs/1903.02547</a></p>
+<p> 摘要：我们提出了带有回溯(FAST)导航器的边界感知搜索，这是一个用于动作解码的通用框架，在Room-to-Room (R2R) Vision-and-Language navigation challenge of Anderson et. al. (2018) 挑战中实现了最先进的结果。给定一个自然语言指令和一个以前从未见过的环境的真实感图像视图，该代理的任务是尽可能快地从源导航到目标位置。虽然目前所有的方法都使用波束搜索来做出局部的行动决策或对整个轨迹进行评分，但我们的方法在探索一个未被观测的环境时平衡了局部和全局信号。重要的是，这让我们可以贪婪地行动，但在必要时使用全球信号进行回溯。将快速框架应用于现有的最先进的模型，获得17%的相对增益，绝对6%的成功率加权路径长度(SPL)。</p>
+</li>
+<li><p>Reinforced Cross-Modal Matching and Self-Supervised Imitation Learning for Vision-Language Navigation</p>
+<p>CVPR2019  <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Wang%2C+X" target="_blank" rel="noopener">Xin Wang</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Huang%2C+Q" target="_blank" rel="noopener">Qiuyuan Huang</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Celikyilmaz%2C+A" target="_blank" rel="noopener">Asli Celikyilmaz</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gao%2C+J" target="_blank" rel="noopener">Jianfeng Gao</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Shen%2C+D" target="_blank" rel="noopener">Dinghan Shen</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Wang%2C+Y" target="_blank" rel="noopener">Yuan-Fang Wang</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Wang%2C+W+Y" target="_blank" rel="noopener">William Yang Wang</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Zhang%2C+L" target="_blank" rel="noopener">Lei Zhang</a></p>
+<p>链接：<a href="https://arxiv.org/abs/1811.10092" target="_blank" rel="noopener">https://arxiv.org/abs/1811.10092</a></p>
+<p>摘要：视觉语言导航(VLN)是在真实的三维环境中，通过导航一个具体的代理来执行自然语言指令的任务。在本文中，我们研究如何解决这一任务的三个关键挑战:跨模态接地，病态反馈和泛化问题。首先，我们提出了一种新的增强交叉模态匹配(RCM)方法，该方法通过增强学习(RL)来实现局部和全局的交叉模态接地。特别地，匹配批评家被用来提供一个内在的奖励来鼓励指令和轨迹之间的全局匹配，推理导航仪被用来在局部视觉场景中执行跨模态接地。对VLN基准数据集的评估表明，我们的RCM模型在SPL上的性能显著优于现有方法的10%，达到了最新的性能水平。为了提高学习策略的通用性，我们进一步介绍了一种自我监督模仿学习(SIL)方法，通过模仿自己的过去来探索未知的环境。我们证明SIL可以近似于一个更好和更有效的策略，这极大地减小了可见和不可见环境之间的成功率性能差距(从30.7%到11.7%)。</p>
+</li>
+<li><p>LARGE-SCALE ANSWERER IN QUESTIONER’S MIND FOR VISUAL DIALOG QUESTION GENERATION</p>
+<p> ICLR 2019</p>
+<p> 链接： <a href="https://arxiv.org/pdf/1902.08355.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1902.08355.pdf</a></p>
+<p> 摘要： Answerer in Questioner’s Mind (AQM)是近年来提出的一种面向任务的对话系统的信息理论框架。AQM从提出一个问题中获益，当它被问到的时候，这个问题可以最大限度地获取信息。  然而，由于其本质上是显式计算信息增益，  当解空间很大时，AQM有一定的局限性。为了解决这个问题，我们建议使用AQM+来处理大规模的问题，并提出一个与当前对话上下文更一致的问题。我们对我们的方法进行了评估。 这是一个具有挑战性的面向任务的可视化对话问题，其中候选类的数量接近10K。我们的实验结果和消融研究表明，在合理的近似下，AQM+的性能显著优于最先进的模型。特别地，所提出的AQM+在对话过程中减少了60%以上的错误，而比较算法减少了不到6%的错误。基于我们的研究结果，我们认为AQM+是一种通用的面向任务的对话算法，可以应用于非yes-or-no响应。</p>
+</li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
+        <a href="/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/" class="image is-7by1">
+            <img class="thumbnail" src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg" alt="Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-21T02:02:18.000Z">2019-05-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    22 minutes read (About 3349 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/">Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models</strong></p>
+<blockquote>
+<p><a href="https://arxiv.org/pdf/1902.08858.pdf" target="_blank" rel="noopener">Naacl 2019</a> </p>
+</blockquote>
+<p><strong>Abstract</strong></p>
+<p>为对话定义action space并通过强化学习来优化其决策的过程是一个长期以来的挑战。通常的做法是使用手工来定义对话动作或者词表作为动作空间，两者都有各自的局限性。本文提出了一种潜在动作框架，将端到端agent的动作空间作为潜在变量，并应用非监督方法，从数据中归纳出自己的动作空间。</p>
+<p>综合实验研究了连续型和离散型的动作类型以及两种基于随机变分推理的优化方法。结果表明，在DealOrNoDeal和MultiWoz对话框上，所提出的潜在动作比以往的词级策略梯度方法取得了更好的性能改进。</p>
+<p><strong>Introduction</strong></p>
+<p>本文提出的模型 Latent Action Reinforcement Learning (LaRL)，克服了端到端对话模型中基于word-level RL的限制，以无监督的方式结合了传统模块化方法的优点。<br>关键的想法是开发一种可以自己发现对话动作的E2E模型。这些动作必须具有足够的表达能力，以捕获复杂领域中的回复 (即具有表示大量动作的能力)，从而将话语层面的决策过程与自然语言生成分离开来。然后，任何RL方法都可以应用到这个诱导的动作空间中来代替词级别的输出。所以本文提出了一种提供潜在变量的对话框架，研究了从对话数据中诱导潜在动作空间的几种方法。</p>
+<p>本文还进一步提出  (1)一种新的训练目标，其性能优于对话生成中使用的典型证据下界;(2)在解码器中集成离散潜在变量的注意机制，以更好地对长响应建模。</p>
+<p>本文在DealOrNoDeal (Lewis et al.， 2017)和MultiWoz (Budzianowski et al.， 2018)两个数据集进行了实验。<br>结果表明，在学习对话策略时，LaRL明显比word level RL更有效，而且不会产生不可理解的语言。<br>本文的模型在MultiWoz上实现了18.2%的改进，并在DealOrNoDeal上发现了新颖多样的谈判策略。</p>
+<p>除了较强的实证改进外，本文的模型分析还展示了一些新的见解，例如减少潜在动作空间中的暴露偏差至关重要，离散的潜在动作比连续的更适合作为RL agent的动作空间。</p>
+<p>本文的工作不同于以往的工作有两个原因:<br>(1)以前的工作中潜在的动作只是辅助的，小规模的，大多是在监督或半监督的环境中学习的。本文研究的是潜在变量的无监督学习，学习的变量具有足够的表达能力，能够独立捕捉整个动作空间。<br>(2)据本文所知，本文的工作是对对话系统中使用潜在变量进行RL策略优化的首次全面研究。</p>
+<p><strong>Baseline</strong><br>端到端的系统响应生成可视为一个基于条件的生成任务，该任务使用神经网络的编解码器对条件分布$p(x|c)$进行建模，其中$c$为观察到的对话上下文，$x$为系统对上下文的响应。对话上下文可以是原始对话历史或者文本上下文. RL训练通常分为2步: 基于监督学习的预训练，和基于强化学习策略梯度算法.<br>具体来说,监督学习这一步来最大化对数似然值 ($\theta$是模型参数):<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36tp6jbx2j309l012wed.jpg" alt=""><br>然后接下来的RL这一步使用策略梯度算法，更新与任务目标相关的模型参数。假设有一个agent可以与之交互的环境，并且在对话的每个轮次$t$处都有一个轮次奖励$r_t$。本文得到在模型参数$\theta$下，预期的折扣回报$J(θ)= E[\sum^T_0 \gamma ^t r_t]$, 折现因子$\gamma$在[0,1]之间，$T$为对话的长度(总轮数)。 通常在奖励r上减去参数b来降低策略梯度的方差<br>$$Rt=E[\sum^{T-t}<em>{k = 0} \gamma ^t (r</em>{t+k}-b)]$$.</p>
+<p>Word-level Reinforcement Learning<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s5tp2wxj30cx04vmxd.jpg" alt="fg 1"><br>如图1所示，world-level RL将每个输出单词视为一个action step，其策略梯度为<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sgi3p1aj30cf02wmx7.jpg" alt=""><br>其中$U_t$为第t轮回复中的token数量，j为回复中的单词index。显然Eq 2的动作空间非常大，即|V| (词表size)，学习视野较长，即$TU$。之前的工作发现直接应用该式会导致解码器不收敛。常用的解决方法是按一定比例交替使用带监督学习的Eq 2。将这个比率表示为RL:SL=A:B，这意味着, 对于每A次策略梯度更新，运行B次监督学习进行更新。对于只使用策略梯度而不涉及监督学习的情况，则RL:SL=off。</p>
+<p><strong>Model</strong></p>
+<ol>
+<li>Latent Action Reinforcement Learning<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg" alt="fg 2"><br>本文提出的LARL框架如图2所示，在回复生成过程中引入了一个潜在变量$z$。则现在的条件分布$p (x|c) = p (x|z) p (z|c)$<br>生成的过程为:<br>(1) 给定一个对话上下文 $c$, 首先依照$p_{θ<em>e}(z|c)$抽样一个潜在动作 $z$<br>(2) 基于$p</em>{θ<em>d} (x|z)$，即基于z抽样生成的响应x, 其中$p</em>{θ<em>e}$是对话编码器网络, $p</em>{θ_d}$是响应的解码器网络。在上述设置下，LaRL将潜在变量$z$作为其动作空间，而不是响应 $x$中输出单词。之后可以在潜在动作空间中应用reinforce:<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36tpjg4x7j30al01x748.jpg" alt=""><br>与Eq 2相比，LaRL的不同之处在于:  </li>
+</ol>
+<ul>
+<li>将范围从$TU$缩短到$T$。  </li>
+<li>潜在动作空间设计为低维，比V小得多。  </li>
+<li>策略梯度只更新编码器$θ_e$, 而解码器$θ<em>d$保持不变。<br>这些属性减少了对话策略优化的难度，并将高层决策与自然语言生成分离开。$给定上下文$c$, $p</em>{θ<em>e}$ 负责选择最好的潜在动作, 而$p</em>{θ_d}$仅负责将$z$转换为表层形式的单词。本文的公式也为实验各种类型的模型学习方法提供了一个灵活的框架。<br>在本文中，本文主要关注两个关键方面:潜在变量$z$的类型, 以及在有监督的预训练阶段, 优化学习$z$的方法。</li>
+</ul>
+<ol start="2">
+<li>Types of Latent Actions<br>以往的研究中使用了两类潜在变量:<br>连续各向同性高斯分布(Serban et al.， 2017b)和多元分类分布(Zhao et al.， 2018)。这两种类型都与本文的LaRL框架兼容，定义如下：</li>
+</ol>
+<ul>
+<li>Gaussian Latent Actions<br>高斯潜在动作遵循$M$维多元对角协方差矩阵的高斯分布, 即$z\sim N(\mu ,\sigma^2I )$。<br>编码器$p_{θ<em>e}$由两部分构成:一个上下文编码器$F$,  用神经网络编码对话上下文$c$为一个向量表示$h$, 用一个前馈网络$pai$将$h$映射为$\mu$和$\sigma$ 。流程定义如下：<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s82qosfj30bx03y0st.jpg" alt=""><br>然后将得到的$z$作为解码器的初始状态用于最后响应的生成。<br>使用$p</em>\theta(z|c) =  N(z; \mu ,\sigma^2I)$来计算Eq 3中的策略梯度更新.</li>
+<li>Categorical Latent Actions<br>分类潜在动作是$M$个独立的$k$向分类随机变量。每个$z_m$都有自己的token embedding，将潜在的符号映射到向量空间$E_m \epsilon R^{K×D}$，其中$m \ epsilon [1,M]$， D为embedding size。因此 M个潜在动作可以表示指数级的，$K^M$个，不同且唯一的组合， 这使得它具有足够的表现力，可以在复杂的领域中建模对话动作。类似于高斯潜在动作，我们有<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s9ntf37j30bf03ot8v.jpg" alt=""><br>与高斯潜在动作不同, 分类潜在动作矩阵编码后得到大小为  $R^{M×D}$  的矩阵, 而解码器的初始状态是一个大小为 $R^D$  的向量。以前的工作将潜在的emdedding相加，来集成这个矩阵和编码器, 表示作为求和融合。<br>这种方法的一个限制是，它可能会丢失每个潜在维度中的细粒度顺序信息，并且在涉及多个对话动作的长响应方面存在问题。因此，本文提出一种新的方法，<strong>Attention Fusion</strong>，来结合分类潜在的动作与解码器。 将注意力机制(Luong et al.， 2015)应用于潜在的动作。设i为解码时的步长索引。然后有:<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s88idqvj30ce061mxj.jpg" alt=""></li>
+</ul>
+<p><strong>Optimization Approaches</strong></p>
+<p>现在给定一个训练数据集{x, c}, 常规的优化方法是通过最大化其变分下界的随机变分推理（Full ELBO）</p>
+<p><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sa32ec1j30c8022t8p.jpg" alt=""></p>
+<blockquote>
+<p>补充：在ELBO其中q是关于z的一个任意概率分布。<br> 对任意分布q的选择来说，L提供了似然函数的一个下界。<br> 越好地近似p(z∣x,c)的分布q(z∣x，c)，得到的下界就越紧。<br> <strong>将推断问题看作是找一个分布q使得L最大的过程。</strong></p>
+</blockquote>
+<p>$q_{\gamma }(z|x, c)$  为需要训练的神经网络，来逼近  $q(z|x, c)$ 和$q(z|c)$  和  $p (x|z)$  的后验分布。<br>本文认为上式有局限性，解码器只看到  $z$  从  $q(z|x, c)$  采样，但未经历过从 $p_\theta(z|c)$ 采样, 所以提出了以下优化函数（Lite ELBO）：<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sa8mpvwj30c101ydfs.jpg" alt=""><br>本质上，简化目标将后验网络设置为与编码器相同，即  $q_\gamma(z|x, c) = p_{θ<em>e} (z|c)$, 但是这也使得潜在空间缺少正则化，实验中表明，如果只最大化$p</em>{p_{(z|c})}(x|z)$ 会存在过拟合。因此添加了额外的正则化项, 鼓励后验与先验分布能够相似, β是一介于0和1之间的超参数。将分类潜在动作的  $p(z)$  设为平均值，即 $p(z) = 1/K$  ；将高斯潜在动作的先验设为 $N(0,I)$ .</p>
+<p>Experiment</p>
+<p>Dataset</p>
+<ol>
+<li>DealOrNoDeal是一个谈判数据集，包含基于2236个不同场景的5805个对话。本文提出252个测试环境场景，并从训练集中随机抽取400个场景进行验证。从混乱度(PPL)、奖励、一致性和多样性四个方面对研究结果进行了评价。PPL帮助确定哪个模型产生的与人更相似的响应，同时奖励和一致性评估模型的谈判强度。多样性表示该模型是发现了一种新的语篇级策略，还是只是重复了单调响应。<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sagj6ubj30cr08ggmk.jpg" alt=""></li>
+<li>Multiwoz是一个插槽填充数据集，它包含10438个对话, 涉及6个不同的域中。8438个对话用于训练，各1000个用于验证和测试。由于该数据集之前没有用户模拟器，为了与之前的技术水平进行公平的比较，本文将重点放在中提出的对话-上下文-文本生成任务上。该任务要求在对话中的每个系统轮次生成响应对话。结果从三个方面进行评估:BLEU，Inform Rate和成功率。BLEU score检查响应层次词汇相似性，而Inform rate 和成功率度量模型是否在dialog级别是否回答问题并提供所有请求的信息。<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sasng82j30c907zwfj.jpg" alt=""></li>
+</ol>
+<p>Conclusion<br>最后，本文为E2E dialogue agent中的RL提出了一个潜在变量的动作空间。 并对两种对话任务进行了评估，结果表明，本文的模型取得了优异的性能，并创造了一个MultiWoz最新的成功率。广泛的分析使我们能够深入了解如何正确地训练潜在变量，这些变量可以作为agent的动作空间，能够以无监督的方式创建抽象的动作。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-12T08:15:10.000Z">2019-05-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    17 minutes read (About 2581 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/12/医疗对话系统/">医疗对话系统总结</a>
+            
+        </h1>
+        <div class="content">
+            <ol>
+<li>End-to-End Knowledge-Routed Relational Dialogue System for  Automatic Diagnosis<blockquote>
+<p>2019 AAAI <a href="https://arxiv.org/abs/1901.10623v2" target="_blank" rel="noopener">https://arxiv.org/abs/1901.10623v2</a></p>
+</blockquote>
+</li>
+<li>Task-oriented Dialogue System for Automatic Diagnosis<blockquote>
+<p>2018 ACL <a href="https://www.aclweb.org/anthology/P18-2033" target="_blank" rel="noopener">https://www.aclweb.org/anthology/P18-2033</a></p>
+</blockquote>
+</li>
+<li>Context-aware symptom checking for disease diagnosis using hierarchical reinforcement learning<blockquote>
+<p>2018 AAAI <a href="http://infolab.stanford.edu/~echang/aaai-2018-context.pdf" target="_blank" rel="noopener">http://infolab.stanford.edu/~echang/aaai-2018-context.pdf</a></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>本文提出了一个自动医疗诊断对话系统，通过与患者对话，收集患者自我报告之外的其他症状，自动做出诊断。<br>现有的对话系统主要依赖于数据学习，无法对额外的专用知识图谱（expert knowledge graph）进行编码。在这项工作中提出了一个端到端知识路由相关对话系统 （KR-DS），将丰富的医学知识图谱整合到话题转换中，使其与NLU，NLG相互协作。<br>本文使用基于Knowledge-routed的dqn网络 （krdqn） 来管理主题转换，它集成了一个<strong>编码不同症状和症状-疾病对之间关系</strong>的关系细化分支和<strong>一个用于主题决策</strong>的知识路由图分支。<br>在公共医疗对话数据集上的大量实验表明，本文提出的KR-DS模型明显优于目前最先进的方法（诊断准确率超过8%）。另外，本文从在线医学论坛收集了一个新的医疗数据集用于验证实验结果。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong>1. 医学对话系统的难点</strong></p>
+<p>对话系统询问的症状应与潜在疾病相关，并与医学知识相一致。然而当前面向任务的对话系统高度依赖于复杂的belief tracker和纯数据驱动的学习, 由于这样的诊断缺乏医学知识的支撑所以它无法直接适用于自动诊断。</p>
+<p><strong>2. 现有的自动诊断系统和其缺点</strong></p>
+<p><a href="https://www.aclweb.org/anthology/P18-2033" target="_blank" rel="noopener">Task-oriented Dialogue System for Automatic Diagnosis</a>(2018 ACL) 率先构建了一个用于自动诊断的对话系统，将对话系统转换为马尔可夫决策过程，并通过reinforcement learning训练对话策略。<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2ysm3237mj30g009jq4h.jpg" alt=""><br>缺点：<br>这项工作只是利用DQN网络通过数据驱动学习来管理主题转换(确定应该询问哪些症状)，而且结果复杂且重复。此外，本工作仅针对对话管理进行对话状态跟踪和策略学习，使用基于模板的自然语言处理模型，无法很好地匹配实际的自动诊断场景。</p>
+<p><strong>3. 本文的解决方法</strong></p>
+<p><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2yk73dymrj30lf0bhq5c.jpg" alt=""><br>本文提出了一个完整的端到端知识路由关系（KR-DS）自动诊断的对话系统，结合<strong>医学知识图谱</strong>和<strong>基于症状-疾病关系进行话题转换</strong>的对话管理（DM），并使其与NLU和NLG结合，如图1所示。<br>主要提出两个branch：knowledge-routed graph branch和 relational refinement branch。<br>一般来说，医生根据<strong>医学知识</strong>和<strong>诊断经验</strong>（medical knowledge and diagnosis experience）来确定疾病类型。受此启发，本文主要提出两个branch：knowledge-routed graph branch和 relational refinement branch。</p>
+<ol>
+<li><p>Relational refinement branch 从历史诊断数据（historical iagnostic data）中学习不同症状和症状-疾病对之间（symptom-disease pairs）的关系，从而<strong>细化由basic DQN生成的粗略结果</strong>。</p>
+</li>
+<li><p>Knowledge-routed graph branch 通过基于条件概率的医学知识路由图谱的先验信息来帮助决策。<br>这两个分支通过knowledge guiding 和 relation encoding产生更加合理的决策结果。</p>
+</li>
+</ol>
+<p><strong>4. 本文主要贡献：</strong></p>
+<p>本文进行关系建模（relation modeling）来处理相关的症状和疾病之间的关系，还进行了图谱推理（graph reasoning）来指导利用已有的医学知识进行策略学习。并且进一步介绍了一个面向终端任务的自动诊断对话系统和一个新的医疗对话系统数据集。</p>
+<p><strong>Adding: 医疗对话是如何进行的？</strong>        <img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2yl466iy0j30ac064wf6.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2yrqjosbtj30i90b6abi.jpg" alt=""></p>
+<h2 id="Proposed-Work"><a href="#Proposed-Work" class="headerlink" title="Proposed Work"></a>Proposed Work</h2><p>本文提出的对话系统（krds）如图1所示，作为一个面向任务的对话系统，它包括NLU,DM,NLG。DM根据当前对话状态执行主题转换，agent学习通过询问症状来诊断疾病的任务，最后应告知患者疾病类型。此外本文也使用了用户模拟器来生成基于user goal的对话。</p>
+<p><strong>Policy Learning with KR-DQN</strong></p>
+<ol>
+<li><p><em>Natural Language Understanding</em></p>
+<ul>
+<li>中文医疗诊断数据集<br>   在该诊断系统中，假设有$M$种disease，$N$种symptom.<ol>
+<li>4种agent action:<br>request+symptom, inform+disease, thanks,  closing.<br>所以agent的action space的大小$D$可以表示为：<br>$D = num_{greeting}+M +N$.</li>
+<li>4种user action:<br><em>request+disease, confirm/deny/not-sure+symptom, thanks, closing</em></li>
+<li>4种symptom states：<br><em>positive, negative, not-sure and not mentioned</em> ,在symptom vectors里表示为1, - 1, -2, 0</li>
+</ol>
+</li>
+<li>NLU和RL进行联合训练。</li>
+</ul>
+</li>
+<li><p><em>Policy Learning with KR-DQN</em><br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2ylk0kqutj30fr0av0tz.jpg" alt=""></p>
+</li>
+</ol>
+<ul>
+<li><p>Basic DQN Branch.<br>先利用一个Basic DQN分支来生成一个粗略的动作结果，如公式1所示。MLP以状态$s_t$作为输入，输出一个粗糙的动作结果，先有一个粗略的DQN结果再对结果进行优化。<br>  $$a_t^r = MLP(s_t)$$ </p>
+</li>
+<li><p>Relational Refinement Branch<br>关系模块可以通过从一组其他元素的聚合信息来影响单个元素(例如，其他症状及疾病)。由于关系权重（relation weights）是由任务目标驱动自动学习的，因此关系模块可以对元素之间的依赖关系建模。因此本文设计了一个relational refinement module, 通过引进一个关系矩阵$R \epsilon  R^{D\times{D}}$ 来表示所有动作间的依赖关系。<br>Basic DQN 预测的动作是$a_t^r$, 再乘以学习到的关系矩阵R得到新的action $a^f_t \epsilon R^D$, 该关系矩阵是不对称的，表示有向加权图。细化的动作向量$a^f_t$的每一个元素为初始预测动作$a_t^r$的加权和，其中权值表示元素之间的依赖关系.<br>$$a^f_t = a^r_t ·R$$<br>关系矩阵$R$由<strong>数据集的统计量进行条件概率的初始化</strong>。每个条目$R_{ij}$表示单位$x_j$以单位$x_i$为条件的概率。关系矩阵通过反向传播学习捕获动作之间的依赖关系。实验表明，这种初始化方法<strong>优于随机初始化</strong>，因为先验知识可以指导关系矩阵的学习。</p>
+</li>
+<li><p>Knowledge-routed Graph Branch<br>（与其他对话系统的不同之处：以user的self report 作为对话的基础）<br>设计思路：在拿到患者的自我报告时，医生首先要对患者可能存在几种候选疾病有一个大致的了解。随后，通过询问这些候选疾病（diease）的显著症状（symptoms），医生排除了其他候选病，直到确定诊断。<br>受此启发，本文设计了一个知识路由图谱（knowledge-routed graph）模块来模拟医生的思维过程。首先计算症状和疾病之间的条件概率作为有向医学知识图谱的权值，其中有两种类型的节点，如图2所示。<br>edges只存在于疾病和症状之间。每条edge都有两个weights，其中疾病到症状的条件概率为$P (dis|sym)$，症状到疾病的条件概率为$P (sym|dis)$. 在与病人交流的过程中，医生可能会有几种候选疾病。我们将候选疾病概率表示为与观察到的症状相对应的疾病概率。症状先验概率$P_{prior}(sym)$通过以下规则计算:</p>
+<ol>
+<li>对于提及到的症状，患有该症状设置为1，未患有该症状设置为-1</li>
+<li><p>其他症状（不确定或未提及）的概率设置为从数据集中统计计算出来的先验概率。那么这些症状的概率 $P_{prior}(sym)$乘以条件概率$P(dis|sym)$得到疾病概率$P(dis)$，公式为:<br>$$P (dis) = P (dis| sym)·P_{prior}(sym)$$<br>考虑到候选疾病，医生经常根据他们的医学知识询问一些值得注意的症状来确诊, 因此由疾病概率$P(dis)$与条件概率矩阵$P (sym|dis)$相乘得到症状概率$P (sym)$:<br>$$P (sym) = P (sym|dis)·P (dis) $$<br>将疾病概率$P(dis)$和症状概率$P (sym)$连接在一起，得到 knowledge-routed action的概率$a^k_t\epsilon D$。<br>有了这三个action $a_t^r, a_t^f , a_t^k$，然后把三个动作相加得到$a_t$, 作为KR-DQN在当前状态$s_t$下的最终结果。</p>
+<p>$$a_t = sigmoid(a_t^r) + sigmoid(a_t^f ) + a^k_t$$</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="Experiement"><a href="#Experiement" class="headerlink" title="Experiement"></a>Experiement</h2><p>医疗对话数据集：</p>
+<ul>
+<li>MZ dataset： （Baidu拇指医生）710个user goal，66个症状，4类疾病。</li>
+<li>本文提出的数据集 DX dataset: 527个对话， 41种症状， 5类疾病</li>
+</ul>
+<p>评价指标：</p>
+<ul>
+<li>使用正确诊断率作为对话的准确性。</li>
+<li>匹配率，来评估症状对话系统请求的有效性，成功匹配意味着系统询问用户隐含存在的症状，否则就是失败匹配。<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2yljl5hhkj30fm0dsdi1.jpg" alt=""><br>具体对话样例（与baseline的比较）<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2ys0vmosnj310r0b8n1l.jpg" alt=""></li>
+</ul>
+<h3 id="Sih-conclusion"><a href="#Sih-conclusion" class="headerlink" title="Sih conclusion"></a>Sih conclusion</h3><ul>
+<li>对话逻辑较为简单，主要是对知识建模，知识推理的过程。</li>
+<li>可以将此方法尝试用于multi domain dialog。</li>
+<li>利用知识图谱对知识建模值得借鉴。</li>
+<li>编码不同症状和症状-疾病对之间的关系，Relation modeling也是值得借鉴的。</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-25T08:15:10.000Z">2019-04-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 373 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/04/25/ConvLab/">ConvLab - Multi-Domain End-to-End Dialog System Platform</a>
+            
+        </h1>
+        <div class="content">
+            <p>微软和清华在对话系统领域的合作：<a href="https://arxiv.org/abs/1904.08637" target="_blank" rel="noopener">ConvLab - Multi-Domain End-to-End Dialog System Platform</a></p>
+<p>提出ConvLab–多领域端到端对话系统平台，它一方面提供一些可复用的组件来帮助实验人员快速实验，另一方面还可基于它在通用环境中对比大量不同方法（包括从pipeline到完全端到端好几个层级的方法，后面会细说）。另外，ConvLab还提供了一些完全标注的数据集和一些相关的预训练模型。作为一个演示，我们使用用户对话行为标注扩展了multiwoz数据集(记得好像是EMNLP2018 best paper提出来的，不仅有数据还有相应的任务)用来训练系统的所有组件，同时演示convlab如何使在多领域的端到端对话中进行复杂实验变得简单和高效。</p>
+<p>本文主要贡献包括：ConvLab是第一个涵盖多个可训练模型和相关标注数据集的开源多领域端到端对话系统；ConvLab提供一套丰富的工具和组件用于开发不同类型的对话系统，使研究人员能够在相同条件下比较不同的方法；ConvLab通过人工和仿真器提供端到端的评估；ConvLab作为DSTC8的标准平台。</p>
+<p>Anyway， 期待！</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-04T09:02:18.000Z">2019-03-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    21 minutes read (About 3076 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/04/Switch-based-Active-Deep-Dyna-Q-Efficient-Adaptive-Planning-for-Task-Completion-Dialogue-Policy-LearningLearning/">Switch-based Active Deep Dyna-Q Efficient Adaptive Planning for Task-Completion Dialogue Policy LearningLearning</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>题目：Switch-based Active Deep Dyna-Q: Efficient Adaptive Planning for Task-<br>Completion Dialogue Policy LearningLearning<br> 作者：Yuexin Wu, Xiujun Li, Jingjing Liu, Jianfeng Gao, Yiming Yang<br> 来源：AAAI 2019<br> 链接： <a href="http://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1811.07550.pdf" target="_blank" rel="noopener"> https://  arxiv.org/pdf/1811.0755  0.pdf
+</a></p>
+</blockquote>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong>Problem</strong><br>基于强化学习的任务型对话agent在训练时通常需要大量真实的user experience. Dyna-Q算法扩展了Q-learning，引入world<br>model的概念，尝试用 world model 产生的simulated experience来有效促进agent的训练。但是Dyna-<br>Q的质量取决于world model的质量，或者进一步说，取决于在学习过程中使用的real experience和simulated<br>experience的比例。<br>本文引入一个switcher 去动态的决定在不同的训练阶段是用真实的还是模拟的experience.同时本文不同于以往的随机生成模拟经验，而采用了<br>active sampling策略，生成状态动作空间中未被agent完全探索的模拟经验。本文也是首次将active learning应用到任务型对话上。</p>
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p><strong>Dyna算法</strong><br>：Dyna算法框架并不是一个具体的强化学习算法，而是一类算法框架的总称。Dyna将基于模型的强化学习和不基于模型的强化学习集合起来，既从模型中学习，也从和环境交互的经历去学习，从而更新价值函数和（或）策略函数。<br>Dyna learns a model from real experience, learn and plan value function<br>(policy) from real and simulated experience.(model-based)  </p>
+<p><img src="https://pic3.zhimg.com/v2-c66c09a7d9d4d799f2151db58aef2106_b.jpg" alt=""> Dyna 算法</p>
+<p>该方向的思路历程：</p>
+<ol>
+<li>Deep Dyna-Q: Integrating Planning for Task-Completion Dialogue Policy Learning </li>
+</ol>
+<p>优点：只使用少量的真实用户交互数据，基于集成规划的方法针对任务完成型对话对对话策略进行学习。</p>
+<p>缺点：在使用大量的模拟数据时，因为在开始阶段agent对低质量的experience不敏感，但在后期则会有很大影响，因为agent对噪声更敏感了（之前的解决方法是设置参数K，来控制planning的次数）。并且生成模拟经验时是通过均匀的抽样user<br>goal，就存在有没被探索的状态动作空间。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/50223176" target="_blank" rel="noopener"> Chris：Deep Dyna-Q: 任务型对话策略学习的集成规划 </a></p>
+<p><img src="https://pic2.zhimg.com/v2-53de81efe77579726f1652f8cd8ba285_b.jpg" alt=""></p>
+<p>2. Discriminative Deep Dyna-Q: Robust Planning for Dialogue Policy Learning  </p>
+<p><a href="http://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1808.09442.pdf" target="_blank" rel="noopener"> Discriminative Deep Dyna-Q: Robust Planning for Dialogue Policy Learning
+</a></p>
+<p><img src="https://pic3.zhimg.com/v2-5c5c9dde5712f1d058580520d81ddfb2_b.jpg" alt=""></p>
+<p>3. Switch-based Active Deep Dyna-Q: Efficient Adaptive Planning for Task-<br>Completion Dialogue Policy LearningLearning.  </p>
+<p><img src="https://pic2.zhimg.com/v2-a6d369ae443404851bcdc569bf4f6fd5_b.jpg" alt=""></p>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><p>基于Switch-DDQ的对话系统分为6个模块：</p>
+<ol>
+<li>基于LSTM的NLU模块，识别对话意图，提取相关的slot </li>
+<li>state tracker, 用于追踪对话状态 </li>
+<li>dialogue policy, 基于当前的对话状态选取下一个对话动作 </li>
+<li>基于模型的NLG模块，将对话动作转为自然语言 </li>
+<li>World model, 用于生成模拟的user action和奖励 <strong>基于动态选择的user goal</strong></li>
+<li><strong>一个基于RNN的 Switcher</strong></li>
+</ol>
+<p>具体Switch-DDQ模型分为四个步骤：</p>
+<p>(1) Direct Reinforcement Learning，即agent与真实用户交互，收集真实对话经验，完善对话策略;<br>(2) Active planning, agent与simulator进行交互，利用模拟经验改进策略<br>(2) World model learning，应用收集的真实对话经验进行world model的学习<br>(4) Switcher training: switcher是通过真实和模拟的经验来学习和改进的<br>进一步解释：  </p>
+<p><img src="https://pic1.zhimg.com/v2-70a249ad637e71d074749496533a7350_b.jpg" alt=""></p>
+<ol>
+<li>Direct Reinforcement Learning</li>
+</ol>
+<p>在这个步骤中基于真实对话经验，应用DQN来学习对话策略。<br>在每一步中，agent通过当前的对话状态 <img src="https://www.zhihu.com/equation?tex=s" alt="s"> ， 通过最大化价值函数<br><img src="https://www.zhihu.com/equation?tex=Q%28s%2Ca%3B+%CE%B8_Q%29" alt="Q\(s,a; θ_Q\)"><br>，选择要执行的动作 <img src="https://www.zhihu.com/equation?tex=a" alt="a"> 。然后agent会接收到奖励<br><img src="https://www.zhihu.com/equation?tex=r" alt="r"> ,以及用户的反馈<br><img src="https://www.zhihu.com/equation?tex=a_u" alt="a_u"> ，更新当前状态到<br><img src="https://www.zhihu.com/equation?tex=s%27" alt="s&#39;"> .存储经验 <img src="https://www.zhihu.com/equation?tex=%28s%2C+a%2C+r%2C+a_u%2C+s%27%29" alt="\(s, a, r, a_u,
+s&#39;\)"><br>到经验池 <img src="https://www.zhihu.com/equation?tex=B%5Eu+" alt="B^u "> 。(line 12 in Algorithm<br>1)<br>Planning的过程也是基于相同的Q-learning算法，只是planning使用的是模拟的对话经验。</p>
+<ol start="2">
+<li>Active Planning based on World Model</li>
+</ol>
+<p><strong>Active user goal sampling module</strong><br>在planning的阶段，world model可以选择性的生成模拟经验–在agent未被完全探索的状态动作空间。<br>假设我们已经从human-human的对话数据中收集了大量的user goal, 然后把user<br>goal分成不同类别，有不同的限制条件和难度。在训练过程中，当监控验证集上agent的表现时,我们可以通过对话的成功率来收集每一类user<br>goal对agent性能改进的影响，通过这样的信息来指导world model如何来选择user goal。  </p>
+<p><img src="https://pic1.zhimg.com/v2-3178a83441a26e9e97fba704bb4dd9f4_b.jpg" alt=""></p>
+<pre><code>- 基于当前agent的表现，对话失败率 ![f_i ](https://www.zhihu.com/equation?tex=f_i+)
+越高更意味着于注入了更难的情况（包含了更多需要学习的有用的信息）  
+- 被估计为不稳定的类别（因为它被抽样的数量 ![n_i](https://www.zhihu.com/equation?tex=n_i)
+小）可能有较高的失败率，因此值得分配更多的训练实例去降低不确定性。
+</code></pre><p>关于user goal的选择概率 <img src="https://www.zhihu.com/equation?tex=p_i+" alt="p_i "> 符合高斯分布，假设有<br><img src="https://www.zhihu.com/equation?tex=k" alt="k"> 类user goal，每个类别在验证集的失败率为<br><img src="https://www.zhihu.com/equation?tex=f_i" alt="f_i"> , 其取样的数量为 <img src="https://www.zhihu.com/equation?tex=n_i+" alt="n_i
+"> ，总体的取样数量为<br><img src="https://www.zhihu.com/equation?tex=N%3D%5Csum_%7Bi%7D%5E%7B%7D%7Bn_i%7D" alt="N=\\sum_{i}^{}{n_i}"><br>, 设方差为<br><img src="https://www.zhihu.com/equation?tex=%5Csqrt%7B%5Cfrac%7BklnN%7D%7Bn_i%7D%7D" alt="\\sqrt{\\frac{klnN}{n_i}}"><br>作为 <img src="https://www.zhihu.com/equation?tex=f_i" alt="f_i"> 不确定性的度量, 上式则表示每一个user goal i<br>被选中的概率 <img src="https://www.zhihu.com/equation?tex=p_i+" alt="p_i "> ，选择具有最大的 <img src="https://www.zhihu.com/equation?tex=p_i+" alt="p_i
+"> 作为选择的user goal。  </p>
+<p><strong>Response generation module</strong> </p>
+<p> <img src="https://pic2.zhimg.com/v2-ed65abae6159a46941b077663ed3fe01_b.jpg" alt=""></p>
+<p>用真实的对话数据来训练world model <img src="https://www.zhihu.com/equation?tex=M%28s%2Ca%3B+%CE%B8_M%29" alt="M\(s,a;
+θ_M\)"><br>，使其能够产生模拟的对话经验。<br>在每个对话回合中，在world model输入当前对话状态 <img src="https://www.zhihu.com/equation?tex=s" alt="s"> 和上一轮的<br>agent action <img src="https://www.zhihu.com/equation?tex=a" alt="a"> ，从而生成用户的回复动作<br><img src="https://www.zhihu.com/equation?tex=a_u" alt="a_u"> 、奖励<br><img src="https://www.zhihu.com/equation?tex=r" alt="r"> 和一个表示对话是否结束的信号<br><img src="https://www.zhihu.com/equation?tex=t" alt="t"> 。网络结构如图所示：两个 shared layer，三个 task<br>specific layer用来完成分类任务。  </p>
+<p>  <img src="https://pic2.zhimg.com/v2-1e6830ae10437f516213fdbfe695b771_b.jpg" alt=""></p>
+<ol start="3">
+<li>Switcher<br>Switcher基于一个二分类器，使用LSTM模型。假定一组对话是由一个序列的对话轮次构成的：</li>
+</ol>
+<p><img src="https://www.zhihu.com/equation?tex=%7B%28s_i%3B+a_i%3B+r_i%29%7D%2C+i+%3D+1%2C...%2CN" alt="{\(s_i; a_i; r_i\)}, i =
+1,...,N"><br><img src="https://www.zhihu.com/equation?tex=N" alt="N"> 是对话的轮次数，Q-learning中采用 <img src="https://www.zhihu.com/equation?tex=%28s%2C+a%2C+r%2C+s%5E%7B%27%7D%29" alt="\(s, a, r,
+s^{&#39;}\)"><br>作为一个训练样本，可以从一个对话中的两个连续对话轮次中提取。设计Switcher可以turn-based或者dialogue-<br>based,因为基于轮次比基于对话数据量更大，所以本文选择turn-<br>based，则对于给定的一组对话，对它的每一轮的质量进行打分，然后将每一轮的分数取平均来衡量这组对话的质量，如果对话层次的得分低于阈值，agent则转换成和real<br>user来交流。  </p>
+<p>每一轮次的打分，需要把前面的轮次都考虑进去。给定一个对话轮次 <img src="https://www.zhihu.com/equation?tex=%28s_t%2C+a_t%2C+r_t%29" alt="\(s_t, a_t,
+r_t\)"> ,它的历史信息为<br><img src="https://www.zhihu.com/equation?tex=h+%3D+%28%28s_1%2C+a_1%2C+r_1%29%2C+%28s2%2C+a2%2C+r2%29%2C+...%2C+%28s_%7Bt%E2%88%921%7D%2C+a_%7Bt%E2%88%921%7D%2Cr_%7Bt%E2%88%921%7D%29%29" alt="h = \(\(s_1, a_1, r_1\), \(s2, a2, r2\), ..., \(s_{t−1},
+a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img src="https://www.zhihu.com/equation?tex=h" alt="h"><br>，最后通过一个sigmoid层输出基于轮次层次的质量分数。</p>
+<p><img src="https://pic2.zhimg.com/v2-f0674da00697ac0b3d4626537bd77201_b.png" alt=""></p>
+<p>将交叉熵作为Score(.)训练的损失函数，其中 <img src="https://www.zhihu.com/equation?tex=B%5Eu+" alt="B^u "> 和<br><img src="https://www.zhihu.com/equation?tex=B%5Es+" alt="B^s "> 是分别存放真实经验和模拟经验的经验池。</p>
+<p><img src="https://pic2.zhimg.com/v2-0cebd8f02e09ed4013233cdf163d6fad_b.jpg" alt=""></p>
+<p>由于 <img src="https://www.zhihu.com/equation?tex=B%5Eu+" alt="B^u "> 和 <img src="https://www.zhihu.com/equation?tex=B%5Es+" alt="B^s
+"><br>中存储的经验会在对话训练过程中发生变化，所以switcher的分数函数也会随之更新，从而自动调整在不同训练阶段的planning的执行情况。</p>
+<h2 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h2><p><strong>Dataset</strong><br>本文用到的数据集是电影订票场景中的原始会话数据，如表1所示，表1由11个对话动作和16个slot组成。数据集总共包含280个注释对话，每个对话的平均长度约为11轮。</p>
+<p><img src="https://pic3.zhimg.com/v2-3ff5cbd0e92133aa7995ed05786cb382_b.jpg" alt=""></p>
+<p><strong>Comparison</strong></p>
+<p>在电影票预订领域，对Switch-DDQ进行了两种评估:模拟和人工评估，在模拟评估中使用了开源的面向任务的用户模拟器(Li et al.<br>2016)。为了测试Switch-DDQ的性能，文中使用了不同版本的任务完成型对话agent。  </p>
+<p><img src="https://pic4.zhimg.com/v2-f4a6dc7c9322ff3d11c238443153163f_b.jpg" alt=""></p>
+<p>对于每个agent，文中以成功率、平均奖励和平均轮数展示实验的效果。如图所示，Switch-<br>DDQ在前100个epoch后，在交互轮数较少的情况下，始终能够获得较高的成功率。</p>
+<p>从实验结果也可以看出DDQ(5)所采用的策略，虽然在训练的早期帮助更快的更新策略网络，但是在后期由于使用了低质量的训练实例影响了性能，所以DDQ(5)无法获得与DQN类似的性能。然而，在Switch-<br>DDQ中并不会出现这种情况，它没有参数K,因为实际和模拟的经验比例是由switcher模块自动控制。  </p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>本文主要在上一篇论文DDQ的基础上引入了 一个Switcher, Switch-DDQ能够自适应地从真实用户或world model<br>中选择要使用的数据源，提高了对话策略学习的效率和鲁棒性。Switch-DDQ也可以看作是一种基于模型的通用RL方法，并且很容易扩展到其他RL问题。  </p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><blockquote>
+<p>[1] Su, S.-Y.; Li, X.; Gao, J.; Liu, J.; andChen, Y.-N. 2018. Discriminative<br>deep dyna-q: Robust planning for dialogue policy learning. arXiv preprint<br>arXiv:1808.09442.<br> [2]Peng, B.; Li, X.; Gao, J.; Liu, J.; Wong, K.-F.; and Su, S.-Y. 2018.<br>Deep Dyna-Q: Integrating planning for task-completion dialogue policy<br>learning. In ACL<br> [3]Li, X.; Chen, Y.-N.; Li, L.; Gao, J.; and Celikyilmaz, A. 2017. End-to-<br>end task-completion neural dialogue systems. arXiv preprint arXiv:1703.01008.<br> [4]Schatzmann, J.; Thomson, B.;Weilhammer, K.; Ye, H.; and Young, S. 2007.<br>Agenda based user simulation for bootstrapping a pomdp dialogue system. In<br>Human Language Technologies 2007: The Conference of the North American Chapter<br>of the Association for Computational Linguistics; Companion Volume, Short<br>Papers, 149–152. Association for Computational Linguistics.<br> [5] <a href="https://zhuanlan.zhihu.com/p/50223176" target="_blank" rel="noopener"> Chris：Deep Dyna-Q: 任务型对话策略学习的集成规划
+</a></p>
+</blockquote>
+<p>ps: 欢迎大家关注我的知乎~</p>
+<p><a href="https://www.zhihu.com/people/chris-61-39/posts" target="_blank" rel="noopener">–&gt;戳这里&lt;–</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-23T03:16:12.000Z">2018-11-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/RL-Algorithm/">RL Algorithm</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 minutes read (About 1833 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/11/23/RL-algrithm/">Today&#39;s RL algorithm</a>
+            
+        </h1>
+        <div class="content">
+            <ul>
+<li><p>Double DQN :</p>
+<p>  <a href="http://arxiv.org/abs/1509.06461" target="_blank" rel="noopener">Deep Reinforcement Learning with Double Q-learning</a></p>
+</li>
+<li><p>Deep Deterministic Policy Gradient (DDPG): </p>
+<p>  <a href="http://arxiv.org/abs/1509.02971" target="_blank" rel="noopener">Continuous control with deep reinforcement learning</a></p>
+</li>
+<li><p>Continuous DQN (CDQN or NAF):</p>
+<p> <a href="http://arxiv.org/abs/1603.00748" target="_blank" rel="noopener">Continuous Deep Q-Learning with Model-based Acceleration</a></p>
+</li>
+<li><p>Dueling network DQN (Dueling DQN) ：</p>
+<p> <a href="https://arxiv.org/abs/1511.06581" target="_blank" rel="noopener">Dueling Network Architectures for Deep Reinforcement Learning</a></p>
+</li>
+<li><p>Deep SARSA ： <a href="http://people.inf.elte.hu/lorincz/Files/RL_2006/SuttonBook.pdf" target="_blank" rel="noopener">[10]</a></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2018/11/23/RL-algrithm/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-08T07:38:48.000Z">2018-11-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/User-simulator/">User simulator</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 998 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/11/08/Today's user simulator/">Today&#39;s User simulator</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="Dialogue-Simulation"><a href="#Dialogue-Simulation" class="headerlink" title="Dialogue Simulation"></a>Dialogue Simulation</h2><h4 id="Simulation-Based-Evaluation"><a href="#Simulation-Based-Evaluation" class="headerlink" title="Simulation-Based Evaluation"></a>Simulation-Based Evaluation</h4><ul>
+<li><p>为什么用User simulator:</p>
+<ul>
+<li>通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。<br>本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对话状态，b.并与RL对话系统进行对话</li>
+<li>一般的User simulator:<ul>
+<li>such as deterministic vs. stochastic</li>
+<li>content-based vs. collaboration-based</li>
+<li>static vs. non-static user goals during the conversations</li>
+<li>用户模拟器可以在 dialogue-act level 或在句子级别上操作</li>
+<li>可以是基于规则也可以是基于模型从真实的对话数据中学到的。
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2018/11/08/Today's user simulator/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-09-25T08:15:10.000Z">2018-09-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/jupyter/">jupyter</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 303 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/09/25/jupyter的安装和配置/">jupyter的安装和配置</a>
+            
+        </h1>
+        <div class="content">
+            <p>1.安装jupyter </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter</span><br></pre></td></tr></table></figure>
+<p>如果安装报错，则安装</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libsqlite3-dev</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2018/09/25/jupyter的安装和配置/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-09-25T07:38:48.000Z">2018-09-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/word2vec/">word2vec</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 798 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/09/25/w2v词向量模型的训练和使用/">w2v词向量模型的训练和使用</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="0-数据处理"><a href="#0-数据处理" class="headerlink" title="0.数据处理"></a>0.数据处理</h1><p>针对wiki 数据集：</p>
+<ul>
+<li>下载opencc把繁体中文转化为简体中文<br>opencc(windows版本)下载地址：<a href="http://download.csdn.net/download/adam_zs/10213686" target="_blank" rel="noopener">http://download.csdn.net/download/adam_zs/10213686</a></li>
+<li>运行命令：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opencc -i wiki.zh.fanti.text -o wiki.zh.jianti.text -c t2s.json</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2018/09/25/w2v词向量模型的训练和使用/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="Your name">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Your name
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Your title
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Your location</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        8
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        8
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Dialogue-system/">
+            <span class="level-start">
+                <span class="level-item">Dialogue system</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Dialogue-system-meta-learning/">
+            <span class="level-start">
+                <span class="level-item">Dialogue system, meta-learning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/NLG/">
+            <span class="level-start">
+                <span class="level-item">NLG</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/RL-Algorithm/">
+            <span class="level-start">
+                <span class="level-item">RL Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/User-simulator/">
+            <span class="level-start">
+                <span class="level-item">User simulator</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Visual-Dialog/">
+            <span class="level-start">
+                <span class="level-item">Visual Dialog</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/jupyter/">
+            <span class="level-start">
+                <span class="level-item">jupyter</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/word2vec/">
+            <span class="level-start">
+                <span class="level-item">word2vec</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Dialogue-system-meta-learning/" style="font-size: 10px;">Dialogue system, meta-learning</a> <a href="/tags/NLG-Multi-task/" style="font-size: 10px;">NLG Multi-task</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-24T16:00:00.000Z">2019-09-25</time></div>
+                    <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLG/">NLG</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Domain Adaptive Dialog Generation via Meta Learning">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
+                    <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system-meta-learning/">Dialogue system, meta-learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/09/Visual Dialog 总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Visual Dialogue 总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:20:10.000Z">2019-06-09</time></div>
+                    <a href="/2019/06/09/Visual Dialog 总结/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Visual Dialogue 总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Visual-Dialog/">Visual Dialog</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg" alt="Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-21T02:02:18.000Z">2019-05-21</time></div>
+                    <a href="/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/12/医疗对话系统/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="医疗对话系统总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-12T08:15:10.000Z">2019-05-12</time></div>
+                    <a href="/2019/05/12/医疗对话系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">医疗对话系统总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dialogue/">
+                        <span class="tag">Dialogue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dialogue-system/">
+                        <span class="tag">Dialogue system</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dialogue-system-meta-learning/">
+                        <span class="tag">Dialogue system, meta-learning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NLG-Multi-task/">
+                        <span class="tag">NLG Multi-task</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RL/">
+                        <span class="tag">RL</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Visual-Dialog/">
+                        <span class="tag">Visual Dialog</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jupyter/">
+                        <span class="tag">jupyter</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/word2vec/">
+                        <span class="tag">word2vec</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-24T16:00:00.000Z">2019-09-25</time></div>
+                    <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLG/">NLG</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Domain Adaptive Dialog Generation via Meta Learning">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
+                    <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system-meta-learning/">Dialogue system, meta-learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/09/Visual Dialog 总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Visual Dialogue 总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:20:10.000Z">2019-06-09</time></div>
+                    <a href="/2019/06/09/Visual Dialog 总结/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Visual Dialogue 总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Visual-Dialog/">Visual Dialog</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg" alt="Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-21T02:02:18.000Z">2019-05-21</time></div>
+                    <a href="/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/12/医疗对话系统/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="医疗对话系统总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-12T08:15:10.000Z">2019-05-12</time></div>
+                    <a href="/2019/05/12/医疗对话系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">医疗对话系统总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dialogue/">
+                        <span class="tag">Dialogue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dialogue-system/">
+                        <span class="tag">Dialogue system</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dialogue-system-meta-learning/">
+                        <span class="tag">Dialogue system, meta-learning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NLG-Multi-task/">
+                        <span class="tag">NLG Multi-task</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RL/">
+                        <span class="tag">RL</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Visual-Dialog/">
+                        <span class="tag">Visual Dialog</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jupyter/">
+                        <span class="tag">jupyter</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/word2vec/">
+                        <span class="tag">word2vec</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Sih Blog" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Sih&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    
+</body>
+</html>
