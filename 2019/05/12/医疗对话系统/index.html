@@ -1,0 +1,893 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="医疗对话系统总结, Sih Blog">
+    <meta name="description" content="
+End-to-End Knowledge-Routed Relational Dialogue System for  Automatic Diagnosis
+2019 AAAI https://arxiv.org/abs/1901.10">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>医疗对话系统总结 | Sih Blog</title>
+    <link rel="icon" type="image/jpeg" href="/favicon.jpg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<body>
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Sih Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Home</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="Search"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Sih Blog</div>
+        <div class="logo-desc">
+            
+            A NLP/RL learner.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Home
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liusih" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liusih" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        医疗对话系统总结
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Dialogue-system/" target="_blank">
+                                <span class="chip bg-color">Dialogue system</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Dialogue-system/" class="post-category" target="_blank">
+                                Dialogue system
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2019-05-12
+                </div>
+
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <ol>
+<li>End-to-End Knowledge-Routed Relational Dialogue System for  Automatic Diagnosis<blockquote>
+<p>2019 AAAI <a href="https://arxiv.org/abs/1901.10623v2" target="_blank" rel="noopener">https://arxiv.org/abs/1901.10623v2</a></p>
+</blockquote>
+</li>
+<li>Task-oriented Dialogue System for Automatic Diagnosis<blockquote>
+<p>2018 ACL <a href="https://www.aclweb.org/anthology/P18-2033" target="_blank" rel="noopener">https://www.aclweb.org/anthology/P18-2033</a></p>
+</blockquote>
+</li>
+<li>Context-aware symptom checking for disease diagnosis using hierarchical reinforcement learning<blockquote>
+<p>2018 AAAI <a href="http://infolab.stanford.edu/~echang/aaai-2018-context.pdf" target="_blank" rel="noopener">http://infolab.stanford.edu/~echang/aaai-2018-context.pdf</a></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>本文提出了一个自动医疗诊断对话系统，通过与患者对话，收集患者自我报告之外的其他症状，自动做出诊断。<br>现有的对话系统主要依赖于数据学习，无法对额外的专用知识图谱（expert knowledge graph）进行编码。在这项工作中提出了一个端到端知识路由相关对话系统 （KR-DS），将丰富的医学知识图谱整合到话题转换中，使其与NLU，NLG相互协作。<br>本文使用基于Knowledge-routed的dqn网络 （krdqn） 来管理主题转换，它集成了一个<strong>编码不同症状和症状-疾病对之间关系</strong>的关系细化分支和<strong>一个用于主题决策</strong>的知识路由图分支。<br>在公共医疗对话数据集上的大量实验表明，本文提出的KR-DS模型明显优于目前最先进的方法（诊断准确率超过8%）。另外，本文从在线医学论坛收集了一个新的医疗数据集用于验证实验结果。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong>1. 医学对话系统的难点</strong></p>
+<p>对话系统询问的症状应与潜在疾病相关，并与医学知识相一致。然而当前面向任务的对话系统高度依赖于复杂的belief tracker和纯数据驱动的学习, 由于这样的诊断缺乏医学知识的支撑所以它无法直接适用于自动诊断。</p>
+<p><strong>2. 现有的自动诊断系统和其缺点</strong></p>
+<p><a href="https://www.aclweb.org/anthology/P18-2033" target="_blank" rel="noopener">Task-oriented Dialogue System for Automatic Diagnosis</a>(2018 ACL) 率先构建了一个用于自动诊断的对话系统，将对话系统转换为马尔可夫决策过程，并通过reinforcement learning训练对话策略。<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2ysm3237mj30g009jq4h.jpg" alt=""><br>缺点：<br>这项工作只是利用DQN网络通过数据驱动学习来管理主题转换(确定应该询问哪些症状)，而且结果复杂且重复。此外，本工作仅针对对话管理进行对话状态跟踪和策略学习，使用基于模板的自然语言处理模型，无法很好地匹配实际的自动诊断场景。</p>
+<p><strong>3. 本文的解决方法</strong></p>
+<p><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2yk73dymrj30lf0bhq5c.jpg" alt=""><br>本文提出了一个完整的端到端知识路由关系（KR-DS）自动诊断的对话系统，结合<strong>医学知识图谱</strong>和<strong>基于症状-疾病关系进行话题转换</strong>的对话管理（DM），并使其与NLU和NLG结合，如图1所示。<br>主要提出两个branch：knowledge-routed graph branch和 relational refinement branch。<br>一般来说，医生根据<strong>医学知识</strong>和<strong>诊断经验</strong>（medical knowledge and diagnosis experience）来确定疾病类型。受此启发，本文主要提出两个branch：knowledge-routed graph branch和 relational refinement branch。</p>
+<ol>
+<li><p>Relational refinement branch 从历史诊断数据（historical iagnostic data）中学习不同症状和症状-疾病对之间（symptom-disease pairs）的关系，从而<strong>细化由basic DQN生成的粗略结果</strong>。</p>
+</li>
+<li><p>Knowledge-routed graph branch 通过基于条件概率的医学知识路由图谱的先验信息来帮助决策。<br>这两个分支通过knowledge guiding 和 relation encoding产生更加合理的决策结果。</p>
+</li>
+</ol>
+<p><strong>4. 本文主要贡献：</strong></p>
+<p>本文进行关系建模（relation modeling）来处理相关的症状和疾病之间的关系，还进行了图谱推理（graph reasoning）来指导利用已有的医学知识进行策略学习。并且进一步介绍了一个面向终端任务的自动诊断对话系统和一个新的医疗对话系统数据集。</p>
+<p><strong>Adding: 医疗对话是如何进行的？</strong>        <img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2yl466iy0j30ac064wf6.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2yrqjosbtj30i90b6abi.jpg" alt=""></p>
+<h2 id="Proposed-Work"><a href="#Proposed-Work" class="headerlink" title="Proposed Work"></a>Proposed Work</h2><p>本文提出的对话系统（krds）如图1所示，作为一个面向任务的对话系统，它包括NLU,DM,NLG。DM根据当前对话状态执行主题转换，agent学习通过询问症状来诊断疾病的任务，最后应告知患者疾病类型。此外本文也使用了用户模拟器来生成基于user goal的对话。</p>
+<p><strong>Policy Learning with KR-DQN</strong></p>
+<ol>
+<li><p><em>Natural Language Understanding</em></p>
+<ul>
+<li>中文医疗诊断数据集<br>   在该诊断系统中，假设有$M$种disease，$N$种symptom.<ol>
+<li>4种agent action:<br>request+symptom, inform+disease, thanks,  closing.<br>所以agent的action space的大小$D$可以表示为：<br>$D = num_{greeting}+M +N$.</li>
+<li>4种user action:<br><em>request+disease, confirm/deny/not-sure+symptom, thanks, closing</em></li>
+<li>4种symptom states：<br><em>positive, negative, not-sure and not mentioned</em> ,在symptom vectors里表示为1, - 1, -2, 0</li>
+</ol>
+</li>
+<li>NLU和RL进行联合训练。</li>
+</ul>
+</li>
+<li><p><em>Policy Learning with KR-DQN</em><br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2ylk0kqutj30fr0av0tz.jpg" alt=""></p>
+</li>
+</ol>
+<ul>
+<li><p>Basic DQN Branch.<br>先利用一个Basic DQN分支来生成一个粗略的动作结果，如公式1所示。MLP以状态$s_t$作为输入，输出一个粗糙的动作结果，先有一个粗略的DQN结果再对结果进行优化。</p>
+<script type="math/tex; mode=display">a_t^r = MLP(s_t)</script></li>
+<li><p>Relational Refinement Branch<br>关系模块可以通过从一组其他元素的聚合信息来影响单个元素(例如，其他症状及疾病)。由于关系权重（relation weights）是由任务目标驱动自动学习的，因此关系模块可以对元素之间的依赖关系建模。因此本文设计了一个relational refinement module, 通过引进一个关系矩阵$R \epsilon  R^{D\times{D}}$ 来表示所有动作间的依赖关系。<br>Basic DQN 预测的动作是$a_t^r$, 再乘以学习到的关系矩阵R得到新的action $a^f_t \epsilon R^D$, 该关系矩阵是不对称的，表示有向加权图。细化的动作向量$a^f_t$的每一个元素为初始预测动作$a_t^r$的加权和，其中权值表示元素之间的依赖关系.</p>
+<script type="math/tex; mode=display">a^f_t = a^r_t ·R</script><p>关系矩阵$R$由<strong>数据集的统计量进行条件概率的初始化</strong>。每个条目$R_{ij}$表示单位$x_j$以单位$x_i$为条件的概率。关系矩阵通过反向传播学习捕获动作之间的依赖关系。实验表明，这种初始化方法<strong>优于随机初始化</strong>，因为先验知识可以指导关系矩阵的学习。</p>
+</li>
+<li><p>Knowledge-routed Graph Branch<br>（与其他对话系统的不同之处：以user的self report 作为对话的基础）<br>设计思路：在拿到患者的自我报告时，医生首先要对患者可能存在几种候选疾病有一个大致的了解。随后，通过询问这些候选疾病（diease）的显著症状（symptoms），医生排除了其他候选病，直到确定诊断。<br>受此启发，本文设计了一个知识路由图谱（knowledge-routed graph）模块来模拟医生的思维过程。首先计算症状和疾病之间的条件概率作为有向医学知识图谱的权值，其中有两种类型的节点，如图2所示。<br>edges只存在于疾病和症状之间。每条edge都有两个weights，其中疾病到症状的条件概率为$P (dis|sym)$，症状到疾病的条件概率为$P (sym|dis)$. 在与病人交流的过程中，医生可能会有几种候选疾病。我们将候选疾病概率表示为与观察到的症状相对应的疾病概率。症状先验概率$P_{prior}(sym)$通过以下规则计算:</p>
+<ol>
+<li>对于提及到的症状，患有该症状设置为1，未患有该症状设置为-1</li>
+<li><p>其他症状（不确定或未提及）的概率设置为从数据集中统计计算出来的先验概率。那么这些症状的概率 $P_{prior}(sym)$乘以条件概率$P(dis|sym)$得到疾病概率$P(dis)$，公式为:</p>
+<script type="math/tex; mode=display">P (dis) = P (dis| sym)·P_{prior}(sym)</script><p>考虑到候选疾病，医生经常根据他们的医学知识询问一些值得注意的症状来确诊, 因此由疾病概率$P(dis)$与条件概率矩阵$P (sym|dis)$相乘得到症状概率$P (sym)$:</p>
+<script type="math/tex; mode=display">P (sym) = P (sym|dis)·P (dis)</script><p>将疾病概率$P(dis)$和症状概率$P (sym)$连接在一起，得到 knowledge-routed action的概率$a^k_t\epsilon D$。<br>有了这三个action $a_t^r, a_t^f , a_t^k$，然后把三个动作相加得到$a_t$, 作为KR-DQN在当前状态$s_t$下的最终结果。</p>
+<script type="math/tex; mode=display">a_t = sigmoid(a_t^r) + sigmoid(a_t^f ) + a^k_t</script></li>
+</ol>
+</li>
+</ul>
+<h2 id="Experiement"><a href="#Experiement" class="headerlink" title="Experiement"></a>Experiement</h2><p>医疗对话数据集：</p>
+<ul>
+<li>MZ dataset： （Baidu拇指医生）710个user goal，66个症状，4类疾病。</li>
+<li>本文提出的数据集 DX dataset: 527个对话， 41种症状， 5类疾病</li>
+</ul>
+<p>评价指标：</p>
+<ul>
+<li>使用正确诊断率作为对话的准确性。</li>
+<li>匹配率，来评估症状对话系统请求的有效性，成功匹配意味着系统询问用户隐含存在的症状，否则就是失败匹配。<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2yljl5hhkj30fm0dsdi1.jpg" alt=""><br>具体对话样例（与baseline的比较）<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g2ys0vmosnj310r0b8n1l.jpg" alt=""></li>
+</ul>
+<h3 id="Sih-conclusion"><a href="#Sih-conclusion" class="headerlink" title="Sih conclusion"></a>Sih conclusion</h3><ul>
+<li>对话逻辑较为简单，主要是对知识建模，知识推理的过程。</li>
+<li>可以将此方法尝试用于multi domain dialog。</li>
+<li>利用知识图谱对知识建模值得借鉴。</li>
+<li>编码不同症状和症状-疾病对之间的关系，Relation modeling也是值得借鉴的。</li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;Reprint please specify:
+                    </span>
+                    <a href="https://liusih.github.io" class="b-link-green">Sih Blog</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/05/12/医疗对话系统/" class="b-link-green">医疗对话系统总结</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://liusih.github.io/2019/05/12/医疗对话系统/';
+        this.page.identifier = '/2019/05/12/医疗对话系统/';
+        this.page.title = '医疗对话系统总结';
+    };
+    let disqus_shortname = '';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2019/05/21/naacl2019 Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models">
+                        
+                        <span class="card-title">Rethinking Action Spaces for Reinforcement Learning in End-to-end  Dialog Agents with Latent Variable Models</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models
+
+Naacl 2019 </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Dialogue-system/" class="post-category" target="_blank">
+                                    Dialogue system
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/RL/" target="_blank">
+                        <span class="chip bg-color">RL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/04/25/ConvLab/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="ConvLab - Multi-Domain End-to-End Dialog System Platform">
+                        
+                        <span class="card-title">ConvLab - Multi-Domain End-to-End Dialog System Platform</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">微软和清华在对话系统领域的合作：ConvLab - Multi-Domain End-to-End Dialog System Platform
+提出ConvLab—多领域端到端对话系统平台，它一方面提供一些可复用的组件来帮助实验人员快速实</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Dialogue-system/" class="post-category" target="_blank">
+                                    Dialogue system
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Dialogue-system/" target="_blank">
+                        <span class="chip bg-color">Dialogue system</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: Sih Blog<br />'
+            + 'Author: Sih<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://liusih.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
