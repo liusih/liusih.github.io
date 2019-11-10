@@ -10,19 +10,19 @@
 <title>Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue - Sih Blog</title>
 
 
-    <meta name="description" content="EMNLP 2019 任务型对话整理 Abstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中，我们提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配">
+    <meta name="description" content="EMNLP 2019 任务型对话整理 Abstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语">
 <meta name="keywords" content="NLG,Multi-task">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
 <meta property="og:url" content="https://liusih.github.io/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/index.html">
 <meta property="og:site_name" content="Sih Blog">
-<meta property="og:description" content="EMNLP 2019 任务型对话整理 Abstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中，我们提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配">
+<meta property="og:description" content="EMNLP 2019 任务型对话整理 Abstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png">
-<meta property="og:updated_time" content="2019-11-10T07:53:48.338Z">
+<meta property="og:updated_time" content="2019-11-10T07:57:27.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
-<meta name="twitter:description" content="EMNLP 2019 任务型对话整理 Abstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中，我们提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配">
+<meta name="twitter:description" content="EMNLP 2019 任务型对话整理 Abstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语">
 <meta name="twitter:image" content="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png">
 
 
@@ -163,8 +163,7 @@
         </h1>
         <div class="content">
             <p>EMNLP 2019 任务型对话整理</p>
-<h5 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h5><p>在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中，我们提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语言模型明确地针对生成响应的自然相关性。这对提高人类语言的风格和多样性有重要意义。实验结果表明，该多任务学习框架在多数据集的学习效果优于已有的多任务学习框架。例如，它将以前E2E-NLG数据集上的最佳BLEU评分提高了2.2%，将笔记本数据集上的最佳BLEU评分提高了6.1%。</p>
-<a id="more"></a>
+<h5 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h5><p>在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语言模型明确地针对生成响应的自然相关性。这对提高人类语言的风格和多样性有重要意义。<br><a id="more"></a><br>实验结果表明，该多任务学习框架在多数据集的学习效果优于已有的多任务学习框架。例如，它将以前E2E-NLG数据集上的最佳BLEU评分提高了2.2%，将笔记本数据集上的最佳BLEU评分提高了6.1%。</p>
 <h5 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h5><p>Challenge: 由于NLG直接面向用户，其可读性和信息量直接影响用户对整个对话系统的感知。一方面，为了提供或请求用户的信息，响应必须包含所需的信息，即meaning representation(MR)。另一方面，系统响应需要模仿人类语言的流动性和变异性来提高用户体验。早期的工作主要采用预定义的规则语法，尽管这些框架可以提供足够的信息，但是它们缺乏语言的自然性和变化性，使得响应非常僵化。此外，这些方法通常需要费力气的手工工作来创建模板，从而使它们无法跨域扩展。</p>
 <p>Method: 由于面向任务的对话数据通常包含丰富的人类响应，因此利用语言建模技术提高NLG模型模拟人类语言的能力具有很大的潜力。</p>
 <blockquote>
@@ -290,7 +289,7 @@
         <div class="level-start">
             <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/01/Curriculum Learning/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Curriculum Learning and self-paced learning 课程学习和自步学习</span>
+                <span class="level-item">Curriculum Learning and self-paced learning</span>
             </a>
         </div>
         
@@ -574,14 +573,14 @@
             
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning 课程学习和自步学习">
+                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning 课程学习和自步学习</a>
+                    <a href="/2019/11/01/Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a> / <a class="has-link-grey -link" href="/categories/Curriculum-Learning/Self-paced-learning/">Self-paced learning</a>
                     </p>
@@ -891,14 +890,14 @@
             
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning 课程学习和自步学习">
+                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning 课程学习和自步学习</a>
+                    <a href="/2019/11/01/Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a> / <a class="has-link-grey -link" href="/categories/Curriculum-Learning/Self-paced-learning/">Self-paced learning</a>
                     </p>
