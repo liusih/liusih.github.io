@@ -10,19 +10,19 @@
 <title>Curriculum Learning and self-paced learning 课程学习和自步学习 - Sih Blog</title>
 
 
-    <meta name="description" content="Introduction1. Curriculum LearningBengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。  A model is learned">
+    <meta name="description" content="1. Curriculum LearningBengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。  A model is learned by graduall">
 <meta name="keywords" content="Curriculum Learning,Self-paced learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Curriculum Learning and self-paced learning 课程学习和自步学习">
 <meta property="og:url" content="https://liusih.github.io/2019/11/01/Curriculum Learning/index.html">
 <meta property="og:site_name" content="Sih Blog">
-<meta property="og:description" content="Introduction1. Curriculum LearningBengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。  A model is learned">
+<meta property="og:description" content="1. Curriculum LearningBengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。  A model is learned by graduall">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg">
-<meta property="og:updated_time" content="2019-11-10T07:48:09.861Z">
+<meta property="og:updated_time" content="2019-11-10T07:50:46.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Curriculum Learning and self-paced learning 课程学习和自步学习">
-<meta name="twitter:description" content="Introduction1. Curriculum LearningBengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。  A model is learned">
+<meta name="twitter:description" content="1. Curriculum LearningBengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。  A model is learned by graduall">
 <meta name="twitter:image" content="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg">
 
 
@@ -163,7 +163,7 @@
         </h1>
         <div class="content">
             <!-- ## Curriculum Learning and self-paced learning  课程学习和自步学习 -->
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h4 id="1-Curriculum-Learning"><a href="#1-Curriculum-Learning" class="headerlink" title="1. Curriculum Learning"></a>1. Curriculum Learning</h4><p>Bengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。</p>
+<h4 id="1-Curriculum-Learning"><a href="#1-Curriculum-Learning" class="headerlink" title="1. Curriculum Learning"></a>1. Curriculum Learning</h4><p>Bengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。</p>
 <blockquote>
 <p><em>A model is learned by gradually including from easy to complex samples in training so as to increase the entropy of training samples.</em></p>
 </blockquote>

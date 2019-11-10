@@ -19,7 +19,7 @@
 <meta property="og:description" content="题目：Domain Adaptive Dialog Generation via Meta Learning     来源： ACL 2019 原文链接：  https://  arxiv.org/abs/1906.0352  0     Introduction问题：领域适配是对话系统中的一项重要任务，因为根据不同的需求，每天都有许多新的对话任务产生，为这些新任务收集和注释训练数据的成本很高">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://liusih.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-08T08:15:28.352Z">
+<meta property="og:updated_time" content="2019-11-10T07:50:41.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Domain Adaptive Dialog Generation via Meta Learning">
 <meta name="twitter:description" content="题目：Domain Adaptive Dialog Generation via Meta Learning     来源： ACL 2019 原文链接：  https://  arxiv.org/abs/1906.0352  0     Introduction问题：领域适配是对话系统中的一项重要任务，因为根据不同的需求，每天都有许多新的对话任务产生，为这些新任务收集和注释训练数据的成本很高">
@@ -164,6 +164,7 @@
 </a>  </p>
 </blockquote>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h2><p><strong>问题</strong><br>：领域适配是对话系统中的一项重要任务，因为根据不同的需求，每天都有许多新的对话任务产生，为这些新任务收集和注释训练数据的成本很高，因为它涉及到与真实用户的交互。因此将现有的丰富资源领域的数据适应于资源有限的新领域是对话系统研究中的一项重要任务。</p>
+<a id="more"></a>
 <p><strong>现有解决方法</strong> ：Transfer learning、few-shot learning、meta-<br>learning等介绍了如何解决机器学习中的数据稀缺问题。由于每个对话域之间的差异很大，因此将信息从富资源域泛化到另一个低资源域非常困难。</p>
 <p><strong>本文的方法</strong> ：所以本文提出了一种基于元学习（meta-learning<br>）的领域自适应对话生成方法DAML。DAML是一个端到端可训练的对话系统模型，它从具有丰富资源的领域任务中学习，然后用最少的训练样本适应到新的领域。通过将模型无关的元学习算法（<br><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1703.03400.pdf" target="_blank" rel="noopener"> model-agnostic meta-learning
 </a><br>MAML）应用于对话域，利用多个单域对话数据和丰富的资源来训练对话系统模型，将训练中的多个对话任务结合起来，学习适用于新领域的通用和可转移信息。使得该模型仅通过少量的训练实例，就能在一个新的领域有效地学习一个具有竞争力的对话系统。</p>
