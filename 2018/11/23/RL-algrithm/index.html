@@ -184,23 +184,26 @@
 <h2 id="1-Double-DQN"><a href="#1-Double-DQN" class="headerlink" title="1. Double DQN"></a>1. Double DQN</h2><h4 id="Q值函数的定义"><a href="#Q值函数的定义" class="headerlink" title="Q值函数的定义:"></a>Q值函数的定义:</h4><p>在策略π下，状态s，采取动作a， 所得到的Q值为：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/42741-fa665dc9b61fe30c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/444/format/webp" alt=""></p>
 <p>最优值就是:</p>
-<script type="math/tex; mode=display">Q^*(s, a) = max_π Q_π(s, a)</script><p>最优策略就可以通过在每个状态选择最高值的行动给出。<br>则目标 </p>
+<p>$$Q^*(s, a) = max_π Q_π(s, a)$$</p>
+<p>最优策略就可以通过在每个状态选择最高值的行动给出。<br>则目标 </p>
 <p><img src="https://upload-images.jianshu.io/upload_images/42741-7408f70632fa8826.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/405/format/webp" alt=""></p>
-<h4 id="DQN-算法"><a href="#DQN-算法" class="headerlink" title="DQN 算法"></a>DQN 算法</h4><p>DQN 算法的两个最重要的特点是目标网络 (target network) 和经验回顾 (experience replay)。目标网络，其参数为 θ^-，和 online的网络一样，除了其参数是从 online network 经过某些steps之后拷贝下来的。</p>
-<script type="math/tex; mode=display">θ^-_t = θ_t</script><p>目标网络是：</p>
+<h4 id="DQN-算法"><a href="#DQN-算法" class="headerlink" title="DQN 算法"></a>DQN 算法</h4><p>DQN 算法的两个最重要的特点是目标网络 (target network) 和经验回顾 (experience replay)。目标网络，其参数为 θ^-，和 online的网络一样，除了其参数是从 online network 经过某些steps之后拷贝下来的。<br>$$θ^-_t = θ_t$$</p>
+<p>目标网络是：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/42741-70d50d393f04f561.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/446/format/webp" alt=""></p>
 <h4 id="Double-Q"><a href="#Double-Q" class="headerlink" title="Double Q:"></a>Double Q:</h4><p>在标准的 Q-学习和 DQN 中的 max 操作用相同的值来选择和评价一个 action，这实际上更可能选择过高的估计值，从而导致过于乐观的值估计overestimated values。为了避免这种情况的出现，我们可以对选择selection 和衡量evaluation进行解耦。这就是 Double Q。</p>
 <p>reference: <a href="https://www.jianshu.com/p/193ca0106aa5" target="_blank" rel="noopener">Double DQN</a></p>
 <h4 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h4><p><a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Applications_files/doubledqn.pdf" target="_blank" rel="noopener">论文（Hasselt等人）</a>发现并证明了传统的DQN普遍会过高估计Action的Q值，而且估计误差会随Action的个数增加而增加。如果高估不是均匀的，则会导致某个次优的Action高估的Q值超过了最优Action的Q值，永远无法找到最优的策略。作者在他2010年提出的Double Q-Learning的基础上，将该方法引入了DQN中。具体操作是对要学习的Target Q值生成方式进行修改，原版的DQN中是使用TargetNet产生Target Q值，即</p>
-<script type="math/tex; mode=display">Q_T =r+\gamma\max_{a'} Q (s',a';\theta_{i}^-)</script><p>其中$θ^-$是TargetNet的参数。</p>
+<p>$$Q_T =r+\gamma\max_{a’} Q (s’,a’;\theta_{i}^-)$$</p>
+<p>其中$θ^-$是TargetNet的参数。</p>
 <h4 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h4><ol>
-<li><p>在DDQN中，先用MainNet找到 $\max<em>{a’}Q(s’,a’;\theta</em>{i})$的Action ($θ_i$是MainNet的参数)</p>
+<li><p>在DDQN中，先用MainNet找到 $\max_{a’}Q(s’,a’;\theta_{i})$的Action ($θ_i$是MainNet的参数)</p>
 </li>
 <li><p>再去TargetNet中找到这个Action的Q值来去构成Target Q值，这个Q值在TargetNet中不一定是最大的，因此可以避免选到被高估的次优Action。最终要学习的Loss Function为： </p>
 </li>
 </ol>
-<script type="math/tex; mode=display">L(\theta)=E[(Q_T-Q(s,a;\theta_i))^2</script><p>此时的Target Q 变为:</p>
-<script type="math/tex; mode=display">Q_T = r+\gamma Q (s',\max_{a'} Q(s',a';\theta_i);\theta_{i}^-)</script><p>除此之外，其他设置与DQN一致。实验表明，DDQN能够估计出更准确出Q值，在一些Atari2600游戏中可获得更稳定有效的策略。</p>
+<p>$$L(\theta)=E[(Q_T-Q(s,a;\theta_i))^2$$<br>此时的Target Q 变为:</p>
+<p>$$Q_T = r+\gamma Q (s’,\max_{a’} Q(s’,a’;\theta_i);\theta_{i}^-)$$</p>
+<p>除此之外，其他设置与DQN一致。实验表明，DDQN能够估计出更准确出Q值，在一些Atari2600游戏中可获得更稳定有效的策略。</p>
 <p>reference: <a href="https://blog.csdn.net/u013236946/article/details/73161586" target="_blank" rel="noopener">Doule DQN</a></p>
 <h2 id="2-Dueling-DQN"><a href="#2-Dueling-DQN" class="headerlink" title="2. Dueling-DQN"></a>2. Dueling-DQN</h2><ul>
 <li><p>Background</p>
@@ -210,7 +213,7 @@
 <ol>
 <li><p>第一个模型是一般的DQN网络模型，即输入层接三个卷积层后，接两个全连接层，输出为每个动作的Q值。</p>
 </li>
-<li><p>第二个模型—竞争网络（dueling net）将卷积层提取的抽象特征分流到两个支路中：</p>
+<li><p>第二个模型–竞争网络（dueling net）将卷积层提取的抽象特征分流到两个支路中：</p>
 <ul>
 <li>上路代表状态值函数 $V(s)$，表示静态的状态环境本身具有的价值</li>
 <li>下路代表依赖状态的动作优势函数$A(a)$（advantage function），表示选择某个Action额外带来的价值。</li>
@@ -223,15 +226,19 @@
 </li>
 <li><p>公式</p>
 <p>状态价值函数表示为 </p>
-<script type="math/tex; mode=display">V(s;θ,β)</script><p>动作优势函数表示为 </p>
-<script type="math/tex; mode=display">A(s,a;θ,α)</script><p>动作Q值为两者相加 </p>
-<script type="math/tex; mode=display">Q(s,a;θ,α,β)=V(s;θ,β)+A(s,a;θ,α)</script><p>  <code>其中 θ 是卷积层参数，β 和 α 是两支路全连接层参数。</code></p>
+<p>  $$V(s;θ,β)$$</p>
+<p>动作优势函数表示为 </p>
+<p>  $$A(s,a;θ,α)$$</p>
+<p>动作Q值为两者相加 </p>
+<p> $$ Q(s,a;θ,α,β)=V(s;θ,β)+A(s,a;θ,α)$$</p>
+<p>  <code>其中 θ 是卷积层参数，β 和 α 是两支路全连接层参数。</code></p>
 <p>而在实际中，一般要将动作优势流设置为单独动作优势函数减去某状态下所有动作优势函数的平均值</p>
-<script type="math/tex; mode=display">Q(s,a;\theta,\alpha,\beta) = V(s;\theta,\beta)+(A(s,a;\theta,\alpha)-\frac{1}{|A|}\sum_{a'}A(s,a';\theta,\alpha))</script><p>  <code>这样做可以保证该状态下各动作的优势函数相对排序不变，而且可以缩小 Q 值的范围，去除多余的自由度，提高算法稳定性。</code></p>
+<p>  $$Q(s,a;\theta,\alpha,\beta) = V(s;\theta,\beta)+(A(s,a;\theta,\alpha)-\frac{1}{|A|}\sum_{a’}A(s,a’;\theta,\alpha))$$</p>
+<p>  <code>这样做可以保证该状态下各动作的优势函数相对排序不变，而且可以缩小 Q 值的范围，去除多余的自由度，提高算法稳定性。</code></p>
 <p>  reference：<a href="https://blog.csdn.net/u013236946/article/details/73161586" target="_blank" rel="noopener">Dueling-DQN</a></p>
 </li>
 </ul>
-<h2 id="3-Prioritized-Experience-Replay"><a href="#3-Prioritized-Experience-Replay" class="headerlink" title="3. Prioritized Experience Replay"></a>3. Prioritized Experience Replay</h2><p>简单来说，经验池中TD误差 <script type="math/tex">r+\gamma\max_{a'}Q(s',a';\theta^-)-Q(s,a;\theta)</script>绝对值越大的样本被抽取出来训练的概率越大，加快了最优策略的学习。</p>
+<h2 id="3-Prioritized-Experience-Replay"><a href="#3-Prioritized-Experience-Replay" class="headerlink" title="3. Prioritized Experience Replay"></a>3. Prioritized Experience Replay</h2><p>简单来说，经验池中TD误差 $$r+\gamma\max_{a’}Q(s’,a’;\theta^-)-Q(s,a;\theta)$$绝对值越大的样本被抽取出来训练的概率越大，加快了最优策略的学习。</p>
 <h2 id="4-H-DQN"><a href="#4-H-DQN" class="headerlink" title="4. H-DQN"></a>4. H-DQN</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
 <li><p>hierarchical deep reinforcement learning, model-free, value-based</p>
 </li>
@@ -240,12 +247,12 @@
 </ul>
 <h3 id="Procedure"><a href="#Procedure" class="headerlink" title="Procedure"></a>Procedure</h3><p>以一个两层级的算法为例：</p>
 <ol>
-<li>一个层级叫做meta-controller，它负责获取当前状态$s<em>t$ ，然后从可能的子任务里面选取一个子任务 g_t \in \mathcal{G} 交代给下一个层级的控制器去完成。它是一个强化学习算法，其目标是最大化实际得到的extrinsic reward之和，$F_t = \sum</em>{t’=t}^\infty \gamma^{t’-t} f_{t’}$ 。</li>
+<li>一个层级叫做meta-controller，它负责获取当前状态$s_t$ ，然后从可能的子任务里面选取一个子任务 g_t \in \mathcal{G} 交代给下一个层级的控制器去完成。它是一个强化学习算法，其目标是最大化实际得到的extrinsic reward之和，$F_t = \sum_{t’=t}^\infty \gamma^{t’-t} f_{t’}$ 。</li>
 </ol>
 <p>在这里，这一层使用的是DQN方法，这一层Q-value的更新目标是:</p>
 <p><img src="https://pic4.zhimg.com/80/v2-e593eb0a1d2ef68d575b39cb28dc21b4_hd.jpg" alt=""><br>ps: 按照sih的理解，通俗来讲就是，状态s和作为该层级的动作-&gt;子任务$g$,以及外置奖励(此处的外置奖励来源于外部环境)进行一次DQN的学习。</p>
-<ol>
-<li>另一个层级叫做controller，它负责接收上一个层级的子任务 $g$ 以及当前的状态 $s<em>t$ ，然后选择一个可能的行动 $a_t$ 去执行。它也是一个强化学习算法，其目标是最大化一个人为规定的critic给出的intrinsic reward之和，$R_t(g) = \sum</em>{t’=t}^\infty \gamma^{t’-t} r_{t’}(g)$。这里也使用DQN方法，更新目标为:</li>
+<ol start="2">
+<li>另一个层级叫做controller，它负责接收上一个层级的子任务 $g$ 以及当前的状态 $s_t$ ，然后选择一个可能的行动 $a_t$ 去执行。它也是一个强化学习算法，其目标是最大化一个人为规定的critic给出的intrinsic reward之和，$R_t(g) = \sum_{t’=t}^\infty \gamma^{t’-t} r_{t’}(g)$。这里也使用DQN方法，更新目标为:</li>
 </ol>
 <p><img src="https://pic1.zhimg.com/80/v2-5de1ecd991d04eecd1e66549d72700fb_hd.jpg" alt=""></p>
 <p>ps: 此步则是以上一层级的子任务g作为先验，将s,a,g,以及内置奖励（此处的内置奖励来源于critic）进行DQN的学习。</p>
