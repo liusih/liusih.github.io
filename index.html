@@ -135,6 +135,69 @@
 <div class="card">
     
     <div class="card-image">
+        <a href="/2019/11/01/Curriculum Learning/" class="image is-7by1">
+            <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Curriculum-Learning/Self-paced-learning/">Self-paced learning</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/01/Curriculum Learning/">Curriculum Learning and self-paced learning</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="Curriculum-Learning-and-self-paced-learning-课程学习和自步学习"><a href="#Curriculum-Learning-and-self-paced-learning-课程学习和自步学习" class="headerlink" title="Curriculum Learning and self-paced learning  课程学习和自步学习"></a>Curriculum Learning and self-paced learning  课程学习和自步学习</h2><h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><h4 id="1-Curriculum-Learning"><a href="#1-Curriculum-Learning" class="headerlink" title="1. Curriculum Learning"></a>1. Curriculum Learning</h4><p>Bengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。</p>
+<blockquote>
+<p><em>A model is learned by gradually including from easy to complex samples in training so as to increase the entropy of training samples.</em></p>
+</blockquote>
+<p>课程学习的核心问题是得到一个ranking function，该函数能够对每一条数据样本给出其<strong>learning priority (学习该样本的优先程度)</strong>。一个确定的ranking function便能够确定一个“课程”，有更高rank的数据会被较早地学习。</p>
+<p>一般特定问题的ranking function是靠直觉来定义的，这样的定义方法可能会存在偏差，不够科学，所以引出了<strong>self-paced learning</strong>。</p>
+<h4 id="2-Self-paced-learning"><a href="#2-Self-paced-learning" class="headerlink" title="2. Self-paced learning"></a>2. Self-paced learning</h4><p>Kumar在2010年提出self-paced learning，通过模拟认知机制，通过先学习<strong>简单的、普适性的</strong>知识，然后逐渐增加难度，学习<strong>更复杂、更专业化的</strong>知识课程学习。自步学习从选取最简单的数据子集开始，逐渐加入复杂的数据，从而减少熵值，训练出潜在的权重参数。基本思路是利用损失大小与难易程度之间的对偶关系进行对所学样本的加权。这种加权格式类似于引入隐含变量后的估计推断格式和EM算法格式，使得模型对于数据分布的学习更加稳健。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt=""></p>
+<p><strong>SPL</strong> 通过在损失函数中引入变量 <img src="https://www.zhihu.com/equation?tex=v" alt="[公式]"> 来表示样本是否被选择：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-0417a18a05dc95e12d44766f79118b28_hd.png" alt=""></p>
+<p>SPL将curriculum设计为学习的目标函数中的一个正则化项，SPL的优化目标即优化得到一组模型参数w与权重向量v，使得所有数据的加权Loss之和与负的权重向量v的L1范数最小(也存在同时使用L1L2范数的变体[3])。其中 λ 是一个控制参数，反映了当前学习所进行到的阶段(learning pace)，<img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="[公式]"> 是调整步速的关键变量，<img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="[公式]"> 越小，表明模型还在训练的初始阶段，训练相对简单的样本，随着 <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="[公式]"> 增大，模型学习越来越多的样本。</p>
+<p>直观来解释一下权重向量v，最常用的是binary (0/1)的形式：其实就是是否选择该数据进入训练/验证集。note that在Loss项前乘了因子vi，所以对于第i条数据，若vi=0则其产生的Loss对于该步的模型参数w更新没有影响。</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li>Bengio, Yoshua, et al. “Curriculum learning.” <em>Proceedings of the 26th annual international conference on machine learning</em>. ACM, 2009.</li>
+<li>Kumar, M. Pawan, Benjamin Packer, and Daphne Koller. “Self-paced learning for latent variable models.” <em>Advances in Neural Information Processing Systems</em>. 2010.</li>
+<li><a href="https://zhuanlan.zhihu.com/p/55720313" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/55720313</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/54025612" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/54025612</a></li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
         <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="image is-7by1">
             <img class="thumbnail" src="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png" alt="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
         </a>
@@ -1082,7 +1145,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        11
+                        12
                     </p>
                 </div>
             </div>
@@ -1092,7 +1155,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        11
                     </p>
                 </div>
             </div>
@@ -1102,7 +1165,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        11
                     </p>
                 </div>
             </div>
@@ -1163,6 +1226,22 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Curriculum-Learning/">
+            <span class="level-start">
+                <span class="level-item">Curriculum Learning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Curriculum-Learning/Self-paced-learning/">
+            <span class="level-start">
+                <span class="level-item">Self-paced learning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Dialogue-system/">
             <span class="level-start">
                 <span class="level-item">Dialogue system</span>
@@ -1252,7 +1331,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/Curriculum-Learning/" style="font-size: 10px;">Curriculum Learning</a> <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Self-paced-learning/" style="font-size: 10px;">Self-paced learning</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
         
@@ -1261,6 +1340,25 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/01/Curriculum Learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time></div>
+                    <a href="/2019/11/01/Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a> / <a class="has-link-grey -link" href="/categories/Curriculum-Learning/Self-paced-learning/">Self-paced learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1338,25 +1436,6 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/12/医疗对话系统/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="医疗对话系统总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-12T08:15:10.000Z">2019-05-12</time></div>
-                    <a href="/2019/05/12/医疗对话系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">医疗对话系统总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1367,6 +1446,17 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1459,6 +1549,13 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Curriculum-Learning/">
+                        <span class="tag">Curriculum Learning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Dialogue/">
                         <span class="tag">Dialogue</span>
                         <span class="tag is-grey">1</span>
@@ -1490,6 +1587,13 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                     <a class="tags has-addons" href="/tags/RL/">
                         <span class="tag">RL</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Self-paced-learning/">
+                        <span class="tag">Self-paced learning</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1544,7 +1648,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/Curriculum-Learning/" style="font-size: 10px;">Curriculum Learning</a> <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Self-paced-learning/" style="font-size: 10px;">Self-paced learning</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
     
@@ -1553,6 +1657,25 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/01/Curriculum Learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time></div>
+                    <a href="/2019/11/01/Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a> / <a class="has-link-grey -link" href="/categories/Curriculum-Learning/Self-paced-learning/">Self-paced learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1630,25 +1753,6 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/12/医疗对话系统/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="医疗对话系统总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-12T08:15:10.000Z">2019-05-12</time></div>
-                    <a href="/2019/05/12/医疗对话系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">医疗对话系统总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1659,6 +1763,17 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -1751,6 +1866,13 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Curriculum-Learning/">
+                        <span class="tag">Curriculum Learning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Dialogue/">
                         <span class="tag">Dialogue</span>
                         <span class="tag is-grey">1</span>
@@ -1782,6 +1904,13 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                     <a class="tags has-addons" href="/tags/RL/">
                         <span class="tag">RL</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Self-paced-learning/">
+                        <span class="tag">Self-paced learning</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1836,7 +1965,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/Curriculum-Learning/" style="font-size: 10px;">Curriculum Learning</a> <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Self-paced-learning/" style="font-size: 10px;">Self-paced learning</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
     
@@ -1845,6 +1974,25 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/01/Curriculum Learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time></div>
+                    <a href="/2019/11/01/Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a> / <a class="has-link-grey -link" href="/categories/Curriculum-Learning/Self-paced-learning/">Self-paced learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1922,25 +2070,6 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/12/医疗对话系统/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="医疗对话系统总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-12T08:15:10.000Z">2019-05-12</time></div>
-                    <a href="/2019/05/12/医疗对话系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">医疗对话系统总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1951,6 +2080,17 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -2043,6 +2183,13 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Curriculum-Learning/">
+                        <span class="tag">Curriculum Learning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Dialogue/">
                         <span class="tag">Dialogue</span>
                         <span class="tag is-grey">1</span>
@@ -2074,6 +2221,13 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                     <a class="tags has-addons" href="/tags/RL/">
                         <span class="tag">RL</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Self-paced-learning/">
+                        <span class="tag">Self-paced learning</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
