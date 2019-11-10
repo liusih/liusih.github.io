@@ -19,7 +19,7 @@
 <meta property="og:description" content="EMNLP 2019 任务型对话整理 Multi-task Learning for Natural Language Generation in Task-Oriented DialogueAbstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png">
-<meta property="og:updated_time" content="2019-11-08T12:10:51.724Z">
+<meta property="og:updated_time" content="2019-11-10T07:52:24.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
 <meta name="twitter:description" content="EMNLP 2019 任务型对话整理 Multi-task Learning for Natural Language Generation in Task-Oriented DialogueAbstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语">
@@ -164,6 +164,7 @@
         <div class="content">
             <p>EMNLP 2019 任务型对话整理</p>
 <h4 id="Multi-task-Learning-for-Natural-Language-Generation-in-Task-Oriented-Dialogue"><a href="#Multi-task-Learning-for-Natural-Language-Generation-in-Task-Oriented-Dialogue" class="headerlink" title="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue"></a>Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</h4><h5 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h5><p>在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中，我们提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语言模型明确地针对生成响应的自然相关性。这对提高人类语言的风格和多样性有重要意义。实验结果表明，该多任务学习框架在多数据集的学习效果优于已有的多任务学习框架。例如，它将以前E2E-NLG数据集上的最佳BLEU评分提高了2.2%，将笔记本数据集上的最佳BLEU评分提高了6.1%。</p>
+<a id="more"></a>
 <h5 id="Intro"><a href="#Intro" class="headerlink" title="Intro:"></a>Intro:</h5><p>Challenge: 由于NLG直接面向用户，其可读性和信息量直接影响用户对整个对话系统的感知。一方面，为了提供或请求用户的信息，响应必须包含所需的信息，即meaning representation(MR)。另一方面，系统响应需要模仿人类语言的流动性和变异性来提高用户体验。早期的工作主要采用预定义的规则语法，尽管这些框架可以提供足够的信息，但是它们缺乏语言的自然性和变化性，使得响应非常僵化。此外，这些方法通常需要费力气的手工工作来创建模板，从而使它们无法跨域扩展。</p>
 <p>Method: 由于面向任务的对话数据通常包含丰富的人类响应，因此利用语言建模技术提高NLG模型模拟人类语言的能力具有很大的潜力。</p>
 <blockquote>
