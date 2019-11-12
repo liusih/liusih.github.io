@@ -7,13 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Tag: Curiosity - Sih Blog</title>
+<title>Tag: Dialog system - Sih Blog</title>
 
 
     <meta name="description" content="A NLP/RL learner.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sih Blog">
-<meta property="og:url" content="https://liusih.github.io/tags/Curiosity/index.html">
+<meta property="og:url" content="https://liusih.github.io/tags/Dialog-system/index.html">
 <meta property="og:site_name" content="Sih Blog">
 <meta property="og:description" content="A NLP/RL learner.">
 <meta property="og:locale" content="en">
@@ -135,7 +135,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Curiosity</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Dialog system</a></li>
         </ul>
         </nav>
     </div>
@@ -145,8 +145,8 @@
 <div class="card">
     
     <div class="card-image">
-        <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="image is-7by1">
-            <img class="thumbnail" src="http://image.sherlocknlp.com//20191111110136_uz5GfZ_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8A%E5%8D%8810.59.44.png" alt="Curiosity-driven Exploration by Self-supervised Prediction">
+        <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="image is-7by1">
+            <img class="thumbnail" src="/&lt;img src=&#34;http:/image.sherlocknlp.com/20191112143412_qHydb1_Screenshot.png&#34; style=&#34;zoom:40%;&#34; /&gt;" alt="The paper list of MSR in task-oriented dialog system">
         </a>
     </div>
     
@@ -154,10 +154,10 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-24T16:00:00.000Z">2019-10-25</time>
+                <time class="level-item has-text-grey" datetime="2019-10-31T16:00:00.000Z">2019-11-01</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Reinforcement-learning/">Reinforcement learning</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Reinforcement-learning/Curiosity/">Curiosity</a>
+                <a class="has-link-grey -link" href="/categories/Dialog-system/">Dialog system</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Dialog-system/Reinforcement-learning/">Reinforcement learning</a>
                 </div>
                 
                 
@@ -167,21 +167,62 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/">Curiosity-driven Exploration by Self-supervised Prediction</a>
+                <a class="has-link-black-ter" href="/2019/11/01/MSR任务型对话系统论文列表/">The paper list of MSR in task-oriented dialog system</a>
             
         </h1>
         <div class="content">
-            <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>在现实世界中自监督预测的好奇心驱动的探索，能够提供给agent的奖励非常少，或者根本不存在。在这种情况下，好奇心可以作为一种内在的奖励信号，使agent能够探索环境并学习可能在以后的生活中有用的技能。本文把好奇心表述为一个agent在视觉特征空间预测自身行为结果的能力时的误差，并把这种error作为内在好奇心reward提供给agent进行学习，该视觉特征空间是由一个自监督逆动态模型学习的。</p>
+            <p>MSR任务型对话系统论文列表</p>
+<ol>
+<li><p>Budgeted Policy Learning for Task-Oriented Dialogue Systems</p>
+<p>ACL 2019</p>
+<p><a href="https://arxiv.org/pdf/1906.00499" target="_blank" rel="noopener">https://arxiv.org/pdf/1906.00499</a></p>
+<p>在DDQ基础上的改进，增加一个BSC模块，DDQ中的world model模块没有改进，sih认为也是用于改进训练数据的质量。</p>
+</li>
+<li><p>ConvLab: Multi-Domain End-to-End Dialog System Platform</p>
+<p>2019.4 提出ConvLab对话系统模块集成的平台</p>
+<p>GitHub链接：<a href="https://github.com/ConvLab/ConvLab" target="_blank" rel="noopener">https://github.com/ConvLab/ConvLab</a></p>
+<p><a href="https://arxiv.org/pdf/1904.08637" target="_blank" rel="noopener">https://arxiv.org/pdf/1904.08637</a></p>
+</li>
+<li><p>Switch-based Active Deep Dyna-Q: Efficient Adaptive Planning for Task-Completion Dialogue Policy Learning</p>
+<p>AAAI209</p>
+<p><a href="https://arxiv.org/pdf/1811.07550" target="_blank" rel="noopener">https://arxiv.org/pdf/1811.07550</a></p>
+<p>加一个Switch，也是在生成质量上的改进，调整用于训练的数据的比例。</p>
+</li>
+<li><p>Deep Dyna-Q: Integrating Planning for Task-Completion Dialogue Policy Learning</p>
+<p>ACL2018</p>
+<p><a href="https://arxiv.org/pdf/1801.06176" target="_blank" rel="noopener">https://arxiv.org/pdf/1801.06176</a></p>
+<p>基于model based的模型Dyna-Q (DQN的一种改进), 引入world model用来生成模拟的用户经验。</p>
+</li>
+<li><p>Discriminative Deep Dyna-Q: Robust Planning for Dialogue Policy Learning</p>
+<p>EMNLP 2018</p>
+<p><a href="https://arxiv.org/pdf/1808.09442" target="_blank" rel="noopener">https://arxiv.org/pdf/1808.09442</a></p>
+<p>D3Q在DDQ基础上的改进, 在world model 后加判别器，模拟器生成的经验质量好的话再给agent作为训练数据</p>
+</li>
+<li><p>Subgoal Discovery for Hierarchical Dialogue Policy Learning</p>
+<p>EMNLP 2018</p>
+<p><a href="https://arxiv.org/pdf/1804.07855" target="_blank" rel="noopener">https://arxiv.org/pdf/1804.07855</a></p>
+<p>应用层级神经网络，提出SDN网络模型，把对话任务分解成subgoal，完成travel planning。</p>
+<p>Composite Task-Completion Dialogue Policy Learning via Hierarchical Deep Reinforcement Learning</p>
+<p><a href="https://arxiv.org/pdf/1704.03084" target="_blank" rel="noopener">https://arxiv.org/pdf/1704.03084</a></p>
+<p>上一篇文章的开端，EMNLP是在这一篇基础改进的。</p>
+</li>
+<li><p>Adversarial Advantage Actor-Critic Model for Task-Completion Dialogue Policy Learning</p>
+<p>ICASSP 2018</p>
+<p><a href="https://arxiv.org/pdf/1710.11277" target="_blank" rel="noopener">https://arxiv.org/pdf/1710.11277</a></p>
+<p>A3C, Adversarial 的 AC</p>
+</li>
+<li><p>End-to-End Task-Completion Neural Dialogue Systems</p>
+<p><a href="https://arxiv.org/pdf/1703.01008" target="_blank" rel="noopener">https://arxiv.org/pdf/1703.01008</a></p>
+<p>Xiujun Li最早提出的任务型对话系统的pipeline 模型。</p>
+</li>
+<li><p>A User Simulator for Task-Completion Dialogues</p>
+<p><a href="https://arxiv.org/pdf/1612.05688" target="_blank" rel="noopener">https://arxiv.org/pdf/1612.05688</a></p>
+<p>Xiujun Li 最早提出的User simulator.</p>
+</li>
+</ol>
+
         </div>
         
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/#more">Read More</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
