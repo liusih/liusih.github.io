@@ -170,47 +170,17 @@
 <li><p>CLEVR-Dialog: A Diagnostic Dataset for Multi-Round Reasoning in Visual Dialog</p>
 <p> NAACL 2019</p>
 <p> 链接： <a href="https://arxiv.org/pdf/1903.03166.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1903.03166.pdf</a></p>
-<p> 摘要：可视对话是一种多模态任务，使用对话历史作为上下文，以图像为基础回答一系列问题。它是视觉、语言、推理和基础方面的挑战。然而，在大型真实数据集上单独研究这些子任务是不可行的，因为它需要对所有图像和对话框的“状态”进行代价高昂的完整注释。我们开发了一个大型诊断数据集，用于研究可视化对话框中的多轮推理。具体地说，我们构建了一个基于CLEVR dataset 图像的场景图的对话语法。 其中可视对话的所有方面都得到了完整的标注。  总共包含了5个10轮对话框的实例，用于大约85k个cleveland图像，总共有425万对问答对。我们使用CLEVR-Dialog来测试标准可视对话模型的性能; 特别是视觉上的共参考分辨率(作为共参考距离的函数)。这是对可视对话模型的第一次分析，没有这个数据集是不可能的。我们希望CLEVR-Dialog的发现将有助于开发未来的可视化对话模型。我们的数据集和代码将公开。</p>
-</li>
-<li><p>Image-Question-Answer Synergistic Network for Visual Dialog </p>
-<p> CVPR2019</p>
-<p> 链接： <a href="https://arxiv.org/abs/1902.09774" target="_blank" rel="noopener">https://arxiv.org/abs/1902.09774</a> </p>
-<p> 摘要: 图像、问题(结合对话历史)和相应的答案是可视化对话的三个重要组成部分。经典的可视对话系统集成了图像、问题和对话历史搜索或生成最佳匹配的答案，因此，这种方法明显忽略了答案的作用。本文设计了一种新颖的图像-问答协同网络来评价问答在精确的视觉对话中的作用。我们将传统的单阶段解决方案扩展为两阶段解决方案。在第一个阶段，根据候选答案与图像和问题对的相关性对它们进行粗略的评分。然后，在第二阶段，通过与图像和问题的协同作用，对正确率较高的答案进行重新排序。在可视化对话v1.0数据集上，提出的协同网络增强了判别式可视化对话模型，实现了57.88% \%的归一化折现累积增益。一个生成的可视化对话模型也显示了很好的改进。</p>
-</li>
-<li><p>Multi-step Reasoning via Recurrent Dual Attention for Visual Dialog </p>
-<p> ACL 2019 <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gan%2C+Z" target="_blank" rel="noopener">Zhe Gan</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Cheng%2C+Y" target="_blank" rel="noopener">Yu Cheng</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Kholy%2C+A+E" target="_blank" rel="noopener">Ahmed El Kholy</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Li%2C+L" target="_blank" rel="noopener">Linjie Li</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Liu%2C+J" target="_blank" rel="noopener">Jingjing Liu</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gao%2C+J" target="_blank" rel="noopener">Jianfeng Gao</a></p>
-<p> 链接： <a href="https://arxiv.org/abs/1902.00579" target="_blank" rel="noopener">https://arxiv.org/abs/1902.00579</a></p>
-<p> 摘要：本文提出了一种新的视觉对话模型——递归双注意网络(ReDAN)，利用多步推理的方法来解决图像的一系列问题。在对话的每个问答环节中，ReDAN通过多个推理步骤逐步推断出答案。在推理过程的每一步中，根据图像和之前的对话历史，对问题的语义表示进行更新，并在后续的步骤中使用递归细化的表示进行进一步的推理。在VisDial v1.0数据集上，提出的ReDAN模型获得了64.47%的NDCG评分。推理过程的可视化进一步证明了ReDAN可以通过迭代细化找到上下文相关的视觉线索和文本线索，从而一步一步地得到正确的答案。</p>
-</li>
-<li><p>Sequential Attention GAN for Interactive Image Editing via Dialogue </p>
-<p> CVPR2019 <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Cheng%2C+Y" target="_blank" rel="noopener">Yu Cheng</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gan%2C+Z" target="_blank" rel="noopener">Zhe Gan</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Li%2C+Y" target="_blank" rel="noopener">Yitong Li</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Liu%2C+J" target="_blank" rel="noopener">Jingjing Liu</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gao%2C+J" target="_blank" rel="noopener">Jianfeng Gao</a></p>
-<p> 链接：<a href="https://arxiv.org/abs/1812.08352" target="_blank" rel="noopener">https://arxiv.org/abs/1812.08352</a></p>
-<p> 摘要：在本文中，我们介绍了一种新的任务——通过会话语言进行交互式图像编辑，用户可以通过多回合的自然语言对话引导agent对图像进行编辑。在每个对话轮中，代理接受来自用户的源图像和自然语言描述作为输入，并在文本描述之后生成一个新图像。为此任务引入了两个新数据集，Zap-Seq和DeepFashion-Seq。本文提出了一种新的顺序注意生成对抗网络(SeqAttnGAN)框架，该框架利用神经状态跟踪器对每个对话轮中的源图像和文本描述进行编码，生成与前面图像和对话上下文一致的高质量新图像。为了更好地实现区域特定的文本到图像的生成，我们还在模型中引入了注意机制。在这两个新的数据集上的实验表明，所提出的SeqAttnGAN模型在基于对话框的图像编辑任务上优于现有的SOTA方法。详细的定量评估和用户研究也表明，我们的模型在图像生成方面比SOTA基线更有效，无论是在视觉质量还是文本到图像的一致性方面。</p>
-</li>
-<li><p>StoryGAN: A Sequential Conditional GAN for Story Visualization</p>
-<p> CVPR2019 <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Li%2C+Y" target="_blank" rel="noopener">Yitong Li</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gan%2C+Z" target="_blank" rel="noopener">Zhe Gan</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Shen%2C+Y" target="_blank" rel="noopener">Yelong Shen</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Liu%2C+J" target="_blank" rel="noopener">Jingjing Liu</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Cheng%2C+Y" target="_blank" rel="noopener">Yu Cheng</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Wu%2C+Y" target="_blank" rel="noopener">Yuexin Wu</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Carin%2C+L" target="_blank" rel="noopener">Lawrence Carin</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Carlson%2C+D" target="_blank" rel="noopener">David Carlson</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gao%2C+J" target="_blank" rel="noopener">Jianfeng Gao</a></p>
-<p> 链接： <a href="https://arxiv.org/abs/1812.02784" target="_blank" rel="noopener">https://arxiv.org/abs/1812.02784</a></p>
-<p> 摘要：我们提出了一个新的任务，叫做故事可视化。给定一个多句的段落，通过为每个句子生成一个图像序列来可视化故事。与视频生成不同，故事可视化不太关注生成图像(帧)中的连续性，而是更关注动态场景和角色之间的全局一致性——这是任何单一图像或视频生成方法都无法解决的挑战。因此，我们提出了一个新的基于顺序条件GAN框架的故事到图像序列生成模型StoryGAN。我们的模型是独特的，因为它由一个动态跟踪故事流的深层上下文编码器和两个在故事和图像级别的鉴别器组成，以增强图像质量和生成序列的一致性。为了评估模型，我们修改了现有的数据集，以创建CLEVR-SV和Pororo-SV数据集。从经验上看，StoryGAN在图像质量、上下文一致性度量和人类评估方面都优于最先进的模型。</p>
-</li>
-<li><p>Tactical Rewind: Self-Correction via Backtracking in Vision-and-Language Navigation</p>
-<p> CVPR2019  <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Ke%2C+L" target="_blank" rel="noopener">Liyiming Ke</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Li%2C+X" target="_blank" rel="noopener">Xiujun Li</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Bisk%2C+Y" target="_blank" rel="noopener">Yonatan Bisk</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Holtzman%2C+A" target="_blank" rel="noopener">Ari Holtzman</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gan%2C+Z" target="_blank" rel="noopener">Zhe Gan</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Liu%2C+J" target="_blank" rel="noopener">Jingjing Liu</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gao%2C+J" target="_blank" rel="noopener">Jianfeng Gao</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Choi%2C+Y" target="_blank" rel="noopener">Yejin Choi</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Srinivasa%2C+S" target="_blank" rel="noopener">Siddhartha Srinivasa</a></p>
-<p> 链接: <a href="https://arxiv.org/abs/1903.02547" target="_blank" rel="noopener">https://arxiv.org/abs/1903.02547</a></p>
-<p> 摘要：我们提出了带有回溯(FAST)导航器的边界感知搜索，这是一个用于动作解码的通用框架，在Room-to-Room (R2R) Vision-and-Language navigation challenge of Anderson et. al. (2018) 挑战中实现了最先进的结果。给定一个自然语言指令和一个以前从未见过的环境的真实感图像视图，该代理的任务是尽可能快地从源导航到目标位置。虽然目前所有的方法都使用波束搜索来做出局部的行动决策或对整个轨迹进行评分，但我们的方法在探索一个未被观测的环境时平衡了局部和全局信号。重要的是，这让我们可以贪婪地行动，但在必要时使用全球信号进行回溯。将快速框架应用于现有的最先进的模型，获得17%的相对增益，绝对6%的成功率加权路径长度(SPL)。</p>
-</li>
-<li><p>Reinforced Cross-Modal Matching and Self-Supervised Imitation Learning for Vision-Language Navigation</p>
-<p>CVPR2019  <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Wang%2C+X" target="_blank" rel="noopener">Xin Wang</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Huang%2C+Q" target="_blank" rel="noopener">Qiuyuan Huang</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Celikyilmaz%2C+A" target="_blank" rel="noopener">Asli Celikyilmaz</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Gao%2C+J" target="_blank" rel="noopener">Jianfeng Gao</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Shen%2C+D" target="_blank" rel="noopener">Dinghan Shen</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Wang%2C+Y" target="_blank" rel="noopener">Yuan-Fang Wang</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Wang%2C+W+Y" target="_blank" rel="noopener">William Yang Wang</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Zhang%2C+L" target="_blank" rel="noopener">Lei Zhang</a></p>
-<p>链接：<a href="https://arxiv.org/abs/1811.10092" target="_blank" rel="noopener">https://arxiv.org/abs/1811.10092</a></p>
-<p>摘要：视觉语言导航(VLN)是在真实的三维环境中，通过导航一个具体的代理来执行自然语言指令的任务。在本文中，我们研究如何解决这一任务的三个关键挑战:跨模态接地，病态反馈和泛化问题。首先，我们提出了一种新的增强交叉模态匹配(RCM)方法，该方法通过增强学习(RL)来实现局部和全局的交叉模态接地。特别地，匹配批评家被用来提供一个内在的奖励来鼓励指令和轨迹之间的全局匹配，推理导航仪被用来在局部视觉场景中执行跨模态接地。对VLN基准数据集的评估表明，我们的RCM模型在SPL上的性能显著优于现有方法的10%，达到了最新的性能水平。为了提高学习策略的通用性，我们进一步介绍了一种自我监督模仿学习(SIL)方法，通过模仿自己的过去来探索未知的环境。我们证明SIL可以近似于一个更好和更有效的策略，这极大地减小了可见和不可见环境之间的成功率性能差距(从30.7%到11.7%)。</p>
-</li>
-<li><p>LARGE-SCALE ANSWERER IN QUESTIONER’S MIND FOR VISUAL DIALOG QUESTION GENERATION</p>
-<p> ICLR 2019</p>
-<p> 链接： <a href="https://arxiv.org/pdf/1902.08355.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1902.08355.pdf</a></p>
-<p> 摘要： Answerer in Questioner’s Mind (AQM)是近年来提出的一种面向任务的对话系统的信息理论框架。AQM从提出一个问题中获益，当它被问到的时候，这个问题可以最大限度地获取信息。  然而，由于其本质上是显式计算信息增益，  当解空间很大时，AQM有一定的局限性。为了解决这个问题，我们建议使用AQM+来处理大规模的问题，并提出一个与当前对话上下文更一致的问题。我们对我们的方法进行了评估。 这是一个具有挑战性的面向任务的可视化对话问题，其中候选类的数量接近10K。我们的实验结果和消融研究表明，在合理的近似下，AQM+的性能显著优于最先进的模型。特别地，所提出的AQM+在对话过程中减少了60%以上的错误，而比较算法减少了不到6%的错误。基于我们的研究结果，我们认为AQM+是一种通用的面向任务的对话算法，可以应用于非yes-or-no响应。</p>
-</li>
-</ol>
-
+<p> 摘要：可视对话是一种多模态任务，使用对话历史作为上下文，以图像为基础回答一系列问题。它是视觉、语言、推理和基础方面的挑战。然而，在大型真实数据集上单独研究这些子任务是不可行的，因为它需要对所有图像和对话框的“状态”进行代价高昂的完整注释。我们开发了一个大型诊断数据集，用于研究可视化对话框中的多轮推理。具体地说，我们构建了一个基于CLEVR dataset 图像的场景图的对话语法。 其中可视对话的所有方面都得到了完整的标注。  总共包含了5个10轮对话框的实例，用于大约85k个cleveland图像，总共有425万对问答对。我们使用CLEVR-Dialog来测试标准可视对话模型的性能; 特别是视觉上的共参考分辨率(作为共参考距离的函数)。这是对可视对话模型的第一次分析，没有这个数据集是不可能的。我们希望CLEVR-Dialog的发现将有助于开发未来的可视化对话模型。我们的数据集和代码将公开。</p></li></ol>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/06/09/Visual Dialog 总结/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
