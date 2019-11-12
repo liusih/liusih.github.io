@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liusih.github.io/2019/09/09/Domain%20Adaptive%20Dialog%20Generation%20via%20Meta%20Learning/</loc>
+    
+    <lastmod>2019-11-12T09:23:22.275Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2018/11/23/RL-algrithm/</loc>
+    
+    <lastmod>2019-11-12T09:19:37.348Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liusih.github.io/2019/05/21/naacl2019%20Rethinking%20Action%20Spaces%20for%20Reinforcement%20Learning%20in%20End-to-end%20Dialog%20Agents%20with%20Latent%20Variable%20Models/</loc>
     
-    <lastmod>2019-11-12T09:16:19.023Z</lastmod>
+    <lastmod>2019-11-12T09:18:56.558Z</lastmod>
     
   </url>
   
@@ -40,13 +54,6 @@
     <loc>https://liusih.github.io/2019/10/25/Curiosity-driven%20Exploration%20by%20Self-supervised%20Prediction/</loc>
     
     <lastmod>2019-11-12T03:07:12.279Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2019/09/09/Domain%20Adaptive%20Dialog%20Generation%20via%20Meta%20Learning/</loc>
-    
-    <lastmod>2019-11-10T08:06:45.301Z</lastmod>
     
   </url>
   
@@ -103,13 +110,6 @@
     <loc>https://liusih.github.io/2018/09/25/jupyter%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2019-11-06T03:34:44.256Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2018/11/23/RL-algrithm/</loc>
-    
-    <lastmod>2019-11-06T03:34:41.025Z</lastmod>
     
   </url>
   

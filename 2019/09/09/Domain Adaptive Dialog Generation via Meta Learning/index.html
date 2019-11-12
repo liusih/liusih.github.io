@@ -19,7 +19,7 @@
 <meta property="og:description" content="应用meta learning进行对话系统的领域适配，在MAML基础上提出DAML，未开源代码，MAML作为meta learning的具体方法之一，值得学习。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://liusih.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-10T08:06:45.301Z">
+<meta property="og:updated_time" content="2019-11-12T09:23:22.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Domain Adaptive Dialog Generation via Meta Learning">
 <meta name="twitter:description" content="应用meta learning进行对话系统的领域适配，在MAML基础上提出DAML，未开源代码，MAML作为meta learning的具体方法之一，值得学习。">
@@ -160,9 +160,9 @@
 题目：Domain Adaptive Dialog Generation via Meta Learning   --></p>
 <blockquote>
 <p> <strong>来源：</strong> ACL 2019<br> <strong>原文链接：</strong> <a href="https://link.zhihu.com/?target=https%3A//arxiv.org/abs/1906.03520" target="_blank" rel="noopener"> https://  arxiv.org/abs/1906.0352  0
-</a>  </p>
+</a> 有些格式没来得及转换，可以直接看我的知乎 <a href="https://zhuanlan.zhihu.com/p/81715745" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/81715745</a></p>
 </blockquote>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h2><p><strong>问题</strong><br>领域适配是对话系统中的一项重要任务，因为根据不同的需求，每天都有许多新的对话任务产生，为这些新任务收集和注释训练数据的成本很高，因为它涉及到与真实用户的交互。因此将现有的丰富资源领域的数据适应于资源有限的新领域是对话系统研究中的一项重要任务。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction**"></a>Introduction**</h2><p><strong>问题</strong><br>领域适配是对话系统中的一项重要任务，因为根据不同的需求，每天都有许多新的对话任务产生，为这些新任务收集和注释训练数据的成本很高，因为它涉及到与真实用户的交互。因此将现有的丰富资源领域的数据适应于资源有限的新领域是对话系统研究中的一项重要任务。</p>
 <p><strong>现有解决方法</strong> ：Transfer learning、few-shot learning、meta-<br>learning等介绍了如何解决机器学习中的数据稀缺问题。由于每个对话域之间的差异很大，因此将信息从富资源域泛化到另一个低资源域非常困难。</p>
 <p><strong>本文的方法</strong> ：所以本文提出了一种基于元学习（meta-learning<br>）的领域自适应对话生成方法DAML。DAML是一个端到端可训练的对话系统模型，它从具有丰富资源的领域任务中学习，然后用最少的训练样本适应到新的领域。通过将模型无关的元学习算法（<br><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1703.03400.pdf" target="_blank" rel="noopener"> model-agnostic meta-learning
 </a><br>MAML）应用于对话域，利用多个单域对话数据和丰富的资源来训练对话系统模型，将训练中的多个对话任务结合起来，学习适用于新领域的通用和可转移信息。使得该模型仅通过少量的训练实例，就能在一个新的领域有效地学习一个具有竞争力的对话系统。</p>
@@ -197,7 +197,7 @@
 <p><img src=".\\81715745_assets\\v2-99b8fd6775962a0865093f9c67488e6f_b.jpg" alt=""></p>
 <p><a href="https://link.zhihu.com/?target=https%3A//www.comp.nus.edu.sg/~kanmy/papers/acl18-sequicity.pdf" target="_blank" rel="noopener"> Sequcity模型
 </a><br>是在单一的seq2seq模型的基础上构造的，该模型结合了copying mechanism和 belief span 来记录对话状态。<br>为了使用Sequcity模型，在  $\displaystyle t$  时刻将  $\displaystyle c$  用  $\displaystyle<br>\{B_{t - 1},R_{t - 1},U_t\}$  来表示，其中  $\displaystyle B_{t - 1}$  为在<br>$\displaystyle t - 1$  时刻的belief span，  $\displaystyle R_{t - 1}$  为上一次的系统响应，<br>$\displaystyle U_t$  是当前用户的话语。Sequicity模型引入了belief span来存储所有inform<br>slot的值，并在历史中记录request<br>slot的名称。通过这种方式，不需要将所有的历史语句放入一个RNN中来提取上下文特征，而是直接将存储在belief<br>span中的slot作为所有历史上下文的表示。belief span更准确、更简单地代表历史语境，需要在每一个环节进行更新。</p>
-<p>Sequcity模型的具体过程是,给定上下文  $\displaystyle c- &gt;\{B_{t - 1},R_{t - 1},U_t\}$  ,<br>$\displaystyle t$  时刻的belief span  $\displaystyle B_t$  则是根据在  $\displaystyle<br>t - 1$  时刻的  $\displaystyle B_{t - 1}$  ,  $\displaystyle R_{t - 1}$  ，以及<br>$\displaystyle t$  时刻的用户话语  $\displaystyle U_t$  提取的：</p>
+<p>Sequcity模型的具体过程是,给定上下文 $$\displaystyle c- &gt;\{B_{t - 1},R_{t - 1},U_t\}$$  ,<br>$\displaystyle t$  时刻的belief span  $\displaystyle B_t$  则是根据在  $\displaystyle<br>t - 1$  时刻的  $\displaystyle B_{t - 1}$  ,  $\displaystyle R_{t - 1}$  ，以及<br>$\displaystyle t$  时刻的用户话语  $\displaystyle U_t$  提取的：</p>
 <p><img src=".\\81715745_assets\\v2-0cdb0b6fd3c8e811c9ec5963b5b38141_b.png" alt=""></p>
 <p>然后，根据之前提取的上下文和  $\displaystyle t$  时刻belief span生成系统响应  $\displaystyle R_t$  :</p>
 <p><img src=".\\81715745_assets\\v2-eaf1153591120fd754b7473e9b61f0ea_b.png" alt=""></p>
@@ -228,17 +228,20 @@
 <h2 id="Conclusion-and-Future-Work"><a href="#Conclusion-and-Future-Work" class="headerlink" title="Conclusion and Future Work"></a>Conclusion and Future Work</h2><p>本文提出了一种基于元学习的领域自适应对话生成方法。构建了一个端到端可训练的对话系统，该系统利用两步梯度更新来获得对新领域更敏感的模型。在一个具有多个独立域的模拟数据集上评估模型。与zero-<br>shot学习方法和迁移学习方法相比，DAML在实体F1中达到了最先进的性能。因此认为DAML是一种有效的、鲁棒的低资源对话系统训练方法。</p>
 <p>DAML还提供了很有潜力的扩展，例如将DAML应用于基于增强学习的对话系统。文中还计划使DAML适应多域对话任务。</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li>Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks </li>
-</ol>
+<li><p>Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks </p>
 <p><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1703.03400.pdf" target="_blank" rel="noopener"> https://  arxiv.org/pdf/1703.0340  0.pdf
 </a></p>
-<p>2. Zero-Shot Dialog Generation with Cross-Domain Latent Actions</p>
+</li>
+<li><p>Zero-Shot Dialog Generation with Cross-Domain Latent Actions</p>
 <p><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1805.04803" target="_blank" rel="noopener"> https://  arxiv.org/pdf/1805.0480  3
 </a></p>
-<p>3. Sequicity: Simplifying Task-oriented Dialogue Systems with Single<br>Sequence-to-Sequence Architectures</p>
+</li>
+<li><p>Sequicity: Simplifying Task-oriented Dialogue Systems with Single<br>Sequence-to-Sequence Architectures</p>
 <p><a href="https://link.zhihu.com/?target=https%3A//www.comp.nus.edu.sg/~kanmy/papers/acl18-sequicity.pdf" target="_blank" rel="noopener"> https://www.  comp.nus.edu.sg/~kanmy/  papers/acl18-sequicity.pdf
 </a></p>
 <p>再次post一下我滴某乎~<br><a href="https://zhuanlan.zhihu.com/p/81715745" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/81715745</a></p>
+</li>
+</ol>
 
         </div>
         
@@ -529,9 +532,9 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/RL-Algorithm/">
+        <a class="level is-marginless" href="/categories/RL的各种算法总结/">
             <span class="level-start">
-                <span class="level-item">RL Algorithm</span>
+                <span class="level-item">RL的各种算法总结</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
