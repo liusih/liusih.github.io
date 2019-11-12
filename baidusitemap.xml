@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://liusih.github.io/2019/11/01/Curriculum%20Learning/</loc>
+    <lastmod>2019-11-12T09:09:45.697Z</lastmod>
+  </url>  <url>
     <loc>https://liusih.github.io/2019/06/09/Visual%20Dialog%20%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2019-11-12T09:05:23.878Z</lastmod>
   </url>  <url>
@@ -21,9 +24,6 @@
   </url>  <url>
     <loc>https://liusih.github.io/2019/05/21/naacl2019%20Rethinking%20Action%20Spaces%20for%20Reinforcement%20Learning%20in%20End-to-end%20Dialog%20Agents%20with%20Latent%20Variable%20Models/</loc>
     <lastmod>2019-11-10T08:00:30.766Z</lastmod>
-  </url>  <url>
-    <loc>https://liusih.github.io/2019/11/01/Curriculum%20Learning/</loc>
-    <lastmod>2019-11-10T07:58:04.743Z</lastmod>
   </url>  <url>
     <loc>https://liusih.github.io/2019/09/25/Multi-task%20Learning%20for%20Natural%20Language%20Generation%20in%20Task-Oriented%20Dialogue/</loc>
     <lastmod>2019-11-10T07:58:02.577Z</lastmod>

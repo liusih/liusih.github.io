@@ -19,7 +19,7 @@
 <meta property="og:description" content="1. Curriculum LearningBengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg">
-<meta property="og:updated_time" content="2019-11-10T07:58:04.743Z">
+<meta property="og:updated_time" content="2019-11-12T09:09:45.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Curriculum Learning and self-paced learning">
 <meta name="twitter:description" content="1. Curriculum LearningBengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。">
@@ -75,8 +75,8 @@
     
 
 
-<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 <body class="is-2-column">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
     <div class="container">
@@ -170,11 +170,11 @@
 </blockquote>
 <p>课程学习的核心问题是得到一个ranking function，该函数能够对每一条数据样本给出其<strong>learning priority (学习该样本的优先程度)</strong>。一个确定的ranking function便能够确定一个“课程”，有更高rank的数据会被较早地学习。</p>
 <p>一般特定问题的ranking function是靠直觉来定义的，这样的定义方法可能会存在偏差，不够科学，所以引出了<strong>self-paced learning</strong>。</p>
-<h4 id="2-Self-paced-learning"><a href="#2-Self-paced-learning" class="headerlink" title="2. Self-paced learning"></a>2. Self-paced learning</h4><p>Kumar在2010年提出self-paced learning，通过模拟认知机制，通过先学习<strong>简单的、普适性的</strong>知识，然后逐渐增加难度，学习<strong>更复杂、更专业化的</strong>知识课程学习。自步学习从选取最简单的数据子集开始，逐渐加入复杂的数据，从而减少熵值，训练出潜在的权重参数。基本思路是利用损失大小与难易程度之间的对偶关系进行对所学样本的加权。这种加权格式类似于引入隐含变量后的估计推断格式和EM算法格式，使得模型对于数据分布的学习更加稳健。</p>
+<h4 id="2-Self-paced-learning"><a href="#2-Self-paced-learning" class="headerlink" title="2. Self-paced learning"></a>2. Self-paced learning</h4><p>Kumar在2010年提出self-paced learning，通过模拟认知机制，通过先学习<strong>简单的、普适性的</strong>知识，然后逐渐增加难度，学习<strong>更复杂、更专业化的</strong>知识课程学习。自步学习从选取最简单的数据子集开始，逐渐加入复杂的数据，从而减少熵值，训练出潜在的权重参数。基本思路是利用损失大小与难易程度之间的对偶关系进行对所学样本的加权。这种加权格式类似于引入隐含变量后的估计推断格式和EM算法格式，使得模型对于数据分布的学习更加稳健</p>
 <p><img src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt=""></p>
-<p><strong>SPL</strong> 通过在损失函数中引入变量 <img src="https://www.zhihu.com/equation?tex=v" alt="[公式]"> 来表示样本是否被选择：</p>
+<p><strong>SPL</strong> 通过在损失函数中引入变量 <img src="https://www.zhihu.com/equation?tex=v" alt=""> 来表示样本是否被选择：</p>
 <p><img src="https://pic1.zhimg.com/80/v2-0417a18a05dc95e12d44766f79118b28_hd.png" alt=""></p>
-<p>SPL将curriculum设计为学习的目标函数中的一个正则化项，SPL的优化目标即优化得到一组模型参数w与权重向量v，使得所有数据的加权Loss之和与负的权重向量v的L1范数最小(也存在同时使用L1L2范数的变体[3])。其中 λ 是一个控制参数，反映了当前学习所进行到的阶段(learning pace)，<img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="[公式]"> 是调整步速的关键变量，<img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="[公式]"> 越小，表明模型还在训练的初始阶段，训练相对简单的样本，随着 <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="[公式]"> 增大，模型学习越来越多的样本。</p>
+<p>SPL将curriculum设计为学习的目标函数中的一个正则化项，SPL的优化目标即优化得到一组模型参数w与权重向量v，使得所有数据的加权Loss之和与负的权重向量v的L1范数最小(也存在同时使用L1L2范数的变体[3])。其中 λ 是一个控制参数，反映了当前学习所进行到的阶段(learning pace)，<img src="https://www.zhihu.com/equation?tex=%5Clambda" alt=""> 是调整步速的关键变量，<img src="https://www.zhihu.com/equation?tex=%5Clambda" alt=""> 越小，表明模型还在训练的初始阶段，训练相对简单的样本，随着 <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt=""> 增大，模型学习越来越多的样本。</p>
 <p>直观来解释一下权重向量v，最常用的是binary (0/1)的形式：其实就是是否选择该数据进入训练/验证集。note that在Loss项前乘了因子vi，所以对于第i条数据，若vi=0则其产生的Loss对于该步的模型参数w更新没有影响。</p>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
 <li>Bengio, Yoshua, et al. “Curriculum learning.” <em>Proceedings of the 26th annual international conference on machine learning</em>. ACM, 2009.</li>
