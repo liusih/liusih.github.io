@@ -19,7 +19,7 @@
 <meta property="og:description" content="Dialogue SimulationSimulation-Based Evaluation 为什么用User simulator:  通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://liusih.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-06T03:34:41.961Z">
+<meta property="og:updated_time" content="2019-11-12T09:16:08.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Today&#39;s User simulator">
 <meta name="twitter:description" content="Dialogue SimulationSimulation-Based Evaluation 为什么用User simulator:  通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对">
@@ -159,18 +159,22 @@
             <h2 id="Dialogue-Simulation"><a href="#Dialogue-Simulation" class="headerlink" title="Dialogue Simulation"></a>Dialogue Simulation</h2><h4 id="Simulation-Based-Evaluation"><a href="#Simulation-Based-Evaluation" class="headerlink" title="Simulation-Based Evaluation"></a>Simulation-Based Evaluation</h4><ul>
 <li><p>为什么用User simulator:</p>
 <ul>
-<li>通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。<br>本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对话状态，b.并与RL对话系统进行对话</li>
-<li>一般的User simulator:<ul>
+<li><p>通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。<br>本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对话状态，b.并与RL对话系统进行对话</p>
+<a id="more"></a>
+</li>
+<li><p>一般的User simulator:</p>
+<ul>
 <li>such as deterministic vs. stochastic</li>
 <li>content-based vs. collaboration-based</li>
 <li>static vs. non-static user goals during the conversations</li>
 <li>用户模拟器可以在 dialogue-act level 或在句子级别上操作</li>
-<li>可以是基于规则也可以是基于模型从真实的对话数据中学到的。<a id="more"></a>
-<h4 id="Agenda-Based-Simulation"><a href="#Agenda-Based-Simulation" class="headerlink" title="Agenda-Based Simulation"></a>Agenda-Based Simulation</h4></li>
+<li>可以是基于规则也可以是基于模型从真实的对话数据中学到的。</li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+<h4 id="Agenda-Based-Simulation"><a href="#Agenda-Based-Simulation" class="headerlink" title="Agenda-Based Simulation"></a>Agenda-Based Simulation</h4><ul>
 <li>ex:As an example, we describe a popular hidden agenda-based user simulator developed by Schatzmann and Young (2009), as instantiated in Li et al. (2016d) and Ultes et al. (2017c). </li>
 <li>每个对话模拟从一个随机生成的用户目标开始，对话管理器不知道这个目标。一般来说，用户目标由两部分组成:inform-slots 包含大量的槽值对，作为用户想要强加于对话的约束;request-slots 是用户最初不知道其值的槽，将在对话期间填写。</li>
 <li>此外，为了使用户目标更加实际，还添加了领域特定的约束，以便某些slot需要出现在用户目标中。例如，要求用户知道在电影领域中需要多少张票是有意义的</li>
@@ -197,6 +201,7 @@
 <h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p>[1]Li, X., Lipton, Z. C., Dhingra, B., Li, L., Gao, J., and Chen, Y.-N. (2016d). A user simulator for<br>task-completion dialogues. CoRR abs/1612.05688</p>
 <p>[2]Li, X., Chen, Y.-N., Li, L., Gao, J., and Celikyilmaz, A. (2017d). End-to-end task-completion neural<br>dialogue systems. In Proceedings of the 8th International Joint Conference on Natural Language</p>
 <p>Processing (IJCNLP), pages 733–743.<br>[3] Gao,Michel Galley,Michel Galley, Neural Approaches to Conversational AI (2018)</p>
+<p>​    </p>
 
         </div>
         
