@@ -19,7 +19,7 @@
 <meta property="og:description" content="应用meta learning进行对话系统的领域适配，在MAML基础上提出DAML，未开源代码，MAML作为meta learning的具体方法之一，值得学习。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://liusih.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-12T09:23:22.275Z">
+<meta property="og:updated_time" content="2019-11-12T09:33:43.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Domain Adaptive Dialog Generation via Meta Learning">
 <meta name="twitter:description" content="应用meta learning进行对话系统的领域适配，在MAML基础上提出DAML，未开源代码，MAML作为meta learning的具体方法之一，值得学习。">
@@ -162,7 +162,7 @@
 <p> <strong>来源：</strong> ACL 2019<br> <strong>原文链接：</strong> <a href="https://link.zhihu.com/?target=https%3A//arxiv.org/abs/1906.03520" target="_blank" rel="noopener"> https://  arxiv.org/abs/1906.0352  0
 </a> 有些格式没来得及转换，可以直接看我的知乎 <a href="https://zhuanlan.zhihu.com/p/81715745" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/81715745</a></p>
 </blockquote>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction**"></a>Introduction**</h2><p><strong>问题</strong><br>领域适配是对话系统中的一项重要任务，因为根据不同的需求，每天都有许多新的对话任务产生，为这些新任务收集和注释训练数据的成本很高，因为它涉及到与真实用户的交互。因此将现有的丰富资源领域的数据适应于资源有限的新领域是对话系统研究中的一项重要任务。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong>问题</strong><br>领域适配是对话系统中的一项重要任务，因为根据不同的需求，每天都有许多新的对话任务产生，为这些新任务收集和注释训练数据的成本很高，因为它涉及到与真实用户的交互。因此将现有的丰富资源领域的数据适应于资源有限的新领域是对话系统研究中的一项重要任务。</p>
 <p><strong>现有解决方法</strong> ：Transfer learning、few-shot learning、meta-<br>learning等介绍了如何解决机器学习中的数据稀缺问题。由于每个对话域之间的差异很大，因此将信息从富资源域泛化到另一个低资源域非常困难。</p>
 <p><strong>本文的方法</strong> ：所以本文提出了一种基于元学习（meta-learning<br>）的领域自适应对话生成方法DAML。DAML是一个端到端可训练的对话系统模型，它从具有丰富资源的领域任务中学习，然后用最少的训练样本适应到新的领域。通过将模型无关的元学习算法（<br><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1703.03400.pdf" target="_blank" rel="noopener"> model-agnostic meta-learning
 </a><br>MAML）应用于对话域，利用多个单域对话数据和丰富的资源来训练对话系统模型，将训练中的多个对话任务结合起来，学习适用于新领域的通用和可转移信息。使得该模型仅通过少量的训练实例，就能在一个新的领域有效地学习一个具有竞争力的对话系统。</p>
@@ -387,7 +387,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        14
+                        15
                     </p>
                 </div>
             </div>
@@ -617,6 +617,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/12/思路总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-12T11:08:15.587Z">2019-11-12</time></div>
+                    <a href="/2019/11/12/思路总结/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -638,14 +657,14 @@
             
             <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191112143412_qHydb1_Screenshot.png" alt="The paper list of MSR in task-oriented dialog system">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191112143412_qHydb1_Screenshot.png" alt="MSR任务型对话系统论文列表">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-31T16:00:00.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="title has-link-black-ter is-size-6 has-text-weight-normal">The paper list of MSR in task-oriented dialog system</a>
+                    <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="title has-link-black-ter is-size-6 has-text-weight-normal">MSR任务型对话系统论文列表</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Dialog-system/">Dialog system</a> / <a class="has-link-grey -link" href="/categories/Dialog-system/Reinforcement-learning/">Reinforcement learning</a>
                     </p>
@@ -691,25 +710,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Domain Adaptive Dialog Generation via Meta Learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
-                    <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a> / <a class="has-link-grey -link" href="/categories/Dialogue-system/meta-learning/">meta-learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -727,7 +727,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -973,6 +973,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/12/思路总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-12T11:08:15.587Z">2019-11-12</time></div>
+                    <a href="/2019/11/12/思路总结/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -994,14 +1013,14 @@
             
             <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191112143412_qHydb1_Screenshot.png" alt="The paper list of MSR in task-oriented dialog system">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191112143412_qHydb1_Screenshot.png" alt="MSR任务型对话系统论文列表">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-31T16:00:00.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="title has-link-black-ter is-size-6 has-text-weight-normal">The paper list of MSR in task-oriented dialog system</a>
+                    <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="title has-link-black-ter is-size-6 has-text-weight-normal">MSR任务型对话系统论文列表</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Dialog-system/">Dialog system</a> / <a class="has-link-grey -link" href="/categories/Dialog-system/Reinforcement-learning/">Reinforcement learning</a>
                     </p>
@@ -1047,25 +1066,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Domain Adaptive Dialog Generation via Meta Learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
-                    <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a> / <a class="has-link-grey -link" href="/categories/Dialogue-system/meta-learning/">meta-learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1083,7 +1083,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
