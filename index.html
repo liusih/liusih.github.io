@@ -73,8 +73,8 @@
     
 
 
-<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 <body class="is-3-column">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
     <div class="container">
@@ -131,86 +131,6 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-12T11:08:15.587Z">2019-11-12</time>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/12/思路总结/"></a>
-            
-        </h1>
-        <div class="content">
-            <p>Abstract</p>
-<p>基于RL的任务型对话系统在学习对话策略时，学习的质量受到与之交互的用户的影响，系统在训练时当user goal的设定较为容易时，能够很好的学习到对话策略，当user goal的设定较为复杂时，对话成功率较低。同时目前人工给出的reward函数无法应对现实任务的复杂性，当任务的奖励难以靠简单的手工规则制定的时候，在设定reward时就应当考虑应用自监督的方式使reward鼓励agent进行更多有效的探索。因此， 我们提出了一种基于课程学习启发式的对话系统，将系统评估自身预测未来状态的能力时所得到的误差，作为内在好奇心奖励(Curiosity reward)，提供给agent进行学习，鼓励agent进行探索。</p>
-<p>Our main contributions are two-fold:</p>
-<ul>
-<li>We propose a BCS-DDQ framework, to best uti-lize a fixed,  small amount of user interactions(budget) for task-oriented dialogue policy learn-ing.</li>
-<li>We  empirically  validate  the  effectiveness  of BCS-DDQ  on  a  movie-ticket  booking  domainwith simulated and real users.</li>
-</ul>
-<p>我们的主要贡献：</p>
-<p>我们提出</p>
-<ul>
-<li>We present <em>**</em>, which  incorporates curiosity-driven reward for task-oriented dialogue policy learning.</li>
-<li></li>
-</ul>
-<p>Curiosity-driven exploration is a well studied topic in the reinforcement learning literature and a good summary canbe  found  in  (Oudeyer  &amp;  Kaplan,  2009;  Oudeyer  et  al.,2007). </p>
-<p><strong>Abstract</strong></p>
-<p>在任务型对话中，对话策略学习的难易程度与设定的与之交互的用户的对话复杂程度相关，如何设置课程进行启发式学习是研究中的挑战。同时在基于强化学习的任务型对话系统中，人工设计的对话奖励函数存在稀疏和延迟问题，不利于agent对状态空间的探索。 </p>
-<blockquote>
-<p>（在基于强化学习的任务型对话系统中，人工设计的对话奖励函数存在稀疏和延迟问题，不利于agent对状态空间的探索。同时在任务型对话中，对话策略学习的难易程度与设定的与之交互的用户的对话复杂程度相关， 但如何对user goal设置课程进行启发式学习也是挑战之一。）</p>
-</blockquote>
-<p>因此，我们提出了一个curiosity-driven based dialog policy learning， 这是一种基于课程学习和curiosity-driven的算法， 将对话按照难易程度递进提供给agent进行训练，并引入内在好奇心奖励激励agent对状态空间进行探索。</p>
-<p>具体将agent评估自身预测未来状态的能力时所得到的误差（自监督？），作为内在好奇心奖励，提供给agent进行学习鼓励agent探索，并且应用<del>好奇心驱动</del>学习到的权重来设定课程的递进程度，进行启发式学习。</p>
-<p><strong>Intro</strong></p>
-<p>Part 1 ：在基于强化学习的任务型对话系统中，人工设计的对话奖励函数存在稀疏和延迟问题，例如Li的任务型对话系统中， reward时根据规则设定的：每一轮次对话都给-1值，在对话结束时根据对话成功和失败统一给一个较大或较小的奖励。这种奖励并不能适应对话的复杂性，并且根据规则设定的奖励会存在手工偏差，因此我们希望应用curiosity-driven的方法，以自监督的方式学习到对话中的奖励函数，具体做法：</p>
-<p><img src="http://image.sherlocknlp.com//20191113163150_tYgNWW_%E6%88%AA%E5%B1%8F2019-11-13%E4%B8%8B%E5%8D%884.31.34.png" style="zoom:53%;"></p>
-<p>将对话策略表示为$a_t∼π(s_t;θ)$, agent在当前对话状态$s_t$ 下，根据策略 $π$ 采取对话动作$a_t$,  得到当前轮次的奖励$r$, 更新当前对话状态到$s_{t+1}$ , 因此对话策略训练的原始目标为：</p>
-<p>​                                                                                    $$\underset\theta{max}E_{\pi(s_t;θ)}[\sum_tr_t]$$</p>
-<p>之后用一个inverse model预测agent从状态$s_t$更新到$s_{t+1}$所采取的动作$a_t$：</p>
-<p><img src="http://image.sherlocknlp.com//20191111153149_W0VOj5_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8B%E5%8D%883.31.43.png" style="zoom:50%;"></p>
-<p><img src="http://image.sherlocknlp.com//20191111153742_jOw07Y_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8B%E5%8D%883.37.15.png" style="zoom:50%;"></p>
-<p>在用一个Forword model用 $a_t$和 $φ(s_t)$ 去预测 $\hat{φ}(s_{t+1})$ ，${φ}$ 可以看作是对状态的特征提取器：</p>
-<p><img src="http://image.sherlocknlp.com//20191111155347_jXcBOS_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8B%E5%8D%883.52.48.png" style="zoom:50%;"></p>
-<p><img src="http://image.sherlocknlp.com//20191112101405_vEWMEh_Screenshot.png" style="zoom:50%;"></p>
-<p>因此基于好奇心驱动的内在奖励信号$r^i_t$计算为:</p>
-<p><img src="http://image.sherlocknlp.com//20191112101304_McHDXE_Screenshot.png" style="zoom:50%;"></p>
-<p>则最后基于好奇心驱动的RL agent优化的损失函数为：</p>
-<p><img src="http://image.sherlocknlp.com//20191112104817_L3l4w9_%E6%88%AA%E5%B1%8F2019-11-12%E4%B8%8A%E5%8D%8810.48.00.png" style="zoom:50%;"></p>
-<p>Part 2: 在任务型对话系统的训练中，用户响应的对话难易程度影响着对话策略学习的质量。</p>
-<p>因此在用户一侧，我们希望用课程学习的方式渐进的增加对话难度，激励agent从易到难逐步学习对话策略。</p>
-<p>因此如何判定对话难度，以及根据对话难度设置课程是一项挑战，我们初步设想采取以下三种方法：</p>
-<ol>
-<li>基于经验的启发式方法：</li>
-</ol>
-<ol start="2">
-<li></li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
     
 <div class="card">
     
@@ -818,6 +738,56 @@
 
 
 
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-08T07:38:48.000Z">2018-11-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/User-simulator/">User simulator</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/11/08/Today's user simulator/">Today&#39;s User simulator</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="Dialogue-Simulation"><a href="#Dialogue-Simulation" class="headerlink" title="Dialogue Simulation"></a>Dialogue Simulation</h2><h4 id="Simulation-Based-Evaluation"><a href="#Simulation-Based-Evaluation" class="headerlink" title="Simulation-Based Evaluation"></a>Simulation-Based Evaluation</h4><ul>
+<li><p>为什么用User simulator:</p>
+<ul>
+<li><p>通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。<br>本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对话状态，b.并与RL对话系统进行对话</p></li></ul></li></ul>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2018/11/08/Today's user simulator/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
     
 <div class="card card-transparent">
@@ -881,7 +851,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        14
                     </p>
                 </div>
             </div>
@@ -1111,25 +1081,6 @@
         
         <article class="media">
             
-            <a href="/2019/11/12/思路总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-12T11:08:15.587Z">2019-11-12</time></div>
-                    <a href="/2019/11/12/思路总结/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -1204,6 +1155,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Domain Adaptive Dialog Generation via Meta Learning">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
+                    <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a> / <a class="has-link-grey -link" href="/categories/Dialogue-system/meta-learning/">meta-learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
         
@@ -1221,7 +1191,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1467,25 +1437,6 @@
         
         <article class="media">
             
-            <a href="/2019/11/12/思路总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-12T11:08:15.587Z">2019-11-12</time></div>
-                    <a href="/2019/11/12/思路总结/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -1560,6 +1511,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Domain Adaptive Dialog Generation via Meta Learning">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
+                    <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a> / <a class="has-link-grey -link" href="/categories/Dialogue-system/meta-learning/">meta-learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
     
@@ -1577,7 +1547,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1823,25 +1793,6 @@
         
         <article class="media">
             
-            <a href="/2019/11/12/思路总结/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-12T11:08:15.587Z">2019-11-12</time></div>
-                    <a href="/2019/11/12/思路总结/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -1916,6 +1867,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Domain Adaptive Dialog Generation via Meta Learning">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
+                    <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a> / <a class="has-link-grey -link" href="/categories/Dialogue-system/meta-learning/">meta-learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
     
@@ -1933,7 +1903,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
