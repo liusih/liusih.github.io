@@ -11,19 +11,19 @@
 <title>Adversarial Multi-task Learning for Text Classification - Sih Blog</title>
 
 
-    <meta name="description" content="创新点： Adversial learning +  Orthogonality Constraints Abstract 背景： 神经网络模型已经表明了它们在Multi-task Learning中的广阔前景，其重点是学习共享层以提取公共的和随不同任务不变的特征。   存在的问题： 但在大多数现有方法中，提取的 shared features易受到特定于任务的功能或其他任务带来的噪音的污染。">
+    <meta name="description" content="创新点： Adversial learning +  Orthogonality Constraints Abstract 背景： 神经网络模型已经表明了它们在Multi-task Learning中的广阔前景，其重点是学习共享层以提取公共的和随不同任务不变的特征。">
 <meta name="keywords" content="Visual Dialog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Adversarial Multi-task Learning for Text Classification">
 <meta property="og:url" content="https://liusih.github.io/2019/10/09/Adversarial Multi-task Learning for Text Classification/index.html">
 <meta property="og:site_name" content="Sih Blog">
-<meta property="og:description" content="创新点： Adversial learning +  Orthogonality Constraints Abstract 背景： 神经网络模型已经表明了它们在Multi-task Learning中的广阔前景，其重点是学习共享层以提取公共的和随不同任务不变的特征。   存在的问题： 但在大多数现有方法中，提取的 shared features易受到特定于任务的功能或其他任务带来的噪音的污染。">
+<meta property="og:description" content="创新点： Adversial learning +  Orthogonality Constraints Abstract 背景： 神经网络模型已经表明了它们在Multi-task Learning中的广阔前景，其重点是学习共享层以提取公共的和随不同任务不变的特征。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png">
-<meta property="og:updated_time" content="2019-11-15T09:44:21.289Z">
+<meta property="og:updated_time" content="2019-11-21T08:13:33.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adversarial Multi-task Learning for Text Classification">
-<meta name="twitter:description" content="创新点： Adversial learning +  Orthogonality Constraints Abstract 背景： 神经网络模型已经表明了它们在Multi-task Learning中的广阔前景，其重点是学习共享层以提取公共的和随不同任务不变的特征。   存在的问题： 但在大多数现有方法中，提取的 shared features易受到特定于任务的功能或其他任务带来的噪音的污染。">
+<meta name="twitter:description" content="创新点： Adversial learning +  Orthogonality Constraints Abstract 背景： 神经网络模型已经表明了它们在Multi-task Learning中的广阔前景，其重点是学习共享层以提取公共的和随不同任务不变的特征。">
 <meta name="twitter:image" content="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png">
 
 
@@ -167,6 +167,7 @@
 <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
 <li><p>背景：</p>
 <p>神经网络模型已经表明了它们在<strong>Multi-task Learning</strong>中的广阔前景，<u>其重点是学习共享层以提取公共的和随不同任务不变的特征</u>。 </p>
+<a id="more"></a>
 </li>
 <li><p>存在的问题：</p>
 <p>但在大多数现有方法中，提取的 shared features易受到特定于任务的功能或其他任务带来的噪音的污染。</p>
@@ -209,8 +210,8 @@
 <p><img src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" style="zoom:50%;"></p>
 <blockquote>
 <p>Adversarial Network</p>
-<p>对抗网络的目标是学习到符合真实数据 $P_{data}(x)$ 分布的生成分布 $p_{G}(x)$。GAN 学习一个生成网络 $G$ 和一个判别网络 $D$, $G$ 通过生成分布 $p_{G}(x)$ 生成样本，$D$ 学习决策一个样本是来自$p_G(x)$ 还是$P_{data}(x)$</p>
-<p>The goal is to learn a generative distribution  $p_{G}(x)$ that matches the real data distribution $P_{data}(x)$Specifically,  GAN learns  a  generative  network  G  and  discriminative  model  D, in  which  G  generates  samples  from  the  generator distribution pG(x). and D learns to determine whether a sample is from pG(x) or Pdata(x). This min-max game can be optimized by the following risk.</p>
+<p>对抗网络的目标是学习到符合真实数据 $P<em>{data}(x)$ 分布的生成分布 $p</em>{G}(x)$。GAN 学习一个生成网络 $G$ 和一个判别网络 $D$, $G$ 通过生成分布 $p<em>{G}(x)$ 生成样本，$D$ 学习决策一个样本是来自$p_G(x)$ 还是$P</em>{data}(x)$</p>
+<p>The goal is to learn a generative distribution  $p<em>{G}(x)$ that matches the real data distribution $P</em>{data}(x)$Specifically,  GAN learns  a  generative  network  G  and  discriminative  model  D, in  which  G  generates  samples  from  the  generator distribution pG(x). and D learns to determine whether a sample is from pG(x) or Pdata(x). This min-max game can be optimized by the following risk.</p>
 </blockquote>
 
         </div>
