@@ -20,7 +20,7 @@
 <meta property="og:description" content="Abstract在现实世界中自监督预测的好奇心驱动的探索，能够提供给agent的奖励非常少，或者根本不存在。在这种情况下，好奇心可以作为一种内在的奖励信号，使agent能够探索环境并学习可能在以后的生活中有用的技能。本文把好奇心表述为一个agent在视觉特征空间预测自身行为结果的能力时的误差，并把这种error作为内在好奇心reward提供给agent进行学习，该视觉特征空间是由一个自监督逆动态模">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://image.sherlocknlp.com//20191111110136_uz5GfZ_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8A%E5%8D%8810.59.44.png">
-<meta property="og:updated_time" content="2019-11-12T03:07:12.279Z">
+<meta property="og:updated_time" content="2019-11-21T08:08:43.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Curiosity-driven Exploration by Self-supervised Prediction">
 <meta name="twitter:description" content="Abstract在现实世界中自监督预测的好奇心驱动的探索，能够提供给agent的奖励非常少，或者根本不存在。在这种情况下，好奇心可以作为一种内在的奖励信号，使agent能够探索环境并学习可能在以后的生活中有用的技能。本文把好奇心表述为一个agent在视觉特征空间预测自身行为结果的能力时的误差，并把这种error作为内在好奇心reward提供给agent进行学习，该视觉特征空间是由一个自监督逆动态模">
@@ -189,15 +189,9 @@
 <p><img src="http://image.sherlocknlp.com//20191112104817_L3l4w9_%E6%88%AA%E5%B1%8F2019-11-12%E4%B8%8A%E5%8D%8810.48.00.png" style="zoom:50%;"></p>
 <p>其中0≤β≤1是权重，其权重是逆模型损失与正向模型损失之间的关系，而λ&gt; 0 标量是权衡策略梯度损失的重要性与学习内在奖励信号的重要性之间的关系。</p>
 <h3 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h3><p>本文定性和定量地评估了在有和没有内在好奇心信号的情况下，在两种环境下（VizDoom和Super Mario Bros）学习策略的性能。</p>
-<p>评估了三个广泛的设置：<strong>a）达成目标时稀疏的外在奖励；</strong> b） 无外部奖励的探索； c）本文提出的新的场景（？？）。</p>
+<p>评估了三个广泛的设置：<strong>a）达成目标时稀疏的外在奖励；</strong> b） 无外部奖励的探索； c）本文提出的新的场景。</p>
 <h3 id="Future-work"><a href="#Future-work" class="headerlink" title="Future work"></a>Future work</h3><p>未来研究的一个有趣方向是将学习到的探索行为/技能用作更复杂的分层系统中的原始/低级策略。 例如，本文的VizDoomagent学会沿着走廊行走，而不是撞到墙壁上。 这对于导航系统可能是一个有用的原语。尽管丰富多样的现实世界为交互提供了充足的机会，但奖励信号却很少。 本文的方法在这种情况下表现出色，并将影响代理的意外互动转化为内在奖励。 但是，本文的方法并未直接扩展到“互动机会”都很少见的情况。 在理论中，可以将此类事件保存在 replay memory中，并使用它们来指导探索。 但是，本文将此扩展留给以后的工作。</p>
 <p>#### </p>
-<h3 id="Add-refer"><a href="#Add-refer" class="headerlink" title="Add refer"></a>Add refer</h3><p>作者：Flood Sung</p>
-<p>这里面的RL问题是针对sparse reward的任务，而且不仅仅sparse，如果没有好的action，reward甚至得不到。那么文章选择的马里奥和vizdoom确实是不错的例子。那么，面对这种情况，大部分时间reward为0，agent该怎么办呢？难道就在env里面瞎转悠？没意义呀！</p>
-<p>那该怎么办呢？没有reward ？<br>想来确实很难，如果我们的思维局限在现有的reward上。<br>但是作者就是突破了思维的维度！<br>我们要给agent制造reward！让agent有意义的在env里转悠！</p>
-<p>怎么才能有意义的转悠呢？<br>想想我们人在一个新地方转悠是为了干啥？熟悉环境。<br>OK，所以问题就来了：我们怎么才能更好的让agent熟悉环境？如何设计一个评价指标来评价熟悉度！<br>想想我们人如果对一个环境很熟悉，比如有一个拐角，那么我们常常会想象，还没拐弯脑子就能浮现拐角后的样子。这说明我们人可以记忆并预测呀！<br>所以，我们就可以设计一个指标，这个指标就是根据当前state和action预测未来的state，然后计算与实际state的偏差。偏差越小，说明对环境越熟悉，偏差越大说明对环境很不熟悉，需要agent去熟悉。ok，这个熟悉度就是我们想要的reward！大概是为了引起大家关注吧，作者把这叫做好奇心。（话说深度学习这种叫法也是为了引起大家注意，要不然叫多层人工神经网络最优化模型多难听呀）其实我觉得就是熟悉度。整个训练过程都是为了提升agent对环境的熟悉情况。</p>
-<p>有了熟悉度，接下来就是如何训练的问题。要预测state可没那么容易，特别是高维度的state比如图像。怎么办？降维呗，弄一个CNN提取state的特征，我们用提取的特征来计算熟悉度就行啦。解决到这里，就差最后一步了：如何构造训练这个cnn来提取特征？</p>
-<p>作者处理这个问题的方法我觉得很有创意！作者构造了这个CNN，然后训练目标竟然是根据当前state和下一个state估计中间采取的action。和前面熟悉度预测state正好反过来。这种方法可以利用现有数据进行监督学习，无限量的学。要能估计action，CNN就需要能够提取图像中的有用信息，比如自身的位置变化，周围物体的变化，而对于图像中无关的信息则能自动忽略。所以作者牛逼，用这么简单的方法就能自动提取有效信息。</p>
 
         </div>
         
@@ -265,8 +259,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/">
-                <span class="level-item">Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/">
+                <span class="level-item">Adversarial Multi-task Learning for Text Classification</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -343,7 +337,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        14
+                        15
                     </p>
                 </div>
             </div>
@@ -525,7 +519,7 @@
                 <span class="level-item">Visual Dialog</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/jupyter/">
@@ -561,7 +555,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 10px;">Curriculum Learning</a> <a href="/tags/Dialog-system/" style="font-size: 10px;">Dialog system</a> <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Reinforcement-learning/" style="font-size: 10px;">Reinforcement learning</a> <a href="/tags/Self-paced-learning/" style="font-size: 10px;">Self-paced learning</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 10px;">Curriculum Learning</a> <a href="/tags/Dialog-system/" style="font-size: 10px;">Dialog system</a> <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Reinforcement-learning/" style="font-size: 10px;">Reinforcement learning</a> <a href="/tags/Self-paced-learning/" style="font-size: 10px;">Self-paced learning</a> <a href="/tags/Visual-Dialog/" style="font-size: 15px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
         
@@ -630,6 +624,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" alt="Adversarial Multi-task Learning for Text Classification">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time></div>
+                    <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Adversarial Multi-task Learning for Text Classification</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Visual-Dialog/">Visual Dialog</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png" alt="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
@@ -642,25 +655,6 @@
                     <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/NLG/">NLG</a> / <a class="has-link-grey -link" href="/categories/NLG/Multi-task/">Multi-task</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Domain Adaptive Dialog Generation via Meta Learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
-                    <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a> / <a class="has-link-grey -link" href="/categories/Dialogue-system/meta-learning/">meta-learning</a>
                     </p>
                 </div>
             </div>
@@ -694,7 +688,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -862,7 +856,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Visual-Dialog/">
                         <span class="tag">Visual Dialog</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -917,7 +911,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 10px;">Curriculum Learning</a> <a href="/tags/Dialog-system/" style="font-size: 10px;">Dialog system</a> <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Reinforcement-learning/" style="font-size: 10px;">Reinforcement learning</a> <a href="/tags/Self-paced-learning/" style="font-size: 10px;">Self-paced learning</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 10px;">Curriculum Learning</a> <a href="/tags/Dialog-system/" style="font-size: 10px;">Dialog system</a> <a href="/tags/Dialogue/" style="font-size: 10px;">Dialogue</a> <a href="/tags/Dialogue-system/" style="font-size: 20px;">Dialogue system</a> <a href="/tags/Multi-task/" style="font-size: 10px;">Multi-task</a> <a href="/tags/NLG/" style="font-size: 10px;">NLG</a> <a href="/tags/RL/" style="font-size: 20px;">RL</a> <a href="/tags/Reinforcement-learning/" style="font-size: 10px;">Reinforcement learning</a> <a href="/tags/Self-paced-learning/" style="font-size: 10px;">Self-paced learning</a> <a href="/tags/Visual-Dialog/" style="font-size: 15px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
     
@@ -986,6 +980,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" alt="Adversarial Multi-task Learning for Text Classification">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time></div>
+                    <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Adversarial Multi-task Learning for Text Classification</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Visual-Dialog/">Visual Dialog</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png" alt="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
@@ -998,25 +1011,6 @@
                     <a href="/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/NLG/">NLG</a> / <a class="has-link-grey -link" href="/categories/NLG/Multi-task/">Multi-task</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Domain Adaptive Dialog Generation via Meta Learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time></div>
-                    <a href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Domain Adaptive Dialog Generation via Meta Learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a> / <a class="has-link-grey -link" href="/categories/Dialogue-system/meta-learning/">meta-learning</a>
                     </p>
                 </div>
             </div>
@@ -1050,7 +1044,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1218,7 +1212,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Visual-Dialog/">
                         <span class="tag">Visual Dialog</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
