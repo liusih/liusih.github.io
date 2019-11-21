@@ -11,19 +11,19 @@
 <title>Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue - Sih Blog</title>
 
 
-    <meta name="description" content="EMNLP 2019 任务型对话整理 Abstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语">
+    <meta name="description" content="EMNLP 2019 任务型对话整理 创新点：将NLG的响应生成与语言模型结合，共享encoder，作为多任务学习。 Abstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中提出了一个新的多任务学习框架，NLG-L">
 <meta name="keywords" content="NLG,Multi-task">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
 <meta property="og:url" content="https://liusih.github.io/2019/09/25/Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue/index.html">
 <meta property="og:site_name" content="Sih Blog">
-<meta property="og:description" content="EMNLP 2019 任务型对话整理 Abstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语">
+<meta property="og:description" content="EMNLP 2019 任务型对话整理 创新点：将NLG的响应生成与语言模型结合，共享encoder，作为多任务学习。 Abstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中提出了一个新的多任务学习框架，NLG-L">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png">
-<meta property="og:updated_time" content="2019-11-10T07:58:02.577Z">
+<meta property="og:updated_time" content="2019-11-21T08:16:21.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Multi-task Learning for Natural Language Generation in Task-Oriented Dialogue">
-<meta name="twitter:description" content="EMNLP 2019 任务型对话整理 Abstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语">
+<meta name="twitter:description" content="EMNLP 2019 任务型对话整理 创新点：将NLG的响应生成与语言模型结合，共享encoder，作为多任务学习。 Abstract在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中提出了一个新的多任务学习框架，NLG-L">
 <meta name="twitter:image" content="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png">
 
 
@@ -164,6 +164,7 @@
         </h1>
         <div class="content">
             <p>EMNLP 2019 任务型对话整理</p>
+<p>创新点：将NLG的响应生成与语言模型结合，共享encoder，作为多任务学习。</p>
 <h5 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h5><p>在面向任务的对话中，自然语言生成(NLG)是生成面向用户系统话语的最后一步。NLG的结果直接关系到对话系统的质量和可用性。尽管大多数现有的系统在给出目标时都能给出正确的响应，但它们很难与人类语言的多样性和流利性相匹配。在本文中提出了一个新的多任务学习框架，NLG-LM，用于自然语言生成。除了生成传递所需信息的高质量响应外，它还通过一个未配置的语言模型明确地针对生成响应的自然相关性。这对提高人类语言的风格和多样性有重要意义。<br><a id="more"></a><br>实验结果表明，该多任务学习框架在多数据集的学习效果优于已有的多任务学习框架。例如，它将以前E2E-NLG数据集上的最佳BLEU评分提高了2.2%，将笔记本数据集上的最佳BLEU评分提高了6.1%。</p>
 <h5 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h5><p>Challenge: 由于NLG直接面向用户，其可读性和信息量直接影响用户对整个对话系统的感知。一方面，为了提供或请求用户的信息，响应必须包含所需的信息，即meaning representation(MR)。另一方面，系统响应需要模仿人类语言的流动性和变异性来提高用户体验。早期的工作主要采用预定义的规则语法，尽管这些框架可以提供足够的信息，但是它们缺乏语言的自然性和变化性，使得响应非常僵化。此外，这些方法通常需要费力气的手工工作来创建模板，从而使它们无法跨域扩展。</p>
 <p>Method: 由于面向任务的对话数据通常包含丰富的人类响应，因此利用语言建模技术提高NLG模型模拟人类语言的能力具有很大的潜力。</p>
@@ -208,12 +209,13 @@
 <p>一个训练有素的语言模型可以在自然和语义上比僵硬和不自然的句子获得更高的分数。</p>
 <p>在深度学习中，语言模型任务通常由递归神经网络解决，但是，与(1)式不同的是，语言模型中出现下一个token的概率只依赖于前面的单词，而不依赖于输入序列：</p>
 <p><img src="http://image.sherlocknlp.com//20191107162515_AUF1wL_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.24.57.png" style="zoom:50%;"></p>
-<p>我们认为，通过将语言建模作为一个额外的目标集成到NLG过程中，生成的句子将更好地接近人类反应的风格和变化。为此，我们将另一个GRU单元$GRU^{LM}$添加到解码器中，该解码器具有自己的隐藏状态 $h^{LM}<em>{t-1}$， 并接受嵌入向量$s_t$作为输入。输出是 $g^{LM}$和新的隐藏状态 $h^{LM}</em>{t}$。在语言模型中，下一个token的概率分布为:</p>
+<p>我们认为，通过将语言建模作为一个额外的目标集成到NLG过程中，生成的句子将更好地接近人类反应的风格和变化。为此，我们将另一个GRU单元$GRU^{LM}$添加到解码器中，该解码器具有自己的隐藏状态 $h^{LM}_{t-1}$， 并接受嵌入向量$s_t$作为输入。输出是 $g^{LM}$和新的隐藏状态 $h^{LM}_{t}$。在语言模型中，下一个token的概率分布为:</p>
 <p><img src="http://image.sherlocknlp.com//20191107163119_mN2eYz_Screenshot.png" style="zoom:50%;"></p>
 <p>其中W2[:dh]为W2的第dh列。可以看出，上下文c并不影响语言建模的概率计算。语言模型的损失函数为:</p>
 <p><img src="http://image.sherlocknlp.com//20191107163254_V30BS5_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.32.33.png" style="zoom:50%;"></p>
 <p>最后，我们将这两个损失函数线性地合并成一个单一的多任务损失函数:</p>
-<script type="math/tex; mode=display">L(θ) =L^{NLG}(θ) +αL^{LM}(θ)</script><p>图1中描述了模型结构。如图所示，词典D在NLG任务和语言建模任务之间共享。</p>
+<p>$$L(θ) =L^{NLG}(θ) +αL^{LM}(θ)$$</p>
+<p>图1中描述了模型结构。如图所示，词典D在NLG任务和语言建模任务之间共享。</p>
 <p><img src="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png" style="zoom:50%;"></p>
 <h5 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h5><p>本文评估了来自不同领域的五个数据集的模型，包括了餐厅预订，酒店预订和零售。最大的数据集来自E2E-NLG任务，由餐厅区域内的51.2K个MR话语对组成。还使用RNN-LG的四个数据集，包括电视零售，笔记本电脑零售，酒店预订和餐厅预订领域中的对话场景，分别为14.1K，26.5K，8.7K和8.5K个样本。</p>
 <blockquote>

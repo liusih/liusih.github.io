@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liusih.github.io/2019/09/25/Multi-task%20Learning%20for%20Natural%20Language%20Generation%20in%20Task-Oriented%20Dialogue/</loc>
+    
+    <lastmod>2019-11-21T08:16:21.617Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liusih.github.io/2019/10/09/Adversarial%20Multi-task%20Learning%20for%20Text%20Classification/</loc>
     
     <lastmod>2019-11-21T08:13:33.315Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>https://liusih.github.io/2019/05/12/%E5%8C%BB%E7%96%97%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F/</loc>
     
     <lastmod>2019-11-10T08:02:05.253Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2019/09/25/Multi-task%20Learning%20for%20Natural%20Language%20Generation%20in%20Task-Oriented%20Dialogue/</loc>
-    
-    <lastmod>2019-11-10T07:58:02.577Z</lastmod>
     
   </url>
   
