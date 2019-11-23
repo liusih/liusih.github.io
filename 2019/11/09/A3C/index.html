@@ -20,7 +20,7 @@
 <meta property="og:description" content="Reinforcement Learning中的 AC 和 A3C 总结">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png">
-<meta property="og:updated_time" content="2019-11-23T06:21:41.821Z">
+<meta property="og:updated_time" content="2019-11-23T07:18:20.916Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reinforcement Learning中的 AC 和 A3C 总结">
 <meta name="twitter:description" content="Reinforcement Learning中的 AC 和 A3C 总结">
@@ -166,6 +166,33 @@
             <h3 id="Reinforcement-Learning中的-AC-和-A3C-总结"><a href="#Reinforcement-Learning中的-AC-和-A3C-总结" class="headerlink" title="Reinforcement Learning中的 AC 和 A3C 总结"></a>Reinforcement Learning中的 AC 和 A3C 总结</h3><a id="more"></a>
 <p>Actor Critic在RL中的位置：</p>
 <p><img src="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png" alt=""></p>
+<p>RL 按照value和policy分类：</p>
+<blockquote>
+<ul>
+<li><strong>Value-Based</strong>：是预测某个state下所有Action的期望价值（Q值），之后通过选择最大Q值对应的Action执行策略，适合仅有少量离散取值的Action的环境</li>
+<li><strong>Policy-Based</strong>：是直接预测某个state下应该采取的Action，适合高维连续Action的环境，更通用</li>
+</ul>
+</blockquote>
+<p>按照<strong>model-based</strong>和<strong>model-free</strong>来分类：</p>
+<blockquote>
+<ul>
+<li><strong>model-based</strong>：根据state和采取的action预测接下来的state，并利用这个信息训练强化学习模型（知道状态的转移概率）</li>
+<li><strong>model-free：</strong>不需要对环境状态进行任何预测，也不考虑行动将如何影响环境，直接对策略或action的期望价值进行预测，计算效率非常高</li>
+</ul>
+</blockquote>
+<h3 id="回顾："><a href="#回顾：" class="headerlink" title="回顾："></a>回顾：</h3><ol>
+<li><strong>神经网络近似动作-值函数</strong>：使用参数 $\theta$ 来对动作-值函数进行近似$Q(s,a,\theta)$</li>
+</ol>
+<ul>
+<li>One-step Q-learning:</li>
+</ul>
+<script type="math/tex; mode=display">L_i(\theta_i) = E(r + \gamma  \cdot max_{a'}Q(s',a';\theta_{i-1}) - Q(s,a;\theta_i))^2</script><ul>
+<li><strong>n-step Q-Learning：</strong></li>
+</ul>
+<script type="math/tex; mode=display">Q_{Target} = r_t + \gamma r_{t+1} + … +\gamma ^{n-1}r_{t+n-1} +  \gamma^n max_{a’}Q(s’,a’;\theta_{i-1}^-)</script><blockquote>
+<p>one-step缺点：得到一个奖励r仅仅直接影响了得到该奖励的状态总做对（s,a）的值。其他state action pair的值仅仅间接的通过更新value Q(s,a)来影响，这使得学习过程缓慢，因为许多更新都需要传播一个reward给相关进行的states和actions。</p>
+<p>n-step优点：一个奖励r直接影响先前n个state action pair，学习更有效。</p>
+</blockquote>
 <p><strong>一句话概括 Actor Critic 方法:</strong></p>
 <p>强化学习的分类可以分为以值函数为中心的和以策略为中心的算法，交叉部分就是actor-critic。</p>
 <p>结合了 Policy Gradient (Actor) 和 Function Approximation (Critic) 的方法. <code>Actor</code> 基于概率选行为, <code>Critic</code> 基于 <code>Actor</code> 的行为评判行为的得分, <code>Actor</code> 根据 <code>Critic</code> 的评分修改选行为的概率(即策略).</p>
@@ -183,9 +210,13 @@
 </ol>
 <p>Critic做的事情：策略评估，他要告诉个体，在由参数 $\theta$ 确定的策略  $\pi_{\theta}$ 到底表现得怎么样。</p>
 <h3 id="A3C"><a href="#A3C" class="headerlink" title="A3C"></a>A3C</h3><p>A3C-Asynchronous Advantage Actor-Critic</p>
+<blockquote>
+<p>将AC放到多个线程中同步训练，可以有效的利用计算机资源，提升训练效用。简单概括，就是：它会创建多个并行的环境，让多个拥有副结构的agent同时在这些并行环境上更新主结构中的参数。并行中的agent们互不干扰，而主结构的参数更新受到副结构提交更新的不连续性干扰，所以更新的相关性被降低，收敛性提高。</p>
+</blockquote>
 <p>未完待续… </p>
 <p>Reference：</p>
 <p>[1] <a href="https://zhuanlan.zhihu.com/p/32596470" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32596470</a></p>
+<p>[2] <strong>Asynchronous Methods for Deep Reinforcement Learning</strong></p>
 
         </div>
         
@@ -209,6 +240,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Task-Oriented Conversation Generation Using Heterogeneous Memory Networks</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -290,7 +328,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        16
+                        17
                     </p>
                 </div>
             </div>
@@ -310,7 +348,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        16
                     </p>
                 </div>
             </div>
@@ -392,7 +430,7 @@
                 <span class="level-item">NLG</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/NLG/Multi-task-Learning/">
@@ -468,7 +506,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 10px;">Curriculum Learning</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Multi-task-Learning/" style="font-size: 15px;">Multi-task Learning</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 10px;">Curriculum Learning</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 15px;">Multi-task Learning</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
         
@@ -477,6 +515,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191121231255_V7JLxq_Screenshot.png" alt="Task-Oriented Conversation Generation Using Heterogeneous Memory Networks">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T16:00:00.000Z">2019-11-20</time></div>
+                    <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Task-Oriented Conversation Generation Using Heterogeneous Memory Networks</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLG/">NLG</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -554,25 +611,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" alt="Adversarial Multi-task Learning for Text Classification">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time></div>
-                    <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Adversarial Multi-task Learning for Text Classification</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Text-Classification-Multi-task-Learning/">Text Classification - Multi-task Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -590,7 +628,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -734,6 +772,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Latent-Variable/">
                         <span class="tag">Latent Variable</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Memory-Network/">
+                        <span class="tag">Memory Network</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -824,7 +869,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 10px;">Curriculum Learning</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Multi-task-Learning/" style="font-size: 15px;">Multi-task Learning</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 10px;">Curriculum Learning</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 15px;">Multi-task Learning</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
     
@@ -833,6 +878,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191121231255_V7JLxq_Screenshot.png" alt="Task-Oriented Conversation Generation Using Heterogeneous Memory Networks">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T16:00:00.000Z">2019-11-20</time></div>
+                    <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Task-Oriented Conversation Generation Using Heterogeneous Memory Networks</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLG/">NLG</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -910,25 +974,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" alt="Adversarial Multi-task Learning for Text Classification">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time></div>
-                    <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Adversarial Multi-task Learning for Text Classification</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Text-Classification-Multi-task-Learning/">Text Classification - Multi-task Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -946,7 +991,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1090,6 +1135,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Latent-Variable/">
                         <span class="tag">Latent Variable</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Memory-Network/">
+                        <span class="tag">Memory Network</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
