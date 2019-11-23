@@ -8,29 +8,29 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Adversarial Multi-task Learning for Text Classification - Sih Blog</title>
+<title>Reinforcement Learning中的 AC 和 A3C 总结 - Sih Blog</title>
 
 
-    <meta name="description" content="Reinforcement Learning中的 AC 和 A3C 总结Actor Critic在RL中的位置：  一句话概括 Actor Critic 方法: 强化学习的分类可以分为以值函数为中心的和以策略为中心的算法，交叉部分就是actor-critic。 结合了 Policy Gradient (Actor) 和 Function Approximation (Critic) 的方法. Ac">
+    <meta name="description" content="Reinforcement Learning中的 AC 和 A3C 总结">
 <meta name="keywords" content="Reinforcement Learning,Actor-Critic,A3C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Adversarial Multi-task Learning for Text Classification">
-<meta property="og:url" content="https://liusih.github.io/2019/10/09/A3C/index.html">
+<meta property="og:title" content="Reinforcement Learning中的 AC 和 A3C 总结">
+<meta property="og:url" content="https://liusih.github.io/2019/11/09/A3C/index.html">
 <meta property="og:site_name" content="Sih Blog">
-<meta property="og:description" content="Reinforcement Learning中的 AC 和 A3C 总结Actor Critic在RL中的位置：  一句话概括 Actor Critic 方法: 强化学习的分类可以分为以值函数为中心的和以策略为中心的算法，交叉部分就是actor-critic。 结合了 Policy Gradient (Actor) 和 Function Approximation (Critic) 的方法. Ac">
+<meta property="og:description" content="Reinforcement Learning中的 AC 和 A3C 总结">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg">
-<meta property="og:updated_time" content="2019-11-23T06:09:47.522Z">
+<meta property="og:updated_time" content="2019-11-23T06:12:13.356Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Adversarial Multi-task Learning for Text Classification">
-<meta name="twitter:description" content="Reinforcement Learning中的 AC 和 A3C 总结Actor Critic在RL中的位置：  一句话概括 Actor Critic 方法: 强化学习的分类可以分为以值函数为中心的和以策略为中心的算法，交叉部分就是actor-critic。 结合了 Policy Gradient (Actor) 和 Function Approximation (Critic) 的方法. Ac">
+<meta name="twitter:title" content="Reinforcement Learning中的 AC 和 A3C 总结">
+<meta name="twitter:description" content="Reinforcement Learning中的 AC 和 A3C 总结">
 <meta name="twitter:image" content="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg">
 
 
 
 
 
-<link rel="alternative" href="/images/rss2.png" title="Adversarial Multi-task Learning for Text Classification" type="application/atom+xml">
+<link rel="alternative" href="/images/rss2.png" title="Reinforcement Learning中的 AC 和 A3C 总结" type="application/atom+xml">
 
 
 
@@ -84,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/rss2.png" alt="Adversarial Multi-task Learning for Text Classification" height="28">
+                <img src="/images/rss2.png" alt="Reinforcement Learning中的 AC 和 A3C 总结" height="28">
             
             </a>
         </div>
@@ -138,7 +138,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Adversarial Multi-task Learning for Text Classification">
+            <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Reinforcement Learning中的 AC 和 A3C 总结">
         </span>
     </div>
     
@@ -146,7 +146,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time>
+                <time class="level-item has-text-grey" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
@@ -159,11 +159,12 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Adversarial Multi-task Learning for Text Classification
+                Reinforcement Learning中的 AC 和 A3C 总结
             
         </h1>
         <div class="content">
-            <h3 id="Reinforcement-Learning中的-AC-和-A3C-总结"><a href="#Reinforcement-Learning中的-AC-和-A3C-总结" class="headerlink" title="Reinforcement Learning中的 AC 和 A3C 总结"></a>Reinforcement Learning中的 AC 和 A3C 总结</h3><p>Actor Critic在RL中的位置：</p>
+            <h3 id="Reinforcement-Learning中的-AC-和-A3C-总结"><a href="#Reinforcement-Learning中的-AC-和-A3C-总结" class="headerlink" title="Reinforcement Learning中的 AC 和 A3C 总结"></a>Reinforcement Learning中的 AC 和 A3C 总结</h3><a id="more"></a>
+<p>Actor Critic在RL中的位置：</p>
 <p><img src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt=""></p>
 <p><strong>一句话概括 Actor Critic 方法:</strong></p>
 <p>强化学习的分类可以分为以值函数为中心的和以策略为中心的算法，交叉部分就是actor-critic。</p>
@@ -209,17 +210,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Curiosity-driven Exploration by Self-supervised Prediction</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/">
-                <span class="level-item">Adversarial Multi-task Learning for Text Classification</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/01/Curriculum Learning/">
+                <span class="level-item">Curriculum Learning and self-paced learning</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -235,8 +229,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://liusih.github.io/2019/10/09/A3C/';
-        this.page.identifier = '2019/10/09/A3C/';
+        this.page.url = 'https://liusih.github.io/2019/11/09/A3C/';
+        this.page.identifier = '2019/11/09/A3C/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -486,6 +480,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/09/A3C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Reinforcement Learning中的 AC 和 A3C 总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -543,25 +556,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/09/A3C/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Adversarial Multi-task Learning for Text Classification">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time></div>
-                    <a href="/2019/10/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Adversarial Multi-task Learning for Text Classification</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" alt="Adversarial Multi-task Learning for Text Classification">
@@ -596,7 +590,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -607,7 +601,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -842,6 +836,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/09/A3C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Reinforcement Learning中的 AC 和 A3C 总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -899,25 +912,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/09/A3C/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Adversarial Multi-task Learning for Text Classification">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time></div>
-                    <a href="/2019/10/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Adversarial Multi-task Learning for Text Classification</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" alt="Adversarial Multi-task Learning for Text Classification">
@@ -952,7 +946,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -963,7 +957,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1181,7 +1175,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/rss2.png" alt="Adversarial Multi-task Learning for Text Classification" height="28">
+                    <img src="/images/rss2.png" alt="Reinforcement Learning中的 AC 和 A3C 总结" height="28">
                 
                 </a>
                 <p class="is-size-7">

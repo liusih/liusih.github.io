@@ -167,8 +167,8 @@
 <a id="more"></a>
 <p>我们的公式扩展到像图像这样的高维连续状态空间，绕过了直接预测像素的困难，并且，关键的是，忽略了不能影响代理的环境方面。所提出的方法在两个环境中进行评估（VizDoom和Super Mario Bros）。研究了三个广泛的环境:1)稀疏的外部奖励，在这种奖励中好奇心使得与环境的互动更少以达到目标；2)没有外在回报的探索，好奇心驱使代理人更有效地探索；和3)推广到看不见的sce-narios(例如，同一游戏的新级别)，在这里，从早期经验中获得的知识帮助代理人比从头开始更快地探索新的地方。</p>
 <p><img src="http://image.sherlocknlp.com//20191111110136_uz5GfZ_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8A%E5%8D%8810.59.44.png" alt=""></p>
-<p>Fig2 看图是两个loss，一个是Forword model 用$a<em>t$和$φ(s_t)$ 去预测$\hat{φ}(s</em>{t+1})$， 一个是Inverse model 用$s<em>t$和$s</em>{t+1}$预测所采取的动作$a_t$。</p>
-<h3 id="Self-supervised-prediction-for-exploration"><a href="#Self-supervised-prediction-for-exploration" class="headerlink" title="Self-supervised prediction for exploration"></a>Self-supervised prediction for exploration</h3><p>自监督的探索目标不是手动设计每个环境的特征表示，而是提出一种学习特征表示的通用模型，使得学习特征空间中的预测误差提供良好的内在奖励信号。我们提出这样一个特征空间可以通过训练具有两个子模块的深层神经网络来学习:第一子模块将原始状态编码为特征向量φ(st)，第二子模块将编码两个后续状态的$φ(s<em>t)$、$φ(s</em>{t+1})$的特征作为输入，并预测代理从状态$s<em>t$到$s</em>{t+1}$移动所采取的动作($a_t$)。训练这个神经网络相当于学习功能，定义为：</p>
+<p>Fig2 看图是两个loss，一个是Forword model 用$a_t$和$φ(s_t)$ 去预测$\hat{φ}(s_{t+1})$， 一个是Inverse model 用$s_t$和$s_{t+1}$预测所采取的动作$a_t$。</p>
+<h3 id="Self-supervised-prediction-for-exploration"><a href="#Self-supervised-prediction-for-exploration" class="headerlink" title="Self-supervised prediction for exploration"></a>Self-supervised prediction for exploration</h3><p>自监督的探索目标不是手动设计每个环境的特征表示，而是提出一种学习特征表示的通用模型，使得学习特征空间中的预测误差提供良好的内在奖励信号。我们提出这样一个特征空间可以通过训练具有两个子模块的深层神经网络来学习:第一子模块将原始状态编码为特征向量φ(st)，第二子模块将编码两个后续状态的$φ(s_t)$、$φ(s_{t+1})$的特征作为输入，并预测代理从状态$s_t$到$s_{t+1}$移动所采取的动作($a_t$)。训练这个神经网络相当于学习功能，定义为：</p>
 <p><img src="http://image.sherlocknlp.com//20191111153149_W0VOj5_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8B%E5%8D%883.31.43.png" style="zoom:50%;"></p>
 <p>其中$\hat{a_t}$是对动作$a_t$的预测估计值，并且训练了神经网络参数θ来进行优化。</p>
 <p><img src="http://image.sherlocknlp.com//20191111153742_jOw07Y_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8B%E5%8D%883.37.15.png" style="zoom:50%;"></p>
@@ -177,7 +177,7 @@
 </blockquote>
 <p>除了逆动力学模型(inverse dynamics model)外，还训练了另一个神经网络，该神经网络以$a_t$和$φ(s_t)$作为输入，并预测时间$t + 1$处状态的特征编码。</p>
 <p><img src="http://image.sherlocknlp.com//20191111155347_jXcBOS_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8B%E5%8D%883.52.48.png" style="zoom:50%;"></p>
-<p> 其中，$\hat{φ}(s<em>{t+1})$是通过最小化损失函数$L_F$而预测的$φ(s</em>{t+1})$ ,应用神经网络参数$θ$预测估计值:</p>
+<p> 其中，$\hat{φ}(s_{t+1})$是通过最小化损失函数$L_F$而预测的$φ(s_{t+1})$ ,应用神经网络参数$θ$预测估计值:</p>
 <p><img src="http://image.sherlocknlp.com//20191112101405_vEWMEh_Screenshot.png" style="zoom:50%;"></p>
 <p>学习的函数<strong>$f$也称为正向动力学模型</strong>, 内在奖励信号$r^i_t$计算为:</p>
 <p><img src="http://image.sherlocknlp.com//20191112101304_McHDXE_Screenshot.png" style="zoom:50%;"></p>
@@ -191,7 +191,8 @@
 <h3 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h3><p>本文定性和定量地评估了在有和没有内在好奇心信号的情况下，在两种环境下（VizDoom和Super Mario Bros）学习策略的性能。</p>
 <p>评估了三个广泛的设置：<strong>a）达成目标时稀疏的外在奖励；</strong> b） 无外部奖励的探索； c）本文提出的新的场景。</p>
 <h3 id="Future-work"><a href="#Future-work" class="headerlink" title="Future work"></a>Future work</h3><p>未来研究的一个有趣方向是将学习到的探索行为/技能用作更复杂的分层系统中的原始/低级策略。 例如，本文的VizDoomagent学会沿着走廊行走，而不是撞到墙壁上。 这对于导航系统可能是一个有用的原语。尽管丰富多样的现实世界为交互提供了充足的机会，但奖励信号却很少。 本文的方法在这种情况下表现出色，并将影响代理的意外互动转化为内在奖励。 但是，本文的方法并未直接扩展到“互动机会”都很少见的情况。 在理论中，可以将此类事件保存在 replay memory中，并使用它们来指导探索。 但是，本文将此扩展留给以后的工作。</p>
-<h4 id=""><a href="#" class="headerlink" title=" "></a> </h4>
+<p>#### </p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -224,7 +225,7 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/09/A3C/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/">
                 <span class="level-item">Adversarial Multi-task Learning for Text Classification</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -492,6 +493,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/09/A3C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Reinforcement Learning中的 AC 和 A3C 总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -549,25 +569,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/09/A3C/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Adversarial Multi-task Learning for Text Classification">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time></div>
-                    <a href="/2019/10/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Adversarial Multi-task Learning for Text Classification</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" alt="Adversarial Multi-task Learning for Text Classification">
@@ -602,7 +603,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -613,7 +614,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -848,6 +849,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/09/A3C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Reinforcement Learning中的 AC 和 A3C 总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -905,25 +925,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/09/A3C/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Adversarial Multi-task Learning for Text Classification">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time></div>
-                    <a href="/2019/10/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Adversarial Multi-task Learning for Text Classification</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" alt="Adversarial Multi-task Learning for Text Classification">
@@ -958,7 +959,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -969,7 +970,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

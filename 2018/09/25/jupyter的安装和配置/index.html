@@ -158,51 +158,51 @@
         </h1>
         <div class="content">
             <p>1.安装jupyter </p>
-<pre class=" language-lang-python"><code class="language-lang-python">pip install jupyter
+<pre class=" language-python"><code class="language-python">pip install jupyter
 </code></pre>
 <p>如果安装报错，则安装</p>
-<pre class=" language-lang-python"><code class="language-lang-python">sudo apt-get install libsqlite3-dev
+<pre class=" language-python"><code class="language-python">sudo apt<span class="token operator">-</span>get install libsqlite3<span class="token operator">-</span>dev
 </code></pre>
 <a id="more"></a>
 <p>2.生成配置文件：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">jupyter notebook --generate-config
-(该文件在 /home/username/.jupyter/jupyter_notebook_config.py)
+<pre class=" language-python"><code class="language-python">jupyter notebook <span class="token operator">-</span><span class="token operator">-</span>generate<span class="token operator">-</span>config
+<span class="token punctuation">(</span>该文件在 <span class="token operator">/</span>home<span class="token operator">/</span>username<span class="token operator">/</span><span class="token punctuation">.</span>jupyter<span class="token operator">/</span>jupyter_notebook_config<span class="token punctuation">.</span>py<span class="token punctuation">)</span>
 </code></pre>
 <p>3.生成密码：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">#ipython (或者Python）
-from notebook.auth import passwd
-passwd()
-Enter password:   #在此处输入密码
-Verify password：  #确认输入密码
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#ipython (或者Python）</span>
+<span class="token keyword">from</span> notebook<span class="token punctuation">.</span>auth <span class="token keyword">import</span> passwd
+passwd<span class="token punctuation">(</span><span class="token punctuation">)</span>
+Enter password<span class="token punctuation">:</span>   <span class="token comment" spellcheck="true">#在此处输入密码</span>
+Verify password：  <span class="token comment" spellcheck="true">#确认输入密码</span>
 </code></pre>
 <p>然后会生成：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">Out：‘sha1:5ab...............' #为生成的密码，复制一下，后面会用到
+<pre class=" language-python"><code class="language-python">Out：‘sha1<span class="token punctuation">:</span><span class="token number">5ab</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>' <span class="token comment" spellcheck="true">#为生成的密码，复制一下，后面会用到</span>
 </code></pre>
 <p>4.修改配置文件 ~/.jupyter/jupyter_notebook_config.py</p>
-<pre class=" language-lang-python"><code class="language-lang-python">vim ~/.jupyter/jupyter_notebook_config.py
+<pre class=" language-python"><code class="language-python">vim <span class="token operator">~</span><span class="token operator">/</span><span class="token punctuation">.</span>jupyter<span class="token operator">/</span>jupyter_notebook_config<span class="token punctuation">.</span>py
 </code></pre>
 <p>此处需要更改的：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">c.NotebookApp.ip='*’         #此处默认为localhost,更改为任意ip
-c.NotebookApp.password = u'sha1:5ab..............'   #此处为之前自行设置的密码，粘贴到此处
-c.NotebookApp.open_browser = False
-c.NotebookApp.port =8888      #该处端口号可任意设置，8889，9999等，默认为8888
-#ps:注意！！！！一定要去掉前面的注释，才可以有用。
+<pre class=" language-python"><code class="language-python">c<span class="token punctuation">.</span>NotebookApp<span class="token punctuation">.</span>ip<span class="token operator">=</span>'<span class="token operator">*</span>’         <span class="token comment" spellcheck="true">#此处默认为localhost,更改为任意ip</span>
+c<span class="token punctuation">.</span>NotebookApp<span class="token punctuation">.</span>password <span class="token operator">=</span> u<span class="token string">'sha1:5ab..............'</span>   <span class="token comment" spellcheck="true">#此处为之前自行设置的密码，粘贴到此处</span>
+c<span class="token punctuation">.</span>NotebookApp<span class="token punctuation">.</span>open_browser <span class="token operator">=</span> <span class="token boolean">False</span>
+c<span class="token punctuation">.</span>NotebookApp<span class="token punctuation">.</span>port <span class="token operator">=</span><span class="token number">8888</span>      <span class="token comment" spellcheck="true">#该处端口号可任意设置，8889，9999等，默认为8888</span>
+<span class="token comment" spellcheck="true">#ps:注意！！！！一定要去掉前面的注释，才可以有用。</span>
 </code></pre>
 <p>保存退出</p>
-<pre class=" language-lang-python"><code class="language-lang-python">esc
-shift+:
+<pre class=" language-python"><code class="language-python">esc
+shift<span class="token operator">+</span><span class="token punctuation">:</span>
 wq
 </code></pre>
 <ol>
 <li>启动jupyter</li>
 </ol>
-<pre class=" language-lang-python"><code class="language-lang-python">jupyter notebook
+<pre class=" language-python"><code class="language-python">jupyter notebook
 </code></pre>
 <p><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1fvlurkdc1jj30j805lt92.jpg" alt=""><br>然后打开浏览器输入：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">1.如果是远程登录linux服务器：
-https://服务器地址:8889/           (此处8889为之前设置的端口号）
-2.如果是本机：
-https://localhost:8889/
+<pre class=" language-python"><code class="language-python"><span class="token number">1</span><span class="token punctuation">.</span>如果是远程登录linux服务器：
+https<span class="token punctuation">:</span><span class="token operator">//</span>服务器地址<span class="token punctuation">:</span><span class="token number">8889</span><span class="token operator">/</span>           <span class="token punctuation">(</span>此处<span class="token number">8889</span>为之前设置的端口号）
+<span class="token number">2</span><span class="token punctuation">.</span>如果是本机：
+https<span class="token punctuation">:</span><span class="token operator">//</span>localhost<span class="token punctuation">:</span><span class="token number">8889</span><span class="token operator">/</span>
 </code></pre>
 
         </div>
@@ -505,6 +505,25 @@ https://localhost:8889/
         
         <article class="media">
             
+            <a href="/2019/11/09/A3C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Reinforcement Learning中的 AC 和 A3C 总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -562,25 +581,6 @@ https://localhost:8889/
         
         <article class="media">
             
-            <a href="/2019/10/09/A3C/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Adversarial Multi-task Learning for Text Classification">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time></div>
-                    <a href="/2019/10/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Adversarial Multi-task Learning for Text Classification</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" alt="Adversarial Multi-task Learning for Text Classification">
@@ -615,7 +615,7 @@ https://localhost:8889/
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -626,7 +626,7 @@ https://localhost:8889/
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -861,6 +861,25 @@ https://localhost:8889/
         
         <article class="media">
             
+            <a href="/2019/11/09/A3C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Reinforcement Learning中的 AC 和 A3C 总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -918,25 +937,6 @@ https://localhost:8889/
         
         <article class="media">
             
-            <a href="/2019/10/09/A3C/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Adversarial Multi-task Learning for Text Classification">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time></div>
-                    <a href="/2019/10/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Adversarial Multi-task Learning for Text Classification</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" alt="Adversarial Multi-task Learning for Text Classification">
@@ -971,7 +971,7 @@ https://localhost:8889/
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -982,7 +982,7 @@ https://localhost:8889/
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

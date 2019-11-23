@@ -210,8 +210,8 @@
 <p><img src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" style="zoom:50%;"></p>
 <blockquote>
 <p>Adversarial Network</p>
-<p>对抗网络的目标是学习到符合真实数据 $P<em>{data}(x)$ 分布的生成分布 $p</em>{G}(x)$。GAN 学习一个生成网络 $G$ 和一个判别网络 $D$, $G$ 通过生成分布 $p<em>{G}(x)$ 生成样本，$D$ 学习决策一个样本是来自$p_G(x)$ 还是$P</em>{data}(x)$</p>
-<p>The goal is to learn a generative distribution  $p<em>{G}(x)$ that matches the real data distribution $P</em>{data}(x)$Specifically,  GAN learns  a  generative  network  G  and  discriminative  model  D, in  which  G  generates  samples  from  the  generator distribution pG(x). and D learns to determine whether a sample is from pG(x) or Pdata(x). This min-max game can be optimized by the following risk.</p>
+<p>对抗网络的目标是学习到符合真实数据 $P_{data}(x)$ 分布的生成分布 $p_{G}(x)$。GAN 学习一个生成网络 $G$ 和一个判别网络 $D$, $G$ 通过生成分布 $p_{G}(x)$ 生成样本，$D$ 学习决策一个样本是来自$p_G(x)$ 还是$P_{data}(x)$</p>
+<p>The goal is to learn a generative distribution  $p_{G}(x)$ that matches the real data distribution $P_{data}(x)$Specifically,  GAN learns  a  generative  network  G  and  discriminative  model  D, in  which  G  generates  samples  from  the  generator distribution pG(x). and D learns to determine whether a sample is from pG(x) or Pdata(x). This min-max game can be optimized by the following risk.</p>
 </blockquote>
 
         </div>
@@ -238,9 +238,9 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/09/A3C/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Adversarial Multi-task Learning for Text Classification</span>
+                <span class="level-item">Curiosity-driven Exploration by Self-supervised Prediction</span>
             </a>
         </div>
         
@@ -514,6 +514,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/09/A3C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Reinforcement Learning中的 AC 和 A3C 总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -571,25 +590,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/09/A3C/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Adversarial Multi-task Learning for Text Classification">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time></div>
-                    <a href="/2019/10/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Adversarial Multi-task Learning for Text Classification</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" alt="Adversarial Multi-task Learning for Text Classification">
@@ -624,7 +624,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -635,7 +635,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -870,6 +870,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/09/A3C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Reinforcement Learning中的 AC 和 A3C 总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
+                    <a href="/2019/11/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/01/Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
@@ -927,25 +946,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/09/A3C/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123140722_Om0D4B_v2-2994e88872f53cadece2f2e7b71f492a_hd.jpeg" alt="Adversarial Multi-task Learning for Text Classification">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T05:20:10.000Z">2019-10-09</time></div>
-                    <a href="/2019/10/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Adversarial Multi-task Learning for Text Classification</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/10/09/Adversarial Multi-task Learning for Text Classification/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191115171233_UrjBmS_Screenshot.png" alt="Adversarial Multi-task Learning for Text Classification">
@@ -980,7 +980,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -991,7 +991,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
