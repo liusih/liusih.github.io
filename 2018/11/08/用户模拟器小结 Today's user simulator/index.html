@@ -8,29 +8,29 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Curriculum Learning and self-paced learning - Sih Blog</title>
+<title>Today&#39;s User simulator - Sih Blog</title>
 
 
-    <meta name="description" content="1. Curriculum LearningBengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。">
-<meta name="keywords" content="Curriculum Learning,Self-paced Learning">
+    <meta name="description" content="Dialogue SimulationSimulation-Based Evaluation 为什么用User simulator:  通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对">
+<meta name="keywords" content="User Simulator">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Curriculum Learning and self-paced learning">
-<meta property="og:url" content="https://liusih.github.io/2019/11/01/Curriculum Learning/index.html">
+<meta property="og:title" content="Today&#39;s User simulator">
+<meta property="og:url" content="https://liusih.github.io/2018/11/08/用户模拟器小结 Today's user simulator/index.html">
 <meta property="og:site_name" content="Sih Blog">
-<meta property="og:description" content="1. Curriculum LearningBengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。">
+<meta property="og:description" content="Dialogue SimulationSimulation-Based Evaluation 为什么用User simulator:  通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg">
-<meta property="og:updated_time" content="2019-11-23T06:03:12.532Z">
+<meta property="og:image" content="https://liusih.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-23T11:07:59.021Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Curriculum Learning and self-paced learning">
-<meta name="twitter:description" content="1. Curriculum LearningBengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。">
-<meta name="twitter:image" content="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg">
+<meta name="twitter:title" content="Today&#39;s User simulator">
+<meta name="twitter:description" content="Dialogue SimulationSimulation-Based Evaluation 为什么用User simulator:  通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对">
+<meta name="twitter:image" content="https://liusih.github.io/images/og_image.png">
 
 
 
 
 
-<link rel="alternative" href="/images/rss2.png" title="Curriculum Learning and self-paced learning" type="application/atom+xml">
+<link rel="alternative" href="/images/rss2.png" title="Today&#39;s User simulator" type="application/atom+xml">
 
 
 
@@ -84,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/rss2.png" alt="Curriculum Learning and self-paced learning" height="28">
+                <img src="/images/rss2.png" alt="Today&#39;s User simulator" height="28">
             
             </a>
         </div>
@@ -136,20 +136,14 @@
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
 <div class="card">
     
-    <div class="card-image">
-        <span  class="image is-7by1">
-            <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
-        </span>
-    </div>
-    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time>
+                <time class="level-item has-text-grey" datetime="2018-11-08T07:38:48.000Z">2018-11-08</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
+                <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
                 </div>
                 
                 
@@ -159,30 +153,56 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Curriculum Learning and self-paced learning
+                Today&#39;s User simulator
             
         </h1>
         <div class="content">
-            <!-- ## Curriculum Learning and self-paced learning  课程学习和自步学习 -->
-<h4 id="1-Curriculum-Learning"><a href="#1-Curriculum-Learning" class="headerlink" title="1. Curriculum Learning"></a>1. Curriculum Learning</h4><p>Bengio提出了课程学习的概念，来自于人类从易到难的学习过程：将数据看作模型所学习的内容的话，我们自然需要一个合理的课程(curriculum)来指导模型学习这些内容的方式。在课程学习中，数据被按照从易到难的顺序逐渐加入模型的训练集，在这个过程中训练集的熵也在不断提高(包含更多的信息)。</p>
+            <h2 id="Dialogue-Simulation"><a href="#Dialogue-Simulation" class="headerlink" title="Dialogue Simulation"></a>Dialogue Simulation</h2><h4 id="Simulation-Based-Evaluation"><a href="#Simulation-Based-Evaluation" class="headerlink" title="Simulation-Based Evaluation"></a>Simulation-Based Evaluation</h4><ul>
+<li><p>为什么用User simulator:</p>
+<ul>
+<li><p>通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。<br>本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对话状态，b.并与RL对话系统进行对话</p>
 <a id="more"></a>
-<blockquote>
-<p><em>A model is learned by gradually including from easy to complex samples in training so as to increase the entropy of training samples.</em></p>
-</blockquote>
-<p>课程学习的核心问题是得到一个ranking function，该函数能够对每一条数据样本给出其<strong>learning priority (学习该样本的优先程度)</strong>。一个确定的ranking function便能够确定一个“课程”，有更高rank的数据会被较早地学习。</p>
-<p>一般特定问题的ranking function是靠直觉来定义的，这样的定义方法可能会存在偏差，不够科学，所以引出了<strong>self-paced learning</strong>。</p>
-<h4 id="2-Self-paced-learning"><a href="#2-Self-paced-learning" class="headerlink" title="2. Self-paced learning"></a>2. Self-paced learning</h4><p>Kumar在2010年提出self-paced learning，通过模拟认知机制，通过先学习<strong>简单的、普适性的</strong>知识，然后逐渐增加难度，学习<strong>更复杂、更专业化的</strong>知识课程学习。自步学习从选取最简单的数据子集开始，逐渐加入复杂的数据，从而减少熵值，训练出潜在的权重参数。基本思路是利用损失大小与难易程度之间的对偶关系进行对所学样本的加权。这种加权格式类似于引入隐含变量后的估计推断格式和EM算法格式，使得模型对于数据分布的学习更加稳健</p>
-<p><img src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt=""></p>
-<p><strong>SPL</strong> 通过在损失函数中引入变量 <img src="https://www.zhihu.com/equation?tex=v" alt=""> 来表示样本是否被选择：</p>
-<p><img src="https://pic1.zhimg.com/80/v2-0417a18a05dc95e12d44766f79118b28_hd.png" alt=""></p>
-<p>SPL将curriculum设计为学习的目标函数中的一个正则化项，SPL的优化目标即优化得到一组模型参数w与权重向量v，使得所有数据的加权Loss之和与负的权重向量v的L1范数最小(也存在同时使用L1L2范数的变体[3])。其中 λ 是一个控制参数，反映了当前学习所进行到的阶段(learning pace)，<img src="https://www.zhihu.com/equation?tex=%5Clambda" alt=""> 是调整步速的关键变量，<img src="https://www.zhihu.com/equation?tex=%5Clambda" alt=""> 越小，表明模型还在训练的初始阶段，训练相对简单的样本，随着 <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt=""> 增大，模型学习越来越多的样本。</p>
-<p>直观来解释一下权重向量v，最常用的是binary (0/1)的形式：其实就是是否选择该数据进入训练/验证集。note that在Loss项前乘了因子vi，所以对于第i条数据，若vi=0则其产生的Loss对于该步的模型参数w更新没有影响。</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
-<li>Bengio, Yoshua, et al. “Curriculum learning.” <em>Proceedings of the 26th annual international conference on machine learning</em>. ACM, 2009.</li>
-<li>Kumar, M. Pawan, Benjamin Packer, and Daphne Koller. “Self-paced learning for latent variable models.” <em>Advances in Neural Information Processing Systems</em>. 2010.</li>
-<li><a href="https://zhuanlan.zhihu.com/p/55720313" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/55720313</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/54025612" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/54025612</a></li>
+</li>
+<li><p>一般的User simulator:</p>
+<ul>
+<li>such as deterministic vs. stochastic</li>
+<li>content-based vs. collaboration-based</li>
+<li>static vs. non-static user goals during the conversations</li>
+<li>用户模拟器可以在 dialogue-act level 或在句子级别上操作</li>
+<li>可以是基于规则也可以是基于模型从真实的对话数据中学到的。</li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Agenda-Based-Simulation"><a href="#Agenda-Based-Simulation" class="headerlink" title="Agenda-Based Simulation"></a>Agenda-Based Simulation</h4><ul>
+<li>ex:As an example, we describe a popular hidden agenda-based user simulator developed by Schatzmann and Young (2009), as instantiated in Li et al. (2016d) and Ultes et al. (2017c). </li>
+<li>每个对话模拟从一个随机生成的用户目标开始，对话管理器不知道这个目标。一般来说，用户目标由两部分组成:inform-slots 包含大量的槽值对，作为用户想要强加于对话的约束;request-slots 是用户最初不知道其值的槽，将在对话期间填写。</li>
+<li>此外，为了使用户目标更加实际，还添加了领域特定的约束，以便某些slot需要出现在用户目标中。例如，要求用户知道在电影领域中需要多少张票是有意义的</li>
+<li>在对话过程中，模拟用户维护一个堆栈数据结构，称为user agenda。议程中的每个agenda都对应着用户要实现的一个未决意图，它们的优先级由议程堆栈的“后进先出”(first-in-last-out)操作隐式地决定。因此，agenda提供了一种方便的方式编码的历史的对话和用户的“心理状态”。对用户的模拟可以归结为在每次对话结束后，当更多的信息被披露时，如何维护议程。机器学习或专家定义(expert-defined)的规则可用于在堆栈更新(stack-update)过程中设置参数。</li>
+</ul>
+<h4 id="Model-Based-Simulation"><a href="#Model-Based-Simulation" class="headerlink" title="Model-Based Simulation"></a>Model-Based Simulation</h4><ul>
+<li>Another approach to building user simulators is entirely based on data. ex: (Eckert et al., 1997; Levin et al., 2000; Chandramohan et al., 2011). Asri et al. (2016)</li>
+<li>与agenda-based的方法类似，模拟器还会以随机生成的用户目标和约束作为开始。这些是在谈话中是固定的。</li>
+<li><p>在每一个回合中，用户模型都会输入一系列在对话中收集到的上下文，并输出下一个动作。具体来说，对话的语境包括：</p>
+<ul>
+<li>最近的机器动作，</li>
+<li>机器信息与用户目标不一致，</li>
+<li>约束状态和</li>
+<li>请求状态。</li>
+</ul>
+</li>
+<li>有了这些上下文，使用LSTM输出下一个用户话语。在实践中，通过结合基于规则和基于模型的方法来创建用户模拟器，可以表现的更好。</li>
+</ul>
+<h4 id="Further-Remarks-on-User-Simulation"><a href="#Further-Remarks-on-User-Simulation" class="headerlink" title="Further Remarks on User Simulation"></a>Further Remarks on User Simulation</h4><ul>
+<li>目前的用户模拟器自身的评估也不明朗，实际一些对话策略会因为过拟合一个特定的对话模拟器而不能适用于真实的用户。</li>
+<li>用户模拟器和人之间的差距，是优化基于用户模拟器获得的对话策略的最大的限制。</li>
+<li>最近推出的一个更大的评估环境的语料库–AirDialogue</li>
+</ul>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p>[1]Li, X., Lipton, Z. C., Dhingra, B., Li, L., Gao, J., and Chen, Y.-N. (2016d). A user simulator for<br>task-completion dialogues. CoRR abs/1612.05688</p>
+<p>[2]Li, X., Chen, Y.-N., Li, L., Gao, J., and Celikyilmaz, A. (2017d). End-to-end task-completion neural<br>dialogue systems. In Proceedings of the 8th International Joint Conference on Natural Language</p>
+<p>Processing (IJCNLP), pages 733–743.<br>[3] Gao,Michel Galley,Michel Galley, Neural Approaches to Conversational AI (2018)</p>
+<p>​    </p>
 
         </div>
         
@@ -190,7 +210,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Curriculum-Learning/">Curriculum Learning</a>, <a class="has-link-grey -link" href="/tags/Self-paced-Learning/">Self-paced Learning</a>
+                    <a class="has-link-grey -link" href="/tags/User-Simulator/">User Simulator</a>
                 </div>
             </div>
         </div>
@@ -208,16 +228,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/09/A3C/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/23/RL算法总结/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Reinforcement Learning中的 AC 和 A3C 总结</span>
+                <span class="level-item">Today&#39;s RL algorithm</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/01/MSR任务型对话系统论文列表/">
-                <span class="level-item">MSR任务型对话系统论文列表</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/09/25/jupyter的安装和配置/">
+                <span class="level-item">jupyter的安装和配置</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -233,8 +253,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://liusih.github.io/2019/11/01/Curriculum Learning/';
-        this.page.identifier = '2019/11/01/Curriculum Learning/';
+        this.page.url = 'https://liusih.github.io/2018/11/08/用户模拟器小结 Today&#39;s user simulator/';
+        this.page.identifier = '2018/11/08/用户模拟器小结 Today&#39;s user simulator/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -503,7 +523,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/09/A3C/" class="media-left">
+            <a href="/2019/11/09/强化学习中的A3C/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png" alt="Reinforcement Learning中的 AC 和 A3C 总结">
                 </p>
@@ -512,7 +532,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
-                    <a href="/2019/11/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
+                    <a href="/2019/11/09/强化学习中的A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
                     </p>
@@ -522,7 +542,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/01/Curriculum Learning/" class="media-left">
+            <a href="/2019/11/01/课程学习Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
                 </p>
@@ -531,7 +551,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
+                    <a href="/2019/11/01/课程学习Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
                     </p>
@@ -866,7 +886,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/09/A3C/" class="media-left">
+            <a href="/2019/11/09/强化学习中的A3C/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png" alt="Reinforcement Learning中的 AC 和 A3C 总结">
                 </p>
@@ -875,7 +895,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
-                    <a href="/2019/11/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
+                    <a href="/2019/11/09/强化学习中的A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
                     </p>
@@ -885,7 +905,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/01/Curriculum Learning/" class="media-left">
+            <a href="/2019/11/01/课程学习Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
                 </p>
@@ -894,7 +914,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
+                    <a href="/2019/11/01/课程学习Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
                     </p>
@@ -1193,7 +1213,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/rss2.png" alt="Curriculum Learning and self-paced learning" height="28">
+                    <img src="/images/rss2.png" alt="Today&#39;s User simulator" height="28">
                 
                 </a>
                 <p class="is-size-7">

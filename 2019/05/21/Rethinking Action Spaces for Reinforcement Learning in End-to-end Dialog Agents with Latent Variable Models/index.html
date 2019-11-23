@@ -8,29 +8,29 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Today&#39;s User simulator - Sih Blog</title>
+<title>Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models - Sih Blog</title>
 
 
-    <meta name="description" content="Dialogue SimulationSimulation-Based Evaluation 为什么用User simulator:  通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对">
-<meta name="keywords" content="User Simulator">
+    <meta name="description" content="Naacl 2019  Abstract 为对话定义action space并通过强化学习来优化其决策的过程是一个长期以来的挑战。通常的做法是使用手工来定义对话动作或者词表作为动作空间，两者都有各自的局限性。本文提出了一种潜在动作框架，将端到端agent的动作空间作为潜在变量，并应用非监督方法，从数据中归纳出自己的动作空间。">
+<meta name="keywords" content="Reinforcement Learning,Latent Variable">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Today&#39;s User simulator">
-<meta property="og:url" content="https://liusih.github.io/2018/11/08/Today's user simulator/index.html">
+<meta property="og:title" content="Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models">
+<meta property="og:url" content="https://liusih.github.io/2019/05/21/Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/index.html">
 <meta property="og:site_name" content="Sih Blog">
-<meta property="og:description" content="Dialogue SimulationSimulation-Based Evaluation 为什么用User simulator:  通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对">
+<meta property="og:description" content="Naacl 2019  Abstract 为对话定义action space并通过强化学习来优化其决策的过程是一个长期以来的挑战。通常的做法是使用手工来定义对话动作或者词表作为动作空间，两者都有各自的局限性。本文提出了一种潜在动作框架，将端到端agent的动作空间作为潜在变量，并应用非监督方法，从数据中归纳出自己的动作空间。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://liusih.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-23T05:55:53.566Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg">
+<meta property="og:updated_time" content="2019-11-23T11:07:29.648Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Today&#39;s User simulator">
-<meta name="twitter:description" content="Dialogue SimulationSimulation-Based Evaluation 为什么用User simulator:  通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对">
-<meta name="twitter:image" content="https://liusih.github.io/images/og_image.png">
+<meta name="twitter:title" content="Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models">
+<meta name="twitter:description" content="Naacl 2019  Abstract 为对话定义action space并通过强化学习来优化其决策的过程是一个长期以来的挑战。通常的做法是使用手工来定义对话动作或者词表作为动作空间，两者都有各自的局限性。本文提出了一种潜在动作框架，将端到端agent的动作空间作为潜在变量，并应用非监督方法，从数据中归纳出自己的动作空间。">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg">
 
 
 
 
 
-<link rel="alternative" href="/images/rss2.png" title="Today&#39;s User simulator" type="application/atom+xml">
+<link rel="alternative" href="/images/rss2.png" title="Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models" type="application/atom+xml">
 
 
 
@@ -84,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/rss2.png" alt="Today&#39;s User simulator" height="28">
+                <img src="/images/rss2.png" alt="Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models" height="28">
             
             </a>
         </div>
@@ -136,11 +136,17 @@
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
 <div class="card">
     
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg" alt="Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models">
+        </span>
+    </div>
+    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-08T07:38:48.000Z">2018-11-08</time>
+                <time class="level-item has-text-grey" datetime="2019-05-21T02:02:18.000Z">2019-05-21</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
@@ -153,56 +159,52 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Today&#39;s User simulator
+                Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models
             
         </h1>
         <div class="content">
-            <h2 id="Dialogue-Simulation"><a href="#Dialogue-Simulation" class="headerlink" title="Dialogue Simulation"></a>Dialogue Simulation</h2><h4 id="Simulation-Based-Evaluation"><a href="#Simulation-Based-Evaluation" class="headerlink" title="Simulation-Based Evaluation"></a>Simulation-Based Evaluation</h4><ul>
-<li><p>为什么用User simulator:</p>
+            <!-- **Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models** -->
+<p><a href="https://arxiv.org/pdf/1902.08858.pdf" target="_blank" rel="noopener">Naacl 2019</a> </p>
+<p><strong>Abstract</strong></p>
+<p>为对话定义action space并通过强化学习来优化其决策的过程是一个长期以来的挑战。通常的做法是使用手工来定义对话动作或者词表作为动作空间，两者都有各自的局限性。本文提出了一种潜在动作框架，将端到端agent的动作空间作为潜在变量，并应用非监督方法，从数据中归纳出自己的动作空间。<br><a id="more"></a><br>综合实验研究了连续型和离散型的动作类型以及两种基于随机变分推理的优化方法。结果表明，在DealOrNoDeal和MultiWoz对话框上，所提出的潜在动作比以往的词级策略梯度方法取得了更好的性能改进。</p>
+<p><strong>Introduction</strong></p>
+<p>本文提出的模型 Latent Action Reinforcement Learning (LaRL)，克服了端到端对话模型中基于word-level RL的限制，以无监督的方式结合了传统模块化方法的优点。<br>关键的想法是开发一种可以自己发现对话动作的E2E模型。这些动作必须具有足够的表达能力，以捕获复杂领域中的回复 (即具有表示大量动作的能力)，从而将话语层面的决策过程与自然语言生成分离开来。然后，任何RL方法都可以应用到这个诱导的动作空间中来代替词级别的输出。所以本文提出了一种提供潜在变量的对话框架，研究了从对话数据中诱导潜在动作空间的几种方法。</p>
+<p>本文还进一步提出  (1)一种新的训练目标，其性能优于对话生成中使用的典型证据下界;(2)在解码器中集成离散潜在变量的注意机制，以更好地对长响应建模。</p>
+<p>本文在DealOrNoDeal (Lewis et al.， 2017)和MultiWoz (Budzianowski et al.， 2018)两个数据集进行了实验。<br>结果表明，在学习对话策略时，LaRL明显比word level RL更有效，而且不会产生不可理解的语言。<br>本文的模型在MultiWoz上实现了18.2%的改进，并在DealOrNoDeal上发现了新颖多样的谈判策略。</p>
+<p>除了较强的实证改进外，本文的模型分析还展示了一些新的见解，例如减少潜在动作空间中的暴露偏差至关重要，离散的潜在动作比连续的更适合作为RL agent的动作空间。</p>
+<p>本文的工作不同于以往的工作有两个原因:<br>(1)以前的工作中潜在的动作只是辅助的，小规模的，大多是在监督或半监督的环境中学习的。本文研究的是潜在变量的无监督学习，学习的变量具有足够的表达能力，能够独立捕捉整个动作空间。<br>(2)据本文所知，本文的工作是对对话系统中使用潜在变量进行RL策略优化的首次全面研究。</p>
+<p><strong>Baseline</strong><br>端到端的系统响应生成可视为一个基于条件的生成任务，该任务使用神经网络的编解码器对条件分布$p(x|c)$进行建模，其中$c$为观察到的对话上下文，$x$为系统对上下文的响应。对话上下文可以是原始对话历史或者文本上下文. RL训练通常分为2步: 基于监督学习的预训练，和基于强化学习策略梯度算法.<br>具体来说,监督学习这一步来最大化对数似然值 ($\theta$是模型参数):<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36tp6jbx2j309l012wed.jpg" alt=""><br>然后接下来的RL这一步使用策略梯度算法，更新与任务目标相关的模型参数。假设有一个agent可以与之交互的环境，并且在对话的每个轮次$t$处都有一个轮次奖励$r_t$。本文得到在模型参数$\theta$下，预期的折扣回报$J(θ)= E[\sum^T_0 \gamma ^t r_t]$, 折现因子$\gamma$在[0,1]之间，$T$为对话的长度(总轮数)。 通常在奖励r上减去参数b来降低策略梯度的方差<br>$$Rt=E[\sum^{T-t}<em>{k = 0} \gamma ^t (r</em>{t+k}-b)]$$.</p>
+<p>Word-level Reinforcement Learning<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s5tp2wxj30cx04vmxd.jpg" alt="fg 1"><br>如图1所示，world-level RL将每个输出单词视为一个action step，其策略梯度为<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sgi3p1aj30cf02wmx7.jpg" alt=""><br>其中$U_t$为第t轮回复中的token数量，j为回复中的单词index。显然Eq 2的动作空间非常大，即|V| (词表size)，学习视野较长，即$TU$。之前的工作发现直接应用该式会导致解码器不收敛。常用的解决方法是按一定比例交替使用带监督学习的Eq 2。将这个比率表示为RL:SL=A:B，这意味着, 对于每A次策略梯度更新，运行B次监督学习进行更新。对于只使用策略梯度而不涉及监督学习的情况，则RL:SL=off。</p>
+<p><strong>Model</strong></p>
+<ol>
+<li>Latent Action Reinforcement Learning<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg" alt="fg 2"><br>本文提出的LARL框架如图2所示，在回复生成过程中引入了一个潜在变量$z$。则现在的条件分布$p (x|c) = p (x|z) p (z|c)$<br>生成的过程为:<br>(1) 给定一个对话上下文 $c$, 首先依照$p_{θ<em>e}(z|c)$抽样一个潜在动作 $z$<br>(2) 基于$p</em>{θ<em>d} (x|z)$，即基于z抽样生成的响应x, 其中$p</em>{θ<em>e}$是对话编码器网络, $p</em>{θ_d}$是响应的解码器网络。在上述设置下，LaRL将潜在变量$z$作为其动作空间，而不是响应 $x$中输出单词。之后可以在潜在动作空间中应用reinforce:<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36tpjg4x7j30al01x748.jpg" alt=""><br>与Eq 2相比，LaRL的不同之处在于:  </li>
+</ol>
 <ul>
-<li><p>通常，RL算法需要与用户交互才能学习。但是，在招募的用户或实际用户上运行RL可能是昂贵的，甚至是有风险的。解决这一挑战的一种方法是构建一个模拟用户，与RL算法交互几乎不需要任何成本。<br>本质上，User simulator试图模拟真实用户在对话中的行为: a. 跟踪对话状态，b.并与RL对话系统进行对话</p>
-<a id="more"></a>
-</li>
-<li><p>一般的User simulator:</p>
+<li>将范围从$TU$缩短到$T$。  </li>
+<li>潜在动作空间设计为低维，比V小得多。  </li>
+<li>策略梯度只更新编码器$θ_e$, 而解码器$θ<em>d$保持不变。<br>这些属性减少了对话策略优化的难度，并将高层决策与自然语言生成分离开。$给定上下文$c$, $p</em>{θ<em>e}$ 负责选择最好的潜在动作, 而$p</em>{θ_d}$仅负责将$z$转换为表层形式的单词。本文的公式也为实验各种类型的模型学习方法提供了一个灵活的框架。<br>在本文中，本文主要关注两个关键方面:潜在变量$z$的类型, 以及在有监督的预训练阶段, 优化学习$z$的方法。</li>
+</ul>
+<ol start="2">
+<li>Types of Latent Actions<br>以往的研究中使用了两类潜在变量:<br>连续各向同性高斯分布(Serban et al.， 2017b)和多元分类分布(Zhao et al.， 2018)。这两种类型都与本文的LaRL框架兼容，定义如下：</li>
+</ol>
 <ul>
-<li>such as deterministic vs. stochastic</li>
-<li>content-based vs. collaboration-based</li>
-<li>static vs. non-static user goals during the conversations</li>
-<li>用户模拟器可以在 dialogue-act level 或在句子级别上操作</li>
-<li>可以是基于规则也可以是基于模型从真实的对话数据中学到的。</li>
+<li>Gaussian Latent Actions<br>高斯潜在动作遵循$M$维多元对角协方差矩阵的高斯分布, 即$z\sim N(\mu ,\sigma^2I )$。<br>编码器$p_{θ<em>e}$由两部分构成:一个上下文编码器$F$,  用神经网络编码对话上下文$c$为一个向量表示$h$, 用一个前馈网络$pai$将$h$映射为$\mu$和$\sigma$ 。流程定义如下：<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s82qosfj30bx03y0st.jpg" alt=""><br>然后将得到的$z$作为解码器的初始状态用于最后响应的生成。<br>使用$p</em>\theta(z|c) =  N(z; \mu ,\sigma^2I)$来计算Eq 3中的策略梯度更新.</li>
+<li>Categorical Latent Actions<br>分类潜在动作是$M$个独立的$k$向分类随机变量。每个$z_m$都有自己的token embedding，将潜在的符号映射到向量空间$E_m \epsilon R^{K×D}$，其中$m \ epsilon [1,M]$， D为embedding size。因此 M个潜在动作可以表示指数级的，$K^M$个，不同且唯一的组合， 这使得它具有足够的表现力，可以在复杂的领域中建模对话动作。类似于高斯潜在动作，我们有<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s9ntf37j30bf03ot8v.jpg" alt=""><br>与高斯潜在动作不同, 分类潜在动作矩阵编码后得到大小为  $R^{M×D}$  的矩阵, 而解码器的初始状态是一个大小为 $R^D$  的向量。以前的工作将潜在的emdedding相加，来集成这个矩阵和编码器, 表示作为求和融合。<br>这种方法的一个限制是，它可能会丢失每个潜在维度中的细粒度顺序信息，并且在涉及多个对话动作的长响应方面存在问题。因此，本文提出一种新的方法，<strong>Attention Fusion</strong>，来结合分类潜在的动作与解码器。 将注意力机制(Luong et al.， 2015)应用于潜在的动作。设i为解码时的步长索引。然后有:<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s88idqvj30ce061mxj.jpg" alt=""></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="Agenda-Based-Simulation"><a href="#Agenda-Based-Simulation" class="headerlink" title="Agenda-Based Simulation"></a>Agenda-Based Simulation</h4><ul>
-<li>ex:As an example, we describe a popular hidden agenda-based user simulator developed by Schatzmann and Young (2009), as instantiated in Li et al. (2016d) and Ultes et al. (2017c). </li>
-<li>每个对话模拟从一个随机生成的用户目标开始，对话管理器不知道这个目标。一般来说，用户目标由两部分组成:inform-slots 包含大量的槽值对，作为用户想要强加于对话的约束;request-slots 是用户最初不知道其值的槽，将在对话期间填写。</li>
-<li>此外，为了使用户目标更加实际，还添加了领域特定的约束，以便某些slot需要出现在用户目标中。例如，要求用户知道在电影领域中需要多少张票是有意义的</li>
-<li>在对话过程中，模拟用户维护一个堆栈数据结构，称为user agenda。议程中的每个agenda都对应着用户要实现的一个未决意图，它们的优先级由议程堆栈的“后进先出”(first-in-last-out)操作隐式地决定。因此，agenda提供了一种方便的方式编码的历史的对话和用户的“心理状态”。对用户的模拟可以归结为在每次对话结束后，当更多的信息被披露时，如何维护议程。机器学习或专家定义(expert-defined)的规则可用于在堆栈更新(stack-update)过程中设置参数。</li>
-</ul>
-<h4 id="Model-Based-Simulation"><a href="#Model-Based-Simulation" class="headerlink" title="Model-Based Simulation"></a>Model-Based Simulation</h4><ul>
-<li>Another approach to building user simulators is entirely based on data. ex: (Eckert et al., 1997; Levin et al., 2000; Chandramohan et al., 2011). Asri et al. (2016)</li>
-<li>与agenda-based的方法类似，模拟器还会以随机生成的用户目标和约束作为开始。这些是在谈话中是固定的。</li>
-<li><p>在每一个回合中，用户模型都会输入一系列在对话中收集到的上下文，并输出下一个动作。具体来说，对话的语境包括：</p>
-<ul>
-<li>最近的机器动作，</li>
-<li>机器信息与用户目标不一致，</li>
-<li>约束状态和</li>
-<li>请求状态。</li>
-</ul>
-</li>
-<li>有了这些上下文，使用LSTM输出下一个用户话语。在实践中，通过结合基于规则和基于模型的方法来创建用户模拟器，可以表现的更好。</li>
-</ul>
-<h4 id="Further-Remarks-on-User-Simulation"><a href="#Further-Remarks-on-User-Simulation" class="headerlink" title="Further Remarks on User Simulation"></a>Further Remarks on User Simulation</h4><ul>
-<li>目前的用户模拟器自身的评估也不明朗，实际一些对话策略会因为过拟合一个特定的对话模拟器而不能适用于真实的用户。</li>
-<li>用户模拟器和人之间的差距，是优化基于用户模拟器获得的对话策略的最大的限制。</li>
-<li>最近推出的一个更大的评估环境的语料库–AirDialogue</li>
-</ul>
-<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p>[1]Li, X., Lipton, Z. C., Dhingra, B., Li, L., Gao, J., and Chen, Y.-N. (2016d). A user simulator for<br>task-completion dialogues. CoRR abs/1612.05688</p>
-<p>[2]Li, X., Chen, Y.-N., Li, L., Gao, J., and Celikyilmaz, A. (2017d). End-to-end task-completion neural<br>dialogue systems. In Proceedings of the 8th International Joint Conference on Natural Language</p>
-<p>Processing (IJCNLP), pages 733–743.<br>[3] Gao,Michel Galley,Michel Galley, Neural Approaches to Conversational AI (2018)</p>
-<p>​    </p>
+<p><strong>Optimization Approaches</strong></p>
+<p>现在给定一个训练数据集{x, c}, 常规的优化方法是通过最大化其变分下界的随机变分推理（Full ELBO）</p>
+<p><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sa32ec1j30c8022t8p.jpg" alt=""></p>
+<blockquote>
+<p>补充：在ELBO其中q是关于z的一个任意概率分布。<br> 对任意分布q的选择来说，L提供了似然函数的一个下界。<br> 越好地近似p(z∣x,c)的分布q(z∣x，c)，得到的下界就越紧。<br> <strong>将推断问题看作是找一个分布q使得L最大的过程。</strong></p>
+</blockquote>
+<p>$q_{\gamma }(z|x, c)$  为需要训练的神经网络，来逼近  $q(z|x, c)$ 和$q(z|c)$  和  $p (x|z)$  的后验分布。<br>本文认为上式有局限性，解码器只看到  $z$  从  $q(z|x, c)$  采样，但未经历过从 $p_\theta(z|c)$ 采样, 所以提出了以下优化函数（Lite ELBO）：<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sa8mpvwj30c101ydfs.jpg" alt=""><br>本质上，简化目标将后验网络设置为与编码器相同，即  $q_\gamma(z|x, c) = p_{θ<em>e} (z|c)$, 但是这也使得潜在空间缺少正则化，实验中表明，如果只最大化$p</em>{p_{(z|c})}(x|z)$ 会存在过拟合。因此添加了额外的正则化项, 鼓励后验与先验分布能够相似, β是一介于0和1之间的超参数。将分类潜在动作的  $p(z)$  设为平均值，即 $p(z) = 1/K$  ；将高斯潜在动作的先验设为 $N(0,I)$ .</p>
+<p>Experiment</p>
+<p>Dataset</p>
+<ol>
+<li>DealOrNoDeal是一个谈判数据集，包含基于2236个不同场景的5805个对话。本文提出252个测试环境场景，并从训练集中随机抽取400个场景进行验证。从混乱度(PPL)、奖励、一致性和多样性四个方面对研究结果进行了评价。PPL帮助确定哪个模型产生的与人更相似的响应，同时奖励和一致性评估模型的谈判强度。多样性表示该模型是发现了一种新的语篇级策略，还是只是重复了单调响应。<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sagj6ubj30cr08ggmk.jpg" alt=""></li>
+<li>Multiwoz是一个插槽填充数据集，它包含10438个对话, 涉及6个不同的域中。8438个对话用于训练，各1000个用于验证和测试。由于该数据集之前没有用户模拟器，为了与之前的技术水平进行公平的比较，本文将重点放在中提出的对话-上下文-文本生成任务上。该任务要求在对话中的每个系统轮次生成响应对话。结果从三个方面进行评估:BLEU，Inform Rate和成功率。BLEU score检查响应层次词汇相似性，而Inform rate 和成功率度量模型是否在dialog级别是否回答问题并提供所有请求的信息。<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sasng82j30c907zwfj.jpg" alt=""></li>
+</ol>
+<p>Conclusion<br>最后，本文为E2E dialogue agent中的RL提出了一个潜在变量的动作空间。 并对两种对话任务进行了评估，结果表明，本文的模型取得了优异的性能，并创造了一个MultiWoz最新的成功率。广泛的分析使我们能够深入了解如何正确地训练潜在变量，这些变量可以作为agent的动作空间，能够以无监督的方式创建抽象的动作。</p>
 
         </div>
         
@@ -210,7 +212,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/User-Simulator/">User Simulator</a>
+                    <a class="has-link-grey -link" href="/tags/Latent-Variable/">Latent Variable</a>, <a class="has-link-grey -link" href="/tags/Reinforcement-Learning/">Reinforcement Learning</a>
                 </div>
             </div>
         </div>
@@ -228,16 +230,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/23/RL-algrithm/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/06/09/Visual Dialog 总结/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Today&#39;s RL algorithm</span>
+                <span class="level-item">Visual Dialogue 总结</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/09/25/jupyter的安装和配置/">
-                <span class="level-item">jupyter的安装和配置</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/12/医疗领域的任务型对话系统/">
+                <span class="level-item">医疗对话系统总结</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -253,8 +255,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://liusih.github.io/2018/11/08/Today&#39;s user simulator/';
-        this.page.identifier = '2018/11/08/Today&#39;s user simulator/';
+        this.page.url = 'https://liusih.github.io/2019/05/21/Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/';
+        this.page.identifier = '2019/05/21/Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -523,7 +525,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/09/A3C/" class="media-left">
+            <a href="/2019/11/09/强化学习中的A3C/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png" alt="Reinforcement Learning中的 AC 和 A3C 总结">
                 </p>
@@ -532,7 +534,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
-                    <a href="/2019/11/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
+                    <a href="/2019/11/09/强化学习中的A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
                     </p>
@@ -542,7 +544,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/01/Curriculum Learning/" class="media-left">
+            <a href="/2019/11/01/课程学习Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
                 </p>
@@ -551,7 +553,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
+                    <a href="/2019/11/01/课程学习Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
                     </p>
@@ -886,7 +888,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/09/A3C/" class="media-left">
+            <a href="/2019/11/09/强化学习中的A3C/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png" alt="Reinforcement Learning中的 AC 和 A3C 总结">
                 </p>
@@ -895,7 +897,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
-                    <a href="/2019/11/09/A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
+                    <a href="/2019/11/09/强化学习中的A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
                     </p>
@@ -905,7 +907,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/01/Curriculum Learning/" class="media-left">
+            <a href="/2019/11/01/课程学习Curriculum Learning/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
                 </p>
@@ -914,7 +916,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
+                    <a href="/2019/11/01/课程学习Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
                     </p>
@@ -1213,7 +1215,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/rss2.png" alt="Today&#39;s User simulator" height="28">
+                    <img src="/images/rss2.png" alt="Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models" height="28">
                 
                 </a>
                 <p class="is-size-7">

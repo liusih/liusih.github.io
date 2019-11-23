@@ -2,9 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://liusih.github.io/2019/11/09/A3C/</loc>
+    <loc>https://liusih.github.io/2018/11/08/%E7%94%A8%E6%88%B7%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%B0%8F%E7%BB%93%20Today's%20user%20simulator/</loc>
     
-    <lastmod>2019-11-23T11:05:11.452Z</lastmod>
+    <lastmod>2019-11-23T11:07:59.021Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2019/05/21/Rethinking%20Action%20Spaces%20for%20Reinforcement%20Learning%20in%20End-to-end%20Dialog%20Agents%20with%20Latent%20Variable%20Models/</loc>
+    
+    <lastmod>2019-11-23T11:07:29.648Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2019/04/25/MSR%E7%9A%84ConvLab/</loc>
+    
+    <lastmod>2019-11-23T11:07:17.663Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2019/05/12/%E5%8C%BB%E7%96%97%E9%A2%86%E5%9F%9F%E7%9A%84%E4%BB%BB%E5%8A%A1%E5%9E%8B%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F/</loc>
+    
+    <lastmod>2019-11-23T11:06:57.897Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2019/11/01/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0Curriculum%20Learning/</loc>
+    
+    <lastmod>2019-11-23T11:06:39.411Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2018/11/23/RL%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2019-11-23T11:06:19.200Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liusih.github.io/2019/11/09/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84A3C/</loc>
+    
+    <lastmod>2019-11-23T11:05:59.873Z</lastmod>
     
   </url>
   
@@ -12,13 +54,6 @@
     <loc>https://liusih.github.io/2019/11/20/Task-Oriented%20Conversation%20Generation%20Using%20Heterogeneous%20Memory%20Networks/</loc>
     
     <lastmod>2019-11-23T07:25:21.542Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2019/05/21/naacl2019%20Rethinking%20Action%20Spaces%20for%20Reinforcement%20Learning%20in%20End-to-end%20Dialog%20Agents%20with%20Latent%20Variable%20Models/</loc>
-    
-    <lastmod>2019-11-23T06:04:34.511Z</lastmod>
     
   </url>
   
@@ -37,13 +72,6 @@
   </url>
   
   <url>
-    <loc>https://liusih.github.io/2019/11/01/Curriculum%20Learning/</loc>
-    
-    <lastmod>2019-11-23T06:03:12.532Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://liusih.github.io/2019/10/25/Curiosity-driven%20Exploration%20by%20Self-supervised%20Prediction/</loc>
     
     <lastmod>2019-11-23T06:02:56.260Z</lastmod>
@@ -58,13 +86,6 @@
   </url>
   
   <url>
-    <loc>https://liusih.github.io/2019/05/12/%E5%8C%BB%E7%96%97%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F/</loc>
-    
-    <lastmod>2019-11-23T05:58:12.416Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://liusih.github.io/2019/09/09/Domain%20Adaptive%20Dialog%20Generation%20via%20Meta%20Learning/</loc>
     
     <lastmod>2019-11-23T05:57:13.090Z</lastmod>
@@ -72,23 +93,9 @@
   </url>
   
   <url>
-    <loc>https://liusih.github.io/2018/11/08/Today's%20user%20simulator/</loc>
-    
-    <lastmod>2019-11-23T05:55:53.566Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://liusih.github.io/2019/03/04/Switch-based-Active-Deep-Dyna-Q-Efficient-Adaptive-Planning-for-Task-Completion-Dialogue-Policy-LearningLearning/</loc>
     
     <lastmod>2019-11-23T05:55:25.258Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2018/11/23/RL-algrithm/</loc>
-    
-    <lastmod>2019-11-23T05:54:37.815Z</lastmod>
     
   </url>
   
@@ -131,13 +138,6 @@
     <loc>https://liusih.github.io/2018/09/25/jupyter%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2019-11-06T03:34:44.256Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2019/04/25/ConvLab/</loc>
-    
-    <lastmod>2019-11-06T03:34:40.065Z</lastmod>
     
   </url>
   
