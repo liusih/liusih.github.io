@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://liusih.github.io/2019/05/12/%E5%8C%BB%E7%96%97%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F/</loc>
+    <loc>https://liusih.github.io/2019/05/21/naacl2019%20Rethinking%20Action%20Spaces%20for%20Reinforcement%20Learning%20in%20End-to-end%20Dialog%20Agents%20with%20Latent%20Variable%20Models/</loc>
     <lastmod>2019-11-23</lastmod>
   </url>  <url>
     <loc>https://liusih.github.io/2019/09/25/Multi-task%20Learning%20for%20Natural%20Language%20Generation%20in%20Task-Oriented%20Dialogue/</loc>
     <lastmod>2019-11-23</lastmod>
   </url>  <url>
-    <loc>https://liusih.github.io/2019/11/01/Curriculum%20Learning/</loc>
-    <lastmod>2019-11-23</lastmod>
-  </url>  <url>
-    <loc>https://liusih.github.io/2019/09/09/Domain%20Adaptive%20Dialog%20Generation%20via%20Meta%20Learning/</loc>
-    <lastmod>2019-11-23</lastmod>
-  </url>  <url>
     <loc>https://liusih.github.io/2019/11/01/MSR%E4%BB%BB%E5%8A%A1%E5%9E%8B%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F%E8%AE%BA%E6%96%87%E5%88%97%E8%A1%A8/</loc>
     <lastmod>2019-11-23</lastmod>
   </url>  <url>
+    <loc>https://liusih.github.io/2019/11/01/Curriculum%20Learning/</loc>
+    <lastmod>2019-11-23</lastmod>
+  </url>  <url>
+    <loc>https://liusih.github.io/2019/10/25/Curiosity-driven%20Exploration%20by%20Self-supervised%20Prediction/</loc>
+    <lastmod>2019-11-23</lastmod>
+  </url>  <url>
     <loc>https://liusih.github.io/2019/10/09/Adversarial%20Multi-task%20Learning%20for%20Text%20Classification/</loc>
+    <lastmod>2019-11-23</lastmod>
+  </url>  <url>
+    <loc>https://liusih.github.io/2019/05/12/%E5%8C%BB%E7%96%97%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2019-11-23</lastmod>
+  </url>  <url>
+    <loc>https://liusih.github.io/2019/09/09/Domain%20Adaptive%20Dialog%20Generation%20via%20Meta%20Learning/</loc>
     <lastmod>2019-11-23</lastmod>
   </url>  <url>
     <loc>https://liusih.github.io/2018/11/08/Today's%20user%20simulator/</loc>
@@ -25,17 +31,11 @@
     <loc>https://liusih.github.io/2019/03/04/Switch-based-Active-Deep-Dyna-Q-Efficient-Adaptive-Planning-for-Task-Completion-Dialogue-Policy-LearningLearning/</loc>
     <lastmod>2019-11-23</lastmod>
   </url>  <url>
-    <loc>https://liusih.github.io/2019/05/21/naacl2019%20Rethinking%20Action%20Spaces%20for%20Reinforcement%20Learning%20in%20End-to-end%20Dialog%20Agents%20with%20Latent%20Variable%20Models/</loc>
-    <lastmod>2019-11-23</lastmod>
-  </url>  <url>
     <loc>https://liusih.github.io/2018/11/23/RL-algrithm/</loc>
     <lastmod>2019-11-23</lastmod>
   </url>  <url>
     <loc>https://liusih.github.io/2019/11/22/A3C/</loc>
     <lastmod>2019-11-23</lastmod>
-  </url>  <url>
-    <loc>https://liusih.github.io/2019/10/25/Curiosity-driven%20Exploration%20by%20Self-supervised%20Prediction/</loc>
-    <lastmod>2019-11-21</lastmod>
   </url>  <url>
     <loc>https://liusih.github.io/2019/06/09/Visual%20Dialog%20%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2019-11-12</lastmod>
