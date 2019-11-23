@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liusih.github.io/2019/10/09/A3C/</loc>
+    
+    <lastmod>2019-11-23T06:09:47.522Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liusih.github.io/2019/05/21/naacl2019%20Rethinking%20Action%20Spaces%20for%20Reinforcement%20Learning%20in%20End-to-end%20Dialog%20Agents%20with%20Latent%20Variable%20Models/</loc>
     
     <lastmod>2019-11-23T06:04:34.511Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>https://liusih.github.io/2018/11/23/RL-algrithm/</loc>
     
     <lastmod>2019-11-23T05:54:37.815Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://liusih.github.io/2019/11/22/A3C/</loc>
-    
-    <lastmod>2019-11-23T05:51:18.049Z</lastmod>
     
   </url>
   
