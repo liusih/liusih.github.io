@@ -20,7 +20,7 @@
 <meta property="og:description" content="Sih对AC，A3C的总结。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png">
-<meta property="og:updated_time" content="2019-11-23T11:03:43.356Z">
+<meta property="og:updated_time" content="2019-11-23T11:05:11.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reinforcement Learning中的 AC 和 A3C 总结">
 <meta name="twitter:description" content="Sih对AC，A3C的总结。">
@@ -235,7 +235,7 @@
 <p>A3C的更新公式有两条，一条<strong>梯度上升</strong>更新策略$\pi$ 的参数，如前面介绍的actor-critic结构：</p>
 <p>$$\nabla_{\theta’}  log \pi (a_t|st;\theta’)A(s_t,a_t;\theta’,\theta’_v)$$</p>
 <p>其中，$A(s_t,a_t;\theta’,\theta’_v)$是优势函数的估计（算法中表示为$R-V(s_i;\theta’_v))$):</p>
-<p>$$ A(s_t,a_t;\theta’,\theta’<em>v) = \sum</em>{i=0}^{k-1} \gamma^i r_{t+i} +\gamma^kV(s_{t+k};\theta’_v) -V(s_t;\theta’_v) $$</p>
+<p>$$A(s_t,a_t;\theta’,\theta’<em>v) = \sum</em>{i=0}^{k-1} \gamma^i r_{t+i}+\gamma^kV(s_{t+k};\theta’_v) -V(s_t;\theta’_v)$$</p>
 <p>$\theta’$是策略$\pi$ 的参数，$\theta’_v$是状态值函数的参数。k是可以变化的，上届由n-step决定，即n。</p>
 <p><strong>在实际操作中，论文在该公式中加入了策略$\pi$ 的熵项$\beta\nabla_{\theta’}H(\pi(s_t;\theta’)))$，防止过早的进入次优策略。</strong></p>
 <p>另一条公式是使用TD方式<strong>梯度下降</strong>更新状态值函数的参数，即算法中的$\partial (R-V(s_i;\theta’_v))^2 / \partial\theta’_v$.</p>
