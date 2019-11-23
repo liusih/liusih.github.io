@@ -11,19 +11,19 @@
 <title>Reinforcement Learning中的 AC 和 A3C 总结 - Sih Blog</title>
 
 
-    <meta name="description" content="Reinforcement Learning中的 AC 和 A3C 总结">
+    <meta name="description" content="Actor Critic在RL中的位置：  RL 按照value和policy分类：   Value-Based：是预测某个state下所有Action的期望价值（Q值），之后通过选择最大Q值对应的Action执行策略，适合仅有少量离散取值的Action的环境 Policy-Based：是直接预测某个state下应该采取的Action，适合高维连续Action的环境，更通用   按照model-">
 <meta name="keywords" content="Reinforcement Learning,Actor-Critic,A3C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Reinforcement Learning中的 AC 和 A3C 总结">
 <meta property="og:url" content="https://liusih.github.io/2019/11/09/A3C/index.html">
 <meta property="og:site_name" content="Sih Blog">
-<meta property="og:description" content="Reinforcement Learning中的 AC 和 A3C 总结">
+<meta property="og:description" content="Actor Critic在RL中的位置：  RL 按照value和policy分类：   Value-Based：是预测某个state下所有Action的期望价值（Q值），之后通过选择最大Q值对应的Action执行策略，适合仅有少量离散取值的Action的环境 Policy-Based：是直接预测某个state下应该采取的Action，适合高维连续Action的环境，更通用   按照model-">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png">
-<meta property="og:updated_time" content="2019-11-23T07:56:16.398Z">
+<meta property="og:updated_time" content="2019-11-23T07:57:09.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reinforcement Learning中的 AC 和 A3C 总结">
-<meta name="twitter:description" content="Reinforcement Learning中的 AC 和 A3C 总结">
+<meta name="twitter:description" content="Actor Critic在RL中的位置：  RL 按照value和policy分类：   Value-Based：是预测某个state下所有Action的期望价值（Q值），之后通过选择最大Q值对应的Action执行策略，适合仅有少量离散取值的Action的环境 Policy-Based：是直接预测某个state下应该采取的Action，适合高维连续Action的环境，更通用   按照model-">
 <meta name="twitter:image" content="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png">
 
 
@@ -163,7 +163,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="Reinforcement-Learning中的-AC-和-A3C-总结"><a href="#Reinforcement-Learning中的-AC-和-A3C-总结" class="headerlink" title="Reinforcement Learning中的 AC 和 A3C 总结"></a>Reinforcement Learning中的 AC 和 A3C 总结</h2><a id="more"></a>
+            <a id="more"></a>
 <p>Actor Critic在RL中的位置：</p>
 <p><img src="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png" alt=""></p>
 <p>RL 按照value和policy分类：</p>
