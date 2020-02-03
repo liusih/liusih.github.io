@@ -207,18 +207,16 @@
 </li>
 </ol>
 <ul>
-<li><p>Basic DQN Branch.<br>先利用一个Basic DQN分支来生成一个粗略的动作结果，如公式1所示。MLP以状态$s_t$作为输入，输出一个粗糙的动作结果，先有一个粗略的DQN结果再对结果进行优化。</p>
-<script type="math/tex; mode=display">a_t^r = MLP(s_t)</script></li>
-<li><p>Relational Refinement Branch<br>关系模块可以通过从一组其他元素的聚合信息来影响单个元素(例如，其他症状及疾病)。由于关系权重（relation weights）是由任务目标驱动自动学习的，因此关系模块可以对元素之间的依赖关系建模。因此本文设计了一个relational refinement module, 通过引进一个关系矩阵$R \epsilon  R^{D\times{D}}$ 来表示所有动作间的依赖关系。<br>Basic DQN 预测的动作是$a_t^r$, 再乘以学习到的关系矩阵R得到新的action $a^f_t \epsilon R^D$, 该关系矩阵是不对称的，表示有向加权图。细化的动作向量$a^f_t$的每一个元素为初始预测动作$a_t^r$的加权和，其中权值表示元素之间的依赖关系.</p>
-<script type="math/tex; mode=display">a^f_t = a^r_t ·R</script><p>关系矩阵$R$由<strong>数据集的统计量进行条件概率的初始化</strong>。每个条目$R_{ij}$表示单位$x_j$以单位$x_i$为条件的概率。关系矩阵通过反向传播学习捕获动作之间的依赖关系。实验表明，这种初始化方法<strong>优于随机初始化</strong>，因为先验知识可以指导关系矩阵的学习。</p>
+<li><p>Basic DQN Branch.<br>先利用一个Basic DQN分支来生成一个粗略的动作结果，如公式1所示。MLP以状态$s_t$作为输入，输出一个粗糙的动作结果，先有一个粗略的DQN结果再对结果进行优化。<br>  $$a_t^r = MLP(s_t)$$ </p>
+</li>
+<li><p>Relational Refinement Branch<br>关系模块可以通过从一组其他元素的聚合信息来影响单个元素(例如，其他症状及疾病)。由于关系权重（relation weights）是由任务目标驱动自动学习的，因此关系模块可以对元素之间的依赖关系建模。因此本文设计了一个relational refinement module, 通过引进一个关系矩阵$R \epsilon  R^{D\times{D}}$ 来表示所有动作间的依赖关系。<br>Basic DQN 预测的动作是$a_t^r$, 再乘以学习到的关系矩阵R得到新的action $a^f_t \epsilon R^D$, 该关系矩阵是不对称的，表示有向加权图。细化的动作向量$a^f_t$的每一个元素为初始预测动作$a_t^r$的加权和，其中权值表示元素之间的依赖关系.<br>$$a^f_t = a^r_t ·R$$<br>关系矩阵$R$由<strong>数据集的统计量进行条件概率的初始化</strong>。每个条目$R_{ij}$表示单位$x_j$以单位$x_i$为条件的概率。关系矩阵通过反向传播学习捕获动作之间的依赖关系。实验表明，这种初始化方法<strong>优于随机初始化</strong>，因为先验知识可以指导关系矩阵的学习。</p>
 </li>
 <li><p>Knowledge-routed Graph Branch<br>（与其他对话系统的不同之处：以user的self report 作为对话的基础）<br>设计思路：在拿到患者的自我报告时，医生首先要对患者可能存在几种候选疾病有一个大致的了解。随后，通过询问这些候选疾病（diease）的显著症状（symptoms），医生排除了其他候选病，直到确定诊断。<br>受此启发，本文设计了一个知识路由图谱（knowledge-routed graph）模块来模拟医生的思维过程。首先计算症状和疾病之间的条件概率作为有向医学知识图谱的权值，其中有两种类型的节点，如图2所示。<br>edges只存在于疾病和症状之间。每条edge都有两个weights，其中疾病到症状的条件概率为$P (dis|sym)$，症状到疾病的条件概率为$P (sym|dis)$. 在与病人交流的过程中，医生可能会有几种候选疾病。我们将候选疾病概率表示为与观察到的症状相对应的疾病概率。症状先验概率$P_{prior}(sym)$通过以下规则计算:</p>
 <ol>
 <li>对于提及到的症状，患有该症状设置为1，未患有该症状设置为-1</li>
-<li><p>其他症状（不确定或未提及）的概率设置为从数据集中统计计算出来的先验概率。那么这些症状的概率 $P_{prior}(sym)$乘以条件概率$P(dis|sym)$得到疾病概率$P(dis)$，公式为:</p>
-<script type="math/tex; mode=display">P (dis) = P (dis| sym)·P_{prior}(sym)</script><p>考虑到候选疾病，医生经常根据他们的医学知识询问一些值得注意的症状来确诊, 因此由疾病概率$P(dis)$与条件概率矩阵$P (sym|dis)$相乘得到症状概率$P (sym)$:</p>
-<script type="math/tex; mode=display">P (sym) = P (sym|dis)·P (dis)</script><p>将疾病概率$P(dis)$和症状概率$P (sym)$连接在一起，得到 knowledge-routed action的概率$a^k_t\epsilon D$。<br>有了这三个action $a_t^r, a_t^f , a_t^k$，然后把三个动作相加得到$a_t$, 作为KR-DQN在当前状态$s_t$下的最终结果。</p>
-<script type="math/tex; mode=display">a_t = sigmoid(a_t^r) + sigmoid(a_t^f ) + a^k_t</script></li>
+<li><p>其他症状（不确定或未提及）的概率设置为从数据集中统计计算出来的先验概率。那么这些症状的概率 $P_{prior}(sym)$乘以条件概率$P(dis|sym)$得到疾病概率$P(dis)$，公式为:<br>$$P (dis) = P (dis| sym)·P_{prior}(sym)$$<br>考虑到候选疾病，医生经常根据他们的医学知识询问一些值得注意的症状来确诊, 因此由疾病概率$P(dis)$与条件概率矩阵$P (sym|dis)$相乘得到症状概率$P (sym)$:<br>$$P (sym) = P (sym|dis)·P (dis) $$<br>将疾病概率$P(dis)$和症状概率$P (sym)$连接在一起，得到 knowledge-routed action的概率$a^k_t\epsilon D$。<br>有了这三个action $a_t^r, a_t^f , a_t^k$，然后把三个动作相加得到$a_t$, 作为KR-DQN在当前状态$s_t$下的最终结果。</p>
+<p>$$a_t = sigmoid(a_t^r) + sigmoid(a_t^f ) + a^k_t$$</p>
+</li>
 </ol>
 </li>
 </ul>
@@ -349,7 +347,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        17
                     </p>
                 </div>
             </div>
@@ -539,25 +537,6 @@
         
         <article class="media">
             
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:04:51.082Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191121231255_V7JLxq_Screenshot.png" alt="Task-Oriented Conversation Generation Using Heterogeneous Memory Networks">
@@ -632,6 +611,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191111110136_uz5GfZ_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8A%E5%8D%8810.59.44.png" alt="Curiosity-driven Exploration by Self-supervised Prediction">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-24T16:00:00.000Z">2019-10-25</time></div>
+                    <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curiosity-driven Exploration by Self-supervised Prediction</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a> / <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/Curiosity/">Curiosity</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
         
@@ -642,17 +640,6 @@
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
@@ -913,25 +900,6 @@
         
         <article class="media">
             
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:04:51.082Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191121231255_V7JLxq_Screenshot.png" alt="Task-Oriented Conversation Generation Using Heterogeneous Memory Networks">
@@ -1006,6 +974,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191111110136_uz5GfZ_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8A%E5%8D%8810.59.44.png" alt="Curiosity-driven Exploration by Self-supervised Prediction">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-24T16:00:00.000Z">2019-10-25</time></div>
+                    <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curiosity-driven Exploration by Self-supervised Prediction</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a> / <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/Curiosity/">Curiosity</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
     
@@ -1016,17 +1003,6 @@
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">

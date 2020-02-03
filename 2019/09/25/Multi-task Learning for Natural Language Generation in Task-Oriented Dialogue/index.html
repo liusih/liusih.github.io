@@ -209,12 +209,13 @@
 <p>一个训练有素的语言模型可以在自然和语义上比僵硬和不自然的句子获得更高的分数。</p>
 <p>在深度学习中，语言模型任务通常由递归神经网络解决，但是，与(1)式不同的是，语言模型中出现下一个token的概率只依赖于前面的单词，而不依赖于输入序列：</p>
 <p><img src="http://image.sherlocknlp.com//20191107162515_AUF1wL_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.24.57.png" style="zoom:50%;"></p>
-<p>我们认为，通过将语言建模作为一个额外的目标集成到NLG过程中，生成的句子将更好地接近人类反应的风格和变化。为此，我们将另一个GRU单元$GRU^{LM}$添加到解码器中，该解码器具有自己的隐藏状态 $h^{LM}<em>{t-1}$， 并接受嵌入向量$s_t$作为输入。输出是 $g^{LM}$和新的隐藏状态 $h^{LM}</em>{t}$。在语言模型中，下一个token的概率分布为:</p>
+<p>我们认为，通过将语言建模作为一个额外的目标集成到NLG过程中，生成的句子将更好地接近人类反应的风格和变化。为此，我们将另一个GRU单元$GRU^{LM}$添加到解码器中，该解码器具有自己的隐藏状态 $h^{LM}_{t-1}$， 并接受嵌入向量$s_t$作为输入。输出是 $g^{LM}$和新的隐藏状态 $h^{LM}_{t}$。在语言模型中，下一个token的概率分布为:</p>
 <p><img src="http://image.sherlocknlp.com//20191107163119_mN2eYz_Screenshot.png" style="zoom:50%;"></p>
 <p>其中W2[:dh]为W2的第dh列。可以看出，上下文c并不影响语言建模的概率计算。语言模型的损失函数为:</p>
 <p><img src="http://image.sherlocknlp.com//20191107163254_V30BS5_%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-11-07%20%E4%B8%8B%E5%8D%884.32.33.png" style="zoom:50%;"></p>
 <p>最后，我们将这两个损失函数线性地合并成一个单一的多任务损失函数:</p>
-<script type="math/tex; mode=display">L(θ) =L^{NLG}(θ) +αL^{LM}(θ)</script><p>图1中描述了模型结构。如图所示，词典D在NLG任务和语言建模任务之间共享。</p>
+<p>$$L(θ) =L^{NLG}(θ) +αL^{LM}(θ)$$</p>
+<p>图1中描述了模型结构。如图所示，词典D在NLG任务和语言建模任务之间共享。</p>
 <p><img src="http://image.sherlocknlp.com//20191107163827_Y8bYOM_Screenshot.png" style="zoom:50%;"></p>
 <h5 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h5><p>本文评估了来自不同领域的五个数据集的模型，包括了餐厅预订，酒店预订和零售。最大的数据集来自E2E-NLG任务，由餐厅区域内的51.2K个MR话语对组成。还使用RNN-LG的四个数据集，包括电视零售，笔记本电脑零售，酒店预订和餐厅预订领域中的对话场景，分别为14.1K，26.5K，8.7K和8.5K个样本。</p>
 <blockquote>
@@ -340,7 +341,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        17
                     </p>
                 </div>
             </div>
@@ -530,25 +531,6 @@
         
         <article class="media">
             
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:04:51.082Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191121231255_V7JLxq_Screenshot.png" alt="Task-Oriented Conversation Generation Using Heterogeneous Memory Networks">
@@ -623,6 +605,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191111110136_uz5GfZ_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8A%E5%8D%8810.59.44.png" alt="Curiosity-driven Exploration by Self-supervised Prediction">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-24T16:00:00.000Z">2019-10-25</time></div>
+                    <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curiosity-driven Exploration by Self-supervised Prediction</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a> / <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/Curiosity/">Curiosity</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
         
@@ -633,17 +634,6 @@
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
@@ -904,25 +894,6 @@
         
         <article class="media">
             
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:04:51.082Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191121231255_V7JLxq_Screenshot.png" alt="Task-Oriented Conversation Generation Using Heterogeneous Memory Networks">
@@ -997,6 +968,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191111110136_uz5GfZ_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8A%E5%8D%8810.59.44.png" alt="Curiosity-driven Exploration by Self-supervised Prediction">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-24T16:00:00.000Z">2019-10-25</time></div>
+                    <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curiosity-driven Exploration by Self-supervised Prediction</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a> / <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/Curiosity/">Curiosity</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
     
@@ -1007,17 +997,6 @@
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">

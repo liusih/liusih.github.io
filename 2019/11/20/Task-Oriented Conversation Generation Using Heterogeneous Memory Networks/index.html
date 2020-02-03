@@ -191,21 +191,21 @@
 <p><img src="http://image.sherlocknlp.com//20191122115758_s9hhkg_%E6%88%AA%E5%B1%8F2019-11-22%E4%B8%8A%E5%8D%8811.24.29.png" style="zoom:67%;"></p>
 <p>一些中间解释：</p>
 <p><strong>输入：</strong>Encoder输出的上下文向量 $c$ </p>
-<p><strong>输出：</strong>在每个时间步中，HMNs会生成三个量： $oc^1$， $P<em>{his}$, $P</em>{kb}$, $P_{vocab}$</p>
+<p><strong>输出：</strong>在每个时间步中，HMNs会生成三个量： $oc^1$， $P_{his}$, $P_{kb}$, $P_{vocab}$</p>
 <p>1）context aware memory 中对对话历史编码的第一跳的输出 $oc^1$ </p>
-<p>2）两个memory中最后一跳分别得到的两个注意力权重：对话历史的单词分布 $P<em>{his}$ 和知识的分布 $P</em>{kb}$。将上下文向量$oc^1$ 和隐藏层$h<em>t$拼在一起，来得到预测词表分布的概率$P</em>{vocab}$。</p>
+<p>2）两个memory中最后一跳分别得到的两个注意力权重：对话历史的单词分布 $P_{his}$ 和知识的分布 $P_{kb}$。将上下文向量$oc^1$ 和隐藏层$h_t$拼在一起，来得到预测词表分布的概率$P_{vocab}$。</p>
 <p><img src="http://image.sherlocknlp.com//20191120230541_7f7yLp_Screenshot.png" style="zoom:50%;"></p>
-<p>然后采用<strong>Word Selection Strategy</strong> 从 ${P<em>{vocab},P</em>{kb}, P_{his}}$的三个分布中选择一个单词:</p>
+<p>然后采用<strong>Word Selection Strategy</strong> 从 ${P_{vocab},P_{kb}, P_{his}}$的三个分布中选择一个单词:</p>
 <ul>
-<li><p>如果单词在$P<em>{kb}, P</em>{his}$ 的分布概率高，并且不指向哨兵位置上，则直接比较每个单词的概率，并选择较高的那个。</p>
+<li><p>如果单词在$P_{kb}, P_{his}$ 的分布概率高，并且不指向哨兵位置上，则直接比较每个单词的概率，并选择较高的那个。</p>
 </li>
 <li><p>如果其中一个词指向哨兵位置，模型将在另一个词表中选择概率最高的单词。最后，如果两个词表都指向哨兵位置，将从$P_{vocab}$ 中选择这个词。</p>
 </li>
 </ul>
-<p>本文采用copy机制从memory中来copy单词，用 $P<em>{kb}$和$P</em>{his}$来计算生成目标词的概率。如果目标单词没有出现在输入的句子当中，则指向memory中的最后的位置，哨兵标记。</p>
-<h5 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h5><p>采用GRU作为一个controller，接受encoder输出的上下文向量 $c$ 作为初始的隐藏状态 $h<em>0$。在每个时间步长中，用先前的生成词的词向量 $E(g</em>{t-1})$和上一个的隐藏状态$h_{t-1}$作为输入，来控制HMNs的查询过程。</p>
+<p>本文采用copy机制从memory中来copy单词，用 $P_{kb}$和$P_{his}$来计算生成目标词的概率。如果目标单词没有出现在输入的句子当中，则指向memory中的最后的位置，哨兵标记。</p>
+<h5 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h5><p>采用GRU作为一个controller，接受encoder输出的上下文向量 $c$ 作为初始的隐藏状态 $h_0$。在每个时间步长中，用先前的生成词的词向量 $E(g_{t-1})$和上一个的隐藏状态$h_{t-1}$作为输入，来控制HMNs的查询过程。</p>
 <p><img src="http://image.sherlocknlp.com//20191121111007_NwcrHb_Screenshot.png" style="zoom:50%;"></p>
-<h5 id="Loss"><a href="#Loss" class="headerlink" title="Loss"></a>Loss</h5><p>在每一个时间步长，优化的损失函数是该时间步长 $t$ 下对目标单词预测的三个概率分布( ${P<em>{vocab},P</em>{kb}, P_{his}}$)的负对数似然求和：</p>
+<h5 id="Loss"><a href="#Loss" class="headerlink" title="Loss"></a>Loss</h5><p>在每一个时间步长，优化的损失函数是该时间步长 $t$ 下对目标单词预测的三个概率分布( ${P_{vocab},P_{kb}, P_{his}}$)的负对数似然求和：</p>
 <p><img src="http://image.sherlocknlp.com//20191121112854_6zvQrs_Screenshot.png" style="zoom:50%;"></p>
 <h2 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h2><h4 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h4><ul>
 <li>Key-Value Retrieval dataset</li>
@@ -263,13 +263,6 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/03/2019-2020 Conference about Curriculum Learning/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"></span>
-            </a>
-        </div>
         
         
         <div class="level-end">
@@ -351,7 +344,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        17
                     </p>
                 </div>
             </div>
@@ -541,25 +534,6 @@
         
         <article class="media">
             
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:04:51.082Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191121231255_V7JLxq_Screenshot.png" alt="Task-Oriented Conversation Generation Using Heterogeneous Memory Networks">
@@ -634,6 +608,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191111110136_uz5GfZ_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8A%E5%8D%8810.59.44.png" alt="Curiosity-driven Exploration by Self-supervised Prediction">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-24T16:00:00.000Z">2019-10-25</time></div>
+                    <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curiosity-driven Exploration by Self-supervised Prediction</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a> / <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/Curiosity/">Curiosity</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
         
@@ -644,17 +637,6 @@
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
@@ -915,25 +897,6 @@
         
         <article class="media">
             
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:04:51.082Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20191121231255_V7JLxq_Screenshot.png" alt="Task-Oriented Conversation Generation Using Heterogeneous Memory Networks">
@@ -1008,6 +971,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191111110136_uz5GfZ_%E6%88%AA%E5%B1%8F2019-11-11%E4%B8%8A%E5%8D%8810.59.44.png" alt="Curiosity-driven Exploration by Self-supervised Prediction">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-24T16:00:00.000Z">2019-10-25</time></div>
+                    <a href="/2019/10/25/Curiosity-driven Exploration by Self-supervised Prediction/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curiosity-driven Exploration by Self-supervised Prediction</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a> / <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/Curiosity/">Curiosity</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
     
@@ -1018,17 +1000,6 @@
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
