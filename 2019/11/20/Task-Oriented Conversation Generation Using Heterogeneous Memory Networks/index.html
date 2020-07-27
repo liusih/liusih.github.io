@@ -191,21 +191,21 @@
 <p><img src="http://image.sherlocknlp.com//20191122115758_s9hhkg_%E6%88%AA%E5%B1%8F2019-11-22%E4%B8%8A%E5%8D%8811.24.29.png" style="zoom:67%;"></p>
 <p>一些中间解释：</p>
 <p><strong>输入：</strong>Encoder输出的上下文向量 $c$ </p>
-<p><strong>输出：</strong>在每个时间步中，HMNs会生成三个量： $oc^1$， $P<em>{his}$, $P</em>{kb}$, $P_{vocab}$</p>
+<p><strong>输出：</strong>在每个时间步中，HMNs会生成三个量： $oc^1$， $P_{his}$, $P_{kb}$, $P_{vocab}$</p>
 <p>1）context aware memory 中对对话历史编码的第一跳的输出 $oc^1$ </p>
-<p>2）两个memory中最后一跳分别得到的两个注意力权重：对话历史的单词分布 $P<em>{his}$ 和知识的分布 $P</em>{kb}$。将上下文向量$oc^1$ 和隐藏层$h<em>t$拼在一起，来得到预测词表分布的概率$P</em>{vocab}$。</p>
+<p>2）两个memory中最后一跳分别得到的两个注意力权重：对话历史的单词分布 $P_{his}$ 和知识的分布 $P_{kb}$。将上下文向量$oc^1$ 和隐藏层$h_t$拼在一起，来得到预测词表分布的概率$P_{vocab}$。</p>
 <p><img src="http://image.sherlocknlp.com//20191120230541_7f7yLp_Screenshot.png" style="zoom:50%;"></p>
-<p>然后采用<strong>Word Selection Strategy</strong> 从 ${P<em>{vocab},P</em>{kb}, P_{his}}$的三个分布中选择一个单词:</p>
+<p>然后采用<strong>Word Selection Strategy</strong> 从 ${P_{vocab},P_{kb}, P_{his}}$的三个分布中选择一个单词:</p>
 <ul>
-<li><p>如果单词在$P<em>{kb}, P</em>{his}$ 的分布概率高，并且不指向哨兵位置上，则直接比较每个单词的概率，并选择较高的那个。</p>
+<li><p>如果单词在$P_{kb}, P_{his}$ 的分布概率高，并且不指向哨兵位置上，则直接比较每个单词的概率，并选择较高的那个。</p>
 </li>
 <li><p>如果其中一个词指向哨兵位置，模型将在另一个词表中选择概率最高的单词。最后，如果两个词表都指向哨兵位置，将从$P_{vocab}$ 中选择这个词。</p>
 </li>
 </ul>
-<p>本文采用copy机制从memory中来copy单词，用 $P<em>{kb}$和$P</em>{his}$来计算生成目标词的概率。如果目标单词没有出现在输入的句子当中，则指向memory中的最后的位置，哨兵标记。</p>
-<h5 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h5><p>采用GRU作为一个controller，接受encoder输出的上下文向量 $c$ 作为初始的隐藏状态 $h<em>0$。在每个时间步长中，用先前的生成词的词向量 $E(g</em>{t-1})$和上一个的隐藏状态$h_{t-1}$作为输入，来控制HMNs的查询过程。</p>
+<p>本文采用copy机制从memory中来copy单词，用 $P_{kb}$和$P_{his}$来计算生成目标词的概率。如果目标单词没有出现在输入的句子当中，则指向memory中的最后的位置，哨兵标记。</p>
+<h5 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h5><p>采用GRU作为一个controller，接受encoder输出的上下文向量 $c$ 作为初始的隐藏状态 $h_0$。在每个时间步长中，用先前的生成词的词向量 $E(g_{t-1})$和上一个的隐藏状态$h_{t-1}$作为输入，来控制HMNs的查询过程。</p>
 <p><img src="http://image.sherlocknlp.com//20191121111007_NwcrHb_Screenshot.png" style="zoom:50%;"></p>
-<h5 id="Loss"><a href="#Loss" class="headerlink" title="Loss"></a>Loss</h5><p>在每一个时间步长，优化的损失函数是该时间步长 $t$ 下对目标单词预测的三个概率分布( ${P<em>{vocab},P</em>{kb}, P_{his}}$)的负对数似然求和：</p>
+<h5 id="Loss"><a href="#Loss" class="headerlink" title="Loss"></a>Loss</h5><p>在每一个时间步长，优化的损失函数是该时间步长 $t$ 下对目标单词预测的三个概率分布( ${P_{vocab},P_{kb}, P_{his}}$)的负对数似然求和：</p>
 <p><img src="http://image.sherlocknlp.com//20191121112854_6zvQrs_Screenshot.png" style="zoom:50%;"></p>
 <h2 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h2><h4 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h4><ul>
 <li>Key-Value Retrieval dataset</li>
@@ -351,7 +351,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        23
                     </p>
                 </div>
             </div>
@@ -557,6 +557,25 @@
         
         <article class="media">
             
+            <a href="/2020/07/27/ACL 2020 中的NLU的研究点--sih/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-27T09:47:52.151Z">2020-07-27</time></div>
+                    <a href="/2020/07/27/ACL 2020 中的NLU的研究点--sih/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/07/01/Data Augmentation for NLU/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20200727170806_FzdAUs_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
@@ -631,25 +650,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200203180923_jZCJYH_Screenshot.png" alt="2019-2020 Conference about Curriculum Learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:10:10.000Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2019-2020 Conference about Curriculum Learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -667,7 +667,7 @@
                     <span class="level-item">July 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -978,6 +978,25 @@
         
         <article class="media">
             
+            <a href="/2020/07/27/ACL 2020 中的NLU的研究点--sih/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-27T09:47:52.151Z">2020-07-27</time></div>
+                    <a href="/2020/07/27/ACL 2020 中的NLU的研究点--sih/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/07/01/Data Augmentation for NLU/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://image.sherlocknlp.com//20200727170806_FzdAUs_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
@@ -1052,25 +1071,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200203180923_jZCJYH_Screenshot.png" alt="2019-2020 Conference about Curriculum Learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:10:10.000Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2019-2020 Conference about Curriculum Learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1088,7 +1088,7 @@
                     <span class="level-item">July 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
