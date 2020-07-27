@@ -148,7 +148,7 @@
     
     <div class="card-image">
         <a href="/2020/07/01/Data Augmentation for NLU/" class="image is-7by1">
-            <img class="thumbnail" src="http://image.sherlocknlp.com//20200727164725_niFBK2_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
+            <img class="thumbnail" src="http://image.sherlocknlp.com//20200727170315_bmTo3r_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
         </a>
     </div>
     
@@ -173,40 +173,17 @@
             
         </h1>
         <div class="content">
-            <h4 id="Combining-active-and-semi-supervised-learning-for-spoken-language-understanding"><a href="#Combining-active-and-semi-supervised-learning-for-spoken-language-understanding" class="headerlink" title="Combining active and semi-supervised learning for spoken language understanding"></a>Combining active and semi-supervised learning for spoken language understanding</h4><p>2005 Speech Communication <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167639304000962" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0167639304000962</a></p>
-<p>比较早的文章，主要是了解文章提出的半监督学习应用到NLU的架构。</p>
-<p>在本文提出应用主动学习和半监督学习方法，减少对自然语言理解的标注工作。主动学习的目的是通过自动选择可能对标签信息最有帮助的话语来最大程度地减少标签话语的数量。 在基于确定性的主动学习的启发下，本文提出的主动学习方法选择了分类器最不自信的示例。 使用两种半监督学习方法来利用具有较高置信度得分（因此不是通过主动学习选择的）分类的示例。 第一种方法通过将机器标记的类用于未标记的话语来扩充训练数据。 第二种方法改为以加权方式用机器标记的话语增强使用人工标记的话语训练的分类模型。 然后使用选择性采样和自动标记的数据将主动学习和半监督学习结合起来，利用所有收集的数据并减轻仅采用主动学习或半监督学习所导致的数据不平衡问题。</p>
-<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image001.png" alt="img" style="zoom:50%;"></p>
-<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image002.png" alt="img" style="zoom:50%;"></p>
-<h4 id="Fast-Cross-domain-Data-Augmentation-through-Neural-Sentence-Editing"><a href="#Fast-Cross-domain-Data-Augmentation-through-Neural-Sentence-Editing" class="headerlink" title="Fast Cross-domain Data Augmentation through Neural Sentence Editing"></a>Fast Cross-domain Data Augmentation through Neural Sentence Editing</h4><p>应用数据扩充减轻数据短缺。对于自然语言，句子编辑提供了一种解决方案-依靠对原始内容进行微小但有意义的更改，旨在在数据丰富的源域中学习知识，并将其应用于数据稀缺的其他目标域。本文提出了Edit-transformer，这是一个基于Transformer的句子编辑器。 本文认为 Edit-transformer比其基于Edit的规则改写更适合跨域环境。文章中还提出合成数据需要与原始数据足够不同，以使这些变化导致下游方法具有更好的泛化能力。</p>
-<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image003.png" alt="img" style="zoom:50%;"></p>
-<h4 id="Controlled-Text-Generation-for-Data-Augmentation-in-Intelligent-Artificial-Agents"><a href="#Controlled-Text-Generation-for-Data-Augmentation-in-Intelligent-Artificial-Agents" class="headerlink" title="Controlled Text Generation for Data Augmentation in Intelligent Artificial Agents"></a>Controlled Text Generation for Data Augmentation in Intelligent Artificial Agents</h4><p>EMNLP WNGT workshop <a href="https://arxiv.org/abs/1910.03487" target="_blank" rel="noopener">https://arxiv.org/abs/1910.03487</a></p>
-<p>本文研究的任务是对NLU做数据增强，通过给定的一个短语集生成语义相似的短语来进行数据增强。给定 signature（ domain+intent+slots ）和少量的 carrier phrases （短句），生成更多的语义相似的 carrier phrases 。</p>
-<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png" alt="img" style="zoom:50%;"></p>
-<p>提出了三种生成模型来生成短句：</p>
-<ol>
-<li><p>Seq2seq with attention </p>
-</li>
-<li><p>VAE </p>
-</li>
-<li>VAE with discriminator:对VAE加入了一个类别鉴别器。先训练一个VAE，然后加上鉴别器用sleep-wake过程再训练整个网络。对于输出类别数量少的情况效果很好，但是对于本文中的上百个 signatures 输出还是有问题的。4. CVAE在VAE的基础上以 signature 的one-hot编码为条件，实验表明该模型能够自动学习与类别无关的隐变量 z 。</li>
-</ol>
-<h4 id="CG-BERT-Conditional-Text-Generation-with-BERT-for-Generalized-Few-shot-Intent-Detection"><a href="#CG-BERT-Conditional-Text-Generation-with-BERT-for-Generalized-Few-shot-Intent-Detection" class="headerlink" title="CG-BERT: Conditional Text Generation with BERT for Generalized Few-shot Intent Detection"></a>CG-BERT: Conditional Text Generation with BERT for Generalized Few-shot Intent Detection</h4><p><a href="https://arxiv.org/abs/2004.01881" target="_blank" rel="noopener">https://arxiv.org/abs/2004.01881</a></p>
-<p> 放在arxiv上的文章（是<a href="javascript:void(0" target="_blank" rel="noopener">Zero-shot user intent detection via capsule neural networks</a>)的作者），模型基本思路和sih最近总结的关于NLU增强idea基本一致，但针对解决的问题有一点不同。（想和超哥具体讨论一下这篇文章是否有可做的点）</p>
-<p>【research topic】</p>
-<p>为NLU中的新颖意图生成对应的句子，通过应用基于条件的BERT模型。</p>
-<p>本文中为NLU中的意图检测任务制定了一个更现实，更困难的问题设置，即通用的少发意图检测（Generalized Few-Shot Intent Detection GFSID）。 GFSID旨在区分联合标签空间，该联合标签空间包括具有足够标签数据的现有意图和针对每个类别仅具有少数样例的新颖意图。 为了解决这个问题，本文提出了Conditional BERT的文本生成模型（CG-BERT）。 CG-BERT有效地利用了大型的预训练语言模型来生成以意图标签为条件的文本。 通过用变分推理对话语分布进行建模，即使只有少数话语，CG-BERT仍可以为新颖意图生成多种句子。本文通过为新颖的意图生成更多的言语来减轻GFSID任务中标注稀缺的问题，并将generalized few-shot问题转换为监督分类问题。</p>
-<p>【method】</p>
-<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image005.png" alt="img"></p>
-<p>通过BERT学习的意图分布没有针对不同的意图进行调节，因此本文采用条件变分自动编码器（CVAE）的思想为BERT添加潜在空间映射并规范化BERT特征空间以形成单位高斯分布，来模拟具有相同意图的各种话语的分布。</p>
-<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image006.png" alt="img"></p>
-<p>具体方法是将intent拼接对应的sentence所为输入，将[CLS]作为隐变量z,对于Bert学习到的p(z|x,y)分布，控制条件y,为intent的类别，x为输入的句子。期望的输出为对于novel的intent，条件控制生成对应的句子，再将生成的句子加入到训练集中，训练NLU model。中间应用很多trick，去缓解在结合变分编码和transformer结合时出现的问题。</p>
-<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image007.png" alt="img" style="zoom:50%;"></p>
-<p>【Conclusion】</p>
-<p>本文和sih之前的思路非常相似，应用变分推理对话语分布进行建模，再利用预训练语言模型来生成以意图标签为条件的文本，中间加了很多trick来缓解二者融合时候产生的问题，解决的很hard, 有改进的空间。</p>
-
+            <p>Sih之前对NLU的数据增强很感兴趣，最近在面试中也遇到很多能够用到DA的方向, 在此整理一些之前的调研内容。（模型图又挂了，后补吧～）</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/07/01/Data Augmentation for NLU/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -471,7 +448,7 @@
             
             <a href="/2020/07/01/Data Augmentation for NLU/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727164725_niFBK2_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727170315_bmTo3r_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
                 </p>
             </a>
             
@@ -892,7 +869,7 @@
             
             <a href="/2020/07/01/Data Augmentation for NLU/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727164725_niFBK2_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727170315_bmTo3r_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
                 </p>
             </a>
             
@@ -1313,7 +1290,7 @@
             
             <a href="/2020/07/01/Data Augmentation for NLU/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727164725_niFBK2_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727170315_bmTo3r_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
                 </p>
             </a>
             
