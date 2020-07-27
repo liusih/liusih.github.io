@@ -74,8 +74,8 @@
     
 
 
-<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 <body class="is-3-column">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
     <div class="container">
@@ -132,6 +132,345 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+    
+<div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/07/01/Data Augmentation for NLU/" class="image is-7by1">
+            <img class="thumbnail" src="http://image.sherlocknlp.com//20200727164725_niFBK2_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-06-30T16:00:00.000Z">2020-07-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/NLU/">NLU</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/07/01/Data Augmentation for NLU/">Data Augmentation for NLU -- Sih调研</a>
+            
+        </h1>
+        <div class="content">
+            <h4 id="Combining-active-and-semi-supervised-learning-for-spoken-language-understanding"><a href="#Combining-active-and-semi-supervised-learning-for-spoken-language-understanding" class="headerlink" title="Combining active and semi-supervised learning for spoken language understanding"></a>Combining active and semi-supervised learning for spoken language understanding</h4><p>2005 Speech Communication <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167639304000962" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0167639304000962</a></p>
+<p>比较早的文章，主要是了解文章提出的半监督学习应用到NLU的架构。</p>
+<p>在本文提出应用主动学习和半监督学习方法，减少对自然语言理解的标注工作。主动学习的目的是通过自动选择可能对标签信息最有帮助的话语来最大程度地减少标签话语的数量。 在基于确定性的主动学习的启发下，本文提出的主动学习方法选择了分类器最不自信的示例。 使用两种半监督学习方法来利用具有较高置信度得分（因此不是通过主动学习选择的）分类的示例。 第一种方法通过将机器标记的类用于未标记的话语来扩充训练数据。 第二种方法改为以加权方式用机器标记的话语增强使用人工标记的话语训练的分类模型。 然后使用选择性采样和自动标记的数据将主动学习和半监督学习结合起来，利用所有收集的数据并减轻仅采用主动学习或半监督学习所导致的数据不平衡问题。</p>
+<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image001.png" alt="img" style="zoom:50%;"></p>
+<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image002.png" alt="img" style="zoom:50%;"></p>
+<h4 id="Fast-Cross-domain-Data-Augmentation-through-Neural-Sentence-Editing"><a href="#Fast-Cross-domain-Data-Augmentation-through-Neural-Sentence-Editing" class="headerlink" title="Fast Cross-domain Data Augmentation through Neural Sentence Editing"></a>Fast Cross-domain Data Augmentation through Neural Sentence Editing</h4><p>应用数据扩充减轻数据短缺。对于自然语言，句子编辑提供了一种解决方案-依靠对原始内容进行微小但有意义的更改，旨在在数据丰富的源域中学习知识，并将其应用于数据稀缺的其他目标域。本文提出了Edit-transformer，这是一个基于Transformer的句子编辑器。 本文认为 Edit-transformer比其基于Edit的规则改写更适合跨域环境。文章中还提出合成数据需要与原始数据足够不同，以使这些变化导致下游方法具有更好的泛化能力。</p>
+<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image003.png" alt="img" style="zoom:50%;"></p>
+<h4 id="Controlled-Text-Generation-for-Data-Augmentation-in-Intelligent-Artificial-Agents"><a href="#Controlled-Text-Generation-for-Data-Augmentation-in-Intelligent-Artificial-Agents" class="headerlink" title="Controlled Text Generation for Data Augmentation in Intelligent Artificial Agents"></a>Controlled Text Generation for Data Augmentation in Intelligent Artificial Agents</h4><p>EMNLP WNGT workshop <a href="https://arxiv.org/abs/1910.03487" target="_blank" rel="noopener">https://arxiv.org/abs/1910.03487</a></p>
+<p>本文研究的任务是对NLU做数据增强，通过给定的一个短语集生成语义相似的短语来进行数据增强。给定 signature（ domain+intent+slots ）和少量的 carrier phrases （短句），生成更多的语义相似的 carrier phrases 。</p>
+<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png" alt="img" style="zoom:50%;"></p>
+<p>提出了三种生成模型来生成短句：</p>
+<ol>
+<li><p>Seq2seq with attention </p>
+</li>
+<li><p>VAE </p>
+</li>
+<li>VAE with discriminator:对VAE加入了一个类别鉴别器。先训练一个VAE，然后加上鉴别器用sleep-wake过程再训练整个网络。对于输出类别数量少的情况效果很好，但是对于本文中的上百个 signatures 输出还是有问题的。4. CVAE在VAE的基础上以 signature 的one-hot编码为条件，实验表明该模型能够自动学习与类别无关的隐变量 z 。</li>
+</ol>
+<h4 id="CG-BERT-Conditional-Text-Generation-with-BERT-for-Generalized-Few-shot-Intent-Detection"><a href="#CG-BERT-Conditional-Text-Generation-with-BERT-for-Generalized-Few-shot-Intent-Detection" class="headerlink" title="CG-BERT: Conditional Text Generation with BERT for Generalized Few-shot Intent Detection"></a>CG-BERT: Conditional Text Generation with BERT for Generalized Few-shot Intent Detection</h4><p><a href="https://arxiv.org/abs/2004.01881" target="_blank" rel="noopener">https://arxiv.org/abs/2004.01881</a></p>
+<p> 放在arxiv上的文章（是<a href="javascript:void(0" target="_blank" rel="noopener">Zero-shot user intent detection via capsule neural networks</a>)的作者），模型基本思路和sih最近总结的关于NLU增强idea基本一致，但针对解决的问题有一点不同。（想和超哥具体讨论一下这篇文章是否有可做的点）</p>
+<p>【research topic】</p>
+<p>为NLU中的新颖意图生成对应的句子，通过应用基于条件的BERT模型。</p>
+<p>本文中为NLU中的意图检测任务制定了一个更现实，更困难的问题设置，即通用的少发意图检测（Generalized Few-Shot Intent Detection GFSID）。 GFSID旨在区分联合标签空间，该联合标签空间包括具有足够标签数据的现有意图和针对每个类别仅具有少数样例的新颖意图。 为了解决这个问题，本文提出了Conditional BERT的文本生成模型（CG-BERT）。 CG-BERT有效地利用了大型的预训练语言模型来生成以意图标签为条件的文本。 通过用变分推理对话语分布进行建模，即使只有少数话语，CG-BERT仍可以为新颖意图生成多种句子。本文通过为新颖的意图生成更多的言语来减轻GFSID任务中标注稀缺的问题，并将generalized few-shot问题转换为监督分类问题。</p>
+<p>【method】</p>
+<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image005.png" alt="img"></p>
+<p>通过BERT学习的意图分布没有针对不同的意图进行调节，因此本文采用条件变分自动编码器（CVAE）的思想为BERT添加潜在空间映射并规范化BERT特征空间以形成单位高斯分布，来模拟具有相同意图的各种话语的分布。</p>
+<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image006.png" alt="img"></p>
+<p>具体方法是将intent拼接对应的sentence所为输入，将[CLS]作为隐变量z,对于Bert学习到的p(z|x,y)分布，控制条件y,为intent的类别，x为输入的句子。期望的输出为对于novel的intent，条件控制生成对应的句子，再将生成的句子加入到训练集中，训练NLU model。中间应用很多trick，去缓解在结合变分编码和transformer结合时出现的问题。</p>
+<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image007.png" alt="img" style="zoom:50%;"></p>
+<p>【Conclusion】</p>
+<p>本文和sih之前的思路非常相似，应用变分推理对话语分布进行建模，再利用预训练语言模型来生成以意图标签为条件的文本，中间加了很多trick来缓解二者融合时候产生的问题，解决的很hard, 有改进的空间。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/04/07/ACL 2020 最新论文总结/" class="image is-7by1">
+            <img class="thumbnail" src="http://image.sherlocknlp.com//20200407161533_vzO1hb_Screenshot.png" alt="ACL 2020 最新论文总结">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-07T05:20:10.000Z">2020-04-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/07/ACL 2020 最新论文总结/">ACL 2020 最新论文总结</a>
+            
+        </h1>
+        <div class="content">
+            <p>ACL2020 概览目前放出的几篇文章—-sih出品，转载请注明出处。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/04/07/ACL 2020 最新论文总结/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-29T13:46:12.420Z">2020-03-29</time>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/29/Recent Advances and Challenges in Task-oriented Dialog System/"></a>
+            
+        </h1>
+        <div class="content">
+            <p>Recent Advances and Challenges in Task-oriented Dialog System. </p>
+<p>SCIENCE CHINA 2020</p>
+<p>结合该论文梳理目前任务型对话系统的最新进展和挑战。</p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h3><p>本文总结了目前任务型对话系统最新的进展和挑战，讨论了三个相关的关键问题：</p>
+<ol>
+<li>如何提高数据使用效率，在资源不足的情况下对任务型对话系统进行建模；</li>
+</ol>
+<p>（2）如何为多轮对话的对话策略进行建模，使其在任务完成上表现的更好；</p>
+<p>（3）如何将领域的本体知识集成到pipeline模型和端到端模型中。</p>
+<p>同时回顾了当前对话评估的方法和目前广泛使用的语料库的最新进展。</p>
+<h3 id="一些介绍"><a href="#一些介绍" class="headerlink" title="一些介绍"></a><strong>一些介绍</strong></h3><ul>
+<li>任务型对话系统的目标：</li>
+</ul>
+<p>旨在帮助用户完成特定领域中的某些任务，例如餐厅预订，天气查询和航班预订，使其对现实世界中的业务有价值。</p>
+<ul>
+<li>任务型对话系统与开放域对话系统相比的区别：</li>
+</ul>
+<p>开放域对话系统的主要目的是最大化用户的参与度，而任务型对话系统更针对于完成一个或多个域中的某些特定任务。 通常，面向任务的对话系统以结构化的本体集合为基础，这些结构化的本体集合定义了该任务的领域知识。</p>
+<ul>
+<li>任务型对话系统的一般结构：</li>
+</ul>
+<p>任务型对话系统从体系结构分类大致可分为两类: pipeline 和 end-to-end</p>
+<ol>
+<li>在pipeline的方法中，模型通常由几个组件组成:</li>
+</ol>
+<p>自然语言理解(NLU)、对话框状态跟踪(DST)、对话框策略(Dialog Policy)和自然语言生成(NLG)。它们以流水线的方式组合在一起，如图所示。NLU、DST和NLG模块通常在组合之前单独进行训练，而dialog policy则在组合系统中进行培训。</p>
+<p>​            <img src="https://qqadapt.qpic.cn/txdocpic/0/0587048f69fe3ab48204550774acbbb3/0?w=1434&amp;h=520" alt="img">            2. 在 end-to-end的方法中，对话系统以端到端方式进行训练，而不指定每个单独的组件。通常端到端方法的训练过程被表述为：在给定对话上下文和后端知识库的情况下生成的系统应答。</p>
+<h3 id="Main-Challenges"><a href="#Main-Challenges" class="headerlink" title="Main Challenges"></a><strong>Main Challenges</strong></h3><p>归结上述的分析，总结起来就是任务型对话系统中的三个关键问题：</p>
+<ul>
+<li>Data Efficiency： 但是在面向任务的对话系统中，特定于域的数据通常很难收集并且注释起来很昂贵。 因此如何解决数据源匮乏we,提高数据使用效率是主要的挑战之一。</li>
+<li>Multi-turn Dynamics：与开放域对话相比，面向任务的对话的核心特征是它在多轮策略中强调goal-driven。 在每个轮次，系统动作都应与对话历史保持一致，并应引导后续对话获得更大的任务奖励。但是基于RL的方法，构建训练环境开销较大以及当前奖励的定义也不够完善。此前的研究提出了许多解决方案，以解决多轮交互式训练中的这些问题来学习更好的策略，包括基于模型的 planning，连续的奖励估计和端到端的策略学习。</li>
+<li>Knowledge Integration：任务型对话系统必须查询知识库（KB）以检索一些实体以生成响应。 在pipeline方法中，KB查询主要是根据DST的结果构造的。 那么与pipeline模型相比，端到端方法没有了模块化的组件，因此需要细粒度的注释和领域专业知识。 由于没有构造查询的显式状态表示形式，因此这种查询过程存在很多问题。</li>
+</ul>
+<h3 id="研究现状"><a href="#研究现状" class="headerlink" title="研究现状"></a><strong>研究现状</strong></h3><h5 id="Data-efficiency"><a href="#Data-efficiency" class="headerlink" title="Data efficiency"></a><strong>Data efficiency</strong></h5><p>与开放域对话系统的研究不同，面向任务的对话系统是数据驱动方法，通常需要细粒度的注释来学习特定域中的对话模型，所以我们需要对话行为（dialog act）和状态标签（state labels), 但是通常很难在特定域中获得大规模的带注释的语料库，另外细粒度的标注也需要大量的人力资源。因此目前针对该挑战提出的一些方法： Dialog Transfer Learning， Unsupervised Methods， User Simulation。</p>
+<ol>
+<li><h6 id="Dialog-Transfer-Learning"><a href="#Dialog-Transfer-Learning" class="headerlink" title="Dialog Transfer Learning"></a><strong>Dialog Transfer Learning</strong></h6></li>
+</ol>
+<p>对于低资源问题：</p>
+<p>在面向任务的对话系统中一般应用转移学习，通过将知识从源任务转移到目标任务来解决低资源问题。 例如，当旅馆域中的数据有限时，如何将餐馆预订系统改为旅馆预订。在这种情况下，这两个域的本体相似，共享许多对话动作和槽位。 在这种情况下，迁移学习可以大大减少这种适应所需的目标数据量。除域级别的迁移外，知识还可以在许多其他维度上进行迁移，包括个性化和跨语言迁移。 主要应用的算法：多任务学习，参数共享，模型共享，元学习。</p>
+<ul>
+<li>Multi-domain dialog state tracking using recurrent neural networks.提出通过在多个域的数据集上进行多任务学习来学习DST模型，跨域传递知识，从而提高所有任务的性能。</li>
+<li>Goal-oriented chatbot dialog management bootstrapping with transfer learning. 提出直接从源域模型共享参数来初始化目标模型。</li>
+<li>Cross-domain dialogue policy transfer via simultaneousspeech-act and slot alignment. 提出对于没有共享slot的领域间，建立状态转移方程和映射函数。</li>
+</ul>
+<p>个性化迁移：</p>
+<ul>
+<li>Personalizing a dialogue system with transfer reinforcement learning（ACL2018）.所有的用户都有一个通用的Q函数，每个特定的用户都有一个个性化的Q函数。当转移到一个新的用户，只需要少量的数据获得个性化的Q-function。</li>
+<li>Fine grained knowledge transfer for personalized task-oriented dialogue systems.</li>
+<li>Personalizing dialogue agents via meta-learning.</li>
+</ul>
+<p>此外基于元学习的方法在解决低资源的问题上也有所应用，</p>
+<ul>
+<li>Meta-learning for low-resource natural language generation in task-oriented dialogue systems. 通过在NLG上应用MAML算法，使得模型可以在低资源环境下获得较好的结果。</li>
+</ul>
+<h6 id="2-Unsupervised-Methods"><a href="#2-Unsupervised-Methods" class="headerlink" title="2. Unsupervised Methods"></a><strong>2. Unsupervised Methods</strong></h6><p>对于缺少细粒度标注的问题：</p>
+<ul>
+<li>生成对抗网络（GAN）: 对话策略学习中的一个关键问题是设定奖励进行监督，在实际应用中就需要建立能够提供奖励信号的奖励估计模型。 此处无监督方法的应用在于，将对话策略视为生成器，并将奖励函数视为判别器，可以采用生成对抗网络（GAN）以无监督的方式学习奖励函数。</li>
+</ul>
+<p>Adversarial learning of task-oriented neural dialog model.</p>
+<p>Unsupervised dialogue spectrum generation for log dialogue ranking.</p>
+<ul>
+<li>变分自动编码器（VAE）: 在大多数研究中，对话系统的本体集是由专家构建的。目前的最新的研究进展是从未标记的语料库中自动学习对话结构来协助人类专家进行此过程。</li>
+</ul>
+<p>Unsupervised dialog structure learning. 提出通过变分自动编码器（VAE）的方法来学习对话过程的有限状态机。 使用未经中间注释的原始对话语料库预先训练了基于VAE的对话模型,然后根据潜在变量可以发现几个对话状态。</p>
+<ul>
+<li>基于预训练的方法: 在预训练方法中使用无监督的预训练任务，例如 mask language modeling (MLM) 和 next sentence prediction (NSP)，从大规模的未标记语料库提取广泛的语言特征，再应用到对话任务中。</li>
+</ul>
+<p>A transfer learning approach for neural network based conversational agents.</p>
+<p>Towards the use of pretrained language models for task-oriented dialogue systems.</p>
+<h6 id="3-User-Simulation"><a href="#3-User-Simulation" class="headerlink" title="3. User Simulation"></a><strong>3.</strong> <strong>User Simulation</strong></h6><p>用监督的方法构建用户模拟器，提供基于RL的对话策略模型不限次数的用于训练交互的环境，缓解data-hungry 的问题。</p>
+<ul>
+<li>Sequence to sequence modeling for user simulation in dialog system.</li>
+<li>Neural user simulation for corpus-based policy optimisation of spoken dialogue system.</li>
+<li>Deep dyna-q: Integrating planning for task-completion dialogue policy learning.</li>
+</ul>
+<h5 id="Multi-turn-Dynamics"><a href="#Multi-turn-Dynamics" class="headerlink" title="Multi-turn Dynamics"></a><strong>Multi-turn Dynamics</strong></h5><p>在开放域对话系统中，研究更多地集中在生成合理，一致且语义丰富的响应上，以最大程度地提高用户参与度。 面向任务的对话系统，则重点放在完成特定任务上这个对话过程可以表述为⻢尔可夫决策过程(MDP):在每个时间步长，通过采取某些对话动作，系统从当前状态过渡到了新的下一状态。因此，强化学习通常用于解决对话系统中的MDP问题。 最新研究主要集中在以下主题上:(1) 规划对话策略学习以提高样本效率;(2)奖励稀疏性问题;(3)端到端系统的对话策略学习。</p>
+<ol>
+<li><h6 id="Planning-for-Dialog-Policy-Learning"><a href="#Planning-for-Dialog-Policy-Learning" class="headerlink" title="Planning for Dialog Policy Learning"></a><strong>Planning for Dialog Policy Learning</strong></h6></li>
+</ol>
+<p>在应用RL的训练过程中，使用用户模拟器并不能完全模拟真实的对话行为，因此存在的偏差也会影响训练效果。目前研究的解决方法是在RL训练阶段，学习实际用户行为的同时，使用环境模型进行规划来交替训练对话策略。 在Deep Dyna-Q(DDQ)模型中有一个基于真实用户训练的world model捕捉环境动态, planing则是指对话策略则是通过直接RL(实际用户)和模拟RL(world model)交替来进行训练的。</p>
+<p>​            <img src="https://qqadapt.qpic.cn/txdocpic/0/f452c4164859186bce93c37fcc9574b2/0?w=1420&amp;h=588" alt="img">            基于planning的另一种方法是决策时间的规划，仅展望未来几个有限的步骤，并将这些步骤作为策略模型的附加函数来做出决策，而不是等所有对话结束再获得明确的奖励。                   Towards end-to-end learning for efficient dialogue agent by modeling looking-ahead ability.</p>
+<p>Hierarchical text generation and planning for strategic dialogue.</p>
+<h6 id="2-Reward-Estimation"><a href="#2-Reward-Estimation" class="headerlink" title="2. Reward Estimation"></a><strong>2. Reward Estimation</strong></h6><p>在基于RL的对话模型中，奖励对于策略学习至关重要。 定义奖励函数的一种典型方法是在对话成功时分配较大的正向奖励，并在每轮次中分配较小的负奖励，以鼓励对话轮次尽可能短。但是实际应用中，有时无法有效地估算奖励，或者规则的奖励信号与真实用户主观给出的奖励信号有时不一致。为了解决上述问题，目前的研究中尝试的方法有：</p>
+<p>一种方法是使用带注释的数据进行离线学习：</p>
+<p>Predicting user satisfaction in spoken dialog system evaluation with collaborative filtering.</p>
+<p>通过将对话句子和中间注释作为输入特征，将奖励学习表述为有监督的回归或分类任务。 可以从人工标注获得带注释的奖励。 但是由于输入特征空间很复杂，需要手动注释，开销较大。</p>
+<p>还有另一项工作是使用在线学习进行奖励估算:</p>
+<p>Reward estimation for multi-domain task-oriented dialog. EMNLP2019</p>
+<p>主要思想将预测的状态动作与实际做比较，提供不确定性的度量来作为奖励信号。此外还有采用对抗学习来进行对话奖励的估算。</p>
+<h6 id="3-End-to-end-Dialog-Policy-Learning"><a href="#3-End-to-end-Dialog-Policy-Learning" class="headerlink" title="3. End-to-end Dialog Policy Learning"></a><strong>3. End-to-end Dialog Policy Learning</strong></h6><p>端到端的对话训练方法则不再拆分为各个模块，而是对整个系统进行建模。 与开放域对话建模类似，以单词级别作为输入，将策略学习和回复生成结合在一起作为解码器。但是与开放域对话相比，任务型对话的策略学习对完成任务更重要，将两个操作结合在一起会相互影响性能。 因为对于特定的训练示例，损失可能来自策略学习的error或回复语言生成的error之一，但参数的反向传播会影响两者。因此一些工作尝试用潜在变量模型，从端到端框架中分离策略和语言的学习：</p>
+<p>Hierarchical text generation and planning for strategic dialogue.提出用潜在变量模型将对话表达的语义从其语言实现中分离出来。</p>
+<p>此外端到端系统学习另一个存在的问题是很难进行显式的知识库查询，比较熟悉的端到端对话系统模型 Sequicity: Simplifying task-oriented dialogue systems with single sequence-to-sequence .它的解决办法提出了一种两阶段的CopyNet，在解码之前产生一个明确的状态表示, 具体是首先对用户的输入生成belief span表示当前对话状态，然后通过belief span来查询知识库，再生成系统响应。 一些研究还提出了一种复合状态表示形式，用于软KB查询:</p>
+<p>Sequence-to-sequence learning for task-oriented dialogue with dialogue state representation</p>
+<h5 id="Knowledge-Integration"><a href="#Knowledge-Integration" class="headerlink" title="Knowledge Integration"></a><strong>Knowledge Integration</strong></h5><p>任务型对话系统的另一个主要问题是如何将领域知识集成到对话模型中，如图所示。</p>
+<p>​            <img src="https://qqadapt.qpic.cn/txdocpic/0/f05c03d79591300e15e125033a931d22/0?w=1420&amp;h=588" alt="img">            在pipeline框架中，是通过根据DST的结果从知识库中查询知识，然后在NLG过程中，将查询到的实体集成到自然语言响应中，因此DST的效果影响了KB的抽取。传统的神经方法将DST定义为分类任务，但只能处理本体中的slot值，很难解决OOV问题，并且很难扩展到新域。 最近的研究尝试用端到端的对话系统解决该问题，但也存在诸多挑战，因为与pipeline方法不同，没有显式的对话状态表示形式来生成显式的知识库查询。 以下介绍的最新的进展包括：（1）DST的生成方法（2）端到端系统中的知识集成。</p>
+<ol>
+<li><h6 id="Generative-DST"><a href="#Generative-DST" class="headerlink" title="Generative DST"></a><strong>Generative DST</strong></h6></li>
+</ol>
+<p>CopyNet和 Pointer network</p>
+<p>DST跟踪每一个对话轮次中结构化的对话状态表示，目前的研究也是直接将自然语言作为DST输入而不使用NLU， 避免了NLU模块的累积误差。早期的方法通常采用分类方法解决DST问题：</p>
+<p>Neural belief tracker:Data-driven dialogue state tracking. 通过⻔控机制对系统request和inform信息进行了显式建模。 但是这些方法只能处理该领域本体词汇表中预定义的slot值。</p>
+<p>上面提到的Sequicity模型使用带有两阶段CopyNet的seq2seq模型，同时生成belief span和回复响应，应用复制网络解决OOV的问题。 另外还有研究提出，使用指针网络来提取之前未定义的slot值：</p>
+<p>An end-to-end approach for handling unknown slot values in dialogue state tracking.</p>
+<h6 id="2-End-to-end-Knowledge-Integration"><a href="#2-End-to-end-Knowledge-Integration" class="headerlink" title="2. End-to-end Knowledge Integration"></a><strong>2. End-to-end Knowledge Integration</strong></h6><p>由于端到端方法中没有显式的结构化对话状态表示。 因此，目前的研究希望通过使用模型的中间潜在表示来和进行知识库交互，端到端的进行训练。主要应用 CopyNet和端到端memory networks，通过结合注意力机制将知识集成到对话系统中。</p>
+<p>A copy-augmented sequence-to-sequence architecture gives good performance on task-oriented dialogue.</p>
+<p>Mem2seq: Effectively incorporating knowledge bases into end-to-end task-oriented dialog systems.</p>
+<p>Entity-consistent end-to-end task-oriented dialogue system with kb retriever.</p>
+<p>Sequence-to-sequence learning for task-oriented dialogue with dialogue state representation.</p>
+<h3 id="一些最新的对话数据集比较"><a href="#一些最新的对话数据集比较" class="headerlink" title="一些最新的对话数据集比较"></a><strong>一些最新的对话数据集比较</strong></h3><h3 id="未来关注点："><a href="#未来关注点：" class="headerlink" title="            未来关注点："></a><img src="https://qqadapt.qpic.cn/txdocpic/0/bc7390c7ba1e88d026d15194a8544b5b/0?w=1140&amp;h=1356" alt="img">            <strong>未来关注点：</strong></h3><ul>
+<li>Pre-training Methods for Dialog Systems.</li>
+</ul>
+<p>A transfer learning approach for neural network based conversational agents.</p>
+<p>Hello, it’s gpt-2–how can i help you? towards the use of pretrained language models for task-oriented dialogue systems. ACL2019</p>
+<p>​            <img src="https://qqadapt.qpic.cn/txdocpic/0/b9c88ce5ecda253a46be8ee31c13f223/0?w=2364&amp;h=1082" alt="img">            </p>
+<ul>
+<li>Domain Adaptation</li>
+</ul>
+<p><a href="https://link.zhihu.com/?target=https%3A//arxiv.org/abs/1805.04803" target="_blank" rel="noopener">Zero-Shot Dialog Generation with Cross-Domain Latent Actions</a></p>
+<ul>
+<li>End-to-end Modeling</li>
+</ul>
+<p>Sequicity: Simplifying task-oriented dialogue systems with single sequence-to-sequence .</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/03/08/On The Power of Curriculum Learning in Training Deep Networks/" class="image is-7by1">
+            <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="On The Power of Curriculum Learning in Training Deep Networks">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-08T08:15:10.000Z">2020-03-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/08/On The Power of Curriculum Learning in Training Deep Networks/">On The Power of Curriculum Learning in Training Deep Networks</a>
+            
+        </h1>
+        <div class="content">
+            <p>ICML 2019 课程学习在图像识别上的改进。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/03/08/On The Power of Curriculum Learning in Training Deep Networks/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
     
 <div class="card">
     
@@ -576,208 +915,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-09T08:15:10.000Z">2019-09-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/">Domain Adaptive Dialog Generation via Meta Learning</a>
-            
-        </h1>
-        <div class="content">
-            <p>应用meta learning进行对话系统的领域适配，在MAML基础上提出DAML，未开源代码，MAML作为meta learning的具体方法之一，值得学习。<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/09/09/Domain Adaptive Dialog Generation via Meta Learning/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-09T05:20:10.000Z">2019-06-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Visual-Dialog/">Visual Dialog</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/09/Visual Dialog 总结/">Visual Dialogue 总结</a>
-            
-        </h1>
-        <div class="content">
-            <ol>
-<li><p>CLEVR-Dialog: A Diagnostic Dataset for Multi-Round Reasoning in Visual Dialog</p>
-<p>NAACL 2019</p>
-<p>链接： <a href="https://arxiv.org/pdf/1903.03166.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1903.03166.pdf</a></p>
-<p>摘要：可视对话是一种多模态任务，使用对话历史作为上下文，以图像为基础回答一系列问题。它是视觉、语言、推理和基础方面的挑战。然而，在大型真实数据集上单独研究这些子任务是不可行的，因为它需要对所有图像和对话框的“状态”进行代价高昂的完整注释。我们开发了一个大型诊断数据集，用于研究可视化对话框中的多轮推理。具体地说文章构建了一个基于CLEVR dataset 图像的场景图的对话语法。 其中可视对话的所有方面都得到了完整的标注。  </p>
-<p></p></li></ol>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/09/Visual Dialog 总结/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/05/21/Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/" class="image is-7by1">
-            <img class="thumbnail" src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg" alt="Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-21T02:02:18.000Z">2019-05-21</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/21/Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/">Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models</a>
-            
-        </h1>
-        <div class="content">
-            <!-- **Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models** -->
-<p><a href="https://arxiv.org/pdf/1902.08858.pdf" target="_blank" rel="noopener">Naacl 2019</a> </p>
-<p><strong>Abstract</strong></p>
-<p>为对话定义action space并通过强化学习来优化其决策的过程是一个长期以来的挑战。通常的做法是使用手工来定义对话动作或者词表作为动作空间，两者都有各自的局限性。本文提出了一种潜在动作框架，将端到端agent的动作空间作为潜在变量，并应用非监督方法，从数据中归纳出自己的动作空间。<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/21/Rethinking Action Spaces for Reinforcement Learning in End-to-end Dialog Agents with Latent Variable Models/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-12T08:15:10.000Z">2019-05-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/12/医疗领域的任务型对话系统/">医疗对话系统总结</a>
-            
-        </h1>
-        <div class="content">
-            <p>Sih对目前医疗诊断领域任务型对话的总结。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/12/医疗领域的任务型对话系统/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -841,7 +978,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        22
                     </p>
                 </div>
             </div>
@@ -851,7 +988,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        10
+                        12
                     </p>
                 </div>
             </div>
@@ -861,7 +998,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        16
+                        18
                     </p>
                 </div>
             </div>
@@ -927,7 +1064,7 @@
                 <span class="level-item">Curriculum Learning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Dialogue-system/">
@@ -954,6 +1091,22 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/NLP/">
+            <span class="level-start">
+                <span class="level-item">NLP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/NLU/">
+            <span class="level-start">
+                <span class="level-item">NLU</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Reinforcement-Learning/">
             <span class="level-start">
                 <span class="level-item">Reinforcement Learning</span>
@@ -1019,7 +1172,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 15px;">Curriculum Learning</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 15px;">Multi-task Learning</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
         
@@ -1028,6 +1181,82 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/01/Data Augmentation for NLU/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727164725_niFBK2_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-30T16:00:00.000Z">2020-07-01</time></div>
+                    <a href="/2020/07/01/Data Augmentation for NLU/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Data Augmentation for NLU -- Sih调研</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLU/">NLU</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/07/ACL 2020 最新论文总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200407161533_vzO1hb_Screenshot.png" alt="ACL 2020 最新论文总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-07T05:20:10.000Z">2020-04-07</time></div>
+                    <a href="/2020/04/07/ACL 2020 最新论文总结/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ACL 2020 最新论文总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/29/Recent Advances and Challenges in Task-oriented Dialog System/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-29T13:46:12.420Z">2020-03-29</time></div>
+                    <a href="/2020/03/29/Recent Advances and Challenges in Task-oriented Dialog System/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/08/On The Power of Curriculum Learning in Training Deep Networks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="On The Power of Curriculum Learning in Training Deep Networks">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-08T08:15:10.000Z">2020-03-08</time></div>
+                    <a href="/2020/03/08/On The Power of Curriculum Learning in Training Deep Networks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">On The Power of Curriculum Learning in Training Deep Networks</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1048,82 +1277,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191121231255_V7JLxq_Screenshot.png" alt="Task-Oriented Conversation Generation Using Heterogeneous Memory Networks">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T16:00:00.000Z">2019-11-20</time></div>
-                    <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Task-Oriented Conversation Generation Using Heterogeneous Memory Networks</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/NLG/">NLG</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/09/强化学习中的A3C/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png" alt="Reinforcement Learning中的 AC 和 A3C 总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
-                    <a href="/2019/11/09/强化学习中的A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/01/课程学习Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/课程学习Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191112143412_qHydb1_Screenshot.png" alt="MSR任务型对话系统论文列表">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-31T16:00:00.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="title has-link-black-ter is-size-6 has-text-weight-normal">MSR任务型对话系统论文列表</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1134,6 +1287,39 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/02/">
@@ -1282,7 +1468,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Curriculum-Learning/">
                         <span class="tag">Curriculum Learning</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Data-Augmentation/">
+                        <span class="tag">Data Augmentation</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1311,6 +1504,13 @@
                     <a class="tags has-addons" href="/tags/Multi-task-Learning/">
                         <span class="tag">Multi-task Learning</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Paper-overview/">
+                        <span class="tag">Paper overview</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1393,7 +1593,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 15px;">Curriculum Learning</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 15px;">Multi-task Learning</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
     
@@ -1402,6 +1602,82 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/01/Data Augmentation for NLU/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727164725_niFBK2_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-30T16:00:00.000Z">2020-07-01</time></div>
+                    <a href="/2020/07/01/Data Augmentation for NLU/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Data Augmentation for NLU -- Sih调研</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLU/">NLU</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/07/ACL 2020 最新论文总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200407161533_vzO1hb_Screenshot.png" alt="ACL 2020 最新论文总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-07T05:20:10.000Z">2020-04-07</time></div>
+                    <a href="/2020/04/07/ACL 2020 最新论文总结/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ACL 2020 最新论文总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/29/Recent Advances and Challenges in Task-oriented Dialog System/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-29T13:46:12.420Z">2020-03-29</time></div>
+                    <a href="/2020/03/29/Recent Advances and Challenges in Task-oriented Dialog System/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/08/On The Power of Curriculum Learning in Training Deep Networks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="On The Power of Curriculum Learning in Training Deep Networks">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-08T08:15:10.000Z">2020-03-08</time></div>
+                    <a href="/2020/03/08/On The Power of Curriculum Learning in Training Deep Networks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">On The Power of Curriculum Learning in Training Deep Networks</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1422,82 +1698,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191121231255_V7JLxq_Screenshot.png" alt="Task-Oriented Conversation Generation Using Heterogeneous Memory Networks">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T16:00:00.000Z">2019-11-20</time></div>
-                    <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Task-Oriented Conversation Generation Using Heterogeneous Memory Networks</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/NLG/">NLG</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/09/强化学习中的A3C/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png" alt="Reinforcement Learning中的 AC 和 A3C 总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
-                    <a href="/2019/11/09/强化学习中的A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/01/课程学习Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/课程学习Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191112143412_qHydb1_Screenshot.png" alt="MSR任务型对话系统论文列表">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-31T16:00:00.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="title has-link-black-ter is-size-6 has-text-weight-normal">MSR任务型对话系统论文列表</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1508,6 +1708,39 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/02/">
@@ -1656,7 +1889,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Curriculum-Learning/">
                         <span class="tag">Curriculum Learning</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Data-Augmentation/">
+                        <span class="tag">Data Augmentation</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1685,6 +1925,13 @@
                     <a class="tags has-addons" href="/tags/Multi-task-Learning/">
                         <span class="tag">Multi-task Learning</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Paper-overview/">
+                        <span class="tag">Paper overview</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1767,7 +2014,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 15px;">Curriculum Learning</a> <a href="/tags/Dialogue-system/" style="font-size: 15px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 15px;">Multi-task Learning</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
     
@@ -1776,6 +2023,82 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/01/Data Augmentation for NLU/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727164725_niFBK2_Screenshot.png" alt="Data Augmentation for NLU -- Sih调研">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-30T16:00:00.000Z">2020-07-01</time></div>
+                    <a href="/2020/07/01/Data Augmentation for NLU/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Data Augmentation for NLU -- Sih调研</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLU/">NLU</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/07/ACL 2020 最新论文总结/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200407161533_vzO1hb_Screenshot.png" alt="ACL 2020 最新论文总结">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-07T05:20:10.000Z">2020-04-07</time></div>
+                    <a href="/2020/04/07/ACL 2020 最新论文总结/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ACL 2020 最新论文总结</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/NLP/">NLP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/29/Recent Advances and Challenges in Task-oriented Dialog System/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-29T13:46:12.420Z">2020-03-29</time></div>
+                    <a href="/2020/03/29/Recent Advances and Challenges in Task-oriented Dialog System/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/08/On The Power of Curriculum Learning in Training Deep Networks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="On The Power of Curriculum Learning in Training Deep Networks">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-08T08:15:10.000Z">2020-03-08</time></div>
+                    <a href="/2020/03/08/On The Power of Curriculum Learning in Training Deep Networks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">On The Power of Curriculum Learning in Training Deep Networks</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1796,82 +2119,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191121231255_V7JLxq_Screenshot.png" alt="Task-Oriented Conversation Generation Using Heterogeneous Memory Networks">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T16:00:00.000Z">2019-11-20</time></div>
-                    <a href="/2019/11/20/Task-Oriented Conversation Generation Using Heterogeneous Memory Networks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Task-Oriented Conversation Generation Using Heterogeneous Memory Networks</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/NLG/">NLG</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/09/强化学习中的A3C/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191123142121_6QA5LB_821593-20171225165221150-2011709299.png" alt="Reinforcement Learning中的 AC 和 A3C 总结">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T05:20:10.000Z">2019-11-09</time></div>
-                    <a href="/2019/11/09/强化学习中的A3C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reinforcement Learning中的 AC 和 A3C 总结</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/01/课程学习Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://pic4.zhimg.com/80/v2-a2ad0bf8efceed7e0b3a82914b7437e7_hd.jpg" alt="Curriculum Learning and self-paced learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-01T08:15:10.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/课程学习Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Curriculum Learning and self-paced learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20191112143412_qHydb1_Screenshot.png" alt="MSR任务型对话系统论文列表">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-31T16:00:00.000Z">2019-11-01</time></div>
-                    <a href="/2019/11/01/MSR任务型对话系统论文列表/" class="title has-link-black-ter is-size-6 has-text-weight-normal">MSR任务型对话系统论文列表</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Dialogue-system/">Dialogue system</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1882,6 +2129,39 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/02/">
@@ -2030,7 +2310,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Curriculum-Learning/">
                         <span class="tag">Curriculum Learning</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Data-Augmentation/">
+                        <span class="tag">Data Augmentation</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -2059,6 +2346,13 @@
                     <a class="tags has-addons" href="/tags/Multi-task-Learning/">
                         <span class="tag">Multi-task Learning</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Paper-overview/">
+                        <span class="tag">Paper overview</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
