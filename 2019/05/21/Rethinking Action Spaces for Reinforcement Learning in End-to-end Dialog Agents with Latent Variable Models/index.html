@@ -173,22 +173,23 @@
 <p>本文在DealOrNoDeal (Lewis et al.， 2017)和MultiWoz (Budzianowski et al.， 2018)两个数据集进行了实验。<br>结果表明，在学习对话策略时，LaRL明显比word level RL更有效，而且不会产生不可理解的语言。<br>本文的模型在MultiWoz上实现了18.2%的改进，并在DealOrNoDeal上发现了新颖多样的谈判策略。</p>
 <p>除了较强的实证改进外，本文的模型分析还展示了一些新的见解，例如减少潜在动作空间中的暴露偏差至关重要，离散的潜在动作比连续的更适合作为RL agent的动作空间。</p>
 <p>本文的工作不同于以往的工作有两个原因:<br>(1)以前的工作中潜在的动作只是辅助的，小规模的，大多是在监督或半监督的环境中学习的。本文研究的是潜在变量的无监督学习，学习的变量具有足够的表达能力，能够独立捕捉整个动作空间。<br>(2)据本文所知，本文的工作是对对话系统中使用潜在变量进行RL策略优化的首次全面研究。</p>
-<p><strong>Baseline</strong><br>端到端的系统响应生成可视为一个基于条件的生成任务，该任务使用神经网络的编解码器对条件分布$p(x|c)$进行建模，其中$c$为观察到的对话上下文，$x$为系统对上下文的响应。对话上下文可以是原始对话历史或者文本上下文. RL训练通常分为2步: 基于监督学习的预训练，和基于强化学习策略梯度算法.<br>具体来说,监督学习这一步来最大化对数似然值 ($\theta$是模型参数):<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36tp6jbx2j309l012wed.jpg" alt=""><br>然后接下来的RL这一步使用策略梯度算法，更新与任务目标相关的模型参数。假设有一个agent可以与之交互的环境，并且在对话的每个轮次$t$处都有一个轮次奖励$r_t$。本文得到在模型参数$\theta$下，预期的折扣回报$J(θ)= E[\sum^T_0 \gamma ^t r_t]$, 折现因子$\gamma$在[0,1]之间，$T$为对话的长度(总轮数)。 通常在奖励r上减去参数b来降低策略梯度的方差<br>$$Rt=E[\sum^{T-t}<em>{k = 0} \gamma ^t (r</em>{t+k}-b)]$$.</p>
+<p><strong>Baseline</strong><br>端到端的系统响应生成可视为一个基于条件的生成任务，该任务使用神经网络的编解码器对条件分布$p(x|c)$进行建模，其中$c$为观察到的对话上下文，$x$为系统对上下文的响应。对话上下文可以是原始对话历史或者文本上下文. RL训练通常分为2步: 基于监督学习的预训练，和基于强化学习策略梯度算法.<br>具体来说,监督学习这一步来最大化对数似然值 ($\theta$是模型参数):<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36tp6jbx2j309l012wed.jpg" alt=""><br>然后接下来的RL这一步使用策略梯度算法，更新与任务目标相关的模型参数。假设有一个agent可以与之交互的环境，并且在对话的每个轮次$t$处都有一个轮次奖励$r_t$。本文得到在模型参数$\theta$下，预期的折扣回报$J(θ)= E[\sum^T_0 \gamma ^t r_t]$, 折现因子$\gamma$在[0,1]之间，$T$为对话的长度(总轮数)。 通常在奖励r上减去参数b来降低策略梯度的方差 </p>
+<p><script type="math/tex">Rt=E[\sum^{T-t}_{k = 0} \gamma ^t (r_{t+k}-b)]</script>.</p>
 <p>Word-level Reinforcement Learning<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s5tp2wxj30cx04vmxd.jpg" alt="fg 1"><br>如图1所示，world-level RL将每个输出单词视为一个action step，其策略梯度为<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sgi3p1aj30cf02wmx7.jpg" alt=""><br>其中$U_t$为第t轮回复中的token数量，j为回复中的单词index。显然Eq 2的动作空间非常大，即|V| (词表size)，学习视野较长，即$TU$。之前的工作发现直接应用该式会导致解码器不收敛。常用的解决方法是按一定比例交替使用带监督学习的Eq 2。将这个比率表示为RL:SL=A:B，这意味着, 对于每A次策略梯度更新，运行B次监督学习进行更新。对于只使用策略梯度而不涉及监督学习的情况，则RL:SL=off。</p>
 <p><strong>Model</strong></p>
 <ol>
-<li>Latent Action Reinforcement Learning<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg" alt="fg 2"><br>本文提出的LARL框架如图2所示，在回复生成过程中引入了一个潜在变量$z$。则现在的条件分布$p (x|c) = p (x|z) p (z|c)$<br>生成的过程为:<br>(1) 给定一个对话上下文 $c$, 首先依照$p_{θ<em>e}(z|c)$抽样一个潜在动作 $z$<br>(2) 基于$p</em>{θ<em>d} (x|z)$，即基于z抽样生成的响应x, 其中$p</em>{θ<em>e}$是对话编码器网络, $p</em>{θ_d}$是响应的解码器网络。在上述设置下，LaRL将潜在变量$z$作为其动作空间，而不是响应 $x$中输出单词。之后可以在潜在动作空间中应用reinforce:<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36tpjg4x7j30al01x748.jpg" alt=""><br>与Eq 2相比，LaRL的不同之处在于:  </li>
+<li>Latent Action Reinforcement Learning<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sbb0p1xj30cb048jrk.jpg" alt="fg 2"><br>本文提出的LARL框架如图2所示，在回复生成过程中引入了一个潜在变量$z$。则现在的条件分布$p (x|c) = p (x|z) p (z|c)$<br>生成的过程为:<br>(1) 给定一个对话上下文 $c$, 首先依照$p<em>{θ_e}(z|c)$抽样一个潜在动作 $z$<br>(2) 基于$p</em>{θ<em>d} (x|z)$，即基于z抽样生成的响应x, 其中$p</em>{θ<em>e}$是对话编码器网络, $p</em>{θ_d}$是响应的解码器网络。在上述设置下，LaRL将潜在变量$z$作为其动作空间，而不是响应 $x$中输出单词。之后可以在潜在动作空间中应用reinforce:<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36tpjg4x7j30al01x748.jpg" alt=""><br>与Eq 2相比，LaRL的不同之处在于:  </li>
 </ol>
 <ul>
 <li>将范围从$TU$缩短到$T$。  </li>
 <li>潜在动作空间设计为低维，比V小得多。  </li>
-<li>策略梯度只更新编码器$θ_e$, 而解码器$θ<em>d$保持不变。<br>这些属性减少了对话策略优化的难度，并将高层决策与自然语言生成分离开。$给定上下文$c$, $p</em>{θ<em>e}$ 负责选择最好的潜在动作, 而$p</em>{θ_d}$仅负责将$z$转换为表层形式的单词。本文的公式也为实验各种类型的模型学习方法提供了一个灵活的框架。<br>在本文中，本文主要关注两个关键方面:潜在变量$z$的类型, 以及在有监督的预训练阶段, 优化学习$z$的方法。</li>
+<li>策略梯度只更新编码器$θ<em>e$, 而解码器$θ_d$保持不变。<br>这些属性减少了对话策略优化的难度，并将高层决策与自然语言生成分离开。$给定上下文$c$, $p</em>{θ<em>e}$ 负责选择最好的潜在动作, 而$p</em>{θ_d}$仅负责将$z$转换为表层形式的单词。本文的公式也为实验各种类型的模型学习方法提供了一个灵活的框架。<br>在本文中，本文主要关注两个关键方面:潜在变量$z$的类型, 以及在有监督的预训练阶段, 优化学习$z$的方法。</li>
 </ul>
-<ol start="2">
+<ol>
 <li>Types of Latent Actions<br>以往的研究中使用了两类潜在变量:<br>连续各向同性高斯分布(Serban et al.， 2017b)和多元分类分布(Zhao et al.， 2018)。这两种类型都与本文的LaRL框架兼容，定义如下：</li>
 </ol>
 <ul>
-<li>Gaussian Latent Actions<br>高斯潜在动作遵循$M$维多元对角协方差矩阵的高斯分布, 即$z\sim N(\mu ,\sigma^2I )$。<br>编码器$p_{θ<em>e}$由两部分构成:一个上下文编码器$F$,  用神经网络编码对话上下文$c$为一个向量表示$h$, 用一个前馈网络$pai$将$h$映射为$\mu$和$\sigma$ 。流程定义如下：<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s82qosfj30bx03y0st.jpg" alt=""><br>然后将得到的$z$作为解码器的初始状态用于最后响应的生成。<br>使用$p</em>\theta(z|c) =  N(z; \mu ,\sigma^2I)$来计算Eq 3中的策略梯度更新.</li>
+<li>Gaussian Latent Actions<br>高斯潜在动作遵循$M$维多元对角协方差矩阵的高斯分布, 即$z\sim N(\mu ,\sigma^2I )$。<br>编码器$p<em>{θ_e}$由两部分构成:一个上下文编码器$F$,  用神经网络编码对话上下文$c$为一个向量表示$h$, 用一个前馈网络$pai$将$h$映射为$\mu$和$\sigma$ 。流程定义如下：<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s82qosfj30bx03y0st.jpg" alt=""><br>然后将得到的$z$作为解码器的初始状态用于最后响应的生成。<br>使用$p</em>\theta(z|c) =  N(z; \mu ,\sigma^2I)$来计算Eq 3中的策略梯度更新.</li>
 <li>Categorical Latent Actions<br>分类潜在动作是$M$个独立的$k$向分类随机变量。每个$z_m$都有自己的token embedding，将潜在的符号映射到向量空间$E_m \epsilon R^{K×D}$，其中$m \ epsilon [1,M]$， D为embedding size。因此 M个潜在动作可以表示指数级的，$K^M$个，不同且唯一的组合， 这使得它具有足够的表现力，可以在复杂的领域中建模对话动作。类似于高斯潜在动作，我们有<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s9ntf37j30bf03ot8v.jpg" alt=""><br>与高斯潜在动作不同, 分类潜在动作矩阵编码后得到大小为  $R^{M×D}$  的矩阵, 而解码器的初始状态是一个大小为 $R^D$  的向量。以前的工作将潜在的emdedding相加，来集成这个矩阵和编码器, 表示作为求和融合。<br>这种方法的一个限制是，它可能会丢失每个潜在维度中的细粒度顺序信息，并且在涉及多个对话动作的长响应方面存在问题。因此，本文提出一种新的方法，<strong>Attention Fusion</strong>，来结合分类潜在的动作与解码器。 将注意力机制(Luong et al.， 2015)应用于潜在的动作。设i为解码时的步长索引。然后有:<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36s88idqvj30ce061mxj.jpg" alt=""></li>
 </ul>
 <p><strong>Optimization Approaches</strong></p>
@@ -197,7 +198,7 @@
 <blockquote>
 <p>补充：在ELBO其中q是关于z的一个任意概率分布。<br> 对任意分布q的选择来说，L提供了似然函数的一个下界。<br> 越好地近似p(z∣x,c)的分布q(z∣x，c)，得到的下界就越紧。<br> <strong>将推断问题看作是找一个分布q使得L最大的过程。</strong></p>
 </blockquote>
-<p>$q_{\gamma }(z|x, c)$  为需要训练的神经网络，来逼近  $q(z|x, c)$ 和$q(z|c)$  和  $p (x|z)$  的后验分布。<br>本文认为上式有局限性，解码器只看到  $z$  从  $q(z|x, c)$  采样，但未经历过从 $p_\theta(z|c)$ 采样, 所以提出了以下优化函数（Lite ELBO）：<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sa8mpvwj30c101ydfs.jpg" alt=""><br>本质上，简化目标将后验网络设置为与编码器相同，即  $q_\gamma(z|x, c) = p_{θ<em>e} (z|c)$, 但是这也使得潜在空间缺少正则化，实验中表明，如果只最大化$p</em>{p_{(z|c})}(x|z)$ 会存在过拟合。因此添加了额外的正则化项, 鼓励后验与先验分布能够相似, β是一介于0和1之间的超参数。将分类潜在动作的  $p(z)$  设为平均值，即 $p(z) = 1/K$  ；将高斯潜在动作的先验设为 $N(0,I)$ .</p>
+<p>$q<em>{\gamma }(z|x, c)$  为需要训练的神经网络，来逼近  $q(z|x, c)$ 和$q(z|c)$  和  $p (x|z)$  的后验分布。<br>本文认为上式有局限性，解码器只看到  $z$  从  $q(z|x, c)$  采样，但未经历过从 $p</em>\theta(z|c)$ 采样, 所以提出了以下优化函数（Lite ELBO）：<br><img src="http://ww1.sinaimg.cn/large/0064Pc87ly1g36sa8mpvwj30c101ydfs.jpg" alt=""><br>本质上，简化目标将后验网络设置为与编码器相同，即  $q<em>\gamma(z|x, c) = p</em>{θ<em>e} (z|c)$, 但是这也使得潜在空间缺少正则化，实验中表明，如果只最大化$p</em>{p_{(z|c})}(x|z)$ 会存在过拟合。因此添加了额外的正则化项, 鼓励后验与先验分布能够相似, β是一介于0和1之间的超参数。将分类潜在动作的  $p(z)$  设为平均值，即 $p(z) = 1/K$  ；将高斯潜在动作的先验设为 $N(0,I)$ .</p>
 <p>Experiment</p>
 <p>Dataset</p>
 <ol>
@@ -562,7 +563,7 @@
             
             <a href="/2020/03/20/Recent Advances and Challenges in Task-oriented Dialog System/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727171550_QHhgBH_Screenshot.png" alt="Recent Advances and Challenges in Task-oriented Dialog System.">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727173459_dtbtHz_Screenshot.png" alt="Recent Advances and Challenges in Task-oriented Dialog System.">
                 </p>
             </a>
             
@@ -983,7 +984,7 @@
             
             <a href="/2020/03/20/Recent Advances and Challenges in Task-oriented Dialog System/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727171550_QHhgBH_Screenshot.png" alt="Recent Advances and Challenges in Task-oriented Dialog System.">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727173459_dtbtHz_Screenshot.png" alt="Recent Advances and Challenges in Task-oriented Dialog System.">
                 </p>
             </a>
             
