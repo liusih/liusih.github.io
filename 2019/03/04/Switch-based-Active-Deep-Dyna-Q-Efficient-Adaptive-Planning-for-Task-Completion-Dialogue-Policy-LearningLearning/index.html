@@ -197,10 +197,10 @@
 </ol>
 <p>在这个步骤中基于真实对话经验，应用DQN来学习对话策略。<br>在每一步中，agent通过当前的对话状态 <img src="https://www.zhihu.com/equation?tex=s" alt="s"> ， 通过最大化价值函数<br><img src="https://www.zhihu.com/equation?tex=Q%28s%2Ca%3B+%CE%B8_Q%29" alt="Q\(s,a; θ_Q\)"><br>，选择要执行的动作 <img src="https://www.zhihu.com/equation?tex=a" alt="a"> 。然后agent会接收到奖励<br><img src="https://www.zhihu.com/equation?tex=r" alt="r"> ,以及用户的反馈<br><img src="https://www.zhihu.com/equation?tex=a_u" alt="a_u"> ，更新当前状态到<br><img src="https://www.zhihu.com/equation?tex=s%27" alt="s&#39;"> .存储经验 <img src="https://www.zhihu.com/equation?tex=%28s%2C+a%2C+r%2C+a_u%2C+s%27%29" alt="\(s, a, r, a_u,
 s&#39;\)"><br>到经验池 <img src="https://www.zhihu.com/equation?tex=B%5Eu+" alt="B^u "> 。(line 12 in Algorithm<br>1)<br>Planning的过程也是基于相同的Q-learning算法，只是planning使用的是模拟的对话经验。</p>
-<ol start="2">
+<ol>
 <li>Active Planning based on World Model</li>
 </ol>
-<p><strong>Active user goal sampling module</strong><br>在planning的阶段，world model可以选择性的生成模拟经验–在agent未被完全探索的状态动作空间。<br>假设我们已经从human-human的对话数据中收集了大量的user goal, 然后把user<br>goal分成不同类别，有不同的限制条件和难度。在训练过程中，当监控验证集上agent的表现时,我们可以通过对话的成功率来收集每一类user<br>goal对agent性能改进的影响，通过这样的信息来指导world model如何来选择user goal。  </p>
+<p><strong>Active user goal sampling module</strong><br>在planning的阶段，world model可以选择性的生成模拟经验—在agent未被完全探索的状态动作空间。<br>假设我们已经从human-human的对话数据中收集了大量的user goal, 然后把user<br>goal分成不同类别，有不同的限制条件和难度。在训练过程中，当监控验证集上agent的表现时,我们可以通过对话的成功率来收集每一类user<br>goal对agent性能改进的影响，通过这样的信息来指导world model如何来选择user goal。  </p>
 <p><img src="https://pic1.zhimg.com/v2-3178a83441a26e9e97fba704bb4dd9f4_b.jpg" alt=""></p>
 <pre><code>- 基于当前agent的表现，对话失败率 ![f_i ](https://www.zhihu.com/equation?tex=f_i+)
 越高更意味着于注入了更难的情况（包含了更多需要学习的有用的信息）  
@@ -214,7 +214,7 @@ s&#39;\)"><br>到经验池 <img src="https://www.zhihu.com/equation?tex=B%5Eu+" 
 <p>用真实的对话数据来训练world model <img src="https://www.zhihu.com/equation?tex=M%28s%2Ca%3B+%CE%B8_M%29" alt="M\(s,a;
 θ_M\)"><br>，使其能够产生模拟的对话经验。<br>在每个对话回合中，在world model输入当前对话状态 <img src="https://www.zhihu.com/equation?tex=s" alt="s"> 和上一轮的<br>agent action <img src="https://www.zhihu.com/equation?tex=a" alt="a"> ，从而生成用户的回复动作<br><img src="https://www.zhihu.com/equation?tex=a_u" alt="a_u"> 、奖励<br><img src="https://www.zhihu.com/equation?tex=r" alt="r"> 和一个表示对话是否结束的信号<br><img src="https://www.zhihu.com/equation?tex=t" alt="t"> 。网络结构如图所示：两个 shared layer，三个 task<br>specific layer用来完成分类任务。  </p>
 <p>  <img src="https://pic2.zhimg.com/v2-1e6830ae10437f516213fdbfe695b771_b.jpg" alt=""></p>
-<ol start="3">
+<ol>
 <li>Switcher<br>Switcher基于一个二分类器，使用LSTM模型。假定一组对话是由一个序列的对话轮次构成的：</li>
 </ol>
 <p><img src="https://www.zhihu.com/equation?tex=%7B%28s_i%3B+a_i%3B+r_i%29%7D%2C+i+%3D+1%2C...%2CN" alt="{\(s_i; a_i; r_i\)}, i =
@@ -241,7 +241,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
 </a></p>
 </blockquote>
 <p>ps: 欢迎大家关注我的知乎~</p>
-<p><a href="https://www.zhihu.com/people/chris-61-39/posts" target="_blank" rel="noopener">–&gt;戳这里&lt;–</a></p>
+<p><a href="https://www.zhihu.com/people/chris-61-39/posts" target="_blank" rel="noopener">—&gt;戳这里&lt;—</a></p>
 
         </div>
         
@@ -353,7 +353,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        23
                     </p>
                 </div>
             </div>
@@ -487,7 +487,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                 <span class="level-item">Reinforcement Learning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Reinforcement-Learning/Curiosity/">
@@ -547,7 +547,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/A3C/" style="font-size: 13.33px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 13.33px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
         
@@ -571,6 +571,25 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                     <a href="/2020/07/01/Data Augmentation for NLU/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Data Augmentation for NLU -- Sih调研</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/NLU/">NLU</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/06/15/ACL 2020 中的NLU的研究点--sih/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727174842_xmzjpd_Screenshot.png" alt="ACL 2020 中NLU的研究点">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-15T05:20:10.000Z">2020-06-15</time></div>
+                    <a href="/2020/06/15/ACL 2020 中的NLU的研究点--sih/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ACL 2020 中NLU的研究点</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
                     </p>
                 </div>
             </div>
@@ -633,25 +652,6 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200203180923_jZCJYH_Screenshot.png" alt="2019-2020 Conference about Curriculum Learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:10:10.000Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2019-2020 Conference about Curriculum Learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -667,6 +667,17 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             <a class="level is-marginless" href="/archives/2020/07/">
                 <span class="level-start">
                     <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -822,14 +833,14 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                 <div class="control">
                     <a class="tags has-addons" href="/tags/A3C/">
                         <span class="tag">A3C</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Actor-Critic/">
                         <span class="tag">Actor-Critic</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -892,7 +903,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Reinforcement-Learning/">
                         <span class="tag">Reinforcement Learning</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -968,7 +979,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/A3C/" style="font-size: 13.33px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 13.33px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
     
@@ -992,6 +1003,25 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                     <a href="/2020/07/01/Data Augmentation for NLU/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Data Augmentation for NLU -- Sih调研</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/NLU/">NLU</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/06/15/ACL 2020 中的NLU的研究点--sih/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727174842_xmzjpd_Screenshot.png" alt="ACL 2020 中NLU的研究点">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-15T05:20:10.000Z">2020-06-15</time></div>
+                    <a href="/2020/06/15/ACL 2020 中的NLU的研究点--sih/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ACL 2020 中NLU的研究点</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
                     </p>
                 </div>
             </div>
@@ -1054,25 +1084,6 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200203180923_jZCJYH_Screenshot.png" alt="2019-2020 Conference about Curriculum Learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:10:10.000Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2019-2020 Conference about Curriculum Learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1088,6 +1099,17 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
             <a class="level is-marginless" href="/archives/2020/07/">
                 <span class="level-start">
                     <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -1243,14 +1265,14 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                 <div class="control">
                     <a class="tags has-addons" href="/tags/A3C/">
                         <span class="tag">A3C</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Actor-Critic/">
                         <span class="tag">Actor-Critic</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1313,7 +1335,7 @@ a_{t−1},r_{t−1}\)\)"><br>，用LSTM在隐藏层去编码历史信息 <img sr
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Reinforcement-Learning/">
                         <span class="tag">Reinforcement Learning</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 

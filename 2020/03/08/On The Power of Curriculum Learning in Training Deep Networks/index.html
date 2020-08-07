@@ -197,12 +197,12 @@
 <li>Fixed exponential pacing ：训练开始时向学习者投入一小部分数据，然后在固定次数的学习迭代中每次以指数方式增加训练样本</li>
 </ol>
 <p>​            <img src="https://qqadapt.qpic.cn/txdocpic/0/7919dbb3222151940b7f3d1432154286/0?w=679&amp;h=68" alt="img">            </p>
-<ol start="2">
+<ol>
 <li><strong>Varied exponential pacing ：</strong>与上面方法相似，但每次迭代中训练步数是step length是可以变化的。</li>
 </ol>
 <p>​            <img src="https://qqadapt.qpic.cn/txdocpic/0/6694614c5cbcb29052341842c7e41a63/0?w=620&amp;h=160" alt="img">            </p>
 <p>​            <img src="https://qqadapt.qpic.cn/txdocpic/0/e0c673e046ccc4d8712da5236e204471/0?w=600&amp;h=60" alt="img">            </p>
-<ol start="3">
+<ol>
 <li>Single-step pacing ：固定iteration变化一次</li>
 </ol>
 <p>​            <img src="https://qqadapt.qpic.cn/txdocpic/0/66b1a65245acb5c160825b21d37a612c/0?w=602&amp;h=58" alt="img">            </p>
@@ -213,7 +213,7 @@
 <li>这一组实验里的Anti 指的是CL的逆过程（harder examples are sampled before easier ones），CL的结果是优于Anti以及Random的。</li>
 </ol>
 <p>​            <img src="https://qqadapt.qpic.cn/txdocpic/0/e5ce151ed1dd8214fcb71873b9d8d3c7/0?w=656&amp;h=422" alt="img">            </p>
-<ol start="2">
+<ol>
 <li><p>这一组实验是综合对比本文提出的各种方法，也做了SPL的实验，但是效果是最差的，可以看出SPL在实际应用时还不是很理想。最好的实验结果时是应用Varied exponential pacing作为pace function。</p>
 </li>
 <li><p>对于提出的transfer scoring function也在不同教师网络，和不同分类器上做了对比实验。</p>
@@ -340,7 +340,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        23
                     </p>
                 </div>
             </div>
@@ -474,7 +474,7 @@
                 <span class="level-item">Reinforcement Learning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Reinforcement-Learning/Curiosity/">
@@ -534,7 +534,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/A3C/" style="font-size: 13.33px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 13.33px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
         
@@ -558,6 +558,25 @@
                     <a href="/2020/07/01/Data Augmentation for NLU/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Data Augmentation for NLU -- Sih调研</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/NLU/">NLU</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/06/15/ACL 2020 中的NLU的研究点--sih/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727174842_xmzjpd_Screenshot.png" alt="ACL 2020 中NLU的研究点">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-15T05:20:10.000Z">2020-06-15</time></div>
+                    <a href="/2020/06/15/ACL 2020 中的NLU的研究点--sih/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ACL 2020 中NLU的研究点</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
                     </p>
                 </div>
             </div>
@@ -620,25 +639,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200203180923_jZCJYH_Screenshot.png" alt="2019-2020 Conference about Curriculum Learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:10:10.000Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2019-2020 Conference about Curriculum Learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -654,6 +654,17 @@
             <a class="level is-marginless" href="/archives/2020/07/">
                 <span class="level-start">
                     <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -809,14 +820,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/A3C/">
                         <span class="tag">A3C</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Actor-Critic/">
                         <span class="tag">Actor-Critic</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -879,7 +890,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Reinforcement-Learning/">
                         <span class="tag">Reinforcement Learning</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -955,7 +966,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/A3C/" style="font-size: 13.33px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 13.33px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
     
@@ -979,6 +990,25 @@
                     <a href="/2020/07/01/Data Augmentation for NLU/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Data Augmentation for NLU -- Sih调研</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/NLU/">NLU</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/06/15/ACL 2020 中的NLU的研究点--sih/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727174842_xmzjpd_Screenshot.png" alt="ACL 2020 中NLU的研究点">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-15T05:20:10.000Z">2020-06-15</time></div>
+                    <a href="/2020/06/15/ACL 2020 中的NLU的研究点--sih/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ACL 2020 中NLU的研究点</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
                     </p>
                 </div>
             </div>
@@ -1041,25 +1071,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200203180923_jZCJYH_Screenshot.png" alt="2019-2020 Conference about Curriculum Learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:10:10.000Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2019-2020 Conference about Curriculum Learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1075,6 +1086,17 @@
             <a class="level is-marginless" href="/archives/2020/07/">
                 <span class="level-start">
                     <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -1230,14 +1252,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/A3C/">
                         <span class="tag">A3C</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Actor-Critic/">
                         <span class="tag">Actor-Critic</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1300,7 +1322,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Reinforcement-Learning/">
                         <span class="tag">Reinforcement Learning</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 

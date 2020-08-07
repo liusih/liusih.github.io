@@ -185,23 +185,19 @@
 <ul>
 <li>​    One-step Q-learning:</li>
 </ul>
-<p>$$L_i(\theta_i) = E(r + \gamma  \cdot max_{a’}Q(s’,a’;\theta_{i-1}) - Q(s,a;\theta_i))^2$$</p>
-<ul>
+<script type="math/tex; mode=display">L_i(\theta_i) = E(r + \gamma  \cdot max_{a'}Q(s',a';\theta_{i-1}) - Q(s,a;\theta_i))^2</script><ul>
 <li>​    <strong>n-step Q-Learning：</strong></li>
 </ul>
-<p>$$Q_{Target} = r_t + \gamma r_{t+1} + … +\gamma ^{n-1}r_{t+n-1} +  \gamma^n max_{a’}Q(s’,a’;\theta_{i-1}^-)$$</p>
-<blockquote>
+<script type="math/tex; mode=display">Q_{Target} = r_t + \gamma r_{t+1} + … +\gamma ^{n-1}r_{t+n-1} +  \gamma^n max_{a’}Q(s’,a’;\theta_{i-1}^-)</script><blockquote>
 <p>one-step缺点：得到一个奖励r仅仅直接影响了得到该奖励的状态总做对（s,a）的值。其他state action pair的值仅仅间接的通过更新value Q(s,a)来影响，这使得学习过程缓慢，因为许多更新都需要传播一个reward给相关进行的states和actions。</p>
 <p>n-step优点：一个奖励r直接影响先前n个state action pair，学习更有效。</p>
 </blockquote>
 <p>tips:</p>
 <ul>
 <li><p>动作-值函数：</p>
-<p>$$Q^\pi(s,a) = E[R_t|s_t = s,a]$$</p>
-</li>
+<script type="math/tex; mode=display">Q^\pi(s,a) = E[R_t|s_t = s,a]</script></li>
 <li><p>状态价值函数：</p>
-<p>$$V^\pi(s) = E[R_t|s_t = s ]$$</p>
-</li>
+<script type="math/tex; mode=display">V^\pi(s) = E[R_t|s_t = s ]</script></li>
 </ul>
 <h3 id="Policy-Based-amp-model-free"><a href="#Policy-Based-amp-model-free" class="headerlink" title="Policy-Based &amp; model-free"></a>Policy-Based &amp; model-free</h3><p>直接将策略参数化：$\pi(a|s;\theta)$ ，通过迭代更新$\theta$，使总奖励期望 $E[R_t]$ 梯度上升</p>
 <h3 id="AC"><a href="#AC" class="headerlink" title="AC"></a>AC</h3><p><strong>一句话概括 Actor Critic 方法:</strong></p>
@@ -233,11 +229,8 @@
 </blockquote>
 <p><img src="http://image.sherlocknlp.com//20191123154720_MwZQ5x_5.png" alt=""></p>
 <p>A3C的更新公式有两条，一条<strong>梯度上升</strong>更新策略$\pi$ 的参数，如前面介绍的actor-critic结构：</p>
-<p>$$\nabla_{\theta’}  log \pi (a_t|st;\theta’)A(s_t,a_t;\theta’,\theta’_v)$$</p>
-<p>其中，$A(s_t,a_t;\theta’,\theta’_v)$是优势函数的估计（算法中表示为$R-V(s_i;\theta’_v))$):</p>
-<p>$$A(s_t,a_t;\theta’,\theta’_v)$$</p>
-<p>$$=\sum_{i=0}^{k-1}\gamma^ir_{t+i}+\gamma^kV(s_{t+k};\theta’_v) -V(s_t;\theta’_v)$$</p>
-<p>$\theta’$是策略$\pi$ 的参数，$\theta’_v$是状态值函数的参数。k是可以变化的，上届由n-step决定，即n。</p>
+<script type="math/tex; mode=display">\nabla_{\theta'}  log \pi (a_t|st;\theta')A(s_t,a_t;\theta',\theta'_v)</script><p>其中，$A(s_t,a_t;\theta’,\theta’_v)$是优势函数的估计（算法中表示为$R-V(s_i;\theta’_v))$):</p>
+<script type="math/tex; mode=display">A(s_t,a_t;\theta',\theta'_v)</script><script type="math/tex; mode=display">=\sum_{i=0}^{k-1}\gamma^ir_{t+i}+\gamma^kV(s_{t+k};\theta'_v) -V(s_t;\theta'_v)</script><p>$\theta’$是策略$\pi$ 的参数，$\theta’_v$是状态值函数的参数。k是可以变化的，上届由n-step决定，即n。</p>
 <p><strong>在实际操作中，论文在该公式中加入了策略$\pi$ 的熵项$\beta\nabla_{\theta’}H(\pi(s_t;\theta’)))$，防止过早的进入次优策略。</strong></p>
 <p>另一条公式是使用TD方式<strong>梯度下降</strong>更新状态值函数的参数，即算法中的$\partial (R-V(s_i;\theta’_v))^2 / \partial\theta’_v$.</p>
 <p>未完待续… </p>
@@ -356,7 +349,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        23
                     </p>
                 </div>
             </div>
@@ -490,7 +483,7 @@
                 <span class="level-item">Reinforcement Learning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Reinforcement-Learning/Curiosity/">
@@ -550,7 +543,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/A3C/" style="font-size: 13.33px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 13.33px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
         
@@ -574,6 +567,25 @@
                     <a href="/2020/07/01/Data Augmentation for NLU/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Data Augmentation for NLU -- Sih调研</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/NLU/">NLU</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/06/15/ACL 2020 中的NLU的研究点--sih/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727174842_xmzjpd_Screenshot.png" alt="ACL 2020 中NLU的研究点">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-15T05:20:10.000Z">2020-06-15</time></div>
+                    <a href="/2020/06/15/ACL 2020 中的NLU的研究点--sih/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ACL 2020 中NLU的研究点</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
                     </p>
                 </div>
             </div>
@@ -636,25 +648,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200203180923_jZCJYH_Screenshot.png" alt="2019-2020 Conference about Curriculum Learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:10:10.000Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2019-2020 Conference about Curriculum Learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -670,6 +663,17 @@
             <a class="level is-marginless" href="/archives/2020/07/">
                 <span class="level-start">
                     <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -825,14 +829,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/A3C/">
                         <span class="tag">A3C</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Actor-Critic/">
                         <span class="tag">Actor-Critic</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -895,7 +899,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Reinforcement-Learning/">
                         <span class="tag">Reinforcement Learning</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -971,7 +975,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/A3C/" style="font-size: 10px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 10px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
+        <a href="/tags/A3C/" style="font-size: 13.33px;">A3C</a> <a href="/tags/Actor-Critic/" style="font-size: 13.33px;">Actor-Critic</a> <a href="/tags/Curiosity/" style="font-size: 10px;">Curiosity</a> <a href="/tags/Curriculum-Learning/" style="font-size: 16.67px;">Curriculum Learning</a> <a href="/tags/Data-Augmentation/" style="font-size: 10px;">Data Augmentation</a> <a href="/tags/Dialogue-system/" style="font-size: 13.33px;">Dialogue system</a> <a href="/tags/Latent-Variable/" style="font-size: 10px;">Latent Variable</a> <a href="/tags/Memory-Network/" style="font-size: 10px;">Memory Network</a> <a href="/tags/Multi-task-Learning/" style="font-size: 13.33px;">Multi-task Learning</a> <a href="/tags/Paper-overview/" style="font-size: 10px;">Paper overview</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 20px;">Reinforcement Learning</a> <a href="/tags/Self-paced-Learning/" style="font-size: 10px;">Self-paced Learning</a> <a href="/tags/User-Simulator/" style="font-size: 10px;">User Simulator</a> <a href="/tags/Visual-Dialog/" style="font-size: 10px;">Visual Dialog</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/meta-learning/" style="font-size: 10px;">meta-learning</a> <a href="/tags/reward/" style="font-size: 10px;">reward</a> <a href="/tags/word2vec/" style="font-size: 10px;">word2vec</a>
     </div>
 </div>
     
@@ -995,6 +999,25 @@
                     <a href="/2020/07/01/Data Augmentation for NLU/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Data Augmentation for NLU -- Sih调研</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/NLU/">NLU</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/06/15/ACL 2020 中的NLU的研究点--sih/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200727174842_xmzjpd_Screenshot.png" alt="ACL 2020 中NLU的研究点">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-15T05:20:10.000Z">2020-06-15</time></div>
+                    <a href="/2020/06/15/ACL 2020 中的NLU的研究点--sih/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ACL 2020 中NLU的研究点</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
                     </p>
                 </div>
             </div>
@@ -1057,25 +1080,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://image.sherlocknlp.com//20200203180923_jZCJYH_Screenshot.png" alt="2019-2020 Conference about Curriculum Learning">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T10:10:10.000Z">2020-02-03</time></div>
-                    <a href="/2020/02/03/2019-2020 Conference about Curriculum Learning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">2019-2020 Conference about Curriculum Learning</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Curriculum-Learning/">Curriculum Learning</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1091,6 +1095,17 @@
             <a class="level is-marginless" href="/archives/2020/07/">
                 <span class="level-start">
                     <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
                     <span class="level-item tag">1</span>
@@ -1246,14 +1261,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/A3C/">
                         <span class="tag">A3C</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Actor-Critic/">
                         <span class="tag">Actor-Critic</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1316,7 +1331,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Reinforcement-Learning/">
                         <span class="tag">Reinforcement Learning</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
