@@ -20,7 +20,7 @@
 <meta property="og:description" content="Sih之前对NLU的数据增强很感兴趣，最近在面试中也遇到很多能够用到DA的方向, 在此整理一些之前的调研内容。（模型图又挂了，后补吧～）">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://image.sherlocknlp.com//20200727170806_FzdAUs_Screenshot.png">
-<meta property="og:updated_time" content="2020-07-27T09:25:37.655Z">
+<meta property="og:updated_time" content="2020-08-07T09:34:30.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data Augmentation for NLU -- Sih调研">
 <meta name="twitter:description" content="Sih之前对NLU的数据增强很感兴趣，最近在面试中也遇到很多能够用到DA的方向, 在此整理一些之前的调研内容。（模型图又挂了，后补吧～）">
@@ -168,10 +168,10 @@
 <h4 id="Combining-active-and-semi-supervised-learning-for-spoken-language-understanding"><a href="#Combining-active-and-semi-supervised-learning-for-spoken-language-understanding" class="headerlink" title="Combining active and semi-supervised learning for spoken language understanding"></a>Combining active and semi-supervised learning for spoken language understanding</h4><p>2005 Speech Communication <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167639304000962" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0167639304000962</a></p>
 <p>比较早的文章，主要是了解文章提出的半监督学习应用到NLU的架构。</p>
 <p>在本文提出应用主动学习和半监督学习方法，减少对自然语言理解的标注工作。主动学习的目的是通过自动选择可能对标签信息最有帮助的话语来最大程度地减少标签话语的数量。 在基于确定性的主动学习的启发下，本文提出的主动学习方法选择了分类器最不自信的示例。 使用两种半监督学习方法来利用具有较高置信度得分（因此不是通过主动学习选择的）分类的示例。 第一种方法通过将机器标记的类用于未标记的话语来扩充训练数据。 第二种方法改为以加权方式用机器标记的话语增强使用人工标记的话语训练的分类模型。 然后使用选择性采样和自动标记的数据将主动学习和半监督学习结合起来，利用所有收集的数据并减轻仅采用主动学习或半监督学习所导致的数据不平衡问题。</p>
-<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image001.png" alt="img" style="zoom:50%;"></p>
-<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image002.png" alt="img" style="zoom:50%;"></p>
+<p><img src="http://image.sherlocknlp.com//20200807173310_SsRxjK_Screenshot.png" alt=""></p>
+<p><img src="http://image.sherlocknlp.com//20200807173334_zivsKb_Screenshot.png" alt=""></p>
 <h4 id="Fast-Cross-domain-Data-Augmentation-through-Neural-Sentence-Editing"><a href="#Fast-Cross-domain-Data-Augmentation-through-Neural-Sentence-Editing" class="headerlink" title="Fast Cross-domain Data Augmentation through Neural Sentence Editing"></a>Fast Cross-domain Data Augmentation through Neural Sentence Editing</h4><p>应用数据扩充减轻数据短缺。对于自然语言，句子编辑提供了一种解决方案-依靠对原始内容进行微小但有意义的更改，旨在在数据丰富的源域中学习知识，并将其应用于数据稀缺的其他目标域。本文提出了Edit-transformer，这是一个基于Transformer的句子编辑器。 本文认为 Edit-transformer比其基于Edit的规则改写更适合跨域环境。文章中还提出合成数据需要与原始数据足够不同，以使这些变化导致下游方法具有更好的泛化能力。</p>
-<p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image003.png" alt="img" style="zoom:50%;"></p>
+<p><img src="/Users/chris/Documents/blog/source/_posts/image-20200807173417160.png" alt="image-20200807173417160"></p>
 <h4 id="Controlled-Text-Generation-for-Data-Augmentation-in-Intelligent-Artificial-Agents"><a href="#Controlled-Text-Generation-for-Data-Augmentation-in-Intelligent-Artificial-Agents" class="headerlink" title="Controlled Text Generation for Data Augmentation in Intelligent Artificial Agents"></a>Controlled Text Generation for Data Augmentation in Intelligent Artificial Agents</h4><p>EMNLP WNGT workshop <a href="https://arxiv.org/abs/1910.03487" target="_blank" rel="noopener">https://arxiv.org/abs/1910.03487</a></p>
 <p>本文研究的任务是对NLU做数据增强，通过给定的一个短语集生成语义相似的短语来进行数据增强。给定 signature（ domain+intent+slots ）和少量的 carrier phrases （短句），生成更多的语义相似的 carrier phrases 。</p>
 <p><img src="file:////Users/chris/Library/Group%20Containers/UBF8T346G9.Office/TemporaryItems/msohtmlclip/clip_image004.png" alt="img" style="zoom:50%;"></p>

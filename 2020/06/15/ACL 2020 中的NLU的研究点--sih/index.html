@@ -20,7 +20,7 @@
 <meta property="og:description" content="Sih对ACL2020中NLU研究方向的总结，对于NLU的研究内容，欢迎小伙伴一起讨论idea～">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://image.sherlocknlp.com//20200727174842_xmzjpd_Screenshot.png">
-<meta property="og:updated_time" content="2020-08-07T09:29:45.703Z">
+<meta property="og:updated_time" content="2020-08-07T09:32:28.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ACL 2020 中NLU的研究点">
 <meta name="twitter:description" content="Sih对ACL2020中NLU研究方向的总结，对于NLU的研究内容，欢迎小伙伴一起讨论idea～">
@@ -165,7 +165,7 @@
         <div class="content">
             <p>Sih对ACL2020中NLU研究方向的总结，对于NLU的研究内容，欢迎小伙伴一起讨论idea～</p>
 <a id="more"></a>
-<h4 id="1-方向总结"><a href="#1-方向总结" class="headerlink" title="1. 方向总结"></a>1. 方向总结</h4><p>1)   优化NLU的结构化表示</p>
+<h2 id="1-方向总结"><a href="#1-方向总结" class="headerlink" title="1. 方向总结"></a>1. 方向总结</h2><p>1)   优化NLU的结构化表示</p>
 <p><a href="#_Recursive_Template-based_Frame">Recursive Template-based Frame Generation for Task Oriented Dialog</a></p>
 <p><a href="#_Coach:_A_Coarse-to-Fine">Coach: A Coarse-to-Fine Approach for Cross-domain Slot Filling</a></p>
 <p>2)   解决NLU中close world的设定</p>
@@ -173,24 +173,24 @@
 <p>-    Novel intent detection：<a href="#_Unknown_Intent_Detection">Unknown Intent Detection Using Gaussian Mixture Model with an Application to Zero-shot Intent Classification</a></p>
 <p>3)   解决NLU中数据短缺的问题</p>
 <p><a href="#__Few-shot_Slot_Tagging">Few-shot Slot Tagging with Collapsed Dependency Transfer and Label-enhanced Task-adaptive Projection Network</a></p>
-<h4 id="2-具体解析"><a href="#2-具体解析" class="headerlink" title="2. 具体解析"></a>2. 具体解析</h4><h5 id="Recursive-Template-based-Frame-Generation-for-Task-Oriented-Dialog"><a href="#Recursive-Template-based-Frame-Generation-for-Task-Oriented-Dialog" class="headerlink" title="Recursive Template-based Frame Generation for Task Oriented Dialog"></a><strong>Recursive Template-based Frame Generation for Task Oriented Dialog</strong></h5><p>ACL2020 Short paper, Amazon: <a href="https://www.aclweb.org/anthology/2020.acl-main.186/" target="_blank" rel="noopener">https://www.aclweb.org/anthology/2020.acl-main.186/</a></p>
+<h2 id="2-具体解析"><a href="#2-具体解析" class="headerlink" title="2. 具体解析"></a>2. 具体解析</h2><h3 id="Recursive-Template-based-Frame-Generation-for-Task-Oriented-Dialog"><a href="#Recursive-Template-based-Frame-Generation-for-Task-Oriented-Dialog" class="headerlink" title="Recursive Template-based Frame Generation for Task Oriented Dialog"></a><strong>Recursive Template-based Frame Generation for Task Oriented Dialog</strong></h3><p>ACL2020 Short paper, Amazon: <a href="https://www.aclweb.org/anthology/2020.acl-main.186/" target="_blank" rel="noopener">https://www.aclweb.org/anthology/2020.acl-main.186/</a></p>
 <p>解决的问题：优化NLU的结构化表示。</p>
 <p>概述：NLU模块处理用户的语句，并将其转换为结构化信息，此信息通常表示为语义框架，可捕获用户提供的意图和slot标签。本文认为对于复杂的对话场景，这样的浅层表示是不够的，因为它不能捕获许多域中固有的递归性质。 本文提出了一种递归的，基于层次框架的表示形式，文中将frame生成任务公式化为基于模板的树解码任务，其中解码器以递归方式生成模板，然后将slot值填充到模板中。</p>
 <p><img src="http://image.sherlocknlp.com//20200727174458_AOAFLb_clip_image001.png" style="zoom:50%;"></p>
 <p>方法：输入用户话语x, 期望输出上图中括号里的表示y。The translation from x to y is performed using four components that are jointly trained end-to-end, (1)an encoder, (2) a slot decoder, (3) a tree decoder and (4) a pointer network. </p>
 <p><img src="http://image.sherlocknlp.com//20200727174543_8fmD49_clip_image002.png" style="zoom:50%;"></p>
 <p>数据集：ATIS</p>
-<h5 id="Span-ConveRT-Few-shot-Span-Extraction-for-Dialog-with-Pretrained-Conversational-Representations"><a href="#Span-ConveRT-Few-shot-Span-Extraction-for-Dialog-with-Pretrained-Conversational-Representations" class="headerlink" title="Span-ConveRT: Few-shot Span Extraction for Dialog with Pretrained Conversational Representations"></a><strong>Span-ConveRT: Few-shot Span Extraction for Dialog with Pretrained Conversational Representations</strong></h5><p>ACL2020 Long paper, PolyAI : <a href="https://arxiv.org/abs/2005.08866" target="_blank" rel="noopener">https://arxiv.org/abs/2005.08866</a></p>
+<h3 id="Span-ConveRT-Few-shot-Span-Extraction-for-Dialog-with-Pretrained-Conversational-Representations"><a href="#Span-ConveRT-Few-shot-Span-Extraction-for-Dialog-with-Pretrained-Conversational-Representations" class="headerlink" title="Span-ConveRT: Few-shot Span Extraction for Dialog with Pretrained Conversational Representations"></a><strong>Span-ConveRT: Few-shot Span Extraction for Dialog with Pretrained Conversational Representations</strong></h3><p>ACL2020 Long paper, PolyAI : <a href="https://arxiv.org/abs/2005.08866" target="_blank" rel="noopener">https://arxiv.org/abs/2005.08866</a></p>
 <p>Code: <a href="https://github.com/PolyAI-LDN/task-specific-datasets" target="_blank" rel="noopener">https://github.com/PolyAI-LDN/task-specific-datasets</a></p>
 <p>解决的问题：slot filling任务上的对value抽取的改进, 不将value值限制在固定类别上，而是将该任务定义为Span抽取任务。本文提出基Span的slot-filling模型，在slot filling任务中需要给一些slot填充Value值，本文直接从用户对话中抽取一个文段作为value。同时文中基于预训练模型和领域知识，该基于Span的模型可以在小样本条件下实现更好的效果。</p>
 <p><img src="http://image.sherlocknlp.com//20200727174600_hR9ME5_clip_image003.png" style="zoom:50%;"></p>
 <p>Dataset: 文中自己提出了一个数据RESTAURANTS-8K，比ATIS和SNIPS更难。（slot 数量不多，5 个）</p>
 <p><img src="http://image.sherlocknlp.com//20200727174615_hn1D95_clip_image004.png" alt=""></p>
-<h5 id="Coach-A-Coarse-to-Fine-Approach-for-Cross-domain-Slot-Filling"><a href="#Coach-A-Coarse-to-Fine-Approach-for-Cross-domain-Slot-Filling" class="headerlink" title="Coach: A Coarse-to-Fine Approach for Cross-domain Slot Filling"></a><strong>Coach: A Coarse-to-Fine Approach for Cross-domain Slot Filling</strong></h5><p>ACL2020 Short paper: <a href="https://arxiv.org/abs/2004.11727" target="_blank" rel="noopener">https://arxiv.org/abs/2004.11727</a></p>
+<h3 id="Coach-A-Coarse-to-Fine-Approach-for-Cross-domain-Slot-Filling"><a href="#Coach-A-Coarse-to-Fine-Approach-for-Cross-domain-Slot-Filling" class="headerlink" title="Coach: A Coarse-to-Fine Approach for Cross-domain Slot Filling"></a><strong>Coach: A Coarse-to-Fine Approach for Cross-domain Slot Filling</strong></h3><p>ACL2020 Short paper: <a href="https://arxiv.org/abs/2004.11727" target="_blank" rel="noopener">https://arxiv.org/abs/2004.11727</a></p>
 <p>Code: <a href="https://github.com/zliucr/coach" target="_blank" rel="noopener">https://github.com/zliucr/coach</a></p>
 <p> 本文提出了一种从粗到精的方法进行跨域slot filling的方法，首先通过检测token是否为slot实体来学习slot实体的general pattern, 然后预测slot entity的特定类型。</p>
 <p><img src="http://image.sherlocknlp.com//20200727174631_beDgz9_clip_image005.png" alt=""></p>
-<h5 id="Few-shot-Slot-Tagging-with-Collapsed-Dependency-Transfer-and-Label-enhanced-Task-adaptive-Projection-Network"><a href="#Few-shot-Slot-Tagging-with-Collapsed-Dependency-Transfer-and-Label-enhanced-Task-adaptive-Projection-Network" class="headerlink" title="Few-shot Slot Tagging with Collapsed Dependency Transfer and Label-enhanced Task-adaptive Projection Network"></a><strong>Few-shot Slot Tagging with Collapsed Dependency Transfer and Label-enhanced Task-adaptive Projection Network</strong></h5><p>ACL 2020 哈工大<a href="https://arxiv.org/abs/2006.05702" target="_blank" rel="noopener">https://arxiv.org/abs/2006.05702</a></p>
+<h3 id="Few-shot-Slot-Tagging-with-Collapsed-Dependency-Transfer-and-Label-enhanced-Task-adaptive-Projection-Network"><a href="#Few-shot-Slot-Tagging-with-Collapsed-Dependency-Transfer-and-Label-enhanced-Task-adaptive-Projection-Network" class="headerlink" title="Few-shot Slot Tagging with Collapsed Dependency Transfer and Label-enhanced Task-adaptive Projection Network"></a><strong>Few-shot Slot Tagging with Collapsed Dependency Transfer and Label-enhanced Task-adaptive Projection Network</strong></h3><p>ACL 2020 哈工大<a href="https://arxiv.org/abs/2006.05702" target="_blank" rel="noopener">https://arxiv.org/abs/2006.05702</a></p>
 <p>本文研究了少样本槽位提取问题（Few-shot Slot-Tagging）。与其他广泛研究的少样本问题相比，少样本槽位提取面临着“建模标签间依赖关系”的独特挑战。但是，由于不同领域间存在标签集的差异，很难将先前学习的标签依赖应用于新的领域。为了解决这个问题，本文在CRF中引入了折叠的依赖关系迁移机制（Collapsed Dependency Transfer），通过建模抽象的标签依赖关系来实现这种迁移。在小样本和元学习的情景下，CRF的发射概率可以用利用度量学习得到：计算为单词与每个标签类别的相似度。为了计算这种相似性，在近期的图像小样本分类模型TapNet基础上，利用标签名称语义来表示标签，提出了一种标签增强的任务自适应投影网络（L-TapNet）。</p>
 
         </div>
