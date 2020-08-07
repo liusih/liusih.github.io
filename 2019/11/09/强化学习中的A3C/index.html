@@ -185,19 +185,23 @@
 <ul>
 <li>​    One-step Q-learning:</li>
 </ul>
-<script type="math/tex; mode=display">L_i(\theta_i) = E(r + \gamma  \cdot max_{a'}Q(s',a';\theta_{i-1}) - Q(s,a;\theta_i))^2</script><ul>
+<p>$$L_i(\theta_i) = E(r + \gamma  \cdot max_{a’}Q(s’,a’;\theta_{i-1}) - Q(s,a;\theta_i))^2$$</p>
+<ul>
 <li>​    <strong>n-step Q-Learning：</strong></li>
 </ul>
-<script type="math/tex; mode=display">Q_{Target} = r_t + \gamma r_{t+1} + … +\gamma ^{n-1}r_{t+n-1} +  \gamma^n max_{a’}Q(s’,a’;\theta_{i-1}^-)</script><blockquote>
+<p>$$Q_{Target} = r_t + \gamma r_{t+1} + … +\gamma ^{n-1}r_{t+n-1} +  \gamma^n max_{a’}Q(s’,a’;\theta_{i-1}^-)$$</p>
+<blockquote>
 <p>one-step缺点：得到一个奖励r仅仅直接影响了得到该奖励的状态总做对（s,a）的值。其他state action pair的值仅仅间接的通过更新value Q(s,a)来影响，这使得学习过程缓慢，因为许多更新都需要传播一个reward给相关进行的states和actions。</p>
 <p>n-step优点：一个奖励r直接影响先前n个state action pair，学习更有效。</p>
 </blockquote>
 <p>tips:</p>
 <ul>
 <li><p>动作-值函数：</p>
-<script type="math/tex; mode=display">Q^\pi(s,a) = E[R_t|s_t = s,a]</script></li>
+<p>$$Q^\pi(s,a) = E[R_t|s_t = s,a]$$</p>
+</li>
 <li><p>状态价值函数：</p>
-<script type="math/tex; mode=display">V^\pi(s) = E[R_t|s_t = s ]</script></li>
+<p>$$V^\pi(s) = E[R_t|s_t = s ]$$</p>
+</li>
 </ul>
 <h3 id="Policy-Based-amp-model-free"><a href="#Policy-Based-amp-model-free" class="headerlink" title="Policy-Based &amp; model-free"></a>Policy-Based &amp; model-free</h3><p>直接将策略参数化：$\pi(a|s;\theta)$ ，通过迭代更新$\theta$，使总奖励期望 $E[R_t]$ 梯度上升</p>
 <h3 id="AC"><a href="#AC" class="headerlink" title="AC"></a>AC</h3><p><strong>一句话概括 Actor Critic 方法:</strong></p>
@@ -229,8 +233,11 @@
 </blockquote>
 <p><img src="http://image.sherlocknlp.com//20191123154720_MwZQ5x_5.png" alt=""></p>
 <p>A3C的更新公式有两条，一条<strong>梯度上升</strong>更新策略$\pi$ 的参数，如前面介绍的actor-critic结构：</p>
-<script type="math/tex; mode=display">\nabla_{\theta'}  log \pi (a_t|st;\theta')A(s_t,a_t;\theta',\theta'_v)</script><p>其中，$A(s_t,a_t;\theta’,\theta’_v)$是优势函数的估计（算法中表示为$R-V(s_i;\theta’_v))$):</p>
-<script type="math/tex; mode=display">A(s_t,a_t;\theta',\theta'_v)</script><script type="math/tex; mode=display">=\sum_{i=0}^{k-1}\gamma^ir_{t+i}+\gamma^kV(s_{t+k};\theta'_v) -V(s_t;\theta'_v)</script><p>$\theta’$是策略$\pi$ 的参数，$\theta’_v$是状态值函数的参数。k是可以变化的，上届由n-step决定，即n。</p>
+<p>$$\nabla_{\theta’}  log \pi (a_t|st;\theta’)A(s_t,a_t;\theta’,\theta’_v)$$</p>
+<p>其中，$A(s_t,a_t;\theta’,\theta’_v)$是优势函数的估计（算法中表示为$R-V(s_i;\theta’_v))$):</p>
+<p>$$A(s_t,a_t;\theta’,\theta’_v)$$</p>
+<p>$$=\sum_{i=0}^{k-1}\gamma^ir_{t+i}+\gamma^kV(s_{t+k};\theta’_v) -V(s_t;\theta’_v)$$</p>
+<p>$\theta’$是策略$\pi$ 的参数，$\theta’_v$是状态值函数的参数。k是可以变化的，上届由n-step决定，即n。</p>
 <p><strong>在实际操作中，论文在该公式中加入了策略$\pi$ 的熵项$\beta\nabla_{\theta’}H(\pi(s_t;\theta’)))$，防止过早的进入次优策略。</strong></p>
 <p>另一条公式是使用TD方式<strong>梯度下降</strong>更新状态值函数的参数，即算法中的$\partial (R-V(s_i;\theta’_v))^2 / \partial\theta’_v$.</p>
 <p>未完待续… </p>
