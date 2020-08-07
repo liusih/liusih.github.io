@@ -76,8 +76,8 @@
     
 
 
-<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 <body class="is-2-column">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
     <div class="container">
@@ -162,96 +162,96 @@
 <li>下载opencc把繁体中文转化为简体中文<br>opencc(windows版本)下载地址：<a href="http://download.csdn.net/download/adam_zs/10213686" target="_blank" rel="noopener">http://download.csdn.net/download/adam_zs/10213686</a></li>
 <li>运行命令：</li>
 </ul>
-<pre class=" language-python"><code class="language-python">    opencc <span class="token operator">-</span>i wiki<span class="token punctuation">.</span>zh<span class="token punctuation">.</span>fanti<span class="token punctuation">.</span>text <span class="token operator">-</span>o wiki<span class="token punctuation">.</span>zh<span class="token punctuation">.</span>jianti<span class="token punctuation">.</span>text <span class="token operator">-</span>c t2s<span class="token punctuation">.</span>json
+<pre class=" language-lang-python"><code class="language-lang-python">    opencc -i wiki.zh.fanti.text -o wiki.zh.jianti.text -c t2s.json
 </code></pre>
 <a id="more"></a>
 <ul>
 <li>jieba分词</li>
 </ul>
 <p>a. 中文</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">cut_words</span><span class="token punctuation">(</span>sentence<span class="token punctuation">)</span><span class="token punctuation">:</span>
-  <span class="token comment" spellcheck="true"># print sentence</span>
- <span class="token keyword">return</span> <span class="token string">" "</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>jieba<span class="token punctuation">.</span>cut<span class="token punctuation">(</span>sentence<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+<pre class=" language-lang-python"><code class="language-lang-python">def cut_words(sentence):
+  # print sentence
+ return " ".join(jieba.cut(sentence)).encode('utf-8')
 </code></pre>
 <p>b. 英文</p>
 <ul>
 <li>引入日志配置</li>
 </ul>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> logging
-logging<span class="token punctuation">.</span>basicConfig<span class="token punctuation">(</span>format<span class="token operator">=</span><span class="token string">'%(asctime)s : %(levelname)s : %(message)s'</span><span class="token punctuation">,</span> level<span class="token operator">=</span>logging<span class="token punctuation">.</span>INFO<span class="token punctuation">)</span>
+<pre class=" language-lang-python"><code class="language-lang-python">import logging
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 </code></pre>
 <ul>
 <li>引入数据集</li>
 </ul>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#some error here</span>
-   `<span class="token comment" spellcheck="true"># raw_sentences = ["the quick brown fox jumps over the lazy dogs","yoyoyo you go home now to sleep"]</span>
+<pre class=" language-lang-python"><code class="language-lang-python">#some error here
+   `# raw_sentences = ["the quick brown fox jumps over the lazy dogs","yoyoyo you go home now to sleep"]
 </code></pre>
 <ul>
 <li>切分词汇</li>
 </ul>
-<pre class=" language-python"><code class="language-python">sentences<span class="token operator">=</span> <span class="token punctuation">[</span>s<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> s <span class="token keyword">in</span> sentences<span class="token punctuation">]</span>
+<pre class=" language-lang-python"><code class="language-lang-python">sentences= [s.encode('utf-8').split() for s in sentences]
 </code></pre>
 <h1 id="1-训练"><a href="#1-训练" class="headerlink" title="1.训练"></a>1.训练</h1><p> step1: train</p>
-<pre class=" language-python"><code class="language-python">a<span class="token punctuation">.</span>
-<span class="token comment" spellcheck="true">#LineSentence</span>
-model <span class="token operator">=</span> Word2Vec<span class="token punctuation">(</span>LineSentence<span class="token punctuation">(</span>inp<span class="token punctuation">)</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token number">400</span><span class="token punctuation">,</span> window<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> min_count<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> workers<span class="token operator">=</span>multiprocessing<span class="token punctuation">.</span>cpu_count<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre class=" language-lang-python"><code class="language-lang-python">a.
+#LineSentence
+model = Word2Vec(LineSentence(inp), size=400, window=5, min_count=5, workers=multiprocessing.cpu_count())
 
-<span class="token comment" spellcheck="true">#min_count 最好设置为1，5的话容易匹配不到词典</span>
+#min_count 最好设置为1，5的话容易匹配不到词典
 
-b<span class="token punctuation">.</span>
+b.
 
-<span class="token comment" spellcheck="true">#Text8Corpus</span>
-sentences<span class="token operator">=</span>word2vec<span class="token punctuation">.</span>Text8Corpus<span class="token punctuation">(</span>u<span class="token string">'wiki_seg.txt'</span><span class="token punctuation">)</span>
-model<span class="token operator">=</span>gensim<span class="token punctuation">.</span>models<span class="token punctuation">.</span>Word2Vec<span class="token punctuation">(</span>sentences<span class="token punctuation">,</span> <span class="token punctuation">,</span> size<span class="token operator">=</span>200min_count<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token punctuation">)</span>
+#Text8Corpus
+sentences=word2vec.Text8Corpus(u'wiki_seg.txt')
+model=gensim.models.Word2Vec(sentences, , size=200min_count=3,)
 </code></pre>
 <p>step2:save</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#保存.model a</span>
-model<span class="token punctuation">.</span>save<span class="token punctuation">(</span>outp1<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># outp1 可以为.model,.vect,.txt,.bin</span>
+<pre class=" language-lang-python"><code class="language-lang-python">#保存.model a
+model.save(outp1) # outp1 可以为.model,.vect,.txt,.bin
 
-<span class="token comment" spellcheck="true">#保存.model b</span>
-model<span class="token punctuation">.</span>model<span class="token punctuation">.</span>wv<span class="token punctuation">.</span>save_word2vec_format<span class="token punctuation">(</span>outp2<span class="token punctuation">,</span> binary<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#保存</span>
+#保存.model b
+model.model.wv.save_word2vec_format(outp2, binary=False) #保存
 
 
-<span class="token comment" spellcheck="true">#保存 c</span>
-model<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token string">'wiki.model'</span><span class="token punctuation">)</span>                      <span class="token comment" spellcheck="true">#.model</span>
-model<span class="token punctuation">.</span>save_word2vec_format<span class="token punctuation">(</span><span class="token string">'wiki.model.bin'</span><span class="token punctuation">,</span> binary<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#.bin</span>
-model<span class="token punctuation">.</span>model<span class="token punctuation">.</span>wv<span class="token punctuation">.</span>save_word2vec_format<span class="token punctuation">(</span>outp2<span class="token punctuation">,</span> binary<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#.bz</span>
+#保存 c
+model.save('wiki.model')                      #.model
+model.save_word2vec_format('wiki.model.bin', binary=True) #.bin
+model.model.wv.save_word2vec_format(outp2, binary=False)  #.bz
 </code></pre>
 <p>step 3 基于模型继续训练</p>
-<pre class=" language-python"><code class="language-python">model<span class="token operator">=</span>gensim<span class="token punctuation">.</span>models<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">'wiki.model'</span><span class="token punctuation">)</span>
-model<span class="token punctuation">.</span>build_vocab<span class="token punctuation">(</span>new_sentences<span class="token punctuation">,</span> update<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-model<span class="token punctuation">.</span>train<span class="token punctuation">(</span>x<span class="token punctuation">,</span> total_examples<span class="token operator">=</span>model<span class="token punctuation">.</span>corpus_count<span class="token punctuation">,</span> epochs<span class="token operator">=</span>model<span class="token punctuation">.</span>iter<span class="token punctuation">)</span>
-model<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token string">'wiki.model'</span><span class="token punctuation">)</span>
+<pre class=" language-lang-python"><code class="language-lang-python">model=gensim.models.load('wiki.model')
+model.build_vocab(new_sentences, update=True)
+model.train(x, total_examples=model.corpus_count, epochs=model.iter)
+model.save('wiki.model')
 </code></pre>
-<pre class=" language-python"><code class="language-python">ps<span class="token punctuation">:</span><span class="token comment" spellcheck="true">#中间步骤</span>
+<pre class=" language-lang-python"><code class="language-lang-python">ps:#中间步骤
 调用Word2Vec创建模型实际上会对数据执行两次迭代操作，第一轮操作会统计词频来构建内部的词典数结构，第二轮操作会进行神经网络训练，而这两个步骤是可以分步进行的，这样对于某些不可重复的流（譬如 Kafka 等流式数据中）可以手动控制：
 
-model <span class="token operator">=</span> gensim<span class="token punctuation">.</span>models<span class="token punctuation">.</span>Word2Vec<span class="token punctuation">(</span>iter<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># an empty model, no training yet</span>
-model<span class="token punctuation">.</span>build_vocab<span class="token punctuation">(</span>some_sentences<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># can be a non-repeatable, 1-pass generator</span>
-model<span class="token punctuation">.</span>train<span class="token punctuation">(</span>other_sentences<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># can be a non-repeatable, 1-pass generator</span>
+model = gensim.models.Word2Vec(iter=1)  # an empty model, no training yet
+model.build_vocab(some_sentences)  # can be a non-repeatable, 1-pass generator
+model.train(other_sentences)  # can be a non-repeatable, 1-pass generator
 </code></pre>
-<h1 id="2-载入-load"><a href="#2-载入-load" class="headerlink" title="2.载入 load"></a>2.载入 load</h1><pre class=" language-python"><code class="language-python">model <span class="token operator">=</span> gensim<span class="token punctuation">.</span>models<span class="token punctuation">.</span>Word2Vec<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">'wiki.model'</span><span class="token punctuation">)</span>             <span class="token comment" spellcheck="true">#载入 .model模型</span>
-model1 <span class="token operator">=</span> word2vec<span class="token punctuation">.</span>Word2Vec<span class="token punctuation">.</span>load_word2vec_format<span class="token punctuation">(</span><span class="token string">'wiki.model.bin'</span><span class="token punctuation">,</span> binary<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#载入bin</span>
-model<span class="token operator">=</span>gensim<span class="token punctuation">.</span>models<span class="token punctuation">.</span>KeyedVectors<span class="token punctuation">.</span>load_word2vec_format<span class="token punctuation">(</span>model_path<span class="token punctuation">,</span> binary<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#载入 .bin模型</span>
+<h1 id="2-载入-load"><a href="#2-载入-load" class="headerlink" title="2.载入 load"></a>2.载入 load</h1><pre class=" language-lang-python"><code class="language-lang-python">model = gensim.models.Word2Vec.load('wiki.model')             #载入 .model模型
+model1 = word2vec.Word2Vec.load_word2vec_format('wiki.model.bin', binary=True) #载入bin
+model=gensim.models.KeyedVectors.load_word2vec_format(model_path, binary=True)    #载入 .bin模型
 </code></pre>
-<h1 id="3-测试"><a href="#3-测试" class="headerlink" title="3.测试"></a>3.测试</h1><pre class=" language-python"><code class="language-python">a<span class="token punctuation">.</span>前几个最相关的词和相关性
-res<span class="token operator">=</span> model<span class="token punctuation">.</span>most_similar（‘女孩’）
+<h1 id="3-测试"><a href="#3-测试" class="headerlink" title="3.测试"></a>3.测试</h1><pre class=" language-lang-python"><code class="language-lang-python">a.前几个最相关的词和相关性
+res= model.most_similar（‘女孩’）
 
-b<span class="token punctuation">.</span>两个词之间的相关性
-model<span class="token punctuation">.</span>similarity<span class="token punctuation">(</span><span class="token string">'dogs'</span><span class="token punctuation">,</span><span class="token string">'you'</span><span class="token punctuation">)</span>
+b.两个词之间的相关性
+model.similarity('dogs','you')
 
-c<span class="token punctuation">.</span> 直接获取向量
-model<span class="token punctuation">[</span><span class="token string">'电脑'</span><span class="token punctuation">]</span>
+c. 直接获取向量
+model['电脑']
 </code></pre>
-<h1 id="4-Word2Vec-参数"><a href="#4-Word2Vec-参数" class="headerlink" title="4.Word2Vec 参数"></a>4.Word2Vec 参数</h1><pre class=" language-python"><code class="language-python"><span class="token operator">-</span> min_count
-model <span class="token operator">=</span> Word2Vec<span class="token punctuation">(</span>sentences<span class="token punctuation">,</span> min_count<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># default value is 5</span>
-在不同大小的语料集中，我们对于基准词频的需求也是不一样的。譬如在较大的语料集中，我们希望忽略那些只出现过一两次的单词，这里我们就可以通过设置min_count参数进行控制。一般而言，合理的参数值会设置在<span class="token number">0</span><span class="token operator">~</span><span class="token number">100</span>之间。
-<span class="token operator">-</span> size
-size参数主要是用来设置神经网络的层数，Word2Vec 中的默认值是设置为<span class="token number">100</span>层。更大的层次设置意味着更多的输入数据，不过也能提升整体的准确度，合理的设置范围为 <span class="token number">10</span><span class="token operator">~</span>数百。
-model <span class="token operator">=</span> Word2Vec<span class="token punctuation">(</span>sentences<span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># default value is 100</span>
-<span class="token operator">-</span> workers
+<h1 id="4-Word2Vec-参数"><a href="#4-Word2Vec-参数" class="headerlink" title="4.Word2Vec 参数"></a>4.Word2Vec 参数</h1><pre class=" language-lang-python"><code class="language-lang-python">- min_count
+model = Word2Vec(sentences, min_count=10) # default value is 5
+在不同大小的语料集中，我们对于基准词频的需求也是不一样的。譬如在较大的语料集中，我们希望忽略那些只出现过一两次的单词，这里我们就可以通过设置min_count参数进行控制。一般而言，合理的参数值会设置在0~100之间。
+- size
+size参数主要是用来设置神经网络的层数，Word2Vec 中的默认值是设置为100层。更大的层次设置意味着更多的输入数据，不过也能提升整体的准确度，合理的设置范围为 10~数百。
+model = Word2Vec(sentences, size=200) # default value is 100
+- workers
 workers参数用于设置并发训练时候的线程数，不过仅当Cython安装的情况下才会起作用：
-model <span class="token operator">=</span> Word2Vec<span class="token punctuation">(</span>sentences<span class="token punctuation">,</span> workers<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># default = 1 worker = no parallelization</span>
+model = Word2Vec(sentences, workers=4) # default = 1 worker = no parallelization
 </code></pre>
 
         </div>
